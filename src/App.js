@@ -1,9 +1,10 @@
 import "./App.css";
+import HomeScreen from "./screens/HomeScreen";
 
 function App() {
   return (
     <div className="App">
-      <h1> Let's build my capstone proj!!</h1>
+      <HomeScreen />
     </div>
   );
 }
