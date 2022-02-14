@@ -50,14 +50,14 @@ const Dropdown = ({ color }) => {
               style={{ minWidth: "12rem" }}
             >
               <a
-                href="#pablo"
+                href="/games"
                 className={
                   "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
                   (color === "white" ? " text-blueGray-700" : "text-white")
                 }
                 onClick={(e) => e.preventDefault()}
               >
-                Action
+                Games
               </a>
               <a
                 href="#pablo"
@@ -67,7 +67,7 @@ const Dropdown = ({ color }) => {
                 }
                 onClick={(e) => e.preventDefault()}
               >
-                Another action
+                Culture
               </a>
               <a
                 href="#pablo"
@@ -77,7 +77,37 @@ const Dropdown = ({ color }) => {
                 }
                 onClick={(e) => e.preventDefault()}
               >
-                Something else here
+                Food
+              </a>
+              <a
+                href="#pablo"
+                className={
+                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                  (color === "white" ? " text-blueGray-700" : "text-white")
+                }
+                onClick={(e) => e.preventDefault()}
+              >
+                Movies
+              </a>
+              <a
+                href="#pablo"
+                className={
+                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                  (color === "white" ? " text-blueGray-700" : "text-white")
+                }
+                onClick={(e) => e.preventDefault()}
+              >
+                News
+              </a>
+              <a
+                href="#pablo"
+                className={
+                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                  (color === "white" ? " text-blueGray-700" : "text-white")
+                }
+                onClick={(e) => e.preventDefault()}
+              >
+                Welness
               </a>
               <div className="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25" />
               <a
@@ -88,7 +118,7 @@ const Dropdown = ({ color }) => {
                 }
                 onClick={(e) => e.preventDefault()}
               >
-                Seprated link
+                Homepage
               </a>
             </div>
           </div>

@@ -6,7 +6,7 @@ export default function Navbar({ fixed }) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
     <>
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-teal-500 mb-3">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-teal-500 mb-3 w-screen">
         <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
           <ProfileImg />
           <DropdownRender />

@@ -1,7 +1,7 @@
 import React from "react";
-import CardsHomepage from "../components/CardsHomepage";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
+import CardsHomepage from "../components/VariousCards/CardsHomepage";
+import Footer from "../components/Navbar/Footer";
+import Navbar from "../components/Navbar/Navbar";
 
 function HomeScreen() {
   return (
