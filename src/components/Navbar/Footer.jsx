@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="text-center bg-teal-500 text-white bottom-0 w-screen">
-      <div className="container px-6 pt-6">
+    <div className="text-center border-solid text-white bottom-0">
+      <div className="container mx-auto px-6 pt-6">
         <div className="flex justify-center mb-6">
           <a
             href="#!"
@@ -312,7 +312,7 @@ function Footer() {
         </div>
       </div>
 
-      <div className="text-center p-4 bg-gray-400  text-emerald-900">
+      <div className="text-center p-4 text-emerald-900 border-solid">
         © 2021 Copyright:
         <a
           className=" text-emerald-900 ml-2"

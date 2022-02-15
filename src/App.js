@@ -11,7 +11,7 @@ import WelnessScreen from "./screens/WelnessScreen";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className="background-app">
         <Routes>
           <Route exact path="/" element={<HomeScreen />}></Route>
           <Route exact path="/games" element={<GamesScreen />}></Route>

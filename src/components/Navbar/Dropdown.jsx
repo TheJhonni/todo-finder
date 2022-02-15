@@ -1,5 +1,6 @@
 import React, { createRef, useState } from "react";
 import { createPopper } from "@popperjs/core";
+import { Link } from "react-router-dom";
 
 const Dropdown = ({ color }) => {
   // dropdown props
@@ -49,77 +50,83 @@ const Dropdown = ({ color }) => {
               }
               style={{ minWidth: "12rem" }}
             >
-              <a
-                href="/games"
-                className={
-                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
-                  (color === "white" ? " text-blueGray-700" : "text-white")
-                }
-                onClick={(e) => e.preventDefault()}
-              >
-                Games
-              </a>
-              <a
-                href="#pablo"
-                className={
-                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
-                  (color === "white" ? " text-blueGray-700" : "text-white")
-                }
-                onClick={(e) => e.preventDefault()}
-              >
-                Culture
-              </a>
-              <a
-                href="#pablo"
-                className={
-                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
-                  (color === "white" ? " text-blueGray-700" : "text-white")
-                }
-                onClick={(e) => e.preventDefault()}
-              >
-                Food
-              </a>
-              <a
-                href="#pablo"
-                className={
-                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
-                  (color === "white" ? " text-blueGray-700" : "text-white")
-                }
-                onClick={(e) => e.preventDefault()}
-              >
-                Movies
-              </a>
-              <a
-                href="#pablo"
-                className={
-                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
-                  (color === "white" ? " text-blueGray-700" : "text-white")
-                }
-                onClick={(e) => e.preventDefault()}
-              >
-                News
-              </a>
-              <a
-                href="#pablo"
-                className={
-                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
-                  (color === "white" ? " text-blueGray-700" : "text-white")
-                }
-                onClick={(e) => e.preventDefault()}
-              >
-                Welness
-              </a>
+              <Link to="/games">
+                <p
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    (color === "white" ? " text-blueGray-700" : "text-white")
+                  }
+                >
+                  Games
+                </p>
+              </Link>
+              <Link to="/culture">
+                <a
+                  href="#pablo"
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    (color === "white" ? " text-blueGray-700" : "text-white")
+                  }
+                >
+                  Culture
+                </a>
+              </Link>
+              <Link to="/food">
+                <a
+                  href="#pablo"
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    (color === "white" ? " text-blueGray-700" : "text-white")
+                  }
+                >
+                  Food
+                </a>
+              </Link>
+              <Link to="/movies">
+                <a
+                  href="#pablo"
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    (color === "white" ? " text-blueGray-700" : "text-white")
+                  }
+                >
+                  Movies
+                </a>
+              </Link>
+              <Link to="/news">
+                <a
+                  href="#pablo"
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    (color === "white" ? " text-blueGray-700" : "text-white")
+                  }
+                >
+                  News
+                </a>
+              </Link>
+              <Link to="/welness">
+                <a
+                  href="#pablo"
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    (color === "white" ? " text-blueGray-700" : "text-white")
+                  }
+                >
+                  Welness
+                </a>
+              </Link>
               <div className="h-0 my-2 border border-solid border-t-0 border-blueGray-800 opacity-25" />
-              <a
-                href="#pablo"
-                className={
-                  "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
-                  (color === "white" ? " text-blueGray-700" : "text-white")
-                }
-                onClick={(e) => e.preventDefault()}
-              >
-                Homepage
-              </a>
+              <Link to="/">
+                <a
+                  href="#pablo"
+                  className={
+                    "text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent " +
+                    (color === "white" ? " text-blueGray-700" : "text-white")
+                  }
+                >
+                  Homepage
+                </a>
+              </Link>
             </div>
           </div>
         </div>
