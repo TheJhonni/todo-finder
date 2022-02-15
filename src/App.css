@@ -1,3 +1,15 @@
 .background-app {
   @apply bg-gradient-to-b from-[#09E0BF] via-[#1fabbb] to-[#C251C1];
 }
+
+.img-login {
+  @apply bg-[url("https://www.technocrazed.com/wp-content/uploads/2015/12/HD-purple-wallpaper-image-to-use-as-background-121.jpg")] bg-center bg-no-repeat bg-cover;
+}
+
+.input-signUp {
+  @apply outline-none h-[40px] mb-6 border-none rounded py-2 px-5;
+}
+
+.signIn-button {
+  @apply py-[10px] px-[20px] font-medium text-white bg-purple-700 border-none cursor-pointer;
+}
