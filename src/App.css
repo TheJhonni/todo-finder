@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .background-app {
   @apply bg-gradient-to-b from-[#09E0BF] via-[#1fabbb] to-[#C251C1];
 }

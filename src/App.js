@@ -8,9 +8,33 @@ import MoviesScreen from "./screens/MoviesScreen";
 import NewsScreen from "./screens/NewsScreen";
 import WelnessScreen from "./screens/WelnessScreen";
 import LoginScreen from "./screens/Login/LoginScreen";
+import { useEffect } from "react";
+import { auth } from "./firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, selectUser } from "./redux/userReducer";
 
 function App() {
-  const user = null;
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsuscribed = auth.onAuthStateChanged((userAuth) => {
+      if (userAuth) {
+        console.log(userAuth);
+        dispatch(
+          login({
+            uid: userAuth.uid,
+            email: userAuth.email,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+
+    return unsuscribed;
+  }, []);
+
   return (
     <div className="background-app">
       <BrowserRouter>

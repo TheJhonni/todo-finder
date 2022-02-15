@@ -39,7 +39,7 @@ const Dropdown = ({ color }) => {
                   : openDropdownPopover();
               }}
             >
-              ToDo Finder
+              Help the Traveller
             </button>
             <div
               ref={popoverDropdownRef}
