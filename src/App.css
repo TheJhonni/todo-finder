@@ -7,6 +7,14 @@ body,
   padding: 0;
 }
 
+#root {
+  background-color: rgb(7, 6, 8);
+}
+
+/* #root {
+  @apply bg-[url("https://img.wallpapersafari.com/desktop/728/410/8/4/8i2c5S.png")] bg-center bg-no-repeat bg-cover;
+} */
+
 html {
   scroll-behavior: smooth;
 }
