@@ -27,7 +27,7 @@ export default function PicOfTheDay() {
   return (
     <>
       <Navbar />
-      <div className="container flex justify-evenly w-screen pt-5 mt-10 mx-auto">
+      <div className="container flex w-screen pt-5 mt-10 mx-auto">
         {photos?.media_type === "image" ? (
           <img src={photos.url} alt="" />
         ) : (
@@ -35,14 +35,14 @@ export default function PicOfTheDay() {
             url={photos.url}
             title={photos.title + " image"}
             width="450px"
-            height="450px"
+            height="300px"
             id="myId"
-            className="z-10"
+            className="z-1"
             display="initial"
-            position="relative"
+            position="relative mx-auto"
           />
         )}
-        <div className="flex flex-col mx-4">
+        <div className="flex flex-col ml-4">
           <p className="flex mb-2">{photos?.title}</p>
           <p className="flex my-2">{photos?.explanation}</p>
         </div>

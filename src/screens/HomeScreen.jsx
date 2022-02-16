@@ -31,7 +31,9 @@ function HomeScreen() {
             <IoMdPlanet className="cursor-pointer h-1/3" />
           </Link>
           <GiStarSwirl className="cursor-pointer h-1/3" />
-          <GiAsteroid className="cursor-pointer h-1/3" />
+          <Link to="/earthView">
+            <GiAsteroid className="cursor-pointer h-1/3" />
+          </Link>
           <SiStarship className="cursor-pointer h-1/3" />
         </div>
       </div>
