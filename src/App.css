@@ -2,8 +2,19 @@ html {
   scroll-behavior: smooth;
 }
 
+.img-shadow::after {
+  content: "";
+  opacity: 10;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;
+}
+
 .background-app {
-  @apply bg-gradient-to-b from-[#09E0BF] via-[#1fabbb] to-[#C251C1];
+  @apply bg-gradient-to-b from-[#09E0BF] to-[#C251C1];
 }
 
 .img-login {
