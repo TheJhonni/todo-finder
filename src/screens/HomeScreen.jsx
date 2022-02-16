@@ -1,5 +1,5 @@
 import React from "react";
-import CardsHomepage from "../components/VariousCards/CardsHomepage";
+// import CardsHomepage from "../components/VariousCards/CardsHomepage";
 import Footer from "../components/Navbar/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import { IoMdPlanet } from "react-icons/io";
@@ -27,13 +27,12 @@ function HomeScreen() {
           </h5>
         </div>
         <div className="flex justify-evenly p-5 my-10">
-          <Link to="/games">
+          <Link to="/picOfTheDay">
             <IoMdPlanet className="cursor-pointer h-1/3" />
           </Link>
           <GiStarSwirl className="cursor-pointer h-1/3" />
           <GiAsteroid className="cursor-pointer h-1/3" />
           <SiStarship className="cursor-pointer h-1/3" />
-          {/* <CardsHomepage /> */}
         </div>
       </div>
 
