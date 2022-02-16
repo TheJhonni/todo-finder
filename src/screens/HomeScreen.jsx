@@ -30,9 +30,7 @@ function HomeScreen() {
           <Link to="/picOfTheDay">
             <IoMdPlanet className="cursor-pointer h-1/3" />
           </Link>
-          <Link to="/solarSystem">
-            <GiStarSwirl className="cursor-pointer h-1/3" />
-          </Link>
+          <GiStarSwirl className="cursor-pointer h-1/3" />
           <GiAsteroid className="cursor-pointer h-1/3" />
           <SiStarship className="cursor-pointer h-1/3" />
         </div>

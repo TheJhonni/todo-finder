@@ -7,7 +7,6 @@ import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./redux/userReducer";
 import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
-import SolarSystem from "./components/VariousLinks/SolarSystem";
 
 function App() {
   const user = useSelector(selectUser);
@@ -41,7 +40,6 @@ function App() {
             <Route exact path="/" element={<HomeScreen />}></Route>
 
             <Route exact path="/picOfTheDay" element={<PicOfTheDay />}></Route>
-            <Route exact path="/solarSystem" element={<SolarSystem />}></Route>
           </Routes>
         )}
       </BrowserRouter>
