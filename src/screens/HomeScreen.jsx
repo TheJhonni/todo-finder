@@ -1,46 +1,41 @@
-import React from "react";
-// import CardsHomepage from "../components/VariousCards/CardsHomepage";
-import Footer from "../components/Navbar/Footer";
+import { Canvas } from "@react-three/fiber";
+import { useLoader } from "@react-three/fiber";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { Suspense } from "react";
 import Navbar from "../components/Navbar/Navbar";
-import { IoMdPlanet } from "react-icons/io";
-import { SiStarship } from "react-icons/si";
-import { GiAsteroid, GiStarSwirl } from "react-icons/gi";
-import { Link } from "react-router-dom";
+import Jellyfish from "../components/Jellyfish/Jellyfish";
+import { Html } from "@react-three/drei";
+import { Section } from "../components/VariousLinks/Section";
 
-function HomeScreen() {
+const HTMLContent = () => {
   return (
-    <div>
-      <Navbar />
-      <div className=" mx-auto mb-[60px] text-center">
-        <div className="shadow-xl p-3 my-2">
-          <h1 class="text-6xl font-bold leading-normal mt-0 mb-2 text-teal-800 ">
-            Travel is an adventure
-          </h1>
-          <h3 class="text-2xl font-bold leading-normal mt-0 mb-2 text-teal-100">
-            But adventures aren't always pretty or comfortable.
-          </h3>
-          <h4 class="text-3xl font-normal leading-normal mt-0 mb-2 text-purple-800 ">
-            We can help you
-          </h4>
-          <h5 class="text-2xl font-bold leading-normal mt-0 mb-2 text-white">
-            TRUST OUR GUIDELINES
-          </h5>
-        </div>
-        <div className="flex justify-evenly p-5 my-10">
-          <Link to="/picOfTheDay">
-            <IoMdPlanet className="cursor-pointer h-1/3" />
-          </Link>
-          <GiStarSwirl className="cursor-pointer h-1/3" />
-          <Link to="/earthView">
-            <GiAsteroid className="cursor-pointer h-1/3" />
-          </Link>
-          <SiStarship className="cursor-pointer h-1/3" />
-        </div>
-      </div>
+    <Section>
+      <group position={[0, 250, 0]}>
+        <mesh position={[0, -35, 0]}>
+          <Jellyfish />
+        </mesh>
+        <Html fullscreen factor={1.5} offset={1}>
+          <div className="container">
+            <h1 className="text-8xl text-white text-center mx-auto my-auto">
+              Hello
+            </h1>
+          </div>
+        </Html>
+      </group>
+    </Section>
+  );
+};
 
-      <Footer />
-    </div>
+export default function HomeScreen() {
+  return (
+    <>
+      <Navbar />
+      <Canvas colorManagment camera={{ position: [0, 0, 120], fov: 70 }}>
+        <Suspense fallback={null}>
+          <HTMLContent />
+        </Suspense>
+      </Canvas>
+    </>
   );
 }
-
-export default HomeScreen;

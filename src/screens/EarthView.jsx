@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import EarthIndex from "../components/VariousLinks/EarthIndex";
-import EarthTitles from "../components/VariousLinks/EarthTitles";
+import EarthSphere from "../components/Earth/EarthSphere";
+import EarthTitles from "../components/Earth/EarthTitles";
 
 export default function EarthView() {
   return (
@@ -9,7 +9,7 @@ export default function EarthView() {
       <EarthTitles />
       <Canvas>
         <Suspense fallback={null}>
-          <EarthIndex />
+          <EarthSphere />
         </Suspense>
       </Canvas>
     </div>

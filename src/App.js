@@ -1,6 +1,5 @@
 import "./App.css";
 import HomeScreen from "./screens/HomeScreen";
-// import HomeScreen2 from "./screens/HomeScreen2";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginScreen from "./screens/Login/LoginScreen";
 import { useEffect } from "react";
@@ -33,21 +32,21 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {/* className="background-app" */}
-      <BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<EarthView />}></Route>
+      </Routes>
+      <div className="w-full h-full bg-red-300">
         {!user ? (
           <LoginScreen />
         ) : (
           <Routes>
-            <Route exact path="/" element={<HomeScreen />}></Route>
-
+            <Route path="/home" element={<HomeScreen />}></Route>
             <Route exact path="/picOfTheDay" element={<PicOfTheDay />}></Route>
-            <Route exact path="/earthView" element={<EarthView />}></Route>
           </Routes>
         )}
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
