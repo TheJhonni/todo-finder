@@ -11,7 +11,7 @@ function LoginScreen() {
           src="https://cdn3.iconfinder.com/data/icons/hawaii-symbols-3/64/Turtle-animal-sea-hawaii-256.png"
           alt=""
         />
-        <button className="fixed right-[20px] top-[20px] py-[10px] px-[20px] rounded-full bg-purple-700 text-white font-bold font-weight-400">
+        <button className="fixed right-[20px] top-[20px] py-[10px] px-[20px] rounded-full bg-white text-[#05051df1] font-bold font-weight-400">
           Sign In
         </button>
         <div className="w-full z-1 h-screen bg-gradient-to-b from-transparent to-black" />
@@ -23,10 +23,10 @@ function LoginScreen() {
         ) : (
           <>
             <h1 className="text-4xl text-white mb-[20px]">
-              Don't know what to do yet?
+              Don't have an account yet?
             </h1>
             <h2 className="text-2xl text-white font-normal mt-5">
-              Bored of staying at home with no ideas? Sing up for free!
+              Sing up for free!
             </h2>
             <h3 className="text-md text-white font-semibold mt-9">
               Enter your email to create or restart your membership.
@@ -42,7 +42,7 @@ function LoginScreen() {
                   onClick={() => setSignIn(true)}
                   className="signIn-button"
                 >
-                  GET STARTED!
+                  Sign In
                 </button>
               </form>
             </div>

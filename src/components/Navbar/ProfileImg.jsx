@@ -1,14 +1,16 @@
 import React from "react";
 
-function ProfileImg({ img }) {
+function ProfileImg({ img, setShown }) {
   return (
-    <div class="rounded">
-      <img
-        class="object-cover relative rounded-full border
-          border-gray-100 bg-white shadow-sm max-w-[70px] h-[50px] cursor-pointer"
-        src={img}
-      />
-    </div>
+    <>
+      <div className="rounded">
+        <img
+          class="object-cover relative rounded-full border
+            border-gray-100 bg-white shadow-sm max-w-[70px] h-[50px] cursor-pointer"
+          src={img}
+        />
+      </div>
+    </>
   );
 }
 

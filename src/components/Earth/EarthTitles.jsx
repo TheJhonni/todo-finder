@@ -9,7 +9,7 @@ export default function EarthTitles() {
         This is what we know of the Universe
       </p>
       <div className="mt-[8%]">
-        <Link to="/home">
+        <Link to="/sea">
           <span className="m-0 mt-[5%] text-[#171753d3] bg-white text-6xl font-bold px-[30px] py-[15px] rounded-full">
             Learn more
           </span>

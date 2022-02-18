@@ -35,13 +35,13 @@ function App() {
     <div className="img-login">
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<EarthView />} />
+          <Route path="/" element={<EarthView />} />
         </Routes>
         {!user ? (
           <LoginScreen />
         ) : (
           <Routes>
-            <Route path="/home" element={<HomeScreen />} />
+            <Route path="/sea" element={<HomeScreen />} />
             <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
           </Routes>
         )}

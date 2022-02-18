@@ -40,7 +40,7 @@ function SignUpScreen() {
   return (
     <div className="max-w-[400px] p-[40px] mx-auto my-auto bg-gradient-to-b opacity-80">
       <form className="flex flex-col my-auto">
-        <h1 className="mb-[20px] text-left font-bold text-xl text-gray-800">
+        <h1 className="mb-[20px] text-left font-bold text-xl text-[#7e7eff]">
           Sign Up!
         </h1>
         <input
@@ -56,7 +56,7 @@ function SignUpScreen() {
           type="password"
         />
         <button
-          className="signIn-button rounded hover:bg-purple-900 hover:scale-[1.03] transition-all duration-150 ease-in"
+          className="signIn-button rounded hover:bg-[#2626c0] hover:text-white hover:scale-[1.03] transition-all duration-150 ease-in"
           onClick={signIn}
           type="submit"
         >
@@ -64,8 +64,11 @@ function SignUpScreen() {
         </button>
 
         <h4 className="mt-3">
-          <span className="text-gray-200 mr-3">New to ToDo? </span>
-          <span onClick={register} className="cursor-pointer hover:underline">
+          <span className="text-gray-200 mr-3">New Here? </span>
+          <span
+            onClick={register}
+            className="cursor-pointer text-[#7e7eff] hover:underline"
+          >
             Sign Up now!
           </span>
         </h4>

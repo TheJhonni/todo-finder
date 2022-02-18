@@ -23,12 +23,12 @@ const Dropdown = ({ color }) => {
     : (bgColor = "bg-" + color + "-500");
   return (
     <>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap bg-transparent focus-within:bg-white hover:bg-white  mx-2 rounded-full">
         <div className="w-full sm:w-6/12 md:w-4/12 px-4">
           <div className="relative inline-flex align-middle w-full">
             <button
               className={
-                "text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 " +
+                "text-white focus-within:text-[#010147] hover:text-[#010147]  font-extrabold uppercase text-sm px-6 py-3 border-none rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 " +
                 bgColor
               }
               type="button"
@@ -39,7 +39,7 @@ const Dropdown = ({ color }) => {
                   : openDropdownPopover();
               }}
             >
-              Help the Traveller
+              5%
             </button>
             <div
               ref={popoverDropdownRef}

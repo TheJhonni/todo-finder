@@ -30,12 +30,12 @@ html {
   z-index: 1;
 }
 
-.background-app {
-  @apply bg-gradient-to-b from-[#09E0BF] to-[#C251C1];
-}
+/* .img-login {
+  @apply bg-[url("https://th.bing.com/th/id/R.9703ddf9eae0f746a2d95d95f580dbc2?rik=i8hTZ8UqS0mz%2bw&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f4%2f2%2f7%2f551082.jpg&ehk=esXdU3KV2Mr9bfkFLDD8lIBtsaAxyb4MV0TcqbGeYvg%3d&risl=&pid=ImgRaw&r=0")] bg-center bg-no-repeat bg-cover;
+} */
 
 .img-login {
-  @apply bg-[url("https://th.bing.com/th/id/R.9703ddf9eae0f746a2d95d95f580dbc2?rik=i8hTZ8UqS0mz%2bw&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f4%2f2%2f7%2f551082.jpg&ehk=esXdU3KV2Mr9bfkFLDD8lIBtsaAxyb4MV0TcqbGeYvg%3d&risl=&pid=ImgRaw&r=0")] bg-center bg-no-repeat bg-cover;
+  @apply bg-[#05051df1];
 }
 
 .input-signUp {
@@ -43,5 +43,5 @@ html {
 }
 
 .signIn-button {
-  @apply py-[10px] px-[20px] font-medium text-white bg-purple-700 border-none cursor-pointer;
+  @apply py-[7.9px] px-[20px] font-bold text-[#010147] bg-white border-none cursor-pointer;
 }

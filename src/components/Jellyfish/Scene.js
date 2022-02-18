@@ -15,12 +15,12 @@ export default function Model({ ...props }) {
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    console.log(actions["ArmatureAction.001"]);
+    // console.log(actions["ArmatureAction.001"]);
     actions["ArmatureAction.001"].play();
   });
 
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props} position={[2, -1, 1.5]} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group scale={0.28}>
