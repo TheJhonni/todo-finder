@@ -35,7 +35,7 @@ html {
 }
 
 .img-login {
-  @apply bg-[url("https://www.technocrazed.com/wp-content/uploads/2015/12/HD-purple-wallpaper-image-to-use-as-background-121.jpg")] bg-center bg-no-repeat bg-cover;
+  @apply bg-[url("https://th.bing.com/th/id/R.9703ddf9eae0f746a2d95d95f580dbc2?rik=i8hTZ8UqS0mz%2bw&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f4%2f2%2f7%2f551082.jpg&ehk=esXdU3KV2Mr9bfkFLDD8lIBtsaAxyb4MV0TcqbGeYvg%3d&risl=&pid=ImgRaw&r=0")] bg-center bg-no-repeat bg-cover;
 }
 
 .input-signUp {

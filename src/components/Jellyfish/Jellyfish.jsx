@@ -1,86 +1,20 @@
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { useAnimations } from "@react-three/drei";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { useEffect, useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import Stats from "three/examples/jsm/libs/stats.module";
 
-export default function Jellfish() {
-  const scene = new THREE.Scene();
-  scene.add(new THREE.AxesHelper(5));
+export default function Jellyfish(props) {
+  const group = useRef();
+  const gltf = useLoader(GLTFLoader, "./scene.gltf");
 
-  const light = new THREE.SpotLight();
-  light.position.set(5, 5, 5);
-  scene.add(light);
-
-  const camera = new THREE.PerspectiveCamera(
-    75,
-    window.innerWidth / window.innerHeight,
-    0.1,
-    1000
+  const { actions } = useAnimations(gltf.animations[0], group);
+  useEffect(() => {
+    console.log(actions.AnimationAction);
+    // actions.AnimationAction.play();
+  });
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <primitive position={[4, 0, 0]} object={gltf.scene} scale={0.8} />
+    </group>
   );
-  camera.position.z = 2;
-
-  const renderer = new THREE.WebGLRenderer();
-  // renderer.physicallyCorrectLights = true
-  // renderer.shadowMap.enabled = true
-  // renderer.outputEncoding = THREE.sRGBEncoding
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
-
-  const controls = new OrbitControls(camera, renderer.domElement);
-  controls.enableDamping = true;
-
-  const loader = new GLTFLoader();
-  loader.load(
-    "/scene.gltf",
-    function (gltf) {
-      // gltf.scene.traverse(function (child) {
-      //     if ((child as THREE.Mesh).isMesh) {
-      //         const m = (child as THREE.Mesh)
-      //         m.receiveShadow = true
-      //         m.castShadow = true
-      //     }
-      //     if (((child as THREE.Light)).isLight) {
-      //         const l = (child as THREE.Light)
-      //         l.castShadow = true
-      //         l.shadow.bias = -.003
-      //         l.shadow.mapSize.width = 2048
-      //         l.shadow.mapSize.height = 2048
-      //     }
-      // })
-      scene.add(gltf.scene);
-    },
-    (xhr) => {
-      console.log((xhr.loaded / xhr.total) * 100 + "% loaded");
-    },
-    (error) => {
-      console.log(error);
-    }
-  );
-
-  window.addEventListener("resize", onWindowResize, false);
-  function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    render();
-  }
-
-  const stats = Stats();
-  document.body.appendChild(stats.dom);
-
-  function animate() {
-    requestAnimationFrame(animate);
-
-    controls.update();
-
-    render();
-
-    stats.update();
-  }
-
-  function render() {
-    renderer.render(scene, camera);
-  }
-
-  animate();
 }

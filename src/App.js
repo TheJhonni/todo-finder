@@ -32,21 +32,21 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<EarthView />}></Route>
-      </Routes>
-      <div className="w-full h-full bg-red-300">
+    <div className="img-login">
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<EarthView />} />
+        </Routes>
         {!user ? (
           <LoginScreen />
         ) : (
           <Routes>
-            <Route path="/home" element={<HomeScreen />}></Route>
-            <Route exact path="/picOfTheDay" element={<PicOfTheDay />}></Route>
+            <Route path="/home" element={<HomeScreen />} />
+            <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
           </Routes>
         )}
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </div>
   );
 }
 

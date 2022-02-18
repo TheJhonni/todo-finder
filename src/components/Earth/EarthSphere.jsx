@@ -1,17 +1,15 @@
 import React, { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
-
+// import { Stars } from "@react-three/drei";
 import * as THREE from "three";
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
 // import EarthNightMap from "../../assets/textures/8k_earth_nightmap.jpg";
 import EarthNormalMap from "../../assets/textures/8k_earth_normal_map.jpg";
 import EarthSpecularMap from "../../assets/textures/8k_earth_specular_map.jpg";
-
 import { TextureLoader } from "three";
 
-export default function EarthIndex(props) {
+export default function EarthSphere(props) {
   const [colorMap, normalMap, specularMap, cloudsMap] = useLoader(
     TextureLoader,
     [EarthDayMap, EarthNormalMap, EarthSpecularMap, EarthCloudsMap]
@@ -33,15 +31,15 @@ export default function EarthIndex(props) {
         angle={0.3}
         intensity={1.2}
       />
-      <Stars
+      {/* <Stars
         radius={300}
         depth={60}
         counts={20000}
         factor={7}
         saturation={0}
         fade={true}
-      />
-      <mesh ref={cloudsRef} position={[0, 0, 3]}>
+      /> */}
+      <mesh ref={cloudsRef} position={[-1, 0, 3]}>
         <sphereGeometry args={[1.004, 32, 32]} />
         <meshPhongMaterial
           map={cloudsMap}
@@ -51,7 +49,7 @@ export default function EarthIndex(props) {
           side={THREE.DoubleSide}
         />
       </mesh>
-      <mesh ref={earthRef} position={[0, 0, 3]}>
+      <mesh ref={earthRef} position={[-1, 0, 3]}>
         <sphereGeometry args={[1, 32, 32]} />
         <meshPhongMaterial specularMap={specularMap} />
         <meshStandardMaterial
