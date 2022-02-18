@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
-// import { Stars } from "@react-three/drei";
 import * as THREE from "three";
 import EarthDayMap from "../../assets/textures/8k_earth_daymap.jpg";
 import EarthCloudsMap from "../../assets/textures/8k_earth_clouds.jpg";
@@ -31,14 +30,6 @@ export default function EarthSphere(props) {
         angle={0.3}
         intensity={1.2}
       />
-      {/* <Stars
-        radius={300}
-        depth={60}
-        counts={20000}
-        factor={7}
-        saturation={0}
-        fade={true}
-      /> */}
       <mesh ref={cloudsRef} position={[-1, 0, 3]}>
         <sphereGeometry args={[1.004, 32, 32]} />
         <meshPhongMaterial
@@ -58,14 +49,6 @@ export default function EarthSphere(props) {
           metalness={0.5}
           roughness={0.7}
         />
-        {/* <OrbitControls
-          enableZoom={true}
-          enablePan={true}
-          enableRotate={true}
-          zoomSpeed={0.5}
-          panSpeed={0.3}
-          rotateSpeed={0.4}
-        /> */}
       </mesh>
     </>
   );
