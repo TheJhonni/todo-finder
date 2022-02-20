@@ -1,5 +1,5 @@
 import "./App.css";
-import HomeScreen from "./screens/HomeScreen";
+import SeaScreen from "./screens/SeaScreen";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginScreen from "./screens/Login/LoginScreen";
 import { useEffect } from "react";
@@ -7,7 +7,7 @@ import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./redux/userReducer";
 import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
-import EarthView from "./screens/EarthView";
+import EarthScreen from "./screens/EarthScreen";
 
 function App() {
   const user = useSelector(selectUser);
@@ -35,13 +35,13 @@ function App() {
     <div className="img-login">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<EarthView />} />
+          <Route path="/" element={<EarthScreen />} />
         </Routes>
         {!user ? (
           <LoginScreen />
         ) : (
           <Routes>
-            <Route path="/sea" element={<HomeScreen />} />
+            <Route path="/sea" element={<SeaScreen />} />
             <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
           </Routes>
         )}
