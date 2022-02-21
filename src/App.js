@@ -8,6 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./redux/userReducer";
 import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
 import EarthScreen from "./screens/EarthScreen";
+import GenericScreen from "./screens/GenericScreen";
+import PostScreen from "./screens/PostScreen";
+import homepage from "./data/homepage.json";
+import eyePosts from "./data/eyePosts.json";
+import seaPosts from "./data/seaPosts.json";
+import spacePosts from "./data/spacePosts.json";
 
 function App() {
   const user = useSelector(selectUser);
@@ -41,6 +47,21 @@ function App() {
           <LoginScreen />
         ) : (
           <Routes>
+            <Route
+              path="/generic"
+              element={
+                <GenericScreen
+                  homepage={homepage}
+                  eyePosts={eyePosts}
+                  seaPosts={seaPosts}
+                  spacePosts={spacePosts}
+                />
+              }
+            />
+            {/* <Route
+              path={`/posts/${posts.title}`}
+              element={<PostScreen posts={homepage} />}
+            /> */}
             <Route path="/sea" element={<SeaScreen />} />
             <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
           </Routes>
