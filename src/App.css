@@ -53,6 +53,15 @@ html {
     rgba(7, 47, 134, 1) 99%
   );
 }
+.pt-\[17\%\] {
+  padding-top: 17%;
+}
+.mt-\[-10\%\] {
+  margin-top: -10%;
+}
+.pt-\[56\.25\%\] {
+  padding-top: 56.25%;
+}
 
 .post {
   @apply container w-[90%] md:w-[60%] mx-auto my-14;

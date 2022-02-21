@@ -65,9 +65,7 @@ function App() {
             />
             <Route
               path="/posts/:asin"
-              element={
-                <PostScreen post={(homepage, eyePosts, seaPosts, spacePosts)} />
-              }
+              element={<PostScreen post={homepage} />}
             />
             <Route exact path="/sea" element={<SeaScreen />} />
             <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />

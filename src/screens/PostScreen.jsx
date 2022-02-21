@@ -12,47 +12,76 @@ export default function Post({ post }) {
   return (
     <div className="img-textLeft">
       <Navbar />
-      <section Name="text-gray-600 body-font">
-        <div Name="container px-5 py-24 mx-auto flex flex-col">
-          <div Name="lg:w-4/6 mx-auto">
-            <div Name="rounded-lg h-64 overflow-hidden">
-              <img
-                alt="content"
-                Name="object-cover object-center h-full w-full"
-                src={post[0].img1}
-              />
-            </div>
-            <div Name="flex flex-col sm:flex-row mt-10">
-              <div Name="sm:w-1/3 text-center sm:pr-8 sm:py-8">
-                <div Name="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400"></div>
-                <div Name="flex flex-col items-center text-center justify-center">
-                  <h2 Name="font-medium title-font mt-4 text-gray-900 text-lg">
-                    Phoebe Caulfield
-                  </h2>
-                  <div Name="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
-                  <p Name="text-base"> {post[0].title}</p>
-                </div>
-              </div>
-              <div Name="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
-                <p Name="leading-relaxed text-lg mb-4">
-                  Meggings portland fingerstache lyft, post-ironic fixie man bun
-                  banh mi umami everyday carry hexagon locavore direct trade art
-                  party. Locavore small batch listicle gastropub farm-to-table
-                  lumbersexual salvia messenger bag. Coloring book flannel
-                  truffaut craft beer drinking vinegar sartorial, disrupt
-                  fashion axe normcore meh butcher. Portland 90's scenester
-                  vexillologist forage post-ironic asymmetrical, chartreuse
-                  disrupt butcher paleo intelligentsia pabst before they sold
-                  out four loko. 3 wolf moon brooklyn.
-                </p>
-                <a Name="text-indigo-500 inline-flex items-center">
-                  Learn More
-                </a>
-              </div>
-            </div>
+
+      <main className="relative container mx-auto bg-white px-4">
+        <div className="relative -mx-4 top-0 pt-[17%] overflow-hidden">
+          <img
+            className="absolute inset-0 object-cover object-top w-full h-full filter blur"
+            src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y29uY2VydCUyMHBvc3RlcnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80"
+            alt=""
+          />
+        </div>
+
+        <div className="mt-[-10%] w-1/2 mx-auto">
+          <div className="relative pt-[56.25%] overflow-hidden rounded-2xl">
+            <img
+              className="w-full h-full absolute inset-0 object-cover"
+              src={post[0].img1}
+              alt=""
+            />
           </div>
         </div>
-      </section>
+
+        <article className="max-w-prose mx-auto py-8">
+          <h1 className="text-2xl font-bold">{post[0].title}</h1>
+          <h2 className="mt-2 text-sm text-gray-500">
+            <a href={post[0].authorLink}> {post[0].author}</a>, 28 November 2021
+          </h2>
+          <h2 className="mt-2 text-sm text-gray-500">
+            {post[0].p}, <br />{" "}
+            <a href={post[0].link}>CLICK HERE to read the Original Article</a>
+          </h2>
+
+          <p className="mt-6">{post[0].body}</p>
+          {/* <p className="mt-4">
+            Praesent ornare interdum gravida. Donec efficitur leo suscipit
+            aliquet pellentesque. In quis purus et dui mollis vulputate. Aenean
+            non faucibus felis. Phasellus non aliquet est, non dictum sem. In
+            hac habitasse platea dictumst. Integer vehicula elit ac libero
+            egestas ornare non sed dolor. Integer vulputate id est nec pulvinar.
+            Cras nec sollicitudin lacus, quis sagittis diam. Donec porta libero
+            ac lorem semper, eget porttitor quam fermentum. Ut tincidunt feugiat
+            sem, nec aliquam mi tincidunt non.
+          </p>
+          <p className="mt-4">
+            Etiam accumsan leo sem, sit amet faucibus ex convallis fermentum.
+            Nunc tristique, eros eget rutrum accumsan, dolor quam varius nisl,
+            ut euismod arcu urna a lectus. Mauris at dapibus metus. Vestibulum
+            ipsum lorem, dictum vitae sapien eget, rutrum rhoncus sapien.
+            Vivamus a nisi ut risus porta ultricies. Etiam mollis massa odio,
+            non eleifend leo ullamcorper in. Sed ultricies, magna id fermentum
+            volutpat, lorem orci placerat mauris, et molestie ipsum mauris sed
+            sapien. Aliquam nulla lorem, pretium ut interdum dapibus, suscipit
+            at metus. Proin consequat euismod consequat. Aenean placerat turpis
+            et pretium condimentum. Nunc hendrerit tellus semper suscipit
+            dignissim. Nullam fringilla, sem nec volutpat tincidunt, ex eros
+            congue diam, quis venenatis mauris urna et dolor. Vivamus aliquam
+            euismod eros vel pulvinar. Cras arcu augue, rutrum nec velit sit
+            amet, aliquet lobortis leo. Donec placerat, libero in blandit
+            mattis, turpis nisl varius urna, ac pellentesque dui nisi sit amet
+            dui.
+          </p>
+          <p className="mt-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel
+            sapien nisi. Sed molestie quis odio ut facilisis. Duis porttitor
+            turpis at sollicitudin ornare. Aenean vitae nulla justo. In egestas
+            consequat sem, dapibus gravida velit. Nullam dictum, ligula vel
+            porttitor vestibulum, est enim lobortis erat, eget rutrum nunc ex at
+            mauris. Nunc nec laoreet ipsum. Sed vel est a eros sagittis
+            vulputate. Proin cursus ut mauris vel commodo. Sed non sapien metus.
+          </p> */}
+        </article>
+      </main>
     </div>
   );
 }
