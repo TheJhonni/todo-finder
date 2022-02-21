@@ -1,0 +1,37 @@
+[
+  {
+    "asin": "1940026004",
+    "category": "eye",
+    "title": "What percentage of the light spectrum are humans able to see with their eyes?",
+    "subtitle": "",
+    "p": "",
+    "body": [
+      "As you can see, the visible portion makes up an incredibly small fraction of the total electromagnetic spectrum. Less than 1% of all light that reaches us is in the visible spectrum. By most estimates it comes out to about .0035% of the entire electromagnetic spectrum.",
+      "So because the human eye is incredibly limited in its range, we see only that one tiny fraction of the electromagnetic spectrum. We see amazingly well within that tiny band, but beyound that nothing. If we could see in all wavelengths, the night sky would be almost as bright as the daytime sky. Almost because the daytime would be .0035% brighter."
+    ],
+    "img1": "https://qph.cf2.quoracdn.net/main-qimg-ea6727c971acb2bb824bb26703af7557",
+    "link": "https://www.quora.com/What-percentage-of-the-light-spectrum-are-humans-able-to-see-with-their-eyes",
+    "author": "Steven White",
+    "authorLink": "https://www.quora.com/profile/Steven-White-64",
+    "credentials": "Studied at Hutchinson Community College"
+  },
+  {
+    "asin": "1940026005",
+    "category": "eye",
+    "title": "Visible Light: Eye-opening research at NNSA",
+    "subtitle": "National Nuclear Security Administration Visible Light: Eye-opening research at NNSA",
+    "p": "",
+    "body": [
+      "The entire rainbow of radiation observable to the human eye only makes up a tiny portion of the electromagnetic spectrum – about 0.0035 percent. This range of wavelengths is known as visible light. Researchers at Los Alamos National Laboratory are illuminating solar power possibilities with specialized window coatings that efficiently absorb and convert the light passing through them into electricity.",
+      "The high-tech windows are double-paned with layers of quantum dots. These nanoparticles can be fine-tuned to absorb specific wavelengths, thus increasing efficiency and decreasing the cost of collecting energy from sunlight. They also offer shading and insulation.A rather colorful discovery has also been made by scientists at Sandia National Laboratories. They have created a light-mixing “metamaterial” that can generate 11 waves of light ranging from the near infrared, through the colors of the rainbow, to ultraviolet. Wide-ranging research at NNSA spans the spectrum.",
+      "A metamaterial is made up of tiny, repeating structures that interact with electromagnetic waves in ways conventional materials cannot. In the experiment, the team selected two lasers with wavelengths tuned to the metamaterial’s resonant frequencies, or optimum wavelengths, and passed them through an array of nanocylinders to mix them. The lasers bounced around inside the nanocylinders and created the 11 colors simultaneously. Research at NNSA spans the entire electromagnetic spectrum – take a look at findings at other frequencies and how they help further the missions of the Nuclear Security Enterprise."
+    ],
+    "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/EM_spectrum.svg/800px-EM_spectrum.svg.png",
+    "img2": "https://qph.fs.quoracdn.net/main-qimg-c1f9b1f431e413a792fe02e4baa4256a.webp",
+    "img3": "https://www.oxinst.com/learning/uploads/inline-images/what-is-light-lc-20191125104755.jpg",
+    "link": "https://www.energy.gov/nnsa/articles/visible-light-eye-opening-research-nnsa",
+    "author": "National Nuclear Security Administration",
+    "authorLink": "https://www.energy.gov/nnsa/national-nuclear-security-administration",
+    "credentials": "NNSA"
+  }
+]
