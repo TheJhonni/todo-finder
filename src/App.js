@@ -1,8 +1,8 @@
 import "./App.css";
 import SeaScreen from "./screens/SeaScreen";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import LoginScreen from "./screens/Login/LoginScreen";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, selectUser } from "./redux/userReducer";
@@ -18,6 +18,8 @@ import spacePosts from "./data/spacePosts.json";
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
+  const [post, setPost] = useState(null);
+  const { asin } = useParams();
 
   useEffect(() => {
     const unsuscribed = auth.onAuthStateChanged((userAuth) => {
@@ -29,6 +31,8 @@ function App() {
             email: userAuth.email,
           })
         );
+
+        setPost(asin);
       } else {
         dispatch(logout());
       }
@@ -41,14 +45,15 @@ function App() {
     <div className="img-login">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<EarthScreen />} />
+          <Route exact path="/" element={<EarthScreen />} />
         </Routes>
         {!user ? (
           <LoginScreen />
         ) : (
           <Routes>
             <Route
-              path="/generic"
+              exact
+              path="/posts"
               element={
                 <GenericScreen
                   homepage={homepage}
@@ -58,11 +63,13 @@ function App() {
                 />
               }
             />
-            {/* <Route
-              path={`/posts/${posts.title}`}
-              element={<PostScreen posts={homepage} />}
-            /> */}
-            <Route path="/sea" element={<SeaScreen />} />
+            <Route
+              path="/posts/:asin"
+              element={
+                <PostScreen post={(homepage, eyePosts, seaPosts, spacePosts)} />
+              }
+            />
+            <Route exact path="/sea" element={<SeaScreen />} />
             <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
           </Routes>
         )}

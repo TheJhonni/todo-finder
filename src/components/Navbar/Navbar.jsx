@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import DropdownRender from "./Dropdown";
 import ProfileImg from "./ProfileImg";
 import { IoMdArrowDropdown } from "react-icons/io";
+import Logout from "./Logout";
 
 export default function Navbar() {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   const [isToggled, setIsToggled] = useState(false);
+
+  const [sureToLogout, setSureToLogout] = useState(false);
 
   function toggleLogout() {
     setIsToggled(!isToggled);
@@ -64,11 +67,15 @@ export default function Navbar() {
               {/* Logout onClick hidden div => display toggled */}
               {isToggled && (
                 <div className="mt-2 ml-auto bg-white ">
-                  <span className="text-blue p-5 cursor-pointer hover:text-[#05051df1]">
+                  <span
+                    onClick={() => setSureToLogout(!sureToLogout)}
+                    className="text-blue p-5 cursor-pointer hover:text-[#05051df1]"
+                  >
                     Logout
                   </span>
                 </div>
               )}
+              {sureToLogout && <Logout />}
             </div>
           </div>
         </div>
