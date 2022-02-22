@@ -63,6 +63,73 @@ html {
   padding-top: 56.25%;
 }
 
+/* Navbar */
+.mega-menu {
+  display: none;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+  z-index: 990;
+}
+
+.hoverable {
+  position: static;
+  z-index: 999;
+}
+
+.hoverable > a:after {
+  content: "\25BC";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+  z-index: 999;
+}
+
+.hoverable:hover .mega-menu {
+  display: block;
+  z-index: 999;
+}
+
+.toggleable > label:after {
+  content: "\25BC";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+  z-index: 999;
+}
+
+.toggle-input {
+  display: none;
+  z-index: 999;
+}
+.toggle-input:not(checked) ~ .mega-menu {
+  display: none;
+  z-index: 999;
+}
+
+.toggle-input:checked ~ .mega-menu {
+  display: block;
+  z-index: 999;
+}
+
+.toggle-input:checked + label {
+  color: white;
+  background: #2c5282; /*@apply bg-blue-800 */
+  z-index: 999;
+}
+
+.toggle-input:checked ~ label:after {
+  content: "\25B2";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+  z-index: 999;
+}
+
 .post {
   @apply container w-[90%] md:w-[60%] mx-auto my-14;
 }
