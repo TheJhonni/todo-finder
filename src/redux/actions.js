@@ -1,6 +1,9 @@
 import * as types from "./actionTypes";
 import { auth } from "../firebase";
 
+// CALLING TYPES FROM ACTION TYPES AND SETTING THE TYPE AND PAYLOAD
+
+// types & payloads FOR REGISTERSCREEN
 const registerStart = () => ({
   type: types.REGISTER_START,
 });
@@ -15,11 +18,27 @@ const registerFail = (error) => ({
   payload: error,
 });
 
+// types & payloads FOR LOGINSCREEN
+const loginStart = () => ({
+  type: types.LOGIN_START,
+});
+
+const loginSuccess = (user) => ({
+  type: types.LOGIN_SUCCESS,
+  payload: user,
+});
+
+const loginFail = (error) => ({
+  type: types.LOGIN_FAIL,
+  payload: error,
+});
+
+// CALLING EACH CONST FOR REGISTERING USER
 export const registerInitiate = (email, password, displayName) => {
   return function (dispatch) {
     dispatch(registerStart());
     auth
-      .createUserWithEmailAndPassword(email, password)
+      .createUserWithEmailAndPassword(email, password) //create function
       .then(({ user }) => {
         user.updateProfile({
           displayName,
@@ -27,5 +46,21 @@ export const registerInitiate = (email, password, displayName) => {
         dispatch(registerSuccess(user));
       })
       .catch((error) => dispatch(registerFail(error.message)));
+  };
+};
+
+// CALLING EACH CONST FOR LOGGING USER
+export const loginInitiate = (email, password, displayName) => {
+  return function (dispatch) {
+    dispatch(loginStart());
+    auth
+      .signInWithEmailAndPassword(email, password) //sign in function
+      .then(({ user }) => {
+        user.updateProfile({
+          displayName,
+        });
+        dispatch(loginSuccess(user));
+      })
+      .catch((error) => dispatch(loginFail(error.message)));
   };
 };

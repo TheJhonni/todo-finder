@@ -19,6 +19,7 @@ function SignUpScreen() {
   useEffect(() => {
     if (currentUser) {
       navigate("/posts");
+      // if there's an user then push history to home => "/posts" in this case
     }
   }, [currentUser, navigate]);
 
@@ -33,6 +34,7 @@ function SignUpScreen() {
     }
     dispatch(registerInitiate(email, password, displayName));
     setState({ displayName: "", email: "", password: "", passwordConfirm: "" });
+    // reset input to default => empty strings
   };
 
   const handleChange = (e) => {

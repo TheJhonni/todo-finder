@@ -5,7 +5,6 @@ import LoginScreen from "./screens/Login/LoginScreen";
 import { useEffect, useState } from "react";
 import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
-import { login, logout, selectUser } from "./redux/userReducer";
 import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
 import EarthScreen from "./screens/EarthScreen";
 import GenericScreen from "./screens/GenericScreen";

@@ -1,19 +1,47 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory, Link, useNavigate } from "react-router-dom";
 import { AiFillFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
+import { loginInitiate } from "../../redux/actions";
 
 function LoginScreen() {
   const [state, setState] = useState({ email: "", password: "" });
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { email, password } = state;
 
-  const handleSubmit = () => {};
+  const { currentUser } = useSelector((state) => state.user);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/posts");
+      // if it exists, then push to "/posts"
+    }
+  }, [currentUser, navigate]);
+
+  const dispatch = useDispatch();
+
   const handleGoogleSignin = () => {};
-  const handleFacebookSignin = () => {};
-  const handleChange = () => {};
+  const handleFBSignin = () => {};
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      return;
+      // you shall not pass if you don't set your email and password
+    }
+    dispatch(loginInitiate(email, password));
+    setState({ email: "", password: "" });
+    // setting back to empty string
+  };
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
+
   return (
     <div className="relative bg-[#161D34]">
       <div className="img-login">
@@ -45,10 +73,7 @@ function LoginScreen() {
                 type="emal"
                 placeholder="Email Adress"
               /> */}
-              <button
-                onClick={handleFacebookSignin}
-                className="signIn-facebook"
-              >
+              <button onClick={handleFBSignin} className="signIn-facebook">
                 <span>
                   <AiFillFacebook className="bg-white text-[#2626c0] hover:bg-[#2626c0] hover:text-white  w-[50px] h-[50px]" />
                 </span>
@@ -59,11 +84,12 @@ function LoginScreen() {
           <div className="flex flex-col items-center justify-center mt-5">
             <input
               className="input-signUp outline-none text-purple-900 border-none max-w-5xl"
-              type="emal"
+              type="email"
               placeholder="Email Adress"
               onChange={handleChange}
               value={email}
               required
+              name="email"
             />
             <input
               className="input-signUp outline-none text-purple-900 border-none max-w-5xl"
@@ -72,10 +98,12 @@ function LoginScreen() {
               onChange={handleChange}
               value={password}
               required
+              name="password"
             />
             <button
               className="rounded-3xl bg-gray-600 p-5 text-white hover:text-gray-700 hover:bg-white"
               type="submit"
+              onClick={handleSubmit}
             >
               Sign in
             </button>
