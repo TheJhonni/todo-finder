@@ -10,16 +10,11 @@ import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
 import EarthScreen from "./screens/EarthScreen";
 import GenericScreen from "./screens/GenericScreen";
 import PostScreen from "./screens/PostScreen";
-import homepage from "./data/homepage.json";
-import eyePosts from "./data/eyePosts.json";
-import seaPosts from "./data/seaPosts.json";
-import spacePosts from "./data/spacePosts.json";
+import Saved from "./screens/Saved";
 
 function App() {
   const user = useSelector(selectUser);
   const dispatch = useDispatch();
-  const [post, setPost] = useState(null);
-  const { asin } = useParams();
 
   useEffect(() => {
     const unsuscribed = auth.onAuthStateChanged((userAuth) => {
@@ -31,8 +26,6 @@ function App() {
             email: userAuth.email,
           })
         );
-
-        setPost(asin);
       } else {
         dispatch(logout());
       }
@@ -42,37 +35,22 @@ function App() {
   }, []);
 
   return (
-    <div className="img-login">
-      <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<EarthScreen />} />
-        </Routes>
+    <BrowserRouter>
+      <div className="img-login">
         {!user ? (
           <LoginScreen />
         ) : (
           <Routes>
-            <Route
-              exact
-              path="/posts"
-              element={
-                <GenericScreen
-                  homepage={homepage}
-                  eyePosts={eyePosts}
-                  seaPosts={seaPosts}
-                  spacePosts={spacePosts}
-                />
-              }
-            />
-            <Route
-              path="/posts/:asin"
-              element={<PostScreen post={homepage} />}
-            />
+            <Route exact path="/" element={<EarthScreen />} />
+            <Route exact path="/posts" element={<GenericScreen />} />
+            <Route path="/posts/:id" element={<PostScreen />} />
+            <Route exact path="/saved" element={<Saved />} />
             <Route exact path="/sea" element={<SeaScreen />} />
             <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
           </Routes>
         )}
-      </BrowserRouter>
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }
 
