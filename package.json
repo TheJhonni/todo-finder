@@ -24,7 +24,10 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "redux": "^4.1.2",
+    "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
     "scrollreveal": "^4.0.9",
     "three": "^0.137.5",
     "vite": "^2.8.3",
@@ -35,7 +38,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "serve": "json-server --watch db.json"
+    "serve-json": "json-server --watch db.json"
   },
   "eslintConfig": {
     "extends": [
