@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { MdOutlineArrowBack } from "react-icons/md";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { registerInitiate } from "../../redux/actions";
 
 function SignUpScreen() {
   const [state, setState] = useState({
@@ -10,16 +13,43 @@ function SignUpScreen() {
     passwordConfirm: "",
   });
 
+  const { currentUser } = useSelector((state) => state.user);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (currentUser) {
+      navigate("/posts");
+    }
+  }, [currentUser, navigate]);
+
+  const dispatch = useDispatch();
+
   const { email, password, displayName, passwordConfirm } = state;
-  const handleSubmit = () => {};
-  const handleChange = () => {};
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (password !== passwordConfirm) {
+      return;
+    }
+    dispatch(registerInitiate(email, password, displayName));
+    setState({ displayName: "", email: "", password: "", passwordConfirm: "" });
+  };
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
+
   return (
     <div className="max-w-[400px] h-screen p-[40px] mx-auto bg-gradient-to-b opacity-80">
       <div className="flex justify-center mt-[50%]">
         <form className="flex flex-col mt-auto space-y-3">
           <div className="flex justify-between items-center">
             <Link to="/login">
-              <MdOutlineArrowBack className="text-5xl text-white hover:bg-white rounded-full hover:text-[#4f4ff7] hover:scale-115 transition duration-75 ease-out" />
+              <span className="mb-5">
+                <MdOutlineArrowBack className="text-5xl mb-2 text-white hover:bg-white rounded-full hover:text-[#4f4ff7] hover:scale-115 transition duration-75 ease-out" />
+                <p className="text-white">Go back</p>
+              </span>
             </Link>
             <h1 className="mb-[20px] text-left font-bold text-5xl text-[#5b5beb]">
               Sign Up!
@@ -31,6 +61,7 @@ function SignUpScreen() {
             onChange={handleChange}
             placeholder="Email"
             type="email"
+            name="email"
           />
           <input
             className="input-signUp w-[400px] lg:w-[600px] "
@@ -38,6 +69,7 @@ function SignUpScreen() {
             onChange={handleChange}
             placeholder="Full name"
             type="text"
+            name="displayName"
           />
           <input
             className="input-signUp w-[400px] lg:w-[600px] "
@@ -46,6 +78,7 @@ function SignUpScreen() {
             onChange={handleChange}
             placeholder="Password"
             type="password"
+            name="password"
           />
           <input
             className="input-signUp w-[400px] lg:w-[600px] "
@@ -53,6 +86,7 @@ function SignUpScreen() {
             onChange={handleChange}
             placeholder="Confirm Password"
             type="password"
+            name="passwordConfirm"
           />
           <div className="flex justify-between items-center">
             <h4 className="mt-3">
