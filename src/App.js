@@ -13,10 +13,10 @@ import PostScreen from "./screens/PostScreen";
 import RegisterScreen from "./screens/Login/RegisterScreen";
 import { setUser } from "./redux/actions";
 import FourOFour from "./components/404/FourOFour";
+import UseRoute from "./components/Loading/UseRoute";
 
 function App() {
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -36,14 +36,14 @@ function App() {
 
           <Route exact path="/login" element={<LoginScreen />} />
           <Route exact path="/register" element={<RegisterScreen />} />
-
+          <Route exact path="/gettingThere" element={<UseRoute />} />
           <Route exact path="/posts" element={<GenericScreen />} />
           <Route path="/posts/:id" element={<PostScreen />} />
           {/* <Route exact path="/saved" element={<Saved />} /> */}
           <Route exact path="/sea" element={<SeaScreen />} />
           <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
 
-          <Route path="/404" element={<FourOFour />} />
+          {/* <Route path="/404" element={<FourOFour />} /> */}
         </Routes>
       </div>
     </BrowserRouter>
