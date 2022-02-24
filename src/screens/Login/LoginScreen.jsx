@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiFillFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { loginInitiate } from "../../redux/actions";
+import { fbInitiate, googleInitiate, loginInitiate } from "../../redux/actions";
 
 function LoginScreen() {
   const [state, setState] = useState({ email: "", password: "" });
@@ -16,6 +16,7 @@ function LoginScreen() {
 
   useEffect(() => {
     if (currentUser) {
+      alert("Congrats, You have just logged in!");
       navigate("/posts");
       // if it exists, then push to "/posts"
     }
@@ -23,8 +24,12 @@ function LoginScreen() {
 
   const dispatch = useDispatch();
 
-  const handleGoogleSignin = () => {};
-  const handleFBSignin = () => {};
+  const handleGoogleSignin = () => {
+    dispatch(googleInitiate());
+  };
+  const handleFBSignin = () => {
+    dispatch(fbInitiate());
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();

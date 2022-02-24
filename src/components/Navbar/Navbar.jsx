@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [sureToLogout, setSureToLogout] = useState(false);
+  const [sure, setSure] = useState(false);
 
   return (
     <div>
@@ -63,7 +63,7 @@ export default function Navbar() {
                   </a>
                   <div className="ml-auto">
                     <span
-                      onClick={() => setSureToLogout(!sureToLogout)}
+                      onClick={() => setSure(!sure)}
                       className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
                     >
                       Logout
@@ -72,7 +72,7 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-            {sureToLogout && <Logout />}
+            {sure && <Logout />}
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
