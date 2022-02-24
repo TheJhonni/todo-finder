@@ -15,6 +15,8 @@ export default function PostScreen() {
 
   const [post, setPost] = useState(null);
 
+  let sea = post?.category === "sea";
+
   const fetchData = () => {
     fetch(`http://localhost:3000/myPosts/${id}`)
       .then((res) => {
@@ -43,7 +45,7 @@ export default function PostScreen() {
         <Navbar />
 
         <main className="relative z-80 container mx-auto bg-[#ffffffd2] px-4">
-          <div className="relative -mx-4 top-0 pt-[17%] overflow-hidden">
+          <div className="relative mx-4 top-0 pt-[17%] overflow-hidden">
             <img
               className="absolute inset-0 object-cover object-top w-full h-full filter blur"
               src={post?.img1}
@@ -74,8 +76,8 @@ export default function PostScreen() {
               <p className="text-3xl text-white z-99">Add to favourites</p>
             </div>
           )} */}
-          {post?.category === "sea" && (
-            <div className="mt-[5%] w-1/2">
+          {sea && (
+            <div className="mt-[-5%] w-1/2">
               <div className="ml-[-15%] w-1/2 mr-auto">
                 <SeaScreen />
               </div>
@@ -87,7 +89,7 @@ export default function PostScreen() {
               </div>
             </div>
           )}
-          <div className="mt-[-45%]  w-1/2 mx-auto">
+          <div className={!sea && "mt-[-10%] w-1/2 mx-auto"}>
             <div className="relative pt-[56.25%] overflow-hidden rounded-2xl">
               <img
                 className="w-full h-full absolute inset-0 object-cover"
@@ -118,7 +120,7 @@ export default function PostScreen() {
             <p className="mt-4">{post?.body[3]}</p>
             <p className="mt-4">{post?.body[4]}</p>
             <p className="mt-4">{post?.body[5]}</p>
-            {post?.category === "sea" && (
+            {sea && (
               <div className="mr-[50%]">
                 <SeaScreen />
               </div>
@@ -129,7 +131,7 @@ export default function PostScreen() {
             <p className="mt-4">{post?.body[8]}</p>
             <p className="mt-4">{post?.body[9]}</p>
             <p className="mt-4">{post?.body[10]}</p>
-            {post?.category === "sea" && (
+            {sea && (
               <>
                 <div className="mr-[50%]">
                   <SeaScreen />

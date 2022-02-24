@@ -9,19 +9,19 @@ import SeaTitles from "../components/Jellyfish/SeaTitles";
 export default function SeaScreen() {
   return (
     <>
-      {/* <div className="w-screen h-screen img-login"> */}
-      <div className="h-[70%] ml-auto">
-        {/* <Navbar /> */}
-        <Canvas>
-          <ambientLight intensity={0.2} />
-          <directionalLight intensity={0.2} />
-          <Suspense fallback={null}>
-            <Scene />
-          </Suspense>
-        </Canvas>
-        {/* <SeaTitles /> */}
+      <div className="w-screen h-screen img-login">
+        <div className="h-[70%] ml-auto">
+          <Navbar />
+          <Canvas>
+            <ambientLight intensity={0.2} />
+            <directionalLight intensity={0.2} />
+            <Suspense fallback={null}>
+              <Scene />
+            </Suspense>
+          </Canvas>
+          <SeaTitles />
+        </div>
       </div>
-      {/* </div> */}
     </>
   );
 }

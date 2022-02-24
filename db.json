@@ -2,7 +2,7 @@
   "myPosts": [
     {
       "id": "1",
-      "category": "homepage",
+      "category": "generic",
       "title": "This Is What We Don’t Know About The Universe",
       "subtitle": "In recent days I’ve had some interesting conversations. There’s a giddiness going around, related to an outpouring of science love – the kind you get from President Obama introducing TV science shows, the kind that has wonderful visuals, but is, well, a wee bit simplistic (a sin that none of us could ever, ever be [...]",
       "p": "You may experience some temporary disillusionment",
@@ -25,6 +25,28 @@
       "authorLink": "https://www.scientificamerican.com/author/caleb-a-scharf/",
       "credentials": "Caleb A. Scharf is director of astrobiology at Columbia University. He is author and co-author of more than 100 scientific research articles in astronomy and astrophysics. His work has been featured in publications such as New Scientist, Scientific American, Science News, Cosmos Magazine, Physics Today and National Geographic. For many years he wrote the Life, Unbounded blog for Scientific American.",
       "author": "CALEB A. SCHARF"
+    },
+    {
+      "id": "9",
+      "category": "generic",
+      "title": "How Much Can We Know?",
+      "subtitle": "The reach of the scientific method is constrained by the limitations of our tools and the intrinsic impenetrability of some of nature’s deepest questions.",
+      "p": "",
+      "body": [
+        "“What we observe is not nature in itself but nature exposed to our method of questioning,” wrote German physicist Werner Heisenberg, who was the first to fathom the uncertainty inherent in quantum physics. To those who think of science as a direct path to the truth about the world, this quote must be surprising, perhaps even upsetting. Is Heisenberg saying that our scientific theories are contingent on us as observers? If he is, and we take him seriously, does this mean that what we call scientific truth is nothing but a big illusion?",
+        "People will quickly counterstrike with something like: Why do airplanes fly or antibiotics work? Why are we able to build machines that process information with such amazing efficiency? Surely, such inventions and so many others are based on laws of nature that function independently of us. There is order in the universe, and science gradually uncovers this order.",
+        "No question about it: There is order in the universe, and much of science is about finding patterns of behavior—from quarks to mammals to galaxies—that we translate into general laws. We strip away unnecessary complications and focus on what is essential, the core properties of the system we are studying. We then build a descriptive narrative of how the system behaves, which, in the best cases, is also predictive.",
+        "Often overlooked in the excitement of research is that the methodology of science requires interaction with the system we are studying. We observe its behavior, measure its properties, and build mathematical or conceptual models to understand it better. And to do this, we need tools that extend into realms beyond our sensorial reach: the very small, the very fast, the very distant and the virtually inaccessible, such as what is inside the brain or buried in the earth’s core. What we observe is not nature itself but nature as discerned through data we collect from machines. In consequence, the scientific worldview depends on the information we can acquire through our instruments. And given that our tools are limited, our view of the world is necessarily myopic. We can see only so far into the nature of things, and our ever shifting scientific worldview reflects this fundamental limitation on how we perceive reality.",
+        "Just think of biology before and after the microscope or gene sequencing, or of astronomy before and after the telescope, or of particle physics before and after colliders or fast electronics. Now, as in the 17th century, the theories we build and the worldviews we construct change as our tools of exploration transform. This trend is the trademark of science.",
+        "Sometimes people take this statement about the limitation of scientific knowledge as being defeatist: “If we can’t get to the bottom of things, why bother?” This kind of response is misplaced. There is nothing defeatist in understanding the limitations of the scientific approach to knowledge. Science remains our best methodology to build consensus about the workings of nature. What should change is a sense of scientific triumphalism—the belief that no question is beyond the reach of scientific discourse. There are clear unknowables in science—reasonable questions that, unless currently accepted laws of nature are violated, we cannot find answers to. One example is the multiverse: the conjecture that our universe is but one among a multitude of others, each potentially with a different set of laws of nature. Other universes lie outside our causal horizon, meaning that we cannot receive or send signals to them. Any evidence for their existence would be circumstantial: for example, scars in the radiation permeating space because of a past collision with a neighboring universe.",
+        "Other examples of unknowables can be conflated into three questions about origins: of the universe, of life and of the mind. Scientific accounts of the origin of the universe are incomplete because they must rely on a conceptual framework to even begin to work: energy conservation, relativity, quantum physics, for instance. Why does the universe operate under these laws and not others? Similarly, unless we can prove that only one or very few biochemical pathways exist from nonlife to life, we cannot know for sure how life originated on Earth. For consciousness, the problem is the jump from the material to the subjective—for example, from firing neurons to the experience of pain or the color red. Perhaps some kind of rudimentary consciousness could emerge in a sufficiently complex machine. But how could we tell? How do we establish—as opposed to conjecture—that something is conscious?",
+        "Paradoxically, it is through our consciousness that we make sense of the world, even if only imperfectly. Can we fully understand something of which we are a part? Like the mythic snake that bites its own tail, we are stuck within a circle that begins and ends with our lived experience of the world. We cannot detach our descriptions of reality from how we experience reality. This is the playing field where the game of science unfolds, and if we play by the rules we can see only so much of what lies beyond."
+      ],
+      "img1": "https://www.nature.com/articles/d41586-018-05100-5",
+      "link": "https://www.energy.gov/nnsa/articles/visible-light-eye-opening-research-nnsa",
+      "author": "Marcelo Gleiser",
+      "authorLink": "https://it.wikipedia.org/wiki/Marcelo_Gleiser",
+      "credentials": "INNOVATIONS IN"
     },
     {
       "id": "2",
