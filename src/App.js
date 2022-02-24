@@ -14,6 +14,7 @@ import RegisterScreen from "./screens/Login/RegisterScreen";
 import { setUser } from "./redux/actions";
 import FourOFour from "./components/404/FourOFour";
 import UseRoute from "./components/Loading/UseRoute";
+import Spinner from "./components/Spinner/Spinner";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +37,10 @@ function App() {
 
           <Route exact path="/login" element={<LoginScreen />} />
           <Route exact path="/register" element={<RegisterScreen />} />
+
           <Route exact path="/gettingThere" element={<UseRoute />} />
+          <Route exact path="/spinner" element={<Spinner />} />
+
           <Route exact path="/posts" element={<GenericScreen />} />
           <Route path="/posts/:id" element={<PostScreen />} />
           {/* <Route exact path="/saved" element={<Saved />} /> */}

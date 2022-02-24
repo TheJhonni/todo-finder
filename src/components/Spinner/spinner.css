@@ -1,0 +1,7 @@
+#cont {
+  @apply h-screen bg-white m-0 box-border;
+}
+
+#section {
+  @apply flex justify-center items-center min-h-screen bg-[#0c1b21];
+}

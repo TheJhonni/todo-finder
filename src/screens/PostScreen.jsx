@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar/Navbar";
 
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
-import SeaScreen from "./SeaScreen";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function PostScreen() {
@@ -14,8 +13,6 @@ export default function PostScreen() {
   let { id } = useParams();
 
   const [post, setPost] = useState(null);
-
-  let sea = post?.category === "sea";
 
   const fetchData = () => {
     fetch(`http://localhost:3000/myPosts/${id}`)
@@ -76,20 +73,8 @@ export default function PostScreen() {
               <p className="text-3xl text-white z-99">Add to favourites</p>
             </div>
           )} */}
-          {sea && (
-            <div className="mt-[-5%] w-1/2">
-              <div className="ml-[-15%] w-1/2 mr-auto">
-                <SeaScreen />
-              </div>
-              <div className="mr-[-85%] w-1/2 ml-auto">
-                <SeaScreen />
-              </div>
-              <div className="ml-[-25%] w-1/2 mr-auto">
-                <SeaScreen />
-              </div>
-            </div>
-          )}
-          <div className={!sea && "mt-[-10%] w-1/2 mx-auto"}>
+
+          <div className="mt-[-10%] w-1/2 mx-auto">
             <div className="relative pt-[56.25%] overflow-hidden rounded-2xl">
               <img
                 className="w-full h-full absolute inset-0 object-cover"
@@ -120,27 +105,12 @@ export default function PostScreen() {
             <p className="mt-4">{post?.body[3]}</p>
             <p className="mt-4">{post?.body[4]}</p>
             <p className="mt-4">{post?.body[5]}</p>
-            {sea && (
-              <div className="mr-[50%]">
-                <SeaScreen />
-              </div>
-            )}
 
             <p className="mt-4">{post?.body[6]}</p>
             <p className="mt-4">{post?.body[7]}</p>
             <p className="mt-4">{post?.body[8]}</p>
             <p className="mt-4">{post?.body[9]}</p>
             <p className="mt-4">{post?.body[10]}</p>
-            {sea && (
-              <>
-                <div className="mr-[50%]">
-                  <SeaScreen />
-                </div>
-                <div className="ml-[50%]">
-                  <SeaScreen />
-                </div>
-              </>
-            )}
           </article>
         </main>
       </div>
