@@ -17,9 +17,6 @@ function App() {
     <BrowserRouter>
       <div className="img-login">
         <Routes>
-          <Route exact path="/login" element={<LoginScreen />} />
-          <Route exact path="/register" element={<RegisterScreen />} />
-
           <Route exact path="/" element={<EarthScreen />} />
 
           <Route exact path="/posts" element={<GenericScreen />} />
@@ -27,6 +24,8 @@ function App() {
           {/* <Route exact path="/saved" element={<Saved />} /> */}
           <Route exact path="/sea" element={<SeaScreen />} />
           <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
+          <Route exact path="/register" element={<RegisterScreen />} />
+          <Route exact path="/login" element={<LoginScreen />} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -1,19 +1,36 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { logoutInitiate } from "../../redux/actions";
 
 export default function Logout() {
+  const { currentUser } = useSelector((state) => state.user);
+
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!currentUser) {
+      navigate("/login"); // if it's logged out, then push to "/login"
+    }
+  }, [currentUser, navigate]);
+
+  const handleAuth = () => {
+    if (currentUser) {
+      dispatch(logoutInitiate());
+    }
+  };
 
   return (
     <div
-      className="fixed z-10 inset-0 overflow-y-auto"
+      className="absolute z-99 top-[-250px] left-[20%] right-[20%] overflow-y-auto"
       aria-labelledby="modal-title"
       role="dialog"
       aria-modal="true"
     >
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div
-          className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          className="fixed inset-0 bg-gray-500 bg-opacity-50 transition-opacity"
           aria-hidden="true"
         ></div>
 
@@ -61,6 +78,7 @@ export default function Logout() {
           </div>
           <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
             <button
+              onClick={handleAuth}
               type="button"
               className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm"
             >

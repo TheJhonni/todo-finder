@@ -42,7 +42,7 @@ export default function PostScreen() {
       <div className="img-textLeft">
         <Navbar />
 
-        <main className="relative z-100 container mx-auto bg-[#ffffffd2] px-4">
+        <main className="relative z-80 container mx-auto bg-[#ffffffd2] px-4">
           <div className="relative -mx-4 top-0 pt-[17%] overflow-hidden">
             <img
               className="absolute inset-0 object-cover object-top w-full h-full filter blur"

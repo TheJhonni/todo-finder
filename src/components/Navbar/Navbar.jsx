@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DropdownRender from "./Dropdown";
 import ProfileImg from "./ProfileImg";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Logout from "./Logout";
 import { Transition } from "@headlessui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutInitiate } from "../../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [sureToLogout, setSureToLogout] = useState(false);
+
   return (
     <div>
       <nav className="img-textLeft opacity-90">
@@ -65,10 +69,10 @@ export default function Navbar() {
                       Logout
                     </span>
                   </div>
-                  {sureToLogout && <Logout />}
                 </div>
               </div>
             </div>
+            {sureToLogout && <Logout />}
             <div className="-mr-2 flex md:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
