@@ -40,7 +40,7 @@ export default function Navbar() {
                 Hover
               </a>
               <div className="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-800">
-                <div className="container mx-auto w-full flex flex-wrap justify-between mx-2">
+                <div className="container w-full flex flex-wrap justify-between mx-2">
                   <div className="w-full text-white mb-8">
                     <h2 className="font-bold text-2xl">
                       Main Hero Message for the menu section
@@ -187,25 +187,24 @@ export default function Navbar() {
                 </div>
               </div>
             </li>
-            <li className="toggleable my-auto">
-              <input
-                type="checkbox"
-                value="selected"
-                id="toggle-xxx"
-                className="toggle-input"
-              />
-              <label for="toggle-xxx" className="cursor-pointer">
-                X
-              </label>
-              <div
-                onClick={() => setSure(!sure)}
-                role="toggle"
-                className="mega-menu ml-[88%] bg-blue-400  text-blue-800 hover:text-white hover:bg-blue-800 px-8 py-5 mt-5 text-2xl cursor-pointer"
+            <li className="hoverable hover:bg-blue-800 hover:text-white">
+              <a
+                href="#"
+                className="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold hover:bg-blue-800 hover:text-white"
               >
-                Logout
-                {/* Logout onClick hidden div => display toggled */}
+                X
+              </a>
+              <div className="p-6 mega-menu mb-16 ml-auto sm:mb-0 shadow-xl bg-blue-800">
+                <h2
+                  onClick={() => setSure(!sure)}
+                  className="cursor-pointer font-bold text-2xl ml-[90%] mr-10"
+                >
+                  Logout
+                </h2>
               </div>
             </li>
+
+            {/* Logout onClick hidden div => display toggled */}
           </ul>
         </div>
       </nav>

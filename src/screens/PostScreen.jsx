@@ -6,6 +6,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/Spinner/Spinner";
+import Footer from "../components/Footer/Footer";
 
 export default function PostScreen() {
   // const savedPosts = useSelector((state) => state.posts.savedPosts);
@@ -16,9 +17,10 @@ export default function PostScreen() {
   const [post, setPost] = useState(null);
 
   const fetchData = () => {
+    // const API = `${process.env.REACT_APP_JSON_API}`;
     setTimeout(() => {
       setMount(true);
-      fetch(`http://localhost:3000/myPosts/${id}`)
+      fetch(`http://localhost:5000/myPosts/${id}`)
         .then((res) => {
           return res.json();
         })
@@ -47,7 +49,7 @@ export default function PostScreen() {
         <div className="img-textLeft">
           <Navbar />
 
-          <main className="relative z-80 container mx-auto bg-[#ffffffd2] px-4">
+          <main className="relative container mx-auto bg-[#ffffffd2] px-4">
             <div className="relative mx-4 top-0 pt-[17%] overflow-hidden">
               <img
                 className="absolute inset-0 object-cover object-top w-full h-full filter blur"
@@ -122,6 +124,7 @@ export default function PostScreen() {
               <p className="mt-4">{post?.body[10]}</p>
             </article>
           </main>
+          <Footer />
         </div>
       ) : (
         <Spinner />

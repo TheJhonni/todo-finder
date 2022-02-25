@@ -2,13 +2,13 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="text-center border-solid text-white bottom-0">
+    <div className="text-center border-solid border-gray-300 bg-[////#region ] text-gray-300 bottom-0">
       <div className="container mx-auto px-6 pt-6">
         <div className="flex justify-center mb-6">
           <a
             href="#!"
             type="button"
-            className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            className="rounded-full border-2 border-gray-300 text-gray-300 leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
           >
             <svg
               aria-hidden="true"
@@ -30,7 +30,7 @@ function Footer() {
           <a
             href="#!"
             type="button"
-            className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            className="rounded-full border-2 border-gray-300 text-gray-300 leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
           >
             <svg
               aria-hidden="true"
@@ -52,7 +52,7 @@ function Footer() {
           <a
             href="#!"
             type="button"
-            className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            className="rounded-full border-2 border-gray-300 text-gray-300 leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
           >
             <svg
               aria-hidden="true"
@@ -74,7 +74,7 @@ function Footer() {
           <a
             href="https://www.instagram.com/discover_your_freedom/"
             type="button"
-            className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            className="rounded-full border-2 border-gray-300 text-gray-300 leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
           >
             <svg
               aria-hidden="true"
@@ -96,7 +96,7 @@ function Footer() {
           <a
             href="https://www.linkedin.com/in/davide-spiga-2281aa141/"
             type="button"
-            className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            className="rounded-full border-2 border-gray-300 text-gray-300 leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
           >
             <svg
               aria-hidden="true"
@@ -118,7 +118,7 @@ function Footer() {
           <a
             href="https://github.com/TheJhonni"
             type="button"
-            className="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
+            className="rounded-full border-2 border-gray-300 text-gray-300 leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1"
           >
             <svg
               aria-hidden="true"
@@ -159,13 +159,13 @@ function Footer() {
                 text-base
                 font-normal
                 text-gray-700
-                bg-white bg-clip-padding
+                bg-gray-300 bg-clip-padding
                 border border-solid border-gray-300
                 rounded
                 transition
                 ease-in-out
                 m-0
-                focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
+                focus:text-gray-700 focus:bg-gray-300 focus:border-blue-600 focus:outline-none
               "
                   id="exampleFormControlInput1"
                   placeholder="Email address"
@@ -175,7 +175,7 @@ function Footer() {
               <div className="md:mr-auto mb-6">
                 <button
                   type="submit"
-                  className="inline-block px-6 py-2 border-2 border-white text-white font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                  className="inline-block px-6 py-2 border-2 border-gray-300 text-gray-300 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
                 >
                   Subscribe
                 </button>
@@ -186,7 +186,7 @@ function Footer() {
 
         <div className="mb-6">
           <p>
-            <span className="font-bold text-emerald-900 text-lg">
+            <span className="font-bold text-emerald-400 text-lg">
               This App was created by TheJhonni in order to achive his final
               mile during this wonderful journey at Strive's School. He'd like
               to thank all the teachers, tutors and colleagues. He admires you
@@ -207,22 +207,22 @@ function Footer() {
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 1
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 2
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 3
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 4
                 </a>
               </li>
@@ -234,22 +234,22 @@ function Footer() {
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 1
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 2
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 3
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 4
                 </a>
               </li>
@@ -261,22 +261,22 @@ function Footer() {
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 1
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 2
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 3
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 4
                 </a>
               </li>
@@ -288,22 +288,22 @@ function Footer() {
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 1
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 2
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 3
                 </a>
               </li>
               <li>
-                <a href="#!" className="text-white">
+                <a href="#!" className="text-gray-300">
                   Link 4
                 </a>
               </li>
@@ -312,10 +312,10 @@ function Footer() {
         </div>
       </div>
 
-      <div className="text-center p-4 text-emerald-900 border-solid">
+      <div className="text-center p-4 text-blue-300 border-solid">
         © 2021 Copyright:
         <a
-          className=" text-emerald-900 ml-2"
+          className=" text-emerald-500 ml-2"
           href="https://github.com/TheJhonni"
         >
           TheJhonni

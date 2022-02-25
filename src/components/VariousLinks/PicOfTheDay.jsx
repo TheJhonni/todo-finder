@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Iframe from "react-iframe";
-import Footer from "../Navbar/Footer";
+import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
 
 // const apiKey = process.env.REACT_APP_NASA_KEY;

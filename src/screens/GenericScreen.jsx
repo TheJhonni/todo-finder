@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import ShowTestimonials from "../components/Comments/ShowTestimonials";
 import Posts from "../components/components_2nd_Layer/Posts";
+import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import Spinner from "../components/Spinner/Spinner";
 // import Scene from "../components/Jellyfish/Scene.js";
 // import { Canvas } from "@react-three/fiber";
 // import { Suspense } from "react";
 // import SeaTitles from "../components/Jellyfish/SeaTitles";
+
+// const API = process.env.REACT_APP_JSON_API;
 
 export default function GenericScreen() {
   const [mount, setMount] = useState(false);
@@ -17,7 +21,7 @@ export default function GenericScreen() {
   const fetchData = () => {
     setTimeout(() => {
       setMount(true);
-      fetch("http://localhost:3000/myPosts")
+      fetch("http://localhost:5000/myPosts")
         .then((res) => {
           return res.json();
         })
@@ -62,6 +66,8 @@ export default function GenericScreen() {
               </div>
             </div>
           </div>
+          <ShowTestimonials />
+          <Footer />
         </div>
       ) : (
         <Spinner />
