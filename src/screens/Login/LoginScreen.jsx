@@ -16,7 +16,6 @@ function LoginScreen() {
 
   useEffect(() => {
     if (currentUser) {
-      alert("Congrats, You have just logged in!");
       navigate("/posts");
       // if it exists, then push to "/posts"
     }

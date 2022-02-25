@@ -149,3 +149,128 @@ html {
 .signIn-button {
   @apply py-[7.9px] px-[20px] font-bold text-[#010147] bg-white border-none cursor-pointer;
 }
+
+/* WATER SPINNER CSS */
+#cont {
+  @apply h-screen bg-white m-0 box-border;
+}
+
+#section {
+  @apply flex justify-center items-center min-h-screen img-login;
+}
+
+#loader {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  filter: url(#gooey);
+  animation: animate 16s linear infinite;
+}
+
+#loader span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: rotate(calc(45deg * var(--i)));
+}
+
+#loader span:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(50% - 20px);
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #20c1d6, #0f5a83, #0c3d5f);
+  border-radius: 50%;
+  box-shadow: 0 0 30px #00bcd4;
+}
+
+.rotate {
+  animation: animate 4s ease-in-out infinite;
+  animation-delay: calc(-0.2s * var(--j));
+}
+
+@keyframes animate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#arturo {
+  width: 0;
+  height: 0;
+}
+
+/* END OF WATER SPINNER CSS */
+
+/* START NAVBAR CSS */
+/* #Mega Menu Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.mega-menu {
+  display: none;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+}
+
+/* #hoverable Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+.hoverable {
+  position: static;
+}
+
+.hoverable > a:after {
+  content: "\25BC";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+}
+
+.hoverable:hover .mega-menu {
+  display: block;
+}
+
+/* #toggle Class Styles
+  –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.toggleable > label:after {
+  content: "\25BC";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+}
+
+.toggle-input {
+  display: none;
+}
+.toggle-input:not(checked) ~ .mega-menu {
+  display: none;
+}
+
+.toggle-input:checked ~ .mega-menu {
+  display: block;
+}
+
+.toggle-input:checked + label {
+  color: white;
+  background: #2c5282; /*@apply bg-blue-800 */
+}
+
+.toggle-input:checked ~ label:after {
+  content: "\25B2";
+  font-size: 10px;
+  padding-left: 6px;
+  position: relative;
+  top: -1px;
+}
+/* END NAVBAR CSS */

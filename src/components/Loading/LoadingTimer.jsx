@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-function Loading() {
+function LoadingTimer() {
   const [count, setCount] = useState(5);
   const navigate = useNavigate();
 
@@ -47,4 +47,4 @@ function Loading() {
   );
 }
 
-export default Loading;
+export default LoadingTimer;
