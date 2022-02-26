@@ -1,5 +1,5 @@
-import * as types from "./actionTypes";
-import { auth, facebookAuthProvider, googleAuthProvider } from "../firebase";
+import * as types from "../actionTypes";
+import { auth, facebookAuthProvider, googleAuthProvider } from "../../firebase";
 
 // CALLING TYPES FROM ACTION TYPES AND SETTING THE TYPE AND PAYLOAD
 

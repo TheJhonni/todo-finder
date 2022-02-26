@@ -22,7 +22,7 @@ function ShowTestimonials() {
   }, []);
 
   return (
-    <section className="text-gray-600 body-font">
+    <section className="text-gray-600 rounded bg-gray-100 mx-auto w-[80%] body-font">
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-wrap -m-4">
           {comments &&
@@ -35,8 +35,8 @@ function ShowTestimonials() {
                     src={comment?.Link}
                   />
                   <p className="leading-relaxed">{comment?.commentBody}</p>
-                  <span className="inline-block h-1 w-10 rounded bg-indigo-500 mt-6 mb-4"></span>
-                  <h2 className="text-gray-200 font-medium title-font tracking-wider text-sm">
+                  <span className="inline-block h-1 w-10 rounded bg-emerald-400 mt-6 mb-4"></span>
+                  <h2 className="text-gray-800 font-medium title-font tracking-wider text-sm">
                     {comment?.commentAuthor}
                   </h2>
                   <p className="text-gray-400">Senior Product Designer</p>

@@ -3,7 +3,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
-import { fbInitiate, googleInitiate, loginInitiate } from "../../redux/actions";
+import {
+  fbInitiate,
+  googleInitiate,
+  loginInitiate,
+} from "../../redux/Authentications/authActions";
 
 function LoginScreen() {
   const [state, setState] = useState({ email: "", password: "" });

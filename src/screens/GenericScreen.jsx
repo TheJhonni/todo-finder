@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import ShowTestimonials from "../components/Comments/ShowTestimonials";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import ShowTestimonials from "../components/Testimonials/ShowTestimonials";
 import Posts from "../components/components_2nd_Layer/Posts";
 import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import Spinner from "../components/Spinner/Spinner";
+import { FiEdit } from "react-icons/fi";
+import { useSelector } from "react-redux";
+
 // import Scene from "../components/Jellyfish/Scene.js";
 // import { Canvas } from "@react-three/fiber";
 // import { Suspense } from "react";
@@ -15,12 +18,13 @@ import Spinner from "../components/Spinner/Spinner";
 export default function GenericScreen() {
   const [mount, setMount] = useState(false);
   const [posts, setPosts] = useState(null);
+  const { currentUser } = useSelector((state) => state.user);
+  const [editor, setEditor] = useState(false);
+  const navigate = useNavigate();
 
-  // const { asin } = useParams();
-
-  const fetchData = () => {
+  const loadPosts = () => {
     setTimeout(() => {
-      setMount(true);
+      setMount(false);
       fetch("http://localhost:5000/myPosts")
         .then((res) => {
           return res.json();
@@ -29,7 +33,8 @@ export default function GenericScreen() {
           console.log(data);
           // store Data in State Data Variable
           setPosts(data);
-          setMount(false);
+          setMount(true);
+          setEditor(currentUser.email === "jdilmoro@gmail.com");
         })
         .catch((err) => {
           console.log(err, " error");
@@ -38,7 +43,7 @@ export default function GenericScreen() {
   };
 
   useEffect(() => {
-    fetchData();
+    loadPosts();
   }, []);
 
   return (
@@ -54,19 +59,27 @@ export default function GenericScreen() {
               <div className="mt-[100px] space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
                 {posts &&
                   posts.map((post) => (
-                    <Link to={`/posts/${post.id}`}>
-                      <Posts
-                        key={post.id}
-                        id={post.id}
-                        src={post.img1}
-                        title={post.title}
-                      />
-                    </Link>
+                    <div className="flex">
+                      <Link to={`/posts/${post.id}`}>
+                        <Posts
+                          key={post.id}
+                          id={post.id}
+                          src={post.img1}
+                          title={post.title}
+                        />
+                      </Link>
+                      {editor && (
+                        <FiEdit
+                          onClick={() => navigate(`/edit/${post.id}`)}
+                          className="text-white text-xl cursor-pointer"
+                        />
+                      )}
+                    </div>
                   ))}
               </div>
             </div>
           </div>
-          <ShowTestimonials />
+
           <Footer />
         </div>
       ) : (

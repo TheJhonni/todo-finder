@@ -3,7 +3,7 @@ import { MdOutlineArrowBack } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { registerInitiate } from "../../redux/actions";
+import { registerInitiate } from "../../redux/Authentications/authActions";
 
 function SignUpScreen() {
   const [state, setState] = useState({

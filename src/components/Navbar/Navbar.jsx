@@ -5,7 +5,6 @@ import { IoMdArrowDropdown } from "react-icons/io";
 import Logout from "./Logout";
 import { Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutInitiate } from "../../redux/actions";
 import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {

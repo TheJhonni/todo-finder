@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logoutInitiate } from "../../redux/actions";
+import { logoutInitiate } from "../../redux/Authentications/authActions";
 
 export default function Logout() {
   const { currentUser } = useSelector((state) => state.user);

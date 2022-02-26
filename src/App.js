@@ -11,10 +11,12 @@ import GenericScreen from "./screens/GenericScreen";
 import PostScreen from "./screens/PostScreen";
 // import Saved from "./screens/Saved";
 import RegisterScreen from "./screens/Login/RegisterScreen";
-import { setUser } from "./redux/actions";
+import { setUser } from "./redux/Authentications/authActions";
 import FourOFour from "./components/404/FourOFour";
 import UseRoute from "./components/Loading/UseRoute";
 import Spinner from "./components/Spinner/Spinner";
+import CommentForm from "./components/Comments/CommentForm";
+import PostForm from "./components/Posts/PostForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +46,8 @@ function App() {
           <Route path="/posts/:id" element={<PostScreen />} />
           {/* <Route exact path="/saved" element={<Saved />} /> */}
           <Route exact path="/sea" element={<SeaScreen />} />
-          <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
+          {/* <Route exact path="/picOfTheDay" element={<PicOfTheDay />} /> */}
+          <Route path="/edit/:id" element={<PostForm />} />
         </Routes>
 
         {/* <Route path="/404" element={<FourOFour />} /> */}

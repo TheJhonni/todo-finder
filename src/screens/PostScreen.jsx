@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
-
+import { GrEdit } from "react-icons/gr";
 import { AiOutlineStar } from "react-icons/ai";
 import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ export default function PostScreen() {
   const [mount, setMount] = useState(false);
   const dispatch = useDispatch();
   let { id } = useParams();
+  const navigate = useNavigate();
 
   const [post, setPost] = useState(null);
 
@@ -94,12 +95,19 @@ export default function PostScreen() {
 
             <article className="max-w-prose mx-auto py-8">
               <h1 className="text-2xl font-bold">{post?.title}</h1>
-              <h2 className="mt-2 text-sm text-gray-500">
-                <a className="hover:text-blue-700" href={post?.authorLink}>
-                  {post?.author}
-                </a>
-                , 28 November 2021
-              </h2>
+              <div className="flex justify-between">
+                <h2 className="mt-2 text-sm text-gray-500">
+                  <a className="hover:text-blue-700" href={post?.authorLink}>
+                    {post?.author}
+                  </a>
+                  , 28 November 2021
+                </h2>
+
+                <GrEdit
+                  className="cursor-pointer"
+                  onClick={() => navigate("/edit")}
+                />
+              </div>
               <h2 className="mt-2 text-sm text-gray-500">
                 {post?.p}, <br />
                 <a
