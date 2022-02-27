@@ -8,43 +8,13 @@ import Spinner from "../components/Spinner/Spinner";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
 
-// import Scene from "../components/Jellyfish/Scene.js";
-// import { Canvas } from "@react-three/fiber";
-// import { Suspense } from "react";
-// import SeaTitles from "../components/Jellyfish/SeaTitles";
-
-// const API = process.env.REACT_APP_JSON_API;
-
-export default function GenericScreen() {
-  const [mount, setMount] = useState(false);
-  const [posts, setPosts] = useState(null);
+export default function GenericScreen({ posts }) {
+  // const [mount, setMount] = useState(false);
+  // const [posts, setPosts] = useState(null);
   const { currentUser } = useSelector((state) => state.user);
-  const [editor, setEditor] = useState(false);
   const navigate = useNavigate();
 
-  const loadPosts = () => {
-    setTimeout(() => {
-      setMount(false);
-      fetch("http://localhost:5000/myPosts")
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          console.log(data);
-          // store Data in State Data Variable
-          setPosts(data);
-          setMount(true);
-          setEditor(currentUser.email === "jdilmoro@gmail.com");
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }, 350);
-  };
-
-  useEffect(() => {
-    loadPosts();
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <>
@@ -68,12 +38,12 @@ export default function GenericScreen() {
                           title={post.title}
                         />
                       </Link>
-                      {editor && (
+                      {/* {currentUser.email === "jdilmoro" && (
                         <FiEdit
                           onClick={() => navigate(`/edit/${post.id}`)}
                           className="text-white text-xl cursor-pointer"
                         />
-                      )}
+                      )} */}
                     </div>
                   ))}
               </div>

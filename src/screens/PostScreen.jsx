@@ -9,15 +9,12 @@ import Spinner from "../components/Spinner/Spinner";
 import Footer from "../components/Footer/Footer";
 
 export default function PostScreen() {
-  // const savedPosts = useSelector((state) => state.posts.savedPosts);
   const [mount, setMount] = useState(false);
-  const dispatch = useDispatch();
   let { id } = useParams();
   const navigate = useNavigate();
-
   const [post, setPost] = useState(null);
 
-  const fetchData = () => {
+  const fetchIdData = () => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
     setTimeout(() => {
       setMount(true);
@@ -38,11 +35,8 @@ export default function PostScreen() {
   };
 
   useEffect(() => {
-    fetchData(id);
+    fetchIdData(id);
   }, [id]);
-
-  // const isSaved = savedPosts.some((_post) => _post.id === post.id);
-  // const toggleSaved = isSaved ? removeFromSaved : addToSaved;
 
   return (
     <>
@@ -58,30 +52,6 @@ export default function PostScreen() {
                 alt=""
               />
             </div>
-            {/* {isSaved ? (
-            <div
-              div
-              className="absolute flex space-x-2 ml-[80%] top-10 z-99 mr-5"
-            >
-              <AiFillStar
-                className="cursor-pointer text-4xl text-yellow-400 hover:scale-150 transition-all delay-50 ease-out hover:text-yellow-700"
-                onClick={() => {
-                  dispatch(toggleSaved(post._post));
-                }}
-              />
-              <p className="text-3xl text-white z-99">Remove from favourites</p>
-            </div>
-          ) : (
-            <div className="absolute flex space-x-2 ml-[80%] top-10 z-99 mr-5">
-              <AiOutlineStar
-                className="cursor-pointer text-5xl text-yellow-400 hover:scale-150 transition-all delay-50 ease-out hover:text-yellow-700"
-                onClick={() => {
-                  dispatch(toggleSaved(homepage[0]));
-                }}
-              />{" "}
-              <p className="text-3xl text-white z-99">Add to favourites</p>
-            </div>
-          )} */}
 
             <div className="mt-[-10%] w-1/2 mx-auto">
               <div className="relative pt-[56.25%] overflow-hidden rounded-2xl">
@@ -102,10 +72,9 @@ export default function PostScreen() {
                   </a>
                   , 28 November 2021
                 </h2>
-
                 <GrEdit
                   className="cursor-pointer"
-                  onClick={() => navigate("/edit")}
+                  onClick={() => navigate(`/edit/${post?.id}`)}
                 />
               </div>
               <h2 className="mt-2 text-sm text-gray-500">
