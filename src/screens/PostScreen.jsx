@@ -7,12 +7,15 @@ import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/Spinner/Spinner";
 import Footer from "../components/Footer/Footer";
+import ShowTestimonials from "../components/Testimonials/ShowTestimonials";
+import CommentForm from "../components/Comments/CommentForm";
 
 export default function PostScreen() {
   const [mount, setMount] = useState(false);
   let { id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
+  const [showComments, setShowComments] = useState(null);
 
   const fetchIdData = () => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
@@ -63,8 +66,24 @@ export default function PostScreen() {
               </div>
             </div>
 
+            <div className="flex justify-evenly items-center ">
+              <p
+                onClick={() => setShowComments(!showComments)}
+                className="mt-4 cursor-pointer hover:bg-gray-400 rounded-full px-4"
+              >
+                {showComments ? "Hide Comments" : "Show Comments"}
+              </p>
+              <div
+                onClick={() => navigate(`/edit/${post?.id}`)}
+                className="flex space-x-3 items-center cursor-pointer hover:bg-gray-400 rounded-full px-5"
+              >
+                <GrEdit />
+                <p>Edit Post</p>
+              </div>
+            </div>
+            {showComments && <CommentForm />}
             <article className="max-w-prose mx-auto py-8">
-              <h1 className="text-2xl font-bold">{post?.title}</h1>
+              <h1 className="text-2xl font-bold mx-auto">{post?.title}</h1>
               <div className="flex justify-between">
                 <h2 className="mt-2 text-sm text-gray-500">
                   <a className="hover:text-blue-700" href={post?.authorLink}>
@@ -72,35 +91,42 @@ export default function PostScreen() {
                   </a>
                   , 28 November 2021
                 </h2>
-                <GrEdit
-                  className="cursor-pointer"
-                  onClick={() => navigate(`/edit/${post?.id}`)}
-                />
               </div>
-              <h2 className="mt-2 text-sm text-gray-500">
-                {post?.p}, <br />
-                <a
-                  className="hover:text-blue-700 text-xs mt-3"
-                  href={post?.link}
-                >
-                  CLICK HERE to read the Original Article
-                </a>
-              </h2>
+              {post?.p && (
+                <h2 className="mt-2 text-sm text-gray-500">
+                  {post?.p}, <br />
+                  {post?.link && (
+                    <a
+                      className="hover:text-blue-700 text-xs mt-3"
+                      href={post?.link}
+                    >
+                      CLICK HERE to read the Original Article
+                    </a>
+                  )}
+                </h2>
+              )}
 
-              <p className="mt-6">{post?.body[0]}</p>
-              <p className="mt-4">{post?.body[1]}</p>
-              <p className="mt-4">{post?.body[2]}</p>
-              <p className="mt-4">{post?.body[3]}</p>
-              <p className="mt-4">{post?.body[4]}</p>
-              <p className="mt-4">{post?.body[5]}</p>
+              {post?.body[1] ? (
+                <>
+                  <p className="mt-6">{post?.body[0]}</p>
+                  <p className="mt-4">{post?.body[1]}</p>
+                  <p className="mt-4">{post?.body[2]}</p>
+                  <p className="mt-4">{post?.body[3]}</p>
+                  <p className="mt-4">{post?.body[4]}</p>
+                  <p className="mt-4">{post?.body[5]}</p>
 
-              <p className="mt-4">{post?.body[6]}</p>
-              <p className="mt-4">{post?.body[7]}</p>
-              <p className="mt-4">{post?.body[8]}</p>
-              <p className="mt-4">{post?.body[9]}</p>
-              <p className="mt-4">{post?.body[10]}</p>
+                  <p className="mt-4">{post?.body[6]}</p>
+                  <p className="mt-4">{post?.body[7]}</p>
+                  <p className="mt-4">{post?.body[8]}</p>
+                  <p className="mt-4">{post?.body[9]}</p>
+                  <p className="mt-4">{post?.body[10]}</p>
+                </>
+              ) : (
+                <p className="mt-4">{post?.body}</p>
+              )}
             </article>
           </main>
+
           <Footer />
         </div>
       ) : (

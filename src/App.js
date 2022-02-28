@@ -15,38 +15,14 @@ import { setUser } from "./redux/Authentications/authActions";
 import FourOFour from "./components/404/FourOFour";
 import UseRoute from "./components/Loading/UseRoute";
 import Spinner from "./components/Spinner/Spinner";
-import CommentForm from "./components/Comments/CommentForm";
-import PostForm from "./components/Posts/EditPost";
 import NewPost from "./components/Posts/NewPost";
 import EditPost from "./components/Posts/EditPost";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const [mount, setMount] = useState(false);
-  const [posts, setPosts] = useState(null);
-
-  const loadPosts = () => {
-    setTimeout(() => {
-      setMount(false);
-      fetch("http://localhost:5000/myPosts")
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          console.log(data);
-          // store Data in State Data Variable
-          setPosts(data);
-          setMount(true);
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }, 350);
-  };
 
   useEffect(() => {
-    loadPosts();
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch(setUser(authUser));
@@ -70,7 +46,7 @@ function App() {
           <Route
             exact
             path="/posts"
-            element={<GenericScreen posts={posts} currentUser={currentUser} />}
+            element={<GenericScreen currentUser={currentUser} />}
           />
           <Route
             path="/posts/:id"

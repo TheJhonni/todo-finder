@@ -7,11 +7,9 @@ export default function EditPost() {
   const [mount, setMount] = useState(false);
   let { id } = useParams();
   const navigate = useNavigate();
-  const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+  const [post, setPost] = useState(null);
 
-  const [post, setPost] = useState("");
+  const { author, title, body, p, img1 } = post ?? {};
 
   const fetchData = (id) => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
@@ -23,13 +21,8 @@ export default function EditPost() {
         })
         .then((data) => {
           console.log(data);
-          // store Data in State Data Variable
           setPost(data);
-          setAuthor(post.author);
-          setTitle(post.title);
-          setBody(post.body);
           setMount(false);
-          // setEditing(fullBody);
         })
         .catch((err) => {
           console.log(err, " error");
@@ -37,20 +30,54 @@ export default function EditPost() {
     }, 350);
   };
 
-  const changeData = async () => {
-    try {
-      const resp = await fetch(`http://localhost:5000/myPosts`, {
-        method: "POST",
+  const onChange = (e) => {
+    setPost({
+      ...post,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  function editedPost() {
+    if (window.confirm("Are you sure to edit this post?")) {
+      fetch(`http://localhost:5000/myPosts/${id}`, {
+        method: "PUT",
         headers: { "Content-type": "Application/json" },
-        body: JSON.stringify(),
-      });
-      if (resp.ok) {
-        alert("saved succesfully");
-        setMount(false);
-      }
-      // setEditing(fullBody);
-    } catch (err) {
-      console.log(err, " error");
+        body: JSON.stringify({
+          ...post,
+        }),
+      })
+        .then((resp) => {
+          if (resp.status === 200) {
+            alert("Post edited succesfully");
+            setMount(false);
+            navigate(`/posts`);
+          }
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    }
+  }
+
+  const deletePost = (id) => {
+    if (window.confirm("Are you sure to delete this post?")) {
+      setMount(true);
+      fetch(`http://localhost:5000/myPosts/${id}`, {
+        method: "DELETE",
+        headers: { "Content-type": "Application/json" },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            alert("Post deleted succesfully");
+            setMount(false);
+            navigate("/posts");
+          }
+        })
+
+        .catch((err) => {
+          console.log(err, " error");
+        });
     }
   };
 
@@ -61,7 +88,7 @@ export default function EditPost() {
   return (
     <>
       {post ? (
-        <div className="flex flex-col justify-center w-screen h-screen px-4 border-gray-300 text-gray-300">
+        <div className="flex flex-col justify-center w-full h-full px-4 border-gray-300 text-gray-300">
           <div className="flex justify-between flex-shrink-0 px-8 py-4 border-b border-gray-300">
             <h1 className="text-xl font-semibold">EDIT POST</h1>
             <p className="flex items-center h-8 px-2 text-sm bg-gray-900 rounded-sm">
@@ -70,51 +97,74 @@ export default function EditPost() {
           </div>
           <div className="flex w-full p-8 border-b-4 border-gray-300">
             <img
-              src={post?.img1}
+              src={img1}
               className="flex-shrink-0 w-12 h-12 mr-2 bg-gray-400 rounded-full"
             />
             <div className="flex flex-col justify-center space-x-2 space-y-2 w-full">
               <p>Author:</p>
               <textarea
                 className="p-3 bg-transparent border border-gray-500 rounded-sm"
-                name=""
+                name="author"
                 id=""
                 type="text"
                 rows="1"
                 value={author}
-                onChange={(e) => setAuthor(e.target.value)}
+                onChange={onChange}
               />
               <p>Title:</p>
               <textarea
                 className="p-3 bg-transparent border border-gray-500 rounded-sm"
-                name=""
+                name="title"
                 id=""
                 type="text"
                 rows="1"
                 value={title}
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={onChange}
+              />
+              <p>Change img Url:</p>
+              <textarea
+                className="p-3 bg-transparent border border-gray-500 rounded-sm"
+                name="img1"
+                id=""
+                type="text"
+                rows="2"
+                value={img1}
+                onChange={onChange}
+              />
+              <p>Paragraph:</p>
+              <textarea
+                className="p-3 bg-transparent border border-gray-500 rounded-sm"
+                name="p"
+                id=""
+                type="text"
+                rows="1"
+                value={p}
+                onChange={onChange}
               />
               <div className="flex flex-col flex-grow ml-4">
                 <p>Post:</p>
                 <textarea
                   className="p-3 bg-transparent border border-gray-500 rounded-sm h-[300px]"
-                  name=""
+                  name="body"
                   id=""
                   type="text"
                   rows="3"
                   value={body}
-                  onChange={(e) => setBody(e.target.value)}
+                  onChange={onChange}
                 />
               </div>
               <div className="flex justify-between mt-2">
-                {/* <button className="flex items-center h-8 px-3 text-xs rounded-sm hover:bg-gray-700">
-                        Attach
-                      </button> */}
-                <button className="flex items-center h-8 px-3 text-xs rounded-sm bg-gray-900 hover:bg-gray-400">
-                  Edit Post?
+                <button
+                  onClick={() => editedPost(post.id)}
+                  className="flex items-center h-8 px-3 text-xs rounded-sm bg-gray-900 hover:bg-gray-400"
+                >
+                  Edit Post
                 </button>
-                <button className="flex items-center h-8 px-3 text-xs rounded-sm bg-red-700 hover:bg-gray-400">
-                  Delete Post?
+                <button
+                  onClick={() => deletePost(post.id)}
+                  className="flex items-center h-8 px-3 text-xs rounded-sm bg-red-700 hover:bg-gray-400"
+                >
+                  Delete
                 </button>
               </div>
             </div>
@@ -158,7 +208,7 @@ export default function EditPost() {
                 className="px-3 py-2 mt-2 text-lg font-medium rounded-sm hover:bg-gray-300"
                 href="#"
               >
-                Saved Post?s
+                Saved 
               </a>
               <a
                 className="px-3 py-2 mt-2 text-lg font-medium rounded-sm hover:bg-gray-300"

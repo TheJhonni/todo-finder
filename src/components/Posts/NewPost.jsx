@@ -14,36 +14,38 @@ export default function NewPost() {
   const [img1, setImg1] = useState("");
   const [p, setP] = useState("");
 
-  const reset = () => {
-    setAuthor("");
-    setTitle("");
-    setSubtitle("");
-    setBody("");
-    setImg1("");
-    setP("");
-  };
+  // const reset = () => {
+  //   setAuthor("");
+  //   setTitle("");
+  //   setSubtitle("");
+  //   setBody("");
+  //   setImg1("");
+  //   setP("");
+  // };
 
-  const PostNewData = async () => {
+  const PostNewData = async (e) => {
+    e.preventDefault();
     try {
-      const resp = await fetch(`http://localhost:5000/myPosts`, {
-        method: "POST",
-        headers: { "Content-type": "Application/json" },
-        body: JSON.stringify({
-          author,
-          title,
-          subtitle,
-          body,
-          id: Math.floor(Math.random() * (999 - 200) + 200).toLocaleString(),
-          img1,
-          p,
-        }),
-      });
-      if (resp.ok) {
-        alert("saved succesfully");
-        reset();
+      if (window.confirm("Are you sure you want to post this article?")) {
+        const resp = await fetch(`http://localhost:5000/myPosts`, {
+          method: "POST",
+          headers: { "Content-type": "Application/json" },
+          body: JSON.stringify({
+            author,
+            title,
+            subtitle,
+            body,
+            id: Math.floor(Math.random() * (999 - 200) + 200).toLocaleString(),
+            img1,
+            p,
+          }),
+        });
+        if (resp.ok) {
+          alert("saved succesfully");
+          navigate("/posts");
+        }
+        // setEditing(fullBody);
       }
-      navigate("/posts");
-      // setEditing(fullBody);
     } catch (err) {
       console.log(err, " error");
     }
@@ -52,7 +54,7 @@ export default function NewPost() {
   return (
     // Component Start
     <>
-      <div className="flex flex-col justify-center w-screen h-screen px-4 border-gray-300 text-gray-300">
+      <div className="flex flex-col justify-center w-screen h-full px-4 border-gray-300 text-gray-300">
         <div className="flex justify-between flex-shrink-0 px-8 py-4 border-b border-gray-300">
           <h1 className="text-xl font-semibold">EDIT POST</h1>
           <p className="flex items-center h-8 px-2 text-sm bg-gray-900 rounded-sm">
@@ -96,6 +98,17 @@ export default function NewPost() {
               value={subtitle}
               onChange={(e) => setSubtitle(e.target.value)}
             />
+            <p>Paste your Image Link:</p>
+            <textarea
+              className="p-3 bg-transparent border border-gray-500 rounded-sm"
+              name=""
+              id=""
+              type="text"
+              rows="1"
+              value={img1}
+              required
+              onChange={(e) => setImg1(e.target.value)}
+            />
             <p>Paragraph:</p>
             <textarea
               className="p-3 bg-transparent border border-gray-500 rounded-sm"
@@ -119,12 +132,8 @@ export default function NewPost() {
                 onChange={(e) => setBody(e.target.value)}
               />
             </div>
-            <div className="flex justify-between mt-2">
-              <input
-                type="file"
-                className="flex items-center h-8 px-3 text-xs rounded-sm hover:bg-gray-700"
-                onChange={(e) => setImg1(e.target.files[0])}
-              />
+
+            <div className="flex">
               <button
                 onClick={PostNewData}
                 className="flex items-center h-8 px-3 text-xs rounded-sm bg-gray-900 hover:bg-gray-400"
