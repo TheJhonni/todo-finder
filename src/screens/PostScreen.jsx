@@ -17,7 +17,7 @@ export default function PostScreen() {
   const [post, setPost] = useState(null);
   const [showComments, setShowComments] = useState(null);
 
-  const fetchIdData = () => {
+  const fetchIdData = (id) => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
     setTimeout(() => {
       setMount(true);
@@ -95,14 +95,13 @@ export default function PostScreen() {
               {post?.p && (
                 <h2 className="mt-2 text-sm text-gray-500">
                   {post?.p}, <br />
-                  {post?.link && (
-                    <a
-                      className="hover:text-blue-700 text-xs mt-3"
-                      href={post?.link}
-                    >
-                      CLICK HERE to read the Original Article
-                    </a>
-                  )}
+                  {post?.link}
+                  <a
+                    className="hover:text-blue-700 text-xs mt-3"
+                    href={post?.link}
+                  >
+                    CLICK HERE to read the Original Article
+                  </a>
                 </h2>
               )}
 
