@@ -14,15 +14,6 @@ export default function NewPost() {
   const [img1, setImg1] = useState("");
   const [p, setP] = useState("");
 
-  // const reset = () => {
-  //   setAuthor("");
-  //   setTitle("");
-  //   setSubtitle("");
-  //   setBody("");
-  //   setImg1("");
-  //   setP("");
-  // };
-
   const PostNewData = async (e) => {
     e.preventDefault();
     try {

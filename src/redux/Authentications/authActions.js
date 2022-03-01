@@ -105,14 +105,19 @@ export const loginInitiate = (email, password, displayName) => {
     auth
       .signInWithEmailAndPassword(email, password) //sign in function
       .then(({ user }) => {
-        user.updateProfile({
-          displayName,
-        });
-        dispatch(loginSuccess(user), alert("Yes, you've just logged in!"));
+        /*user
+          .updateProfile({
+            displayName,
+          })
+          .then(() => { */
+        console.log("USER: ", user);
+        dispatch(loginSuccess(user._delegate));
+        alert("Yes, you've just logged in!");
       })
-      .catch((error) =>
-        dispatch(loginFail(error.message), alert("Hops" + error.message))
-      );
+      .catch((error) => {
+        dispatch(loginFail(error.message));
+        alert("Hops" + error.message);
+      });
   };
 };
 

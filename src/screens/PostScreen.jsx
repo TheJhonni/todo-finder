@@ -16,6 +16,7 @@ export default function PostScreen() {
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
   const [showComments, setShowComments] = useState(null);
+  const { currentUser } = useSelector((state) => state.user);
 
   const fetchIdData = (id) => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
@@ -43,7 +44,7 @@ export default function PostScreen() {
 
   return (
     <>
-      {post ? (
+      {currentUser ? (
         <div className="img-textLeft">
           <Navbar />
 
@@ -73,13 +74,15 @@ export default function PostScreen() {
               >
                 {showComments ? "Hide Comments" : "Show Comments"}
               </p>
-              <div
-                onClick={() => navigate(`/edit/${post?.id}`)}
-                className="flex space-x-3 items-center cursor-pointer hover:bg-gray-400 rounded-full px-5"
-              >
-                <GrEdit />
-                <p>Edit Post</p>
-              </div>
+              {currentUser.email === "jdilmoro@gmail.com" && (
+                <div
+                  onClick={() => navigate(`/edit/${post?.id}`)}
+                  className="flex space-x-3 items-center cursor-pointer hover:bg-gray-400 rounded-full px-5"
+                >
+                  <GrEdit />
+                  <p>Edit Post</p>
+                </div>
+              )}
             </div>
             {showComments && <CommentForm />}
             <article className="max-w-prose mx-auto py-8">
