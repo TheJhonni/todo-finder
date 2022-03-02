@@ -31,14 +31,12 @@ const userReducer = (state = initialState, action) => {
     case types.REGISTER_SUCCESS:
     case types.LOGIN_SUCCESS:
     case types.GOOGLE_SUCCESS:
-    case types.FB_SUCCESS: {
-      console.log("PAYLOAD: ", action.payload);
+    case types.FB_SUCCESS:
       return {
         ...state,
         loading: false,
         currentUser: action.payload,
       };
-    }
     case types.REGISTER_FAIL:
     case types.LOGIN_FAIL:
     case types.LOGOUT_FAIL:

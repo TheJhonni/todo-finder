@@ -2,24 +2,22 @@ import React, { useEffect, useState } from "react";
 import SpinnerNoBg from "../Spinner/SpinnerNoBg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import SingleComment from "./SingleComment";
+import SingleComment from "./2_SingleComment";
 
 export default function CommentForm() {
   const [mount, setMount] = useState(false);
   const dispatch = useDispatch();
-  let { id } = useParams();
 
   const [showComments, setShowComments] = useState(null);
 
-  const fetchData = (id) => {
-    // const API = `${process.env.REACT_APP_JSON_API}`;
+  const fetchData = () => {
     setTimeout(() => {
       setMount(true);
-      fetch(`http://localhost:5000/myPosts/${id}`)
+      fetch(`http://localhost:5000/comments`)
         .then((res) => {
           return res.json();
         })
-        .then(({ comments }) => {
+        .then((comments) => {
           console.log(comments);
           // store Data in State Data Variable
           setShowComments(comments);
@@ -32,9 +30,8 @@ export default function CommentForm() {
   };
 
   useEffect(() => {
-    fetchData(id);
-    // sendReply(commentId);
-  }, [id]);
+    fetchData();
+  }, []);
 
   return (
     <div className="flex justify-center w-screen h-screen px-4 text-gray-800">
@@ -43,18 +40,17 @@ export default function CommentForm() {
           {showComments ? (
             showComments
               .slice(0, 3)
-              .map(
-                ({ commentAuthor, Link, commentBody, date, id, replies }) => (
-                  <SingleComment
-                    commentAuthor={commentAuthor}
-                    Link={Link}
-                    commentBody={commentBody}
-                    date={date}
-                    CommentId={id}
-                    replies={replies}
-                  />
-                )
-              )
+              .map((comment) => (
+                <SingleComment
+                  comment={comment}
+                  commentAuthor={comment.commentAuthor}
+                  Link={comment.Link}
+                  commentBody={comment.commentBody}
+                  date={comment.date}
+                  CommentId={comment.id}
+                  replies={comment.replies}
+                />
+              ))
           ) : (
             <SpinnerNoBg />
           )}

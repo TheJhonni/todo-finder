@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 export default function InputSendReply({ replies, commentAuthor }) {
   const [replyBody, setReplyBody] = useState("");
 
-  const { id } = useParams();
+  const { postId } = useParams();
 
   const sendReply = async (e) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ export default function InputSendReply({ replies, commentAuthor }) {
     }
     try {
       const resp = await fetch(
-        `http://localhost:5000/myPosts/${id}/?comments?/replies`,
+        `http://localhost:5000/myPosts/${postId}/comments`,
         {
           method: "POST",
           headers: { "Content-type": "Application/json" },

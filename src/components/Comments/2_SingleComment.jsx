@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import RepliesComments from "./RepliesComments";
-import InputSendReply from "./InputSendReply";
+import RepliesComments from "./3.2_RepliesComments";
+import InputSendReply from "./3.1_InputSendReply";
+import { useParams } from "react-router-dom";
 
 export default function SingleComment({
+  comment,
   commentAuthor,
   Link,
   commentBody,
@@ -11,7 +13,7 @@ export default function SingleComment({
   replies,
 }) {
   const [input, setInput] = useState(null);
-  const [reply, setReply] = useState(null);
+  const [showReply, setShowReply] = useState(null);
 
   return (
     <div key={commentId} className="flex w-full p-8 border-b border-gray-300">
@@ -43,25 +45,17 @@ export default function SingleComment({
             Reply
           </button>
           <button
-            onClick={() => setReply(!reply)}
+            onClick={() => setShowReply(!showReply)}
             className="ml-2 text-sm font-semibold hover:underline"
           >
-            {reply ? "Hide replies" : "See replies"}
+            {showReply ? "Hide replies" : "See replies"}
           </button>
         </div>
         {input && (
-          <InputSendReply
-            replies={replies}
-            commentAuthor={commentAuthor}
-            commentId={commentId}
-          />
+          <InputSendReply replies={replies} commentAuthor={commentAuthor} />
         )}
-        {reply && (
-          <RepliesComments
-            replies={replies}
-            commentAuthor={commentAuthor}
-            commentId={commentId}
-          />
+        {showReply && (
+          <RepliesComments replies={replies} commentAuthor={commentAuthor} />
         )}
       </div>
     </div>

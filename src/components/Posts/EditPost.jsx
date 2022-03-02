@@ -37,7 +37,7 @@ export default function EditPost() {
     });
   };
 
-  function editedPost() {
+  function editedPost(id) {
     if (window.confirm("Are you sure to edit this post?")) {
       fetch(`http://localhost:5000/myPosts/${id}`, {
         method: "PUT",

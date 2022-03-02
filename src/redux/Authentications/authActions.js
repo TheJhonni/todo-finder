@@ -105,15 +105,14 @@ export const loginInitiate = (email, password, displayName) => {
     auth
       .signInWithEmailAndPassword(email, password) //sign in function
       .then(({ user }) => {
-        /*user
-          .updateProfile({
-            displayName,
-          })
-          .then(() => { */
+        user.updateProfile({
+          displayName,
+        });
         console.log("USER: ", user);
         dispatch(loginSuccess(user._delegate));
         alert("Yes, you've just logged in!");
       })
+
       .catch((error) => {
         dispatch(loginFail(error.message));
         alert("Hops" + error.message);
@@ -127,10 +126,11 @@ export const logoutInitiate = () => {
     dispatch(logoutStart());
     auth
       .signOut() //sign in function
-      .then((resp) => dispatch(logoutSuccess()))
-      .catch((error) =>
-        dispatch(logoutFail(error.message), alert("Hops" + error.message))
-      );
+      .then(() => dispatch(logoutSuccess()))
+      .catch((error) => {
+        dispatch(logoutFail(error.message));
+        alert("Hops" + error.message);
+      });
   };
 };
 
@@ -147,14 +147,13 @@ export const googleInitiate = () => {
     auth
       .signInWithPopup(googleAuthProvider) //sign in function
       .then(({ user }) => {
-        dispatch(
-          googleSuccess(user),
-          alert("Congrats, You have just logged in!")
-        );
+        dispatch(googleSuccess(user));
+        alert("Congrats, You have just logged in!");
       })
-      .catch((error) =>
-        dispatch(googleFail(error.message), alert("Hops" + error.message))
-      );
+      .catch((error) => {
+        dispatch(googleFail(error.message));
+        alert("Hops" + error.message);
+      });
   };
 };
 
@@ -165,10 +164,12 @@ export const fbInitiate = () => {
     auth
       .signInWithPopup(facebookAuthProvider.addScope("user_birthday, email")) //sign in function
       .then(({ user }) => {
-        dispatch(fbSuccess(user), alert("Congrats, You have just logged in!"));
+        dispatch(fbSuccess(user));
+        alert("Congrats, You have just logged in!");
       })
-      .catch((error) =>
-        dispatch(fbFail(error.message), alert("Hops" + error.message))
-      );
+      .catch((error) => {
+        dispatch(fbFail(error.message));
+        alert("Hops" + error.message);
+      });
   };
 };

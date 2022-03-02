@@ -9,6 +9,12 @@ export default function Logout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const handleAuth = () => {
+    if (currentUser) {
+      dispatch(logoutInitiate());
+    } // if it's logged out, then push to "/login"
+  };
+
   useEffect(() => {
     if (!currentUser) {
       alert("Log out succesfully!");
@@ -16,12 +22,6 @@ export default function Logout() {
       navigate("/login"); // if it's logged out, then push to "/login"
     }
   }, [currentUser, navigate]);
-
-  const handleAuth = () => {
-    if (currentUser) {
-      dispatch(logoutInitiate());
-    }
-  };
 
   return (
     <div

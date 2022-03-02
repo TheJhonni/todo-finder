@@ -7,8 +7,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/Spinner/Spinner";
 import Footer from "../components/Footer/Footer";
-import ShowTestimonials from "../components/Testimonials/ShowTestimonials";
-import CommentForm from "../components/Comments/CommentForm";
+import CommentForm from "../components/Comments/1_CommentForm";
 
 export default function PostScreen() {
   const [mount, setMount] = useState(false);
@@ -21,7 +20,7 @@ export default function PostScreen() {
   const fetchIdData = (id) => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
     setTimeout(() => {
-      setMount(true);
+      setMount(false);
       fetch(`http://localhost:5000/myPosts/${id}`)
         .then((res) => {
           return res.json();
@@ -30,7 +29,7 @@ export default function PostScreen() {
           console.log(data);
           // store Data in State Data Variable
           setPost(data);
-          setMount(false);
+          setMount(true);
         })
         .catch((err) => {
           console.log(err, " error");
@@ -44,7 +43,7 @@ export default function PostScreen() {
 
   return (
     <>
-      {currentUser ? (
+      {currentUser && mount ? (
         <div className="img-textLeft">
           <Navbar />
 
