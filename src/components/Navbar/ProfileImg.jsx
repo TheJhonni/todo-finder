@@ -5,8 +5,8 @@ function ProfileImg({ img, setShown }) {
     <>
       <div className="rounded">
         <img
-          className="object-cover relative rounded-full border
-            border-gray-100 bg-white shadow-sm max-w-[70px] h-[50px] cursor-pointer"
+          className="object-cover relative 
+           bg-transparent shadow-sm w-[100px] h-[50px] cursor-pointer"
           src={img}
         />
       </div>

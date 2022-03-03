@@ -17,10 +17,28 @@ import UseRoute from "./components/Loading/UseRoute";
 import Spinner from "./components/Spinner/Spinner";
 import NewPost from "./components/Posts/NewPost";
 import EditPost from "./components/Posts/EditPost";
+import Homepagege from "./screens/Homepagege";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
+
+  const [posts, setPosts] = useState(null);
+
+  const loadPosts = () => {
+    setTimeout(() => {
+      fetch(`http://localhost:5000/myPosts`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setPosts(data);
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    }, 350);
+  };
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -30,7 +48,10 @@ function App() {
         dispatch(setUser(null));
       }
     });
+    loadPosts();
   }, [dispatch]);
+
+  const { category } = posts ?? {};
 
   return (
     <BrowserRouter>
@@ -45,7 +66,13 @@ function App() {
 
           <Route
             exact
-            path="/posts"
+            path="/homePage"
+            element={<Homepagege currentUser={currentUser} />}
+          />
+          <Route
+            exact
+            // path="/homePage?category=:category"
+            path="/category=:category"
             element={<GenericScreen currentUser={currentUser} />}
           />
           <Route

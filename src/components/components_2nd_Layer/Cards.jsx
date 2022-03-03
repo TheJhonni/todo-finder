@@ -1,20 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
-export default function Cards({ name, link, img }) {
+export default function Cards({ name, img }) {
   return (
-    <Link to={link}>
-      <div className="flex flex-col justify-center items-center rounded-2xl overflow-hidden shadow-lg cursor-pointer hover:shadow-2xl hover:scale-[0.85] hover:translate-x-3 hover:skew-y-3 transition-all duration-90 ease-in">
-        <h1 className="text-xl text-gray-300 font-semibold md:text-2xl lg:text-3xl">
-          {name}
-        </h1>
-        <img
-          className="w-[200px] h-[200px] rounded-2xl bg-gradient-to-r from-[#b509e0] to-[#7d0cbe] opacity-70 z-1 hover:opacity-20"
-          src={img}
-          alt={name + " generic " + "image"}
-        />
-      </div>
-    </Link>
+    <div className="flex flex-col justify-center items-center rounded-2xl overflow-hidden shadow-lg cursor-pointer hover:shadow-2xl hover:scale-[0.85] hover:translate-x-3 hover:skew-y-3 transition-all duration-90 ease-in">
+      <h1 className="text-xl text-gray-300 font-semibold md:text-2xl lg:text-3xl">
+        {name}
+      </h1>
+      <img
+        className="w-[200px] h-[200px] rounded-2xl bg-gradient-to-r from-[#fff] to-[#28cdd341] opacity-70 z-1 hover:opacity-20"
+        src={img}
+        alt={name + " generic " + "image"}
+      />
+    </div>
   );
 }
 

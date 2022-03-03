@@ -8,9 +8,7 @@ export default function SingleReply({
   replyBody,
 }) {
   const [input, setInput] = useState(null);
-  const [showComments, setShowComments] = useState([]);
-
-  //   const id = ID_to_remove;
+  const [showComments, setShowComments] = useState(null);
 
   const deleteReply = () => {
     // console.log(id);

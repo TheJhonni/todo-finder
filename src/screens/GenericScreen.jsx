@@ -16,12 +16,13 @@ export default function GenericScreen() {
   const [mount, setMount] = useState(false);
   const [posts, setPosts] = useState(null);
 
+  const { category } = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
   const loadPosts = () => {
     setTimeout(() => {
       setMount(false);
-      fetch("http://localhost:5000/myPosts")
+      fetch(`http://localhost:5000/myPosts?category=${category}`)
         .then((res) => {
           return res.json();
         })
@@ -50,7 +51,7 @@ export default function GenericScreen() {
             <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
               <div className="flex justify-center items-center">
                 <h2 className="text-6xl mb-7 font-extrabold text-center text-gray-200">
-                  Read more
+                  It's silly How mutch we don't know about our {category}
                 </h2>
                 {currentUser.email === "jdilmoro@gmail.com" && (
                   <span

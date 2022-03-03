@@ -5,14 +5,17 @@ export default function RepliesComments({ replies, commentAuthor }) {
   return (
     <>
       {replies ? (
-        replies.map((reply) => (
-          <SingleReply
-            id={reply.id}
-            commentAuthor={commentAuthor}
-            replyDate={reply.replyDate}
-            replyBody={reply.replyBody}
-          />
-        ))
+        replies
+          .sort(() => Math.random() - Math.random())
+          .slice(0, 4)
+          .map((reply) => (
+            <SingleReply
+              id={reply.id}
+              commentAuthor={commentAuthor}
+              replyDate={reply.replyDate}
+              replyBody={reply.replyBody}
+            />
+          ))
       ) : (
         <span className="mt-3">No comment yet</span>
       )}

@@ -7,18 +7,15 @@ import { Transition } from "@headlessui/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function Navbar({ img }) {
   const [sure, setSure] = useState(false);
+  const navigate = useNavigate();
   return (
     <>
       <nav className="relative bg-trasparent border-b-2 border-blue-200 text-gray-300">
         <div className="container mx-auto flex justify-between align-center">
-          <div className="my-auto">
-            <ProfileImg
-              img={
-                "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiqkuHvwY9wnqd1tV53y2GZYdSHNZ7q-JjTA&usqp=CAU"
-              }
-            />
+          <div onClick={() => navigate("/homePage")} className="my-auto">
+            <ProfileImg img={"logos/logo.png" || img} />
           </div>
 
           <ul className="flex">
