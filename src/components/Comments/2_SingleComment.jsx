@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import RepliesComments from "./3.2_RepliesComments";
 import { FcFullTrash } from "react-icons/fc";
-import { useParams } from "react-router-dom";
-import Spinner from "../Spinner/Spinner";
 
 export default function SingleComment({
   comment,
@@ -57,7 +55,7 @@ export default function SingleComment({
 
   useEffect(() => {
     fetchReplies(commentId);
-  }, [commentId]);
+  }, []);
 
   return (
     <>
@@ -98,7 +96,7 @@ export default function SingleComment({
                 {replies ? "Hide replies" : "See replies"}
               </button>
               <span
-                onClick={() => deleteComment(commentId)}
+                onClick={() => deleteComment()}
                 className="cursor-pointer ml-10 hover:scale-125 transition duration-75 ease-in"
               >
                 <FcFullTrash className="w-5 h-5" />

@@ -3,14 +3,13 @@ import SpinnerNoBg from "../Spinner/SpinnerNoBg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import SingleComment from "./2_SingleComment";
+import { FcFullTrash } from "react-icons/fc";
 
 export default function CommentForm() {
   const [mount, setMount] = useState(false);
-  // const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(null);
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
-
   const fetchComments = () => {
     setTimeout(() => {
       setMount(true);
@@ -40,16 +39,18 @@ export default function CommentForm() {
         <div className="flex-grow h-0 overflow-auto">
           {showComments ? (
             showComments.map((comment) => (
-              <SingleComment
-                key={comment.id}
-                comment={comment}
-                commentAuthor={comment?.commentAuthor || currentUser.email}
-                Link={comment?.Link}
-                commentBody={comment?.commentBody}
-                date={comment?.date}
-                postId={comment?.postId}
-                commentId={comment?.id}
-              />
+              <div className="flex">
+                <SingleComment
+                  key={comment.id}
+                  comment={comment}
+                  commentAuthor={comment?.commentAuthor || currentUser.email}
+                  Link={comment?.Link}
+                  commentBody={comment?.commentBody}
+                  date={comment?.date}
+                  postId={comment?.postId}
+                  commentId={comment?.id}
+                />
+              </div>
             ))
           ) : (
             <SpinnerNoBg />
