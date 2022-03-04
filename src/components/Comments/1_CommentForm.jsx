@@ -6,12 +6,12 @@ import SingleComment from "./2_SingleComment";
 
 export default function CommentForm() {
   const [mount, setMount] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(null);
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
-  const fetchData = () => {
+  const fetchComments = () => {
     setTimeout(() => {
       setMount(true);
       fetch(`http://localhost:5000/myPosts/${id}?_embed-comments`)
@@ -30,33 +30,8 @@ export default function CommentForm() {
     }, 350);
   };
 
-  const deleteComment = (id) => {
-    // console.log(id);
-    if (window.confirm("Are you sure to delete this Comment?")) {
-      setTimeout(() => {
-        setMount(true);
-        fetch(`http://localhost:5000/myPosts/?_embed-comments/${id}`, {
-          method: "DELETE",
-          headers: { "Content-type": "Application/json" },
-        })
-          .then((res) => {
-            return res.json();
-          })
-          .then(() => {
-            // console.log(replies);
-            // store Data in State Data Variable
-            // setShowComments(comments);
-            setMount(false);
-          })
-          .catch((err) => {
-            console.log(err, " error");
-          });
-      }, 350);
-    }
-  };
-
   useEffect(() => {
-    fetchData();
+    fetchComments();
   }, []);
 
   return (
@@ -66,14 +41,14 @@ export default function CommentForm() {
           {showComments ? (
             showComments.map((comment) => (
               <SingleComment
+                key={comment.id}
                 comment={comment}
                 commentAuthor={comment?.commentAuthor || currentUser.email}
                 Link={comment?.Link}
                 commentBody={comment?.commentBody}
                 date={comment?.date}
-                CommentId={comment?.id}
-                replies={comment?.replies}
-                deleteComment={deleteComment}
+                postId={comment?.postId}
+                commentId={comment?.id}
               />
             ))
           ) : (

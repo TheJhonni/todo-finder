@@ -12,14 +12,17 @@ export default function InputSendReply() {
     }
 
     try {
-      const resp = await fetch(`http://localhost:5000/comments`, {
-        method: "POST",
-        headers: { "Content-type": "Application/json" },
-        body: JSON.stringify({
-          commentBody,
-          date: randomDate(new Date(2020, 0, 1), new Date()).toLocaleString(),
-        }),
-      });
+      const resp = await fetch(
+        // `http://localhost:5000/myPosts/?_embed-replies/${id}`,
+        {
+          method: "POST",
+          headers: { "Content-type": "Application/json" },
+          body: JSON.stringify({
+            commentBody,
+            date: randomDate(new Date(2020, 0, 1), new Date()).toLocaleString(),
+          }),
+        }
+      );
       if (resp.ok) {
         // setMount(true);
         alert("replied");
