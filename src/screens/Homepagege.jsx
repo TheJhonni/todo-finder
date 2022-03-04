@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar/Navbar";
 import Spinner from "../components/Spinner/Spinner";
 import { useSelector } from "react-redux";
 import Cards from "../components/components_2nd_Layer/Cards";
+import Blogs from "../components/components_2nd_Layer/Blogs";
 
 export default function Homepagege() {
   const navigate = useNavigate();
@@ -60,18 +61,24 @@ export default function Homepagege() {
                 </h2>
               </div>
 
-              <div className="flex flex-col items-center space-x-4 mb-10">
-                <div className="flex justify-between mt-[100px] lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
+              <div className="text-gray-600 flex body-font overflow-hidden">
+                <div className="flex py-24 mx-auto">
                   {posts &&
                     posts.map(
                       (post) =>
                         post.category === "generic" && (
                           <Link to={`/posts/${post.id}`}>
-                            <Posts
-                              key={post.id}
-                              id={post.id}
-                              src={post.img1}
-                              title={post.title}
+                            <Blogs
+                              key={post?.id}
+                              id={post?.id}
+                              src={post?.img1}
+                              title={post?.title}
+                              subtitle={post?.subtitle}
+                              p={post?.p}
+                              category={post?.category}
+                              author={post?.author}
+                              authorLink={post?.authorLink}
+                              body={post?.body.slice(0, 50)}
                             />
                           </Link>
                         )
@@ -80,7 +87,7 @@ export default function Homepagege() {
               </div>
               <div className="h-screen flex flex-col mt-5">
                 <h2 className="text-4xl my-7 font-extrabold text-center text-gray-200">
-                  Our categories
+                  Our categories are:
                 </h2>
                 <div className="mt-[100px] space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
                   {posts &&

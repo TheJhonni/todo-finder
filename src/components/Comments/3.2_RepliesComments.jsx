@@ -6,7 +6,6 @@ export default function RepliesComments({ replies, commentAuthor }) {
     <>
       {replies ? (
         replies
-          .sort(() => Math.random() - Math.random())
           .slice(0, 4)
           .map((reply) => (
             <SingleReply

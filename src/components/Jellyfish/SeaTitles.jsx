@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Cards from "../components_2nd_Layer/Cards";
+import GenericScreen from "../../screens/GenericScreen";
+import Footer from "../Footer/Footer";
 
 export default function SeaTitles() {
   return (
@@ -14,38 +15,7 @@ export default function SeaTitles() {
           <p>Nautical exploration is as old as humans.</p>
         </div>
       </div>
-      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
-        <Cards
-          name={"ciao"}
-          link={"/posts"}
-          img={"https://via.placeholder.com/150"}
-        />
-        <Cards
-          name={"ciao"}
-          link={"/posts"}
-          img={"https://via.placeholder.com/150"}
-        />
-        <Cards
-          name={"ciao"}
-          link={"/posts"}
-          img={"https://via.placeholder.com/150"}
-        />
-        <Cards
-          name={"ciao"}
-          link={"/posts"}
-          img={"https://via.placeholder.com/150"}
-        />
-        <Cards
-          name={"ciao"}
-          link={"/posts"}
-          img={"https://via.placeholder.com/150"}
-        />
-        <Cards
-          name={"ciao"}
-          link={"/posts"}
-          img={"https://via.placeholder.com/150"}
-        />
-      </div>
+      <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5"></div>
     </div>
   );
 }

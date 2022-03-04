@@ -5,6 +5,8 @@ import Scene from "../components/Jellyfish/Scene.js";
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import SeaTitles from "../components/Jellyfish/SeaTitles";
+import GenericScreen from "./GenericScreen";
+import Footer from "../components/Footer/Footer";
 
 export default function SeaScreen() {
   return (
@@ -19,9 +21,10 @@ export default function SeaScreen() {
               <Scene />
             </Suspense>
           </Canvas>
-          <SeaTitles />
         </div>
+        <SeaTitles />
       </div>
+      <Footer />
     </>
   );
 }

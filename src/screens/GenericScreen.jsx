@@ -51,7 +51,10 @@ export default function GenericScreen() {
             <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
               <div className="flex justify-center items-center">
                 <h2 className="text-6xl mb-7 font-extrabold text-center text-gray-200">
-                  It's silly How mutch we don't know about our {category}
+                  It's silly How mutch we don't know about our{" "}
+                  {(category === "sea" && "Oceans") ||
+                    (category === "eye" && "Limited View") ||
+                    (category === "space" && "Universe")}
                 </h2>
                 {currentUser.email === "jdilmoro@gmail.com" && (
                   <span
