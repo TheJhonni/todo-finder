@@ -3,15 +3,17 @@ import RepliesComments from "./3.2_RepliesComments";
 import { FcFullTrash } from "react-icons/fc";
 
 export default function SingleComment({
-  comment,
+  setShowComments,
+  showComments,
   commentAuthor,
   Link,
   commentBody,
   date,
   postId,
   commentId,
+  deleteComment,
 }) {
-  const [replies, setReplies] = useState(null);
+  const [replies, setReplies] = useState([]);
   const [showReplies, setShowReplies] = useState(null);
 
   const fetchReplies = () => {
@@ -31,26 +33,6 @@ export default function SingleComment({
           console.log(err, " error");
         });
     }, 350);
-  };
-
-  const deleteComment = () => {
-    if (window.confirm("Are you sure to delete this Comment?")) {
-      setTimeout(() => {
-        fetch(
-          `http://localhost:5000/myPosts/${postId}?_embed-comments/${commentId}`,
-          {
-            method: "DELETE",
-            headers: { "Content-type": "Application/json" },
-          }
-        )
-          .then((res) => {
-            return res.json();
-          })
-          .catch((err) => {
-            console.log(err, " error");
-          });
-      }, 350);
-    }
   };
 
   useEffect(() => {
@@ -93,10 +75,10 @@ export default function SingleComment({
                 onClick={() => setShowReplies(!showReplies)}
                 className="ml-2 text-sm font-semibold hover:underline"
               >
-                {replies ? "Hide replies" : "See replies"}
+                {showReplies ? "Hide replies" : "See replies"}
               </button>
               <span
-                onClick={() => deleteComment()}
+                onClick={() => deleteComment(commentId)}
                 className="cursor-pointer ml-10 hover:scale-125 transition duration-75 ease-in"
               >
                 <FcFullTrash className="w-5 h-5" />

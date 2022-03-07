@@ -9,7 +9,8 @@ export default function RepliesComments({ replies, commentAuthor }) {
           .slice(0, 4)
           .map((reply) => (
             <SingleReply
-              id={reply.id}
+              postId={reply.id}
+              commentId={reply.commentId}
               commentAuthor={commentAuthor}
               replyDate={reply.replyDate}
               replyBody={reply.replyBody}

@@ -7,9 +7,11 @@ import { FcFullTrash } from "react-icons/fc";
 
 export default function CommentForm() {
   const [mount, setMount] = useState(false);
-  const [showComments, setShowComments] = useState(null);
+  const [showComments, setShowComments] = useState([]);
   const { id } = useParams();
+  const [commentId, setCommentId] = useState(null);
   const { currentUser } = useSelector((state) => state.user);
+
   const fetchComments = () => {
     setTimeout(() => {
       setMount(true);
@@ -21,12 +23,36 @@ export default function CommentForm() {
           console.log(comments);
           // store Data in State Data Variable
           setShowComments(comments);
+          setCommentId(comments.commentId);
           setMount(false);
         })
         .catch((err) => {
           console.log(err, " error");
         });
     }, 350);
+  };
+
+  const deleteComment = (commentId) => {
+    if (window.confirm("Are you sure to delete this Comment?")) {
+      fetch(`http://localhost:5000/myPosts/${id}?_embed-comments`, {
+        method: "PUT",
+        headers: { "Content-type": "Application/json" },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            setShowComments(
+              // ...showComments,
+              showComments.filter((filterId) => filterId === commentId)
+            );
+            console.log(res);
+            alert("Comment deleted succesfully");
+          }
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    }
   };
 
   useEffect(() => {
@@ -41,6 +67,8 @@ export default function CommentForm() {
             showComments.map((comment) => (
               <div className="flex">
                 <SingleComment
+                  setShowComments={setShowComments}
+                  showComments={showComments}
                   key={comment.id}
                   comment={comment}
                   commentAuthor={comment?.commentAuthor || currentUser.email}
@@ -48,7 +76,8 @@ export default function CommentForm() {
                   commentBody={comment?.commentBody}
                   date={comment?.date}
                   postId={comment?.postId}
-                  commentId={comment?.id}
+                  commentId={comment?.commentId}
+                  deleteComment={deleteComment}
                 />
               </div>
             ))
