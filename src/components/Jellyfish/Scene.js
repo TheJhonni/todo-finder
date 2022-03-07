@@ -8,6 +8,8 @@ title: jellyfish
 
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import SpinnerNoBg from "../Spinner/SpinnerNoBg";
+import Spinner from "../Spinner/Spinner";
 
 export default function Model({ ...props }) {
   const group = useRef();
@@ -20,28 +22,32 @@ export default function Model({ ...props }) {
   });
 
   return (
-    <group ref={group} {...props} position={[2, -1, 1.5]} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
-        <group rotation={[Math.PI / 2, 0, 0]}>
-          <group scale={0.28}>
-            <primitive object={nodes.GLTF_created_0_rootJoint} />
-            <group scale={[3.63, 3.63, 3.63]} />
-            <group scale={[3.63, 3.63, 3.63]} />
-            <skinnedMesh
-              geometry={nodes.Object_34.geometry}
-              material={materials.jellyfish_body}
-              skeleton={nodes.Object_34.skeleton}
-            />
-            <skinnedMesh
-              geometry={nodes.Object_37.geometry}
-              material={materials.emit}
-              skeleton={nodes.Object_37.skeleton}
-            />
+    <>
+      <group ref={group} {...props} position={[2, -1, 1.5]} dispose={null}>
+        <group rotation={[-Math.PI / 2, 0, 0]}>
+          <group rotation={[Math.PI / 2, 0, 0]}>
+            <group scale={0.28}>
+              <primitive object={nodes.GLTF_created_0_rootJoint} />
+              <group scale={[3.63, 3.63, 3.63]} />
+              <group scale={[3.63, 3.63, 3.63]} />
+              <skinnedMesh
+                geometry={nodes.Object_34.geometry}
+                material={materials.jellyfish_body}
+                skeleton={nodes.Object_34.skeleton}
+              />
+              <skinnedMesh
+                geometry={nodes.Object_37.geometry}
+                material={materials.emit}
+                skeleton={nodes.Object_37.skeleton}
+              />
+            </group>
           </group>
         </group>
       </group>
-    </group>
+    </>
   );
 }
 
-useGLTF.preload("/scene.gltf");
+{
+  useGLTF.preload("/scene.gltf") ? useGLTF.preload("/scene.gltf") : <Spinner />;
+}

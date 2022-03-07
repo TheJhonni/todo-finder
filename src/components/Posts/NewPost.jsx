@@ -22,6 +22,7 @@ export default function NewPost() {
           method: "POST",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
+            category: "generic",
             author,
             title,
             subtitle,
@@ -33,7 +34,7 @@ export default function NewPost() {
         });
         if (resp.ok) {
           alert("saved succesfully");
-          navigate("/posts");
+          navigate("/homePage");
         }
         // setEditing(fullBody);
       }

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/Spinner/Spinner";
 import Footer from "../components/Footer/Footer";
 import CommentForm from "../components/Comments/1_CommentForm";
-import InputSendReply from "../components/Comments/3.1_InputSendReply";
+import InputSendReply from "../components/Comments/4.1_InputSendReply";
 
 export default function PostScreen() {
   const [mount, setMount] = useState(false);
@@ -85,7 +85,7 @@ export default function PostScreen() {
                   </div>
                 )}
               </div>
-              {showComments && <CommentForm />}
+              {showComments && <CommentForm id={post.id} />}
 
               <article className="max-w-prose mx-auto py-8">
                 <h1 className="text-2xl font-bold mx-auto">{post?.title}</h1>
@@ -110,24 +110,8 @@ export default function PostScreen() {
                   </h2>
                 )}
 
-                {post?.body[1] ? (
-                  <>
-                    <p className="mt-6">{post?.body[0]}</p>
-                    <p className="mt-4">{post?.body[1]}</p>
-                    <p className="mt-4">{post?.body[2]}</p>
-                    <p className="mt-4">{post?.body[3]}</p>
-                    <p className="mt-4">{post?.body[4]}</p>
-                    <p className="mt-4">{post?.body[5]}</p>
+                <p className="mt-6">{post?.body}</p>
 
-                    <p className="mt-4">{post?.body[6]}</p>
-                    <p className="mt-4">{post?.body[7]}</p>
-                    <p className="mt-4">{post?.body[8]}</p>
-                    <p className="mt-4">{post?.body[9]}</p>
-                    <p className="mt-4">{post?.body[10]}</p>
-                  </>
-                ) : (
-                  <p className="mt-4">{post?.body}</p>
-                )}
                 {currentUser && (
                   <button
                     onClick={() => setInput(!input)}

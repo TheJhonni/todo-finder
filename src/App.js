@@ -1,5 +1,5 @@
 import "./App.css";
-import SeaScreen from "./screens/SeaScreen";
+import CategoriesScreen from "./screens/CategoriesScreen";
 import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 import LoginScreen from "./screens/Login/LoginScreen";
 import { useEffect, useState } from "react";
@@ -9,7 +9,6 @@ import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
 import EarthScreen from "./screens/EarthScreen";
 import GenericScreen from "./screens/GenericScreen";
 import PostScreen from "./screens/PostScreen";
-// import Saved from "./screens/Saved";
 import RegisterScreen from "./screens/Login/RegisterScreen";
 import { setUser } from "./redux/Authentications/authActions";
 import FourOFour from "./components/404/FourOFour";
@@ -73,18 +72,18 @@ function App() {
             exact
             // path="/homePage?category=:category"
             path="/category=:category"
-            element={<GenericScreen currentUser={currentUser} />}
+            element={<CategoriesScreen currentUser={currentUser} />}
           />
           <Route
             path="/posts/:id"
             element={<PostScreen currentUser={currentUser} />}
           />
           {/* <Route exact path="/saved" element={<Saved />} /> */}
-          <Route
+          {/* <Route
             exact
             path="/sea"
             element={<SeaScreen currentUser={currentUser} />}
-          />
+          /> */}
           {/* <Route exact path="/picOfTheDay" element={<PicOfTheDay />} /> */}
           <Route
             path="/edit/:id"

@@ -1,23 +1,26 @@
 import React, { useEffect, useState } from "react";
 import SingleReply from "./4_SingleReply";
 
-export default function RepliesComments({ replies, commentAuthor }) {
+export default function RepliesComments({ postId, replies, commentAuthor }) {
   return (
     <>
-      {replies ? (
+      {replies.filter((_r) => _r.replyId === postId) ? (
         replies
+          .filter((_r) => _r.replyId === postId)
+          .reverse()
           .slice(0, 4)
           .map((reply) => (
             <SingleReply
-              postId={reply.id}
-              commentId={reply.commentId}
+              key={reply?.id}
+              postId={reply?.replyId}
+              commentId={reply?.replyId}
               commentAuthor={commentAuthor}
-              replyDate={reply.replyDate}
-              replyBody={reply.replyBody}
+              replyDate={reply?.replyDate}
+              replyBody={reply?.replyBody}
             />
           ))
       ) : (
-        <span className="mt-3">No comment yet</span>
+        <span className="mt-3 text-black text-xl">No comment yet</span>
       )}
     </>
   );

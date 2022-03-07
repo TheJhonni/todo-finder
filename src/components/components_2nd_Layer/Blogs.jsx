@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Blogs({
   src,
+  id,
   title,
   subtitle,
   p,
@@ -9,21 +10,18 @@ export default function Blogs({
   author,
   authorLink,
   body,
+  post,
+  c,
 }) {
   return (
-    <div className="p-12 md:w-1/2 flex flex-col items-start bg-indigo-50 rounded">
+    <div className="p-8 md:w-[600px] mx-3 mt-10 flex flex-col items-start bg-indigo-50 rounded hover:bg-indigo-200">
       <span className="inline-block py-1 px-2 rounded text-indigo-500 text-xs font-medium tracking-widest">
         {category}
       </span>
       <h2 className="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
-        {title}
+        {title.slice(0, 15)} ...
       </h2>
-      <p className="leading-relaxed mb-8">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus quaerat
-        assumenda odit odio, vel porro similique molestiae consequuntur
-        exercitationem aperiam aliquid voluptatem facere reprehenderit, eligendi
-        quas officia, ut tenetur libero?
-      </p>
+      <p className="leading-relaxed mb-8">{body} ...</p>
       <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
         <a className="text-indigo-500 inline-flex items-center">
           Learn More
@@ -53,7 +51,7 @@ export default function Blogs({
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
             <circle cx="12" cy="12" r="3"></circle>
           </svg>
-          1.2K
+          {Math.floor(Math.random() * (999 - 200) + 200).toLocaleString()}
         </span>
         <span className="text-gray-400 inline-flex items-center leading-none text-sm">
           <svg
@@ -67,7 +65,7 @@ export default function Blogs({
           >
             <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
           </svg>
-          6
+          {c && c.filter((_c) => _c.postId === id).length}
         </span>
       </div>
       <a className="inline-flex items-center">

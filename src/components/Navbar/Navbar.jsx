@@ -22,13 +22,13 @@ export default function Navbar({ img }) {
           </div>
 
           <ul className="flex">
-            <li className="hover:bg-blue-800 hover:text-white">
-              <a
-                href="/posts"
-                className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold"
-              >
+            <li
+              onClick={() => navigate("/homePage")}
+              className="hover:bg-blue-800 hover:text-white"
+            >
+              <span className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold cursor-pointer">
                 Home
-              </a>
+              </span>
             </li>
 
             <li className="hoverable hover:bg-blue-800 hover:text-white">

@@ -3,31 +3,29 @@ import RepliesComments from "./3.2_RepliesComments";
 import { FcFullTrash } from "react-icons/fc";
 
 export default function SingleComment({
-  setShowComments,
-  showComments,
+  id,
+  comment,
   commentAuthor,
   Link,
   commentBody,
   date,
-  postId,
   commentId,
   deleteComment,
 }) {
+  // const [newShowComments, setNewShowComments] = showComments;
   const [replies, setReplies] = useState([]);
   const [showReplies, setShowReplies] = useState(null);
 
   const fetchReplies = () => {
     setTimeout(() => {
-      fetch(
-        `http://localhost:5000/myPosts/${postId}?_embed-replies/${commentId}`
-      )
+      fetch(`http://localhost:5000/replies`)
         .then((res) => {
           return res.json();
         })
-        .then(({ replies }) => {
-          console.log(replies);
+        .then((data) => {
+          // console.log(data);
           // store Data in State Data Variable
-          setReplies(replies);
+          setReplies(data);
         })
         .catch((err) => {
           console.log(err, " error");
@@ -36,16 +34,13 @@ export default function SingleComment({
   };
 
   useEffect(() => {
-    fetchReplies(commentId);
+    fetchReplies();
   }, []);
 
   return (
     <>
       {replies && (
-        <div
-          key={commentId}
-          className="flex w-full p-8 border-b border-gray-300"
-        >
+        <div className="flex w-full p-8 border-b border-gray-300">
           <img
             src={
               Link
@@ -57,16 +52,11 @@ export default function SingleComment({
           <div className="flex flex-col flex-grow ml-4">
             <div className="flex items-center">
               <span className="font-semibold">{commentAuthor}</span>
-              <span className="ml-1">@ {commentAuthor}</span>
+              {/* <span className="ml-1">@ {commentAuthor}</span> */}
 
               <span className="text-sm ml-[300px]">at: {date}</span>
             </div>
-            <p className="mt-1">
-              {commentBody}
-              <a className="underline" href="#">
-                #hashtag
-              </a>
-            </p>
+            <p className="mt-1 ">{commentBody}</p>
             <div className="flex mt-2">
               <button className="text-sm font-semibold hover:underline">
                 Like
@@ -86,10 +76,12 @@ export default function SingleComment({
             </div>
             {showReplies && (
               <RepliesComments
+                postId={id}
                 replies={replies}
                 commentAuthor={commentAuthor}
               />
             )}
+            {replies.length < 0 && <span className="mt-3">No comment yet</span>}
           </div>
         </div>
       )}
