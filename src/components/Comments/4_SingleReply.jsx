@@ -3,13 +3,14 @@ import { FcFullTrash } from "react-icons/fc";
 
 export default function SingleReply({
   id,
+  reply,
   commentAuthor,
   replyDate,
   replyBody,
 }) {
   const [input, setInput] = useState(null);
 
-  const deleteReply = () => {
+  const deleteReply = (id) => {
     if (window.confirm("Are you sure to delete this Comment?")) {
       fetch(`http://localhost:5000/replies/${id}`, {
         method: "DELETE",
@@ -56,7 +57,7 @@ export default function SingleReply({
                 </button>
               </div>
               <span
-                onClick={() => deleteReply(id)}
+                onClick={() => deleteReply(reply.id)}
                 className="cursor-pointer ml-10 hover:scale-125 transition duration-75 ease-in"
               >
                 <FcFullTrash className="w-5 h-5" />

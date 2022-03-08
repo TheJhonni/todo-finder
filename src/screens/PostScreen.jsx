@@ -45,9 +45,9 @@ export default function PostScreen() {
 
   return (
     <>
+      <Navbar />
       {currentUser && mount ? (
         <>
-          <Navbar img={"logos/logo.png"} />
           <div className="img-textLeft">
             <main className="relative container mx-auto bg-[#ffffffd2] px-4">
               <div className="relative mx-4 top-0 pt-[17%] overflow-hidden">

@@ -10,7 +10,7 @@ import { SiSpacemacs } from "react-icons/si";
 import { FaRegEye } from "react-icons/fa";
 import { GiBigWave } from "react-icons/gi";
 
-export default function Navbar({ img }) {
+export default function Navbar() {
   const [sure, setSure] = useState(false);
   const navigate = useNavigate();
   return (
@@ -18,7 +18,7 @@ export default function Navbar({ img }) {
       <nav className="relative bg-trasparent border-b-2 border-blue-200 text-gray-300">
         <div className="container mx-auto flex justify-between align-center">
           <div onClick={() => navigate("/homePage")} className="my-auto">
-            <ProfileImg img={"logos/logo.png" || img} />
+            <ProfileImg img={"logos/logo.png"} />
           </div>
 
           <ul className="flex">
@@ -81,7 +81,7 @@ export default function Navbar({ img }) {
                     <div className="flex items-center">
                       <GiBigWave />
                       <h3 className="font-bold text-xl text-white text-bold mb-2">
-                        ABOUT OUR OCEANS FOR EXAMPLE
+                        NASA'S PICS OF THE DAY
                       </h3>
                     </div>
                     <p className="text-gray-100 text-sm">
@@ -97,7 +97,7 @@ export default function Navbar({ img }) {
                       >
                         <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
                       </svg>
-                      <NavLink to="/category=sea">
+                      <NavLink to="/picOfTheDay">
                         <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
                           Find out more...
                         </p>
@@ -108,13 +108,11 @@ export default function Navbar({ img }) {
                     <div className="flex items-center">
                       <FaRegEye />
                       <h3 className="font-bold text-xl text-white text-bold mb-2">
-                        WHAT WE SEE AROUND US...
+                        FAQ section
                       </h3>
                     </div>
                     <p className="text-gray-100 text-sm">
-                      This proposal is a win-win situation which will cause a
-                      stellar paradigm shift, let's touch base off-line before
-                      we fire the new ux experience.
+                      This section is about our Frequently Asked Questions.
                     </p>
                     <div className="flex items-center py-3">
                       <svg
@@ -124,7 +122,7 @@ export default function Navbar({ img }) {
                       >
                         <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
                       </svg>
-                      <NavLink to="/category=eye">
+                      <NavLink to="/Faq">
                         <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
                           Find out more...
                         </p>

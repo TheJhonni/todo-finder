@@ -16,6 +16,7 @@ export default function RepliesComments({
             <SingleReply
               key={reply?.id}
               id={reply.id}
+              reply={reply}
               commentId={reply?._ID}
               commentAuthor={commentAuthor}
               replyDate={reply?.replyDate}

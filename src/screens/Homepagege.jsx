@@ -16,12 +16,6 @@ export default function Homepagege() {
   const [posts, setPosts] = useState(null);
   const [c, setC] = useState(null);
 
-  const uniquePosts = (posts) =>
-    Object.keys(posts).reduce((res, key) => {
-      !~res.indexOf(posts[key].category) && res.push(posts[key].category);
-      return res;
-    }, []);
-
   const loadPosts = () => {
     setTimeout(() => {
       setMount(false);
@@ -39,21 +33,6 @@ export default function Homepagege() {
           console.log(err, " error");
         });
     }, 350);
-  };
-
-  const fetchComments = () => {
-    setTimeout(() => {
-      fetch(`http://localhost:5000/comments`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          setC(data);
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }, 300);
   };
 
   useEffect(() => {

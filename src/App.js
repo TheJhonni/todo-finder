@@ -17,6 +17,7 @@ import Spinner from "./components/Spinner/Spinner";
 import NewPost from "./components/Posts/NewPost";
 import EditPost from "./components/Posts/EditPost";
 import Homepagege from "./screens/Homepagege";
+import FaqScreen from "./screens/FaqScreen";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -78,13 +79,7 @@ function App() {
             path="/posts/:id"
             element={<PostScreen currentUser={currentUser} />}
           />
-          {/* <Route exact path="/saved" element={<Saved />} /> */}
-          {/* <Route
-            exact
-            path="/sea"
-            element={<SeaScreen currentUser={currentUser} />}
-          /> */}
-          {/* <Route exact path="/picOfTheDay" element={<PicOfTheDay />} /> */}
+          <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
           <Route
             path="/edit/:id"
             element={<EditPost currentUser={currentUser} />}
@@ -93,6 +88,7 @@ function App() {
             path="/newPost"
             element={<NewPost currentUser={currentUser} />}
           />
+          <Route path="/Faq" element={<FaqScreen />} />
         </Routes>
 
         {/* <Route path="/404" element={<FourOFour />} /> */}
