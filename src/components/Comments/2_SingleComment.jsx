@@ -3,14 +3,11 @@ import RepliesComments from "./3.2_RepliesComments";
 import { FcFullTrash } from "react-icons/fc";
 
 export default function SingleComment({
-  id,
-  comment,
   commentAuthor,
   Link,
   commentBody,
   date,
-  commentId,
-  deleteComment,
+  referenceId,
 }) {
   // const [newShowComments, setNewShowComments] = showComments;
   const [replies, setReplies] = useState([]);
@@ -23,14 +20,34 @@ export default function SingleComment({
           return res.json();
         })
         .then((data) => {
-          // console.log(data);
-          // store Data in State Data Variable
           setReplies(data);
         })
         .catch((err) => {
           console.log(err, " error");
         });
     }, 350);
+  };
+
+  const deleteComment = () => {
+    if (window.confirm("Are you sure to delete this Comment?")) {
+      fetch(`http://localhost:5000/comments/${referenceId}`, {
+        method: "DELETE",
+        headers: { "Content-type": "Application/json" },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            // setShowComments(
+            //   // ...showComments,
+            //   showComments.filter((filterId) => filterId === commentId)
+            // );
+            alert("Comment deleted succesfully");
+          }
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    }
   };
 
   useEffect(() => {
@@ -68,7 +85,7 @@ export default function SingleComment({
                 {showReplies ? "Hide replies" : "See replies"}
               </button>
               <span
-                onClick={() => deleteComment(commentId)}
+                onClick={() => deleteComment(referenceId)}
                 className="cursor-pointer ml-10 hover:scale-125 transition duration-75 ease-in"
               >
                 <FcFullTrash className="w-5 h-5" />
@@ -76,7 +93,7 @@ export default function SingleComment({
             </div>
             {showReplies && (
               <RepliesComments
-                postId={id}
+                referenceId={referenceId}
                 replies={replies}
                 commentAuthor={commentAuthor}
               />

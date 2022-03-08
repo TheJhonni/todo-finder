@@ -8,7 +8,6 @@ import { FcFullTrash } from "react-icons/fc";
 export default function CommentForm() {
   const [c, setC] = useState(null);
   const { id } = useParams();
-  // console.log(id);
   const { currentUser } = useSelector((state) => state.user);
 
   const fetchComments = () => {
@@ -29,32 +28,6 @@ export default function CommentForm() {
     }, 300);
   };
 
-  const deleteComment = (commentId) => {
-    if (window.confirm("Are you sure to delete this Comment?")) {
-      // setNewShowComments(
-      //   showComments.filter((commentToGo) => commentId !== commentToGo)
-      // );
-    }
-  };
-  // fetch(`http://localhost:5000/myPosts/${id}?_embed-comments`, {
-  //   method: "PUT",
-  //   headers: { "Content-type": "Application/json" },
-  // })
-  //   .then((res) => {
-  //     if (res.status === 200) {
-  //       console.log(res);
-  //       setShowComments(
-  //         // ...showComments,
-  //         showComments.filter((filterId) => filterId === commentId)
-  //       );
-  //       console.log(res);
-  //       alert("Comment deleted succesfully");
-  //     }
-  //   })
-  //   .catch((err) => {
-  //     console.log(err, " error");
-  //   });
-
   useEffect(() => {
     fetchComments();
   }, []);
@@ -67,19 +40,16 @@ export default function CommentForm() {
             c
               .filter((_c) => _c.postId === id)
               .reverse()
-              .map((_c) => (
+              .map((comment) => (
                 <div className="flex">
                   <SingleComment
-                    id={id}
-                    key={_c.id}
-                    _c={_c}
-                    commentAuthor={_c.commentAuthor || "Unknown-Anonymous"}
-                    Link={_c?.Link}
-                    commentBody={_c?.commentBody}
-                    date={_c?.date}
-                    postId={_c?.postId}
-                    referenceId={_c?.id}
-                    deleteComment={deleteComment}
+                    key={comment.id}
+                    commentAuthor={comment.commentAuthor || "Unknown-Anonymous"}
+                    Link={comment?.Link}
+                    commentBody={comment?.commentBody}
+                    date={comment?.date}
+                    postId={comment?.postId}
+                    referenceId={comment?.id}
                   />
                 </div>
               ))}

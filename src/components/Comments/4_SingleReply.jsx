@@ -2,36 +2,30 @@ import React, { useEffect, useState } from "react";
 import { FcFullTrash } from "react-icons/fc";
 
 export default function SingleReply({
-  postId,
+  id,
   commentAuthor,
   replyDate,
   replyBody,
 }) {
   const [input, setInput] = useState(null);
-  const [showComments, setShowComments] = useState(null);
 
   const deleteReply = () => {
-    // console.log(id);
-    if (window.confirm("Are you sure to delete this reply?")) {
-      setTimeout(() => {
-        // replies.push(...replies, []);
-        // fetch(`http://localhost:5000/comments`)
-        //   .then((res) => {
-        //     return res.json();
-        //   })
-        //   .then(({ replies }) => {
-        //     console.log(replies);
-        //     // store Data in State Data Variable
-        //     setShowComments(replies);
-        //   })
-        //   .catch((err) => {
-        //     console.log(err, " error");
-        //   });
-      }, 350);
+    if (window.confirm("Are you sure to delete this Comment?")) {
+      fetch(`http://localhost:5000/replies/${id}`, {
+        method: "DELETE",
+        headers: { "Content-type": "Application/json" },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            alert("Comment deleted succesfully");
+          }
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
     }
   };
-
-  useEffect(() => {}, []);
 
   return (
     <>
@@ -62,7 +56,7 @@ export default function SingleReply({
                 </button>
               </div>
               <span
-                onClick={() => deleteReply(postId)}
+                onClick={() => deleteReply(id)}
                 className="cursor-pointer ml-10 hover:scale-125 transition duration-75 ease-in"
               >
                 <FcFullTrash className="w-5 h-5" />

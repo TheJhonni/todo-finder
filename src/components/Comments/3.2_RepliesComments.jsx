@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import SingleReply from "./4_SingleReply";
 
-export default function RepliesComments({ postId, replies, commentAuthor }) {
+export default function RepliesComments({
+  referenceId,
+  replies,
+  commentAuthor,
+}) {
   return (
     <>
-      {replies.filter((_r) => _r.replyId === postId) ? (
+      {replies ? (
         replies
-          .filter((_r) => _r.replyId === postId)
+          .filter((_r) => _r._ID === referenceId)
           .reverse()
-          .slice(0, 4)
           .map((reply) => (
             <SingleReply
               key={reply?.id}
-              postId={reply?.replyId}
-              commentId={reply?.replyId}
+              id={reply.id}
+              commentId={reply?._ID}
               commentAuthor={commentAuthor}
               replyDate={reply?.replyDate}
               replyBody={reply?.replyBody}

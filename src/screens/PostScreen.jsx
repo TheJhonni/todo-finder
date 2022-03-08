@@ -121,7 +121,7 @@ export default function PostScreen() {
                   </button>
                 )}
 
-                {input && <InputSendReply currentUser={currentUser} />}
+                {input && <InputSendReply id={post.id} />}
               </article>
             </main>
 
