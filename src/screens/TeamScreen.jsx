@@ -1,16 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Gif from "../components/Spinner/Gif";
 
 export default function TeamScreen() {
   const navigate = useNavigate();
+  const [mount, setMount] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setMount(true);
+    }, 500);
+  }, []);
   return (
     <>
-      <div className="w-full h-full bg-gray-300 box-border">
-        <h1 className="text-4xl font-extrabold text-center py-5 px-10 bg-gray-800 shadow-2xl text-gray-200 border-b-4 border-[#0082CA]">
-          MEET OUR TEAM!
-        </h1>
-        <div className="w-full h-screen">
-          <div className="max-w-screen-xl px-4 mx-auto md:px-8">
+      {mount ? (
+        <div className="w-full h-full bg-gray-300">
+          <h1 className="text-4xl font-extrabold text-center py-5 px-10 bg-gray-800 shadow-2xl text-gray-200 border-b-4 border-[#0082CA]">
+            MEET OUR TEAM!
+          </h1>
+
+          <div className="max-w-screen-xl my-5 px-4 mx-auto md:px-8">
             <h1 className="mr-auto mt-5" onClick={() => navigate("/homePage")}>
               <div className="rounded">
                 <img
@@ -136,7 +145,9 @@ export default function TeamScreen() {
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <Gif />
+      )}
     </>
   );
 }

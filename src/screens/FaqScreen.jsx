@@ -18,14 +18,14 @@ export default function FaqScreen() {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           setFaq(data);
           setMount(true);
         })
         .catch((err) => {
           console.log(err, " error");
         });
-    }, 350);
+    }, 750);
   };
 
   useEffect(() => {

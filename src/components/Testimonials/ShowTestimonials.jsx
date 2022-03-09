@@ -27,7 +27,7 @@ function ShowTestimonials() {
         <div className="flex flex-wrap -m-4">
           {testimonials &&
             testimonials.map((testimonial) => (
-              <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
+              <div key={testimonial.id} className="lg:w-1/3 lg:mb-0 mb-6 p-4">
                 <div className="h-full text-center">
                   <img
                     alt="testimonial"

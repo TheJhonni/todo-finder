@@ -26,7 +26,7 @@ export default function GenericScreen() {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
+          // console.log(data);
           // store Data in State Data Variable
           setPosts(data);
           setMount(true);
