@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import DropdownRender from "./Dropdown";
-import ProfileImg from "./ProfileImg";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Logout from "./Logout";
 import { Transition } from "@headlessui/react";
@@ -18,7 +16,13 @@ export default function Navbar() {
       <nav className="relative bg-trasparent border-b-2 border-blue-200 text-gray-300">
         <div className="container mx-auto flex justify-between align-center">
           <div onClick={() => navigate("/homePage")} className="my-auto">
-            <ProfileImg img={"logos/logo.png"} />
+            <div className="rounded">
+              <img
+                className="object-cover relative 
+           bg-transparent shadow-sm w-[100px] h-[50px] cursor-pointer"
+                src="/logos/logo.png"
+              />
+            </div>
           </div>
 
           <ul className="flex">
@@ -79,7 +83,11 @@ export default function Navbar() {
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r-0 lg:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
                     <div className="flex items-center">
-                      <GiBigWave />
+                      <img
+                        className="cover w-[60px] h-[40px] mr-5"
+                        src="/logos/logo.png"
+                        alt=""
+                      />
                       <h3 className="font-bold text-xl text-white text-bold mb-2">
                         NASA'S PICS OF THE DAY
                       </h3>
@@ -106,13 +114,19 @@ export default function Navbar() {
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
                     <div className="flex items-center">
-                      <FaRegEye />
+                      <img
+                        className="cover w-[60px] h-[40px] mr-5"
+                        src="/logos/logo.png"
+                        alt=""
+                      />
                       <h3 className="font-bold text-xl text-white text-bold mb-2">
                         FAQ section
                       </h3>
                     </div>
                     <p className="text-gray-100 text-sm">
-                      This section is about our Frequently Asked Questions.
+                      This section is about our Frequently Asked Questions. An
+                      FAQ page is one of the best ways to help people visiting
+                      or using our site. Get inspired by Q&As.
                     </p>
                     <div className="flex items-center py-3">
                       <svg
@@ -131,17 +145,20 @@ export default function Navbar() {
                   </ul>
                   <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 pb-6 pt-6 lg:pt-3">
                     <div className="flex items-center">
-                      <SiSpacemacs />
+                      <img
+                        className="cover w-[60px] h-[40px] mr-5"
+                        src="/logos/logo.png"
+                        alt=""
+                      />
                       <h3 className="font-bold text-xl text-white text-bold mb-2">
                         MEET THE TEAM
                       </h3>
                     </div>
                     <p className="text-gray-100 text-sm">
-                      Research shows that collaborative problem solving leads to
-                      better outcomes. People are more likely to take calculated
-                      risks that lead to innovation if they have the support of
-                      a team behind them. Working in a team encourages personal
-                      growth, increases job satisfaction, and reduces stress.
+                      Collaborative problem solving leads to better outcomes.
+                      People are more likely to take calculated risks that lead
+                      to innovation if they have the support of a team behind
+                      them.
                     </p>
                     <div className="flex items-center py-3">
                       <svg

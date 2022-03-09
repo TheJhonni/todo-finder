@@ -9,12 +9,15 @@ import Spinner from "../components/Spinner/Spinner";
 import Footer from "../components/Footer/Footer";
 import CommentForm from "../components/Comments/1_CommentForm";
 import InputSendComment from "../components/Comments/4.1_InputSendComment";
+import { FiThumbsDown, FiThumbsUp } from "react-icons/fi";
+import { BsFillHeartFill } from "react-icons/bs";
+import { MdThumbUp, MdThumbDown } from "react-icons/md";
 
 export default function PostScreen() {
   const [mount, setMount] = useState(false);
   let { id } = useParams();
   const navigate = useNavigate();
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState([]);
   const [showComments, setShowComments] = useState(null);
   const { currentUser } = useSelector((state) => state.user);
   const [input, setInput] = useState(null);
@@ -41,15 +44,51 @@ export default function PostScreen() {
     }, 350);
   };
 
+  const likePost = (id) => {
+    fetch(`http://localhost:5000/myPosts/${id}`, {
+      method: "PUT",
+      headers: { "Content-type": "Application/json" },
+      body: JSON.stringify({
+        ...Object,
+        likes: [id],
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err, " error");
+      });
+  };
+
+  const dislikePost = (id) => {
+    fetch(`http://localhost:5000/myPosts/${id}`, {
+      method: "PUT",
+      headers: { "Content-type": "Application/json" },
+      body: JSON.stringify({
+        ...Object,
+        likes: [id],
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err, " error");
+      });
+  };
+
   useEffect(() => {
     fetchIdData(id);
   }, [id]);
 
   return (
     <>
-      <Navbar />
       {currentUser && mount ? (
         <>
+          <Navbar />
           <div className="img-textLeft">
             <main className="relative container mx-auto bg-[#ffffffd2] px-4">
               <div className="relative mx-4 top-0 pt-[17%] overflow-hidden">
@@ -58,6 +97,39 @@ export default function PostScreen() {
                   src={post?.img1}
                   alt=""
                 />
+              </div>
+              <div className="absolute lg:right-[5%] top-[20%] lg:top-[30%]">
+                <div className="flex justify-evenly items-center space-x-1 lg:space-x-5">
+                  {post?.likes.length <= 0 ? (
+                    <>
+                      <FiThumbsUp
+                        onClick={() => {
+                          likePost(post?.id);
+                        }}
+                        className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
+                      />
+                      <FiThumbsDown
+                        onClick={() => dislikePost(post?.id)}
+                        className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <MdThumbUp className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in" />
+                      <MdThumbDown
+                        onClick={() => dislikePost(post?.id)}
+                        className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
+                      />
+                    </>
+                  )}
+                  <BsFillHeartFill
+                    onClick={() => likePost(post?.id)}
+                    className="w-[15px] lg:w-[30px] h-10 text-red-500 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
+                  />
+                  <span className="font-semibold">
+                    {post?.likes.length} Likes
+                  </span>
+                </div>
               </div>
 
               <div className="mt-[-10%] w-1/2 mx-auto">

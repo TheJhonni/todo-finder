@@ -33,8 +33,8 @@ export default function CommentForm() {
   }, []);
 
   return (
-    <div className="flex justify-center w-screen h-screen px-4 text-gray-800">
-      <div className="flex flex-col  w-[60%] h-full flex-grow border-l border-r border-gray-300">
+    <div className="flex justify-center w-screen h-screen px-4 text-gray-800 ">
+      <div className="flex flex-col h-full flex-grow border-l border-r border-gray-300">
         <div className="flex-grow h-0 overflow-auto">
           {c &&
             c

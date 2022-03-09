@@ -283,11 +283,11 @@ html {
   top: 5%;
   right: 0;
   transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 50px;
   cursor: pointer;
 
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4rDeonXXPY7z6bHOAglw8q2IQbWfSo4CZjA&usqp=CAU");
+  background-image: url("/public/logos/logo.png");
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;

@@ -60,7 +60,7 @@ export default function SingleComment({
   return (
     <>
       {replies && (
-        <div className="flex w-full p-8 border-b border-gray-300">
+        <div className="flex p-8 border-b border-gray-300">
           <img
             src={
               Link
