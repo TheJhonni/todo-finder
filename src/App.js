@@ -18,6 +18,7 @@ import NewPost from "./components/Posts/NewPost";
 import EditPost from "./components/Posts/EditPost";
 import Homepagege from "./screens/Homepagege";
 import FaqScreen from "./screens/FaqScreen";
+import TeamScreen from "./screens/TeamScreen";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -89,6 +90,7 @@ function App() {
             element={<NewPost currentUser={currentUser} />}
           />
           <Route path="/Faq" element={<FaqScreen />} />
+          <Route path="/ourTeam" element={<TeamScreen />} />
         </Routes>
 
         {/* <Route path="/404" element={<FourOFour />} /> */}

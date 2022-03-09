@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FAQ from "../components/components_2nd_Layer/FAQ";
 import Navbar from "../components/Navbar/Navbar";
+import ProfileImg from "../components/Navbar/ProfileImg";
 import Spinner from "../components/Spinner/Spinner";
 
 export default function FaqScreen() {
   const [mount, setMount] = useState(false);
   const [faq, setFaq] = useState(null);
+
+  const navigate = useNavigate();
 
   const loadFaq = () => {
     setTimeout(() => {
@@ -45,9 +49,11 @@ export default function FaqScreen() {
     <>
       {mount ? (
         <>
-          <Navbar />
           <div className="w-full h-full bg-gray-300 box-border">
-            <h1 className="text-4xl font-extrabold text-center p-10 bg-gray-800 shadow-2xl text-gray-200 border-b-4 border-[#0082CA]">
+            <h1 className="text-4xl font-extrabold text-center py-5 px-10 bg-gray-800 shadow-2xl text-gray-200 border-b-4 border-[#0082CA]">
+              <span onClick={() => navigate("/homePage")}>
+                <ProfileImg img={"logos/logo.png"} />
+              </span>
               FAQ: FREQUENTLY ASKED QUESTIONS
             </h1>
 

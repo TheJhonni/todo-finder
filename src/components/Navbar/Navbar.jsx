@@ -133,12 +133,15 @@ export default function Navbar() {
                     <div className="flex items-center">
                       <SiSpacemacs />
                       <h3 className="font-bold text-xl text-white text-bold mb-2">
-                        ABOUT OUR UNIVERSE
+                        MEET THE TEAM
                       </h3>
                     </div>
                     <p className="text-gray-100 text-sm">
-                      This is a no-brainer to wash your face, or we need to
-                      future-proof this high performance keywords granularity.
+                      Research shows that collaborative problem solving leads to
+                      better outcomes. People are more likely to take calculated
+                      risks that lead to innovation if they have the support of
+                      a team behind them. Working in a team encourages personal
+                      growth, increases job satisfaction, and reduces stress.
                     </p>
                     <div className="flex items-center py-3">
                       <svg
@@ -148,7 +151,7 @@ export default function Navbar() {
                       >
                         <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
                       </svg>
-                      <NavLink to="/category=space">
+                      <NavLink to="/ourTeam">
                         <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
                           Find out more...
                         </p>
