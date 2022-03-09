@@ -48,7 +48,7 @@ export default function PostScreen() {
 
   const fetchLikes = () => {
     setTimeout(() => {
-      setMount(false);
+      // setMount(false);
       fetch(`http://localhost:5000/likes`)
         .then((res) => {
           return res.json();
@@ -56,7 +56,7 @@ export default function PostScreen() {
         .then((likes) => {
           console.log(likes);
           setLikes(likes);
-          setMount(true);
+          // setMount(true);
         })
         .catch((err) => {
           console.log(err, " error");
@@ -65,7 +65,7 @@ export default function PostScreen() {
   };
   const fetchDislikes = () => {
     setTimeout(() => {
-      setMount(false);
+      // setMount(false);
       fetch(`http://localhost:5000/dislikes`)
         .then((res) => {
           return res.json();
@@ -73,7 +73,7 @@ export default function PostScreen() {
         .then((dislikes) => {
           console.log(dislikes);
           setDislikes(dislikes);
-          setMount(true);
+          // setMount(true);
         })
         .catch((err) => {
           console.log(err, " error");
@@ -82,7 +82,7 @@ export default function PostScreen() {
   };
   const fetchSaved = () => {
     setTimeout(() => {
-      setMount(false);
+      // setMount(false);
       fetch(`http://localhost:5000/saved`)
         .then((res) => {
           return res.json();
@@ -90,7 +90,7 @@ export default function PostScreen() {
         .then((saved) => {
           console.log(saved);
           setSaved(saved);
-          setMount(true);
+          // setMount(true);
         })
         .catch((err) => {
           console.log(err, " error");
