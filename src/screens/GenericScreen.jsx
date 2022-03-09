@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Posts from "../components/components_2nd_Layer/Posts";
 import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
 import Spinner from "../components/Spinner/Spinner";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
@@ -53,7 +52,7 @@ export default function GenericScreen() {
             <div className="mt-[100px] space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
               {posts &&
                 posts.map((post) => (
-                  <div className="flex">
+                  <div key={post.id} className="flex">
                     <Link to={`/posts/${post.id}`}>
                       <Posts
                         key={post.id}

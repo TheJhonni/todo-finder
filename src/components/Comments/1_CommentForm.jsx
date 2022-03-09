@@ -41,7 +41,7 @@ export default function CommentForm() {
               .filter((_c) => _c.postId === id)
               .reverse()
               .map((comment) => (
-                <div className="flex">
+                <div key={comment.id} className="flex">
                   <SingleComment
                     key={comment.id}
                     commentAuthor={comment.commentAuthor || "Unknown-Anonymous"}

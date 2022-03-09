@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import FAQ from "../components/components_2nd_Layer/FAQ";
 import Navbar from "../components/Navbar/Navbar";
 import Spinner from "../components/Spinner/Spinner";
 
 export default function FaqScreen() {
-  const navigate = useNavigate();
   const [mount, setMount] = useState(false);
   const [faq, setFaq] = useState(null);
 
@@ -30,24 +29,36 @@ export default function FaqScreen() {
     loadFaq();
   }, []);
 
+  const toggleFaq = (index) => {
+    setFaq(
+      faq.map((f, i) => {
+        if (i === index) {
+          f.open = !f.open;
+        } else {
+          f.open = false;
+        }
+        return f;
+      })
+    );
+  };
   return (
     <>
       {mount ? (
-        <div className="w-screen h-screen img-textLeft">
+        <>
           <Navbar />
-          <div className="container">
-            <h1 className="text-4xl my-7 font-extrabold text-center text-gray-200">
+          <div className="w-full h-full bg-gray-300 box-border">
+            <h1 className="text-4xl font-extrabold text-center p-10 bg-gray-800 shadow-2xl text-gray-200 border-b-4 border-[#0082CA]">
               FAQ: FREQUENTLY ASKED QUESTIONS
             </h1>
-            {faq &&
-              faq.map((f) => (
-                <div className="" key={f.id}>
-                  <h1 className="">{f.q}</h1>
-                  <p>{f.a}</p>
-                </div>
-              ))}
+
+            <div className="w-full m-w-[768px] mx-auto p-[15px]">
+              {faq &&
+                faq.map((f, i) => (
+                  <FAQ index={i} f={f} q={f.q} a={f.a} toggleFaq={toggleFaq} />
+                ))}
+            </div>
           </div>
-        </div>
+        </>
       ) : (
         <Spinner />
       )}

@@ -12,6 +12,7 @@ export default function SingleComment({
   // const [newShowComments, setNewShowComments] = showComments;
   const [replies, setReplies] = useState([]);
   const [showReplies, setShowReplies] = useState(null);
+  const [inputReply, setInputReply] = useState(null);
 
   const fetchReplies = () => {
     setTimeout(() => {
@@ -82,7 +83,13 @@ export default function SingleComment({
                 onClick={() => setShowReplies(!showReplies)}
                 className="ml-2 text-sm font-semibold hover:underline"
               >
-                {showReplies ? "Hide replies" : "See replies"}
+                {showReplies ? "Hide replies " : "See replies "}
+              </button>
+              <button
+                onClick={() => setInputReply(!inputReply)}
+                className="ml-2 text-sm font-semibold hover:underline"
+              >
+                Reply
               </button>
               <span
                 onClick={() => deleteComment(referenceId)}

@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../components/Spinner/Spinner";
 import Footer from "../components/Footer/Footer";
 import CommentForm from "../components/Comments/1_CommentForm";
-import InputSendReply from "../components/Comments/4.1_InputSendReply";
+import InputSendComment from "../components/Comments/4.1_InputSendComment";
 
 export default function PostScreen() {
   const [mount, setMount] = useState(false);
@@ -18,6 +18,8 @@ export default function PostScreen() {
   const [showComments, setShowComments] = useState(null);
   const { currentUser } = useSelector((state) => state.user);
   const [input, setInput] = useState(null);
+
+  const [fullArticle, setFullArticle] = useState(null);
 
   const fetchIdData = (id) => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
@@ -110,7 +112,33 @@ export default function PostScreen() {
                   </h2>
                 )}
 
-                <p className="mt-6">{post?.body}</p>
+                <p className="mt-6">
+                  {post?.body.slice(1, 500)}
+                  <span
+                    className={
+                      fullArticle ? "opacity-0 ml-[-10px]" : "opacity-1"
+                    }
+                  >
+                    ...
+                  </span>
+                  <span
+                    onClick={() => setFullArticle(!fullArticle)}
+                    className="ml-1 underline cursor-pointer"
+                  >
+                    {!fullArticle ? "Open the full article" : ""}
+                  </span>
+                  {fullArticle && (
+                    <>
+                      {post?.body.slice(500)}
+                      <span
+                        onClick={() => setFullArticle(null)}
+                        className="absolute right-[10%] bottom-[84%] ml-5 underline cursor-pointer"
+                      >
+                        Close the full article
+                      </span>
+                    </>
+                  )}
+                </p>
 
                 {currentUser && (
                   <button
@@ -121,7 +149,7 @@ export default function PostScreen() {
                   </button>
                 )}
 
-                {input && <InputSendReply id={post.id} />}
+                {input && <InputSendComment id={post.id} />}
               </article>
             </main>
 

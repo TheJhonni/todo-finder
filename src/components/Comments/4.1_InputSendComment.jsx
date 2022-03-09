@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-export default function InputSendReply() {
+export default function InputSendComment() {
   const [commentBody, setCommentBody] = useState("");
-  const [c, setC] = useState([]);
-
   const { currentUser } = useSelector((state) => state.user);
   const { id } = useParams();
 

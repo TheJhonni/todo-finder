@@ -274,3 +274,36 @@ html {
   top: -1px;
 }
 /* END NAVBAR CSS */
+
+/* FAQ CSS */
+#faq-q::after {
+  margin: auto;
+  content: "";
+  position: absolute;
+  top: 5%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4rDeonXXPY7z6bHOAglw8q2IQbWfSo4CZjA&usqp=CAU");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  transition: all 0.4s ease;
+}
+
+.open {
+  padding-bottom: 40px;
+}
+
+.open #faq-q::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.open .q-open {
+  max-height: 1000px;
+  opacity: 1;
+}
