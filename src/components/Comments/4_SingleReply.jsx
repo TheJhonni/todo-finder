@@ -38,10 +38,12 @@ export default function SingleReply({
           />
           <div className="flex flex-col flex-grow ml-4">
             <div className="flex items-center">
-              <span className="font-semibold">random author</span>
+              <span className="font-semibold">
+                {reply?.replyAuthor || "random Author"}
+              </span>
               <span className="ml-1">@{commentAuthor}</span>
 
-              <span className="text-sm ml-10">at: {replyDate}</span>
+              <span className="text-sm ml-10">date: {replyDate} </span>
             </div>
             <p className="mt-1">{replyBody}</p>
             <div className="flex mt-2">

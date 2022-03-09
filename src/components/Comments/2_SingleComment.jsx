@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import RepliesComments from "./3.2_RepliesComments";
 import { FcFullTrash } from "react-icons/fc";
+import { RGBA_ASTC_4x4_Format } from "three";
+import InputSendReply from "./4.2_InputSendReply";
 
 export default function SingleComment({
   commentAuthor,
@@ -98,6 +100,12 @@ export default function SingleComment({
                 <FcFullTrash className="w-5 h-5" />
               </span>
             </div>
+            {inputReply && (
+              <InputSendReply
+                referenceId={referenceId}
+                commentAuthor={commentAuthor}
+              />
+            )}
             {showReplies && (
               <RepliesComments
                 referenceId={referenceId}
