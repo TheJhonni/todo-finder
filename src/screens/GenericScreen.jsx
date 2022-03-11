@@ -6,6 +6,7 @@ import Spinner from "../components/Spinner/Spinner";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
 import SpinnerNoBg from "../components/Spinner/SpinnerNoBg";
+import Gif from "../components/Spinner/Gif";
 
 export default function GenericScreen() {
   // const [mount, setMount] = useState(false);
@@ -74,7 +75,7 @@ export default function GenericScreen() {
           </div>
         </div>
       ) : (
-        <SpinnerNoBg />
+        <Gif />
       )}
     </>
   );

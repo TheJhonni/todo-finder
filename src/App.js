@@ -7,7 +7,7 @@ import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
 import EarthScreen from "./screens/EarthScreen";
-import GenericScreen from "./screens/GenericScreen";
+import Favorites from "./screens/Favorites";
 import PostScreen from "./screens/PostScreen";
 import RegisterScreen from "./screens/Login/RegisterScreen";
 import { setUser } from "./redux/Authentications/authActions";
@@ -91,6 +91,7 @@ function App() {
           />
           <Route path="/Faq" element={<FaqScreen />} />
           <Route path="/ourTeam" element={<TeamScreen />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
 
         {/* <Route path="/404" element={<FourOFour />} /> */}

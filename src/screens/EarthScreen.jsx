@@ -5,6 +5,7 @@ import EarthSphere from "../components/Earth/EarthSphere";
 import EarthTitles from "../components/Earth/EarthTitles";
 import Footer from "../components/Footer/Footer";
 import Spinner from "../components/Spinner/Spinner";
+import Gif from "../components/Spinner/Gif";
 
 export default function EarthScreen() {
   const [mount, setMount] = useState(false);
@@ -34,7 +35,7 @@ export default function EarthScreen() {
           <Footer />
         </div>
       ) : (
-        <Spinner />
+        <Gif />
       )}
     </>
   );

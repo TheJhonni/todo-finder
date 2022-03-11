@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Iframe from "react-iframe";
 import Footer from "../Footer/Footer";
 import Navbar from "../Navbar/Navbar";
+import Gif from "../Spinner/Gif";
 import Spinner from "../Spinner/Spinner";
 
 // const apiKey = process.env.REACT_APP_NASA_KEY;
@@ -75,7 +76,7 @@ export default function PicOfTheDay() {
           <Footer />
         </>
       ) : (
-        <Spinner />
+        <Gif />
       )}
     </>
   );

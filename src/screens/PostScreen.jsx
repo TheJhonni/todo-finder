@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useCallback, useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import { GrEdit } from "react-icons/gr";
 import { AiOutlineStar } from "react-icons/ai";
@@ -13,25 +13,33 @@ import { FiThumbsDown, FiThumbsUp } from "react-icons/fi";
 import { BsFillHeartFill } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdThumbUp, MdThumbDown } from "react-icons/md";
+import Gif from "../components/Spinner/Gif";
+import {
+  removeFromFavsAction,
+  addToFavsAction,
+} from "../redux/Favourites/favActions";
 
 export default function PostScreen() {
+  // REDUX PART FOR USER
+  const currentUser = useSelector((state) => state.user.currentUser);
+
   const [mount, setMount] = useState(false);
   let { id } = useParams();
   const navigate = useNavigate();
+  // fetch data and set to empty array
   const [post, setPost] = useState([]);
   const [likes, setLikes] = useState([]);
   const [dislikes, setDislikes] = useState([]);
-  const [saved, setSaved] = useState([]);
-  const [showComments, setShowComments] = useState(null);
-  const { currentUser } = useSelector((state) => state.user);
-  const [input, setInput] = useState(null);
 
+  // toggle various inputs show-not show
+  const [showComments, setShowComments] = useState(null);
+  const [input, setInput] = useState(null);
   const [fullArticle, setFullArticle] = useState(null);
 
+  // post fetch
   const fetchIdData = (id) => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
     setTimeout(() => {
-      setMount(false);
       fetch(`http://localhost:5000/myPosts/${id}`)
         .then((res) => {
           return res.json();
@@ -43,59 +51,34 @@ export default function PostScreen() {
         .catch((err) => {
           console.log(err, " error");
         });
-    }, 350);
+    }, 1000);
   };
 
   const fetchLikes = () => {
-    setTimeout(() => {
-      // setMount(false);
-      fetch(`http://localhost:5000/likes`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((likes) => {
-          console.log(likes);
-          setLikes(likes);
-          // setMount(true);
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }, 350);
+    fetch(`http://localhost:5000/likes`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((likes) => {
+        // console.log(likes);
+        setLikes(likes);
+      })
+      .catch((err) => {
+        console.log(err, " error");
+      });
   };
   const fetchDislikes = () => {
-    setTimeout(() => {
-      // setMount(false);
-      fetch(`http://localhost:5000/dislikes`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((dislikes) => {
-          console.log(dislikes);
-          setDislikes(dislikes);
-          // setMount(true);
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }, 350);
-  };
-  const fetchSaved = () => {
-    setTimeout(() => {
-      // setMount(false);
-      fetch(`http://localhost:5000/saved`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((saved) => {
-          console.log(saved);
-          setSaved(saved);
-          // setMount(true);
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }, 350);
+    fetch(`http://localhost:5000/dislikes`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((dislikes) => {
+        // console.log(dislikes);
+        setDislikes(dislikes);
+      })
+      .catch((err) => {
+        console.log(err, " error");
+      });
   };
 
   const likePost = (id) => {
@@ -104,11 +87,20 @@ export default function PostScreen() {
       headers: { "Content-type": "Application/json" },
       body: JSON.stringify({
         postId: id,
+        user: currentUser?.email,
       }),
     })
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
+        const newLikes = likes.map((item) => {
+          if (item.postId === result.postId) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setLikes(newLikes);
       })
       .catch((err) => {
         console.log(err, " error");
@@ -117,35 +109,54 @@ export default function PostScreen() {
 
   const dislikePost = (id) => {
     fetch(`http://localhost:5000/dislikes`, {
-      method: "PUT",
+      method: "POST",
       headers: { "Content-type": "Application/json" },
-      body: JSON.stringify([
-        {
-          postId: id,
-        },
-      ]),
+      body: JSON.stringify({
+        postId: id,
+        user: currentUser?.email,
+      }),
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        // console.log(result);
+        const newDislikes = dislikes.map((item) => {
+          if (item._id === result.id) {
+            return result;
+          } else {
+            return item;
+          }
+        });
+        setDislikes(newDislikes);
       })
       .catch((err) => {
         console.log(err, " error");
       });
   };
 
-  const ToggleSave = () => {};
+  const isntLiked = likes.filter((_l) => _l.postId === id).length <= 0;
+  const isntDisliked = dislikes.filter((_l) => _l.postId === id).length <= 0;
+
+  const toggleColor =
+    likes.filter((_c_u) => _c_u.user === currentUser?.email) && !isntLiked;
+
+  const dispatch = useDispatch();
+
+  // REDUX PART FROR FAVORITES
+  const favPost = useSelector((state) => state.favorites.favoritePosts);
+
+  const isAlreadyFav = favPost.some((_post) => _post.id === post.id);
+
+  const toggleSaved = isAlreadyFav ? removeFromFavsAction : addToFavsAction;
 
   useEffect(() => {
     fetchIdData(id);
     fetchLikes();
     fetchDislikes();
-    fetchSaved();
   }, [id]);
 
   return (
     <>
-      {currentUser && mount ? (
+      {mount ? (
         <>
           <Navbar />
           <div className="img-textLeft">
@@ -168,38 +179,46 @@ export default function PostScreen() {
                 }
               >
                 <div className="flex justify-evenly items-center space-x-1 lg:space-x-5">
-                  {likes.filter((_l) => _l.postId === id).length <= 0 ? (
-                    <FiThumbsUp
+                  {likes.includes(currentUser?.email) ? (
+                    <MdThumbDown
+                      onClick={() => dislikePost(post?.id)}
+                      className={
+                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in " +
+                        (isntDisliked ? "" : "text-red-600")
+                      }
+                    />
+                  ) : (
+                    <MdThumbUp
                       onClick={() => {
                         likePost(post?.id);
                       }}
-                      className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
-                    />
-                  ) : (
-                    <MdThumbUp className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in" />
-                  )}
-                  {dislikes.filter((_l) => _l.postId === id).length <= 0 ? (
-                    <FiThumbsDown
-                      onClick={() => dislikePost(post?.id)}
-                      className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
-                    />
-                  ) : (
-                    <MdThumbDown
-                      onClick={() => dislikePost(post?.id)}
-                      className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
+                      className={
+                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in " +
+                        (toggleColor && "text-blue-800")
+                      }
                     />
                   )}
-                  {saved.filter((_l) => _l.postId === id).length <= 0 ? (
-                    <AiOutlineHeart
-                      onClick={() => ToggleSave(post?.id)}
-                      className="w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
-                    />
-                  ) : (
+
+                  {isAlreadyFav ? (
                     <BsFillHeartFill
-                      onClick={() => ToggleSave(post?.id)}
-                      className="w-[15px] lg:w-[30px] h-10 text-red-500 cursor-pointer hover:scale-125 transition-all duration-75 ease-in"
+                      onClick={() => {
+                        dispatch(toggleSaved(post.id));
+                      }}
+                      className={
+                        "w-[15px] text-red-500 lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in "
+                      }
+                    />
+                  ) : (
+                    <AiOutlineHeart
+                      onClick={() => {
+                        dispatch(toggleSaved(post));
+                      }}
+                      className={
+                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in "
+                      }
                     />
                   )}
+
                   <span className="font-semibold">
                     {likes.filter((_l) => _l.postId === id).length} Likes
                   </span>
@@ -303,7 +322,7 @@ export default function PostScreen() {
           </div>
         </>
       ) : (
-        <Spinner />
+        <Gif />
       )}
     </>
   );

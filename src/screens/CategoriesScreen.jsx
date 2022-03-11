@@ -8,6 +8,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Spinner from "../components/Spinner/Spinner";
 import SpinnerNoBg from "../components/Spinner/SpinnerNoBg";
+import Gif from "../components/Spinner/Gif";
 
 export default function CategoriesScreen() {
   const navigate = useNavigate();
@@ -70,7 +71,7 @@ export default function CategoriesScreen() {
           <Footer />
         </>
       ) : (
-        <Spinner />
+        <Gif />
       )}
     </>
   );

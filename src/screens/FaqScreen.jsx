@@ -11,25 +11,24 @@ export default function FaqScreen() {
   const navigate = useNavigate();
 
   const loadFaq = () => {
-    setTimeout(() => {
-      setMount(false);
-      fetch(`http://localhost:5000/faq`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          // console.log(data);
-          setFaq(data);
-          setMount(true);
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }, 750);
+    fetch(`http://localhost:5000/faq`)
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        // console.log(data);
+        setFaq(data);
+      })
+      .catch((err) => {
+        console.log(err, " error");
+      });
   };
 
   useEffect(() => {
     loadFaq();
+    setTimeout(() => {
+      setMount(true);
+    }, 1000);
   }, []);
 
   const toggleFaq = (index) => {
@@ -74,9 +73,7 @@ export default function FaqScreen() {
         </>
       ) : (
         // <Spinner />
-        <div className="w-full h-full bg-transparent">
-          <Gif />
-        </div>
+        <Gif />
       )}
     </>
   );

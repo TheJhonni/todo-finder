@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import Cards from "../components/components_2nd_Layer/Cards";
 import Blogs from "../components/components_2nd_Layer/Blogs";
 import GenericScreen from "./GenericScreen";
+import Gif from "../components/Spinner/Gif";
 
 export default function Homepagege() {
   const navigate = useNavigate();
@@ -32,14 +33,11 @@ export default function Homepagege() {
         .catch((err) => {
           console.log(err, " error");
         });
-    }, 350);
+    }, 1000);
   };
 
   useEffect(() => {
     loadPosts();
-    setTimeout(() => {
-      setMount(true);
-    }, 350);
   }, []);
 
   const { currentUser } = useSelector((state) => state.user);
@@ -68,9 +66,8 @@ export default function Homepagege() {
                   posts.map(
                     (post) =>
                       post.category === "generic" && (
-                        <Link to={`/posts/${post.id}`}>
+                        <Link to={`/posts/${post.id}`} key={post?.id}>
                           <Blogs
-                            key={post?.id}
                             id={post?.id}
                             src={post?.img1}
                             title={post?.title}
@@ -98,8 +95,11 @@ export default function Homepagege() {
                       posts.slice(1, 4).map(
                         (post) =>
                           post.category !== "generic" && (
-                            <Link to={`/category=${post.category}`}>
-                              <div key={post.id} className="flex">
+                            <Link
+                              key={post.id}
+                              to={`/category=${post.category}`}
+                            >
+                              <div className="flex">
                                 <Cards
                                   name={
                                     post.category === undefined && null
@@ -139,7 +139,7 @@ export default function Homepagege() {
           <Footer />
         </div>
       ) : (
-        <Spinner />
+        <Gif />
       )}
     </>
   );

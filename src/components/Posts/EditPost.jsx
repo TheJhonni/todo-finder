@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import Gif from "../Spinner/Gif";
 
 export default function EditPost() {
   const [mount, setMount] = useState(false);
@@ -171,7 +172,7 @@ export default function EditPost() {
           </div>
         </div>
       ) : (
-        <Spinner />
+        <Gif />
       )}
     </>
   );

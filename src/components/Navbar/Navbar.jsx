@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 import Logout from "./Logout";
-import { Transition } from "@headlessui/react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import { SiSpacemacs } from "react-icons/si";
-import { FaRegEye } from "react-icons/fa";
-import { GiBigWave } from "react-icons/gi";
+import { AiOutlineHeart } from "react-icons/ai";
 
 export default function Navbar() {
+  const savedPosts = useSelector((state) => state.favorites.favoritePosts);
+
   const [sure, setSure] = useState(false);
   const navigate = useNavigate();
   return (
@@ -26,6 +25,21 @@ export default function Navbar() {
           </div>
 
           <ul className="flex">
+            <li
+              onClick={() => navigate("/favorites")}
+              className="hover:bg-blue-800 hover:text-white"
+            >
+              <div className="flex items-center relative space-x-2 py-6 px-2">
+                <span className="text-sm lg:text-base font-bold cursor-pointer">
+                  {savedPosts.length}
+                </span>
+                <AiOutlineHeart
+                  className={
+                    "w-[10px] lg:w-[30px] h-6 cursor-pointer hover:scale-125 transition-all duration-75 ease-in "
+                  }
+                />
+              </div>
+            </li>
             <li
               onClick={() => navigate("/homePage")}
               className="hover:bg-blue-800 hover:text-white"

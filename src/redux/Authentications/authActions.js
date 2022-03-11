@@ -121,12 +121,16 @@ export const loginInitiate = (email, password, displayName) => {
 };
 
 // CALLING EACH CONST FOR LOGOUT
-export const logoutInitiate = () => {
+export const logoutInitiate = (navigateFunction) => {
   return function (dispatch) {
     dispatch(logoutStart());
     auth
       .signOut() //sign in function
-      .then(() => dispatch(logoutSuccess()))
+      .then(() => {
+        dispatch(logoutSuccess());
+        // navigare al login!
+        navigateFunction("/login");
+      })
       .catch((error) => {
         dispatch(logoutFail(error.message));
         alert("Hops" + error.message);
