@@ -11,7 +11,12 @@
       "link": "https://blogs.scientificamerican.com/life-unbounded/this-is-what-we-done28099t-know-about-the-universe/",
       "authorLink": "https://www.scientificamerican.com/author/caleb-a-scharf/",
       "credentials": "Caleb A. Scharf is director of astrobiology at Columbia University. He is author and co-author of more than 100 scientific research articles in astronomy and astrophysics. His work has been featured in publications such as New Scientist, Scientific American, Science News, Cosmos Magazine, Physics Today and National Geographic. For many years he wrote the Life, Unbounded blog for Scientific American.",
-      "author": "CALEB A. SCHARF"
+      "author": "CALEB A. SCHARF",
+      "likes": [
+        "232",
+        "33",
+        "545"
+      ]
     },
     {
       "id": "2",
@@ -408,6 +413,13 @@
       "replyAuthor": "jdilmoro@gmail.com",
       "replyBody": "another comment ",
       "replyDate": "9/3/2022"
+    },
+    {
+      "_ID": "897654",
+      "id": "78.375",
+      "replyAuthor": "jdilmoro@gmail.com",
+      "replyBody": "tgrg",
+      "replyDate": "11/3/2022 at:15:26:3"
     }
   ],
   "testimonials": [
@@ -610,8 +622,109 @@
       "postId": "4",
       "user": "jdilmoro@gmail.com",
       "id": 16
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 17
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 18
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 19
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 20
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 21
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 22
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 23
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 24
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 25
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 26
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 27
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 28
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 29
     }
   ],
-  "dislikes": [],
+  "dislikes": [
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 1
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 2
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 3
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 4
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 5
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 6
+    },
+    {
+      "postId": "1",
+      "user": "jdilmoro@gmail.com",
+      "id": 7
+    }
+  ],
   "saved": []
 }

@@ -28,8 +28,9 @@ export default function PostScreen() {
   const navigate = useNavigate();
   // fetch data and set to empty array
   const [post, setPost] = useState([]);
-  const [likes, setLikes] = useState([]);
-  const [dislikes, setDislikes] = useState([]);
+
+  const [liked, setLiked] = useState(false);
+  const [disliked, setDisliked] = useState(false);
 
   // toggle various inputs show-not show
   const [showComments, setShowComments] = useState(null);
@@ -54,92 +55,16 @@ export default function PostScreen() {
     }, 1000);
   };
 
-  const fetchLikes = () => {
-    fetch(`http://localhost:5000/likes`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((likes) => {
-        // console.log(likes);
-        setLikes(likes);
-      })
-      .catch((err) => {
-        console.log(err, " error");
-      });
-  };
-  const fetchDislikes = () => {
-    fetch(`http://localhost:5000/dislikes`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((dislikes) => {
-        // console.log(dislikes);
-        setDislikes(dislikes);
-      })
-      .catch((err) => {
-        console.log(err, " error");
-      });
-  };
-
-  const likePost = (id) => {
-    fetch(`http://localhost:5000/likes`, {
-      method: "POST",
-      headers: { "Content-type": "Application/json" },
-      body: JSON.stringify({
-        postId: id,
-        user: currentUser?.email,
-      }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        const newLikes = likes.map((item) => {
-          if (item.postId === result.postId) {
-            return result;
-          } else {
-            return item;
-          }
-        });
-        setLikes(newLikes);
-      })
-      .catch((err) => {
-        console.log(err, " error");
-      });
-  };
-
-  const dislikePost = (id) => {
-    fetch(`http://localhost:5000/dislikes`, {
-      method: "POST",
-      headers: { "Content-type": "Application/json" },
-      body: JSON.stringify({
-        postId: id,
-        user: currentUser?.email,
-      }),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        // console.log(result);
-        const newDislikes = dislikes.map((item) => {
-          if (item._id === result.id) {
-            return result;
-          } else {
-            return item;
-          }
-        });
-        setDislikes(newDislikes);
-      })
-      .catch((err) => {
-        console.log(err, " error");
-      });
-  };
-
-  const isntLiked = likes.filter((_l) => _l.postId === id).length <= 0;
-  const isntDisliked = dislikes.filter((_l) => _l.postId === id).length <= 0;
-
-  const toggleColor =
-    likes.filter((_c_u) => _c_u.user === currentUser?.email) && !isntLiked;
-
   const dispatch = useDispatch();
+
+  const changeLikeBtn = () => {
+    setLiked(true);
+    setDisliked(false);
+  };
+  const changeDislikeBtn = () => {
+    setLiked(false);
+    setDisliked(true);
+  };
 
   // REDUX PART FROR FAVORITES
   const favPost = useSelector((state) => state.favorites.favoritePosts);
@@ -150,8 +75,6 @@ export default function PostScreen() {
 
   useEffect(() => {
     fetchIdData(id);
-    fetchLikes();
-    fetchDislikes();
   }, [id]);
 
   return (
@@ -179,26 +102,20 @@ export default function PostScreen() {
                 }
               >
                 <div className="flex justify-evenly items-center space-x-1 lg:space-x-5">
-                  {likes.includes(currentUser?.email) ? (
-                    <MdThumbDown
-                      onClick={() => dislikePost(post?.id)}
-                      className={
-                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in " +
-                        (isntDisliked ? "" : "text-red-600")
-                      }
-                    />
-                  ) : (
-                    <MdThumbUp
-                      onClick={() => {
-                        likePost(post?.id);
-                      }}
-                      className={
-                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in " +
-                        (toggleColor && "text-blue-800")
-                      }
-                    />
-                  )}
-
+                  <MdThumbUp
+                    onClick={changeLikeBtn}
+                    className={
+                      "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-blue-500 " +
+                      (liked && "text-blue-500")
+                    }
+                  />
+                  <MdThumbDown
+                    onClick={changeDislikeBtn}
+                    className={
+                      "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-red-500 " +
+                      (disliked && "text-red-500")
+                    }
+                  />
                   {isAlreadyFav ? (
                     <BsFillHeartFill
                       onClick={() => {
@@ -218,11 +135,11 @@ export default function PostScreen() {
                       }
                     />
                   )}
-
-                  <span className="font-semibold">
-                    {likes.filter((_l) => _l.postId === id).length} Likes
-                  </span>
                 </div>
+                <span className="hidden md:block md:font-semibold">
+                  {liked ? "liked" : ""}
+                  {disliked ? "disliked" : ""}
+                </span>
               </div>
 
               <div className="mt-[-10%] w-1/2 mx-auto">

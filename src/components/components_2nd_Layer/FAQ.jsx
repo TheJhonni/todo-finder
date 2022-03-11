@@ -12,7 +12,7 @@ export default function FAQ({ index, f, q, a, toggleFaq }) {
     >
       <div
         id="faq-q"
-        className="relative text-blue-800 text-xl pr-[80px] transition-all duration-[0.4s] ease"
+        className="relative text-[#1E667C] text-xl pr-[80px] transition-all duration-[0.4s] ease"
       >
         {q}
       </div>

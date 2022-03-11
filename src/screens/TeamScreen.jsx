@@ -15,15 +15,15 @@ export default function TeamScreen() {
   return (
     <>
       {mount ? (
-        <div className="w-full h-full bg-gray-300">
-          <div className="bg-gray-800 shadow-2xl text-gray-200 border-b-4 border-[#0082CA]">
+        <div className="w-full h-full img-textLeft">
+          <div className="bg-gray-200 shadow-2xl text-gray-900 border-b-4 border-gray-900">
             <h1 className="text-4xl font-extrabold text-center py-5 px-10 ">
               MEET OUR TEAM!
             </h1>
             <span onClick={() => navigate("/homePage")} className="">
               <img
                 className="object-cover 
-                bg-white rounded-full mr-auto my-auto shadow-sm w-[100px] h-[50px] cursor-pointer"
+                mr-auto shadow-sm w-[100px] h-[50px] cursor-pointer"
                 src="logos/logo.png"
               />
             </span>
@@ -31,7 +31,7 @@ export default function TeamScreen() {
           <div className="container">
             <div className="max-w-screen-xl my-5 px-4 mx-auto md:px-8">
               <div className="md:mb-16">
-                <p className="max-w-screen-md mx-auto text-center mt-10 text-gray-500 md:text-lg">
+                <p className="max-w-screen-md mx-auto text-center mt-10 text-gray-300 md:text-lg">
                   Research shows that collaborative problem solving leads to
                   better outcomes. People are more likely to take calculated
                   risks that lead to innovation if they have the support of a
@@ -51,10 +51,10 @@ export default function TeamScreen() {
                   </div>
 
                   <div className="flex flex-col items-center justify-center">
-                    <div className="font-bold text-indigo-500 md:text-lg">
+                    <div className="font-bold text-[#5FD38D]  md:text-lg">
                       Davide J. Spiga
                     </div>
-                    <p className="mb-3 text-sm text-gray-500 md:text-base md:mb-4">
+                    <p className="mb-3 text-sm text-gray-300 md:text-base md:mb-4">
                       Founder / CEO / Web developer
                     </p>
 
@@ -62,7 +62,7 @@ export default function TeamScreen() {
                       <div className="flex gap-4">
                         <a href="https://www.facebook.com/IndianaDavyJonesConi">
                           <svg
-                            className="w-6 h-6 text-blue-600 fill-current"
+                            className="w-6 h-6 text-[#5FD38D] fill-current"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
                           >
@@ -81,7 +81,7 @@ export default function TeamScreen() {
                         </a>
                         <a href="https://www.linkedin.com/in/davide-spiga-2281aa141/">
                           <svg
-                            className="w-6 h-6 text-blue-500 fill-current"
+                            className="w-6 h-6 text-[#5FD38D] fill-current"
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 448 512"
                           >
@@ -102,10 +102,10 @@ export default function TeamScreen() {
                   </div>
 
                   <div className="flex flex-col items-center justify-center">
-                    <div className="font-bold text-indigo-500 md:text-lg">
+                    <div className="font-bold text-[#5FD38D]  md:text-lg">
                       Davide Giglio
                     </div>
-                    <p className="mb-3 text-sm text-gray-500 md:text-base md:mb-4">
+                    <p className="mb-3 text-sm text-gray-300 md:text-base md:mb-4">
                       Graphic Designer
                     </p>
 
@@ -145,7 +145,7 @@ export default function TeamScreen() {
               </div>
             </div>
           </div>
-          <div className="bg-gray-800 shadow-2xl mt-10 text-gray-200 border-b-4 border-[#0082CA]">
+          <div className="shadow-2xl mt-10 text-gray-200 border-b-4 border-[#0082CA]">
             <Footer />
           </div>
         </div>

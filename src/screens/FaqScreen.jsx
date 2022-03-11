@@ -47,8 +47,8 @@ export default function FaqScreen() {
     <>
       {mount ? (
         <>
-          <div className="w-full h-full bg-gray-300 box-border">
-            <div className="flex align-center justify-evenly text-4xl font-extrabold py-5 px-10 bg-gray-500 shadow-2xl border-b-4 border-[#0082CA]">
+          <div className="w-full h-full img-textLeft bg-gray-300 box-border">
+            <div className="flex align-center justify-evenly text-4xl font-extrabold py-5 px-10 bg-gray-200 shadow-2xl border-b-4 border-[#5FD38D]">
               <span className="mr-auto" onClick={() => navigate("/homePage")}>
                 <div className="rounded">
                   <img
