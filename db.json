@@ -12,11 +12,8 @@
       "authorLink": "https://www.scientificamerican.com/author/caleb-a-scharf/",
       "credentials": "Caleb A. Scharf is director of astrobiology at Columbia University. He is author and co-author of more than 100 scientific research articles in astronomy and astrophysics. His work has been featured in publications such as New Scientist, Scientific American, Science News, Cosmos Magazine, Physics Today and National Geographic. For many years he wrote the Life, Unbounded blog for Scientific American.",
       "author": "CALEB A. SCHARF",
-      "likes": [
-        "232",
-        "33",
-        "545"
-      ]
+      "likes": [],
+      "dislikes": []
     },
     {
       "id": "2",
@@ -29,7 +26,9 @@
       "link": "https://www.quora.com/What-percentage-of-the-light-spectrum-are-humans-able-to-see-with-their-eyes",
       "author": "Steven White",
       "authorLink": "https://www.quora.com/profile/Steven-White-64",
-      "credentials": "Studied at Hutchinson Community College"
+      "credentials": "Studied at Hutchinson Community College",
+      "likes": [],
+      "dislikes": []
     },
     {
       "id": "4",
@@ -42,7 +41,9 @@
       "link": "https://oceanservice.noaa.gov/facts/exploration.html",
       "authorLink": "https://www.noaa.gov/",
       "credentials": "The National Oceanic and Atmospheric Administration (NOAA /ˈnoʊ.ə/ NOH-ə) is an American scientific and regulatory agency within the United States Department of Commerce that forecasts weather, monitors oceanic and atmospheric conditions, charts the seas, conducts deep sea exploration, and manages fishing and protection of marine mammals and endangered species in the U.S. exclusive economic zone.",
-      "author": "NOAA"
+      "author": "NOAA",
+      "likes": [],
+      "dislikes": []
     },
     {
       "id": "7",
@@ -55,7 +56,9 @@
       "link": "https://www.worldwideboat.com/news/miscellaneous/ocean-vs-space",
       "authorLink": "",
       "credentials": "",
-      "author": ""
+      "author": "",
+      "likes": [],
+      "dislikes": []
     },
     {
       "id": "5",
@@ -69,7 +72,9 @@
       "link": "https://www.worldwideboat.com/news/miscellaneous/ocean-vs-space",
       "authorLink": "",
       "credentials": "",
-      "author": ""
+      "author": "",
+      "likes": [],
+      "dislikes": []
     },
     {
       "id": "6",
@@ -83,20 +88,13 @@
       "link": "https://www.worldwideboat.com/news/miscellaneous/ocean-vs-space",
       "authorLink": "https://www.worldwideboat.com/",
       "credentials": "Worldwide Boat LLC is a yacht charter and charter management company. We are a team of dynamic individuals and a next generation company which leverages cutting-edge technology to deliver exceptional personalized service and value to our clients and associates. We live by the credo that good enough and fair enough – never is.",
-      "author": "Worldwide Boat"
+      "author": "Worldwide Boat",
+      "likes": [],
+      "dislikes": []
     },
     {
-      "id": "9",
-      "category": "generic",
-      "title": "How Much Can We Know?",
-      "subtitle": "The reach of the scientific method is constrained by the limitations of our tools and the intrinsic impenetrability of some of nature’s deepest questions.",
-      "p": "",
-      "body": "“What we observe is not nature in itself but nature exposed to our method of questioning,” wrote German physicist Werner Heisenberg, who was the first to fathom the uncertainty inherent in quantum physics. To those who think of science as a direct path to the truth about the world, this quote must be surprising, perhaps even upsetting. Is Heisenberg saying that our scientific theories are contingent on us as observers? If he is, and we take him seriously, does this mean that what we call scientific truth is nothing but a big illusion? People will quickly counterstrike with something like: Why do airplanes fly or antibiotics work? Why are we able to build machines that process information with such amazing efficiency? Surely, such inventions and so many others are based on laws of nature that function independently of us. There is order in the universe, and science gradually uncovers this order. No question about it: There is order in the universe, and much of science is about finding patterns of behavior—from quarks to mammals to galaxies—that we translate into general laws. We strip away unnecessary complications and focus on what is essential, the core properties of the system we are studying. We then build a descriptive narrative of how the system behaves, which, in the best cases, is also predictive. Often overlooked in the excitement of research is that the methodology of science requires interaction with the system we are studying. We observe its behavior, measure its properties, and build mathematical or conceptual models to understand it better. And to do this, we need tools that extend into realms beyond our sensorial reach: the very small, the very fast, the very distant and the virtually inaccessible, such as what is inside the brain or buried in the earth’s core. What we observe is not nature itself but nature as discerned through data we collect from machines. In consequence, the scientific worldview depends on the information we can acquire through our instruments. And given that our tools are limited, our view of the world is necessarily myopic. We can see only so far into the nature of things, and our ever shifting scientific worldview reflects this fundamental limitation on how we perceive reality. Just think of biology before and after the microscope or gene sequencing, or of astronomy before and after the telescope, or of particle physics before and after colliders or fast electronics. Now, as in the 17th century, the theories we build and the worldviews we construct change as our tools of exploration transform. This trend is the trademark of science. Sometimes people take this statement about the limitation of scientific knowledge as being defeatist: “If we can’t get to the bottom of things, why bother?” This kind of response is misplaced. There is nothing defeatist in understanding the limitations of the scientific approach to knowledge. Science remains our best methodology to build consensus about the workings of nature. What should change is a sense of scientific triumphalism—the belief that no question is beyond the reach of scientific discourse. There are clear unknowables in science—reasonable questions that, unless currently accepted laws of nature are violated, we cannot find answers to. One example is the multiverse: the conjecture that our universe is but one among a multitude of others, each potentially with a different set of laws of nature. Other universes lie outside our causal horizon, meaning that we cannot receive or send signals to them. Any evidence for their existence would be circumstantial: for example, scars in the radiation permeating space because of a past collision with a neighboring universe. Other examples of unknowables can be conflated into three questions about origins: of the universe, of life and of the mind. Scientific accounts of the origin of the universe are incomplete because they must rely on a conceptual framework to even begin to work: energy conservation, relativity, quantum physics, for instance. Why does the universe operate under these laws and not others? Similarly, unless we can prove that only one or very few biochemical pathways exist from nonlife to life, we cannot know for sure how life originated on Earth. For consciousness, the problem is the jump from the material to the subjective—for example, from firing neurons to the experience of pain or the color red. Perhaps some kind of rudimentary consciousness could emerge in a sufficiently complex machine. But how could we tell? How do we establish—as opposed to conjecture—that something is conscious? Paradoxically, it is through our consciousness that we make sense of the world, even if only imperfectly. Can we fully understand something of which we are a part? Like the mythic snake that bites its own tail, we are stuck within a circle that begins and ends with our lived experience of the world. We cannot detach our descriptions of reality from how we experience reality. This is the playing field where the game of science unfolds, and if we play by the rules we can see only so much of what lies beyond.",
-      "img1": "data:image/jpeg;base64,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",
-      "link": "https://www.energy.gov/nnsa/articles/visible-light-eye-opening-research-nnsa",
-      "author": "Marcelo Gleiser",
-      "authorLink": "https://it.wikipedia.org/wiki/Marcelo_Gleiser",
-      "credentials": "INNOVATIONS IN"
+      "0": "jdilmoro@gmail.com",
+      "id": "9"
     },
     {
       "id": "3",
@@ -107,9 +105,11 @@
       "body": "The entire rainbow of radiation observable to the human eye only makes up a tiny portion of the electromagnetic spectrum – about 0.0035 percent. This range of wavelengths is known as visible light. Researchers at Los Alamos National Laboratory are illuminating solar power possibilities with specialized window coatings that efficiently absorb and convert the light passing through them into electricity. The high-tech windows are double-paned with layers of quantum dots. These nanoparticles can be fine-tuned to absorb specific wavelengths, thus increidg efficiency and decreidg the cost of collecting energy from sunlight. They also offer shading and insulation.A rather colorful discovery has also been made by scientists at Sandia National Laboratories. They have created a light-mixing “metamaterial” that can generate 11 waves of light ranging from the near infrared, through the colors of the rainbow, to ultraviolet. Wide-ranging research at NNSA spans the spectrum. A metamaterial is made up of tiny, repeating structures that interact with electromagnetic waves in ways conventional materials cannot. In the experiment, the team selected two lasers with wavelengths tuned to the metamaterial’s resonant frequencies, or optimum wavelengths, and passed them through an array of nanocylinders to mix them. The lasers bounced around inside the nanocylinders and created the 11 colors simultaneously. Research at NNSA spans the entire electromagnetic spectrum – take a look at findings at other frequencies and how they help further the missions of the Nuclear Security Enterprise.",
       "img1": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/EM_spectrum.svg/800px-EM_spectrum.svg.png",
       "link": "https://www.energy.gov/nnsa/articles/visible-light-eye-opening-research-nnsa",
-      "author": "National Nuclear Security Administration",
+      "author": "National Nuclear Security Administrationnnnnnn",
       "authorLink": "https://www.energy.gov/nnsa/national-nuclear-security-administration",
-      "credentials": "NNSA"
+      "credentials": "NNSA",
+      "likes": [],
+      "dislikes": []
     }
   ],
   "comments": [
@@ -541,190 +541,5 @@
       "a": "The tone of the writing is informal, public writing. Your audience is mostly scientists and health care professionals on social media. Keep in mind, Bolded Science advocates for science transparency and accessibility, therefore try to limit jargon use when possible.",
       "open": false
     }
-  ],
-  "likes": [
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 1
-    },
-    {
-      "postId": "9",
-      "user": "jdilmoro@gmail.com",
-      "id": 2
-    },
-    {
-      "postId": "9",
-      "user": "jdilmoro@gmail.com",
-      "id": 3
-    },
-    {
-      "postId": "9",
-      "user": "jdilmoro@gmail.com",
-      "id": 4
-    },
-    {
-      "postId": "9",
-      "user": "jdilmoro@gmail.com",
-      "id": 5
-    },
-    {
-      "postId": "9",
-      "user": "jdilmoro@gmail.com",
-      "id": 6
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 7
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 8
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 9
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 10
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 11
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 12
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 13
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 14
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 15
-    },
-    {
-      "postId": "4",
-      "user": "jdilmoro@gmail.com",
-      "id": 16
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 17
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 18
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 19
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 20
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 21
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 22
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 23
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 24
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 25
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 26
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 27
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 28
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 29
-    }
-  ],
-  "dislikes": [
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 1
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 2
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 3
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 4
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 5
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 6
-    },
-    {
-      "postId": "1",
-      "user": "jdilmoro@gmail.com",
-      "id": 7
-    }
-  ],
-  "saved": []
+  ]
 }

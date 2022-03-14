@@ -1,15 +1,11 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 import { GrEdit } from "react-icons/gr";
-import { AiOutlineStar } from "react-icons/ai";
-import { AiFillStar } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import Spinner from "../components/Spinner/Spinner";
 import Footer from "../components/Footer/Footer";
 import CommentForm from "../components/Comments/1_CommentForm";
 import InputSendComment from "../components/Comments/4.1_InputSendComment";
-import { FiThumbsDown, FiThumbsUp } from "react-icons/fi";
 import { BsFillHeartFill } from "react-icons/bs";
 import { AiOutlineHeart } from "react-icons/ai";
 import { MdThumbUp, MdThumbDown } from "react-icons/md";
@@ -21,16 +17,25 @@ import {
 
 export default function PostScreen() {
   // REDUX PART FOR USER
-  const currentUser = useSelector((state) => state.user.currentUser);
+  const { currentUser } = useSelector((state) => state.user);
 
+  // not mounted? => spinner
   const [mount, setMount] = useState(false);
+
   let { id } = useParams();
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   // fetch data and set to empty array
   const [post, setPost] = useState([]);
 
+  // like section
   const [liked, setLiked] = useState(false);
+  const [howManyLikes, setHowManyLikes] = useState(84);
+
+  // dislike section
   const [disliked, setDisliked] = useState(false);
+  const [howManyDislikes, setHowManyDislikes] = useState(5);
 
   // toggle various inputs show-not show
   const [showComments, setShowComments] = useState(null);
@@ -55,15 +60,167 @@ export default function PostScreen() {
     }, 1000);
   };
 
-  const dispatch = useDispatch();
+  // LIKES ARRAY CHECK IF ALREADY LIKED!
+  // data?.likes.filter((p) => p.includes(currentUser?.email)) && setLiked(true);
+  // DISLIKE ARRAY CHECK IF ALREADY DISLIKED!
+  // data?.dislikes.filter((p) => p.includes(currentUser?.email)) &&
+  // setDisliked(true);
+
+  // onClick like btn
 
   const changeLikeBtn = () => {
-    setLiked(true);
-    setDisliked(false);
+    if (post.likes.includes(`${currentUser?.email}`)) {
+      fetch(`http://localhost:5000/myPosts/${id}`, {
+        method: "PUT",
+        headers: { "Content-type": "Application/json" },
+        body: JSON.stringify({
+          ...post,
+          ...post.likes.splice(post.likes.indexOf(`${currentUser?.email}`), 1),
+          // remove like if already present
+        }),
+      })
+        .then((resp) => {
+          if (resp.status === 200) {
+            console.log("like tolto");
+            const newPost = { ...post };
+            setPost(newPost);
+            setHowManyLikes(howManyLikes - 1);
+            setLiked(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    } else {
+      fetch(`http://localhost:5000/myPosts/${id}`, {
+        method: "PUT",
+        headers: { "Content-type": "Application/json" },
+        body: JSON.stringify({
+          ...post,
+          ...post.likes.push(`${currentUser?.email}`),
+          // if not present, adding like to array
+        }),
+      })
+        .then((resp) => {
+          if (resp.status === 200) {
+            console.log("likkato ora");
+            const newPost = { ...post };
+            setPost(newPost);
+            setHowManyLikes(howManyLikes + 1);
+            setLiked(true);
+          }
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+      if (post.dislikes.includes(`${currentUser?.email}`)) {
+        fetch(`http://localhost:5000/myPosts/${id}`, {
+          method: "PUT",
+          headers: { "Content-type": "Application/json" },
+          body: JSON.stringify({
+            ...post.dislikes.splice(
+              ...post,
+              post.dislikes.indexOf(`${currentUser?.email}`),
+              1
+            ),
+          }),
+          // if wasn't present, we already added like, now we check if there was already a dislike.
+          // in that case, we add like and remove also the previous dislike
+        })
+          .then((resp) => {
+            if (resp.status === 200) {
+              console.log("dislike tolto ora");
+              const newPost = { ...post };
+              setPost(newPost);
+              setDisliked(false);
+              setHowManyDislikes(howManyDislikes - 1);
+            }
+          })
+          .catch((err) => {
+            console.log(err, " error");
+          });
+      }
+    }
   };
+
+  // onClick dislike btn
   const changeDislikeBtn = () => {
-    setLiked(false);
-    setDisliked(true);
+    if (post.dislikes.includes(`${currentUser?.email}`)) {
+      fetch(`http://localhost:5000/myPosts/${id}`, {
+        method: "PUT",
+        headers: { "Content-type": "Application/json" },
+        body: JSON.stringify({
+          ...post,
+          ...post.dislikes.splice(
+            post.dislikes.indexOf(`${currentUser?.email}`),
+            1
+          ),
+          // remove dislike if already present
+        }),
+      })
+        .then((resp) => {
+          if (resp.status === 200) {
+            console.log("dislike tolto");
+            console.log(post.dislikes);
+            const newPost = { ...post };
+            setPost(newPost);
+            setHowManyDislikes(howManyDislikes - 1);
+            setDisliked(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    } else {
+      fetch(`http://localhost:5000/myPosts/${id}`, {
+        method: "PUT",
+        headers: { "Content-type": "Application/json" },
+        body: JSON.stringify({
+          ...post,
+          ...post.dislikes.push(`${currentUser?.email}`),
+        }),
+        // if not present, adding dislike to array
+      })
+        // setDisliked(false);
+        .then((resp) => {
+          if (resp.status === 200) {
+            console.log("dislikato ora!");
+            const newPost = { ...post };
+            setPost(newPost);
+            setHowManyDislikes(howManyDislikes + 1);
+            setDisliked(true);
+          }
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+      if (post.likes.includes(`${currentUser?.email}`)) {
+        fetch(`http://localhost:5000/myPosts/${id}`, {
+          method: "PUT",
+          headers: { "Content-type": "Application/json" },
+          body: JSON.stringify({
+            ...post.likes.splice(
+              post.likes.indexOf(`${currentUser?.email}`),
+              1
+            ),
+          }),
+          // if wasn't present, we already added dislike, now we check if there was already a like.
+          // in that case, we add dislike and remove also the previous like
+        })
+          .then((resp) => {
+            if (resp.status === 200) {
+              console.log("like tolto ora");
+              const newPost = { ...post };
+              setPost(newPost);
+              setLiked(false);
+              setHowManyLikes(howManyLikes - 1);
+            }
+          })
+          .catch((err) => {
+            console.log(err, " error");
+          });
+      }
+    }
   };
 
   // REDUX PART FROR FAVORITES
@@ -72,7 +229,6 @@ export default function PostScreen() {
   const isAlreadyFav = favPost.some((_post) => _post.id === post.id);
 
   const toggleSaved = isAlreadyFav ? removeFromFavsAction : addToFavsAction;
-
   useEffect(() => {
     fetchIdData(id);
   }, [id]);
@@ -102,20 +258,28 @@ export default function PostScreen() {
                 }
               >
                 <div className="flex justify-evenly items-center space-x-1 lg:space-x-5">
-                  <MdThumbUp
-                    onClick={changeLikeBtn}
-                    className={
-                      "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-blue-500 " +
-                      (liked && "text-blue-500")
-                    }
-                  />
-                  <MdThumbDown
-                    onClick={changeDislikeBtn}
-                    className={
-                      "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-red-500 " +
-                      (disliked && "text-red-500")
-                    }
-                  />
+                  <div className="flex space-x-3 items-baseline">
+                    <MdThumbUp
+                      onClick={changeLikeBtn}
+                      className={
+                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-blue-500 " +
+                        (liked && "text-blue-500")
+                      }
+                    />
+                    <span className="hidden text-xs md:block md:text-lg md:font-semibold">
+                      {howManyLikes}
+                    </span>
+                    <MdThumbDown
+                      onClick={changeDislikeBtn}
+                      className={
+                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-red-500 " +
+                        (disliked && "text-red-500")
+                      }
+                    />
+                    <span className="hidden text-xs md:block md:text-lg md:font-semibold">
+                      {howManyDislikes}
+                    </span>
+                  </div>
                   {isAlreadyFav ? (
                     <BsFillHeartFill
                       onClick={() => {
@@ -136,10 +300,6 @@ export default function PostScreen() {
                     />
                   )}
                 </div>
-                <span className="hidden md:block md:font-semibold">
-                  {liked ? "liked" : ""}
-                  {disliked ? "disliked" : ""}
-                </span>
               </div>
 
               <div className="mt-[-10%] w-1/2 mx-auto">

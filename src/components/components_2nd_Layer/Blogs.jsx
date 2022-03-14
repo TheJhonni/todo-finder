@@ -1,17 +1,15 @@
 import React from "react";
-
+import { MdThumbUp } from "react-icons/md";
 export default function Blogs({
   src,
   id,
   title,
-  subtitle,
-  p,
   category,
   author,
-  authorLink,
   body,
   post,
-  c,
+  howManyLikes,
+  filteredC,
 }) {
   return (
     <div className="p-8 md:w-[600px] mx-3 mt-10 flex flex-col items-start bg-indigo-50 rounded hover:bg-indigo-200">
@@ -53,7 +51,7 @@ export default function Blogs({
           </svg>
           {Math.floor(Math.random() * (999 - 200) + 200).toLocaleString()}
         </span>
-        <span className="text-gray-400 inline-flex items-center leading-none text-sm">
+        <span className="text-gray-400 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
           <svg
             className="w-4 h-4 mr-1"
             stroke="currentColor"
@@ -65,7 +63,11 @@ export default function Blogs({
           >
             <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
           </svg>
-          {c && c.filter((_c) => _c.postId === id).length}
+          {filteredC.length}
+        </span>
+        <span className="text-gray-400 inline-flex items-center leading-none text-sm pl-3">
+          <MdThumbUp className="mr-1" />
+          {howManyLikes + post.likes.length}
         </span>
       </div>
       <a className="inline-flex items-center">

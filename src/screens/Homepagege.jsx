@@ -15,7 +15,8 @@ export default function Homepagege() {
   const navigate = useNavigate();
   const [mount, setMount] = useState(false);
   const [posts, setPosts] = useState(null);
-  const [c, setC] = useState(null);
+  const [postComments, setPostComments] = useState([]);
+  const [howManyLikes, setHowManyLikes] = useState(84);
 
   const loadPosts = () => {
     setTimeout(() => {
@@ -25,7 +26,6 @@ export default function Homepagege() {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
           // store Data in State Data Variable
           setPosts(data);
           setMount(true);
@@ -36,8 +36,22 @@ export default function Homepagege() {
     }, 1000);
   };
 
+  const loadComments = () => {
+    fetch("http://localhost:5000/comments")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setPostComments(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   useEffect(() => {
     loadPosts();
+    loadComments();
   }, []);
 
   const { currentUser } = useSelector((state) => state.user);
@@ -53,6 +67,7 @@ export default function Homepagege() {
                 <h2 className="text-center text-6xl mb-7 font-extrabold text-gray-200">
                   Read one of our latest articles
                 </h2>
+
                 <span
                   onClick={() => navigate("/newPost")}
                   className="ml-auto texl-md rounded px-5 py-5 border-2 cursor-pointer bg-gray-300 hover:bg-gray-500"
@@ -63,6 +78,7 @@ export default function Homepagege() {
 
               <div className="text-gray-600 flex body-font overflow-hidden">
                 {posts &&
+                  postComments &&
                   posts.map(
                     (post) =>
                       post.category === "generic" && (
@@ -71,14 +87,14 @@ export default function Homepagege() {
                             id={post?.id}
                             src={post?.img1}
                             title={post?.title}
-                            subtitle={post?.subtitle}
-                            p={post?.p}
                             category={post?.category}
                             author={post?.author}
-                            authorLink={post?.authorLink}
                             body={post?.body.slice(0, 200)}
                             post={post}
-                            c={c}
+                            howManyLikes={howManyLikes}
+                            filteredC={postComments.filter(
+                              (e) => e.postId === post.id
+                            )}
                           />
                         </Link>
                       )
