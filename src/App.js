@@ -1,6 +1,12 @@
 import "./App.css";
 import CategoriesScreen from "./screens/CategoriesScreen";
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useParams,
+  matchRoutes,
+} from "react-router-dom";
 import LoginScreen from "./screens/Login/LoginScreen";
 import { useEffect, useState } from "react";
 import { auth } from "./firebase";
@@ -19,6 +25,8 @@ import EditPost from "./components/Posts/EditPost";
 import Homepagege from "./screens/Homepagege";
 import FaqScreen from "./screens/FaqScreen";
 import TeamScreen from "./screens/TeamScreen";
+import Navbar from "./components/Navbar/Navbar";
+import AdminScreen from "./screens/AdminScreen";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -57,6 +65,7 @@ function App() {
   return (
     <BrowserRouter>
       <div className="img-login">
+        <Navbar />
         <Routes>
           <Route exact path="/" element={<EarthScreen />} />
 
@@ -89,6 +98,7 @@ function App() {
             path="/newPost"
             element={<NewPost currentUser={currentUser} />}
           />
+          <Route path="/admin" element={<AdminScreen />} />
           <Route path="/Faq" element={<FaqScreen />} />
           <Route path="/ourTeam" element={<TeamScreen />} />
           <Route path="/favorites" element={<Favorites />} />

@@ -60,20 +60,12 @@ export default function Homepagege() {
     <>
       {currentUser && mount ? (
         <div className="w-screen h-full img-textLeft">
-          <Navbar />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl py-16 sm:py-24 lg:py-32 lg:max-w-none">
               <div className="flex justify-between items-center">
                 <h2 className="text-center text-6xl mb-7 font-extrabold text-gray-200">
                   Read one of our latest articles
                 </h2>
-
-                <span
-                  onClick={() => navigate("/newPost")}
-                  className="ml-auto texl-md rounded px-5 py-5 border-2 cursor-pointer bg-gray-300 hover:bg-gray-500"
-                >
-                  Add new Post
-                </span>
               </div>
 
               <div className="text-gray-600 flex body-font overflow-hidden">

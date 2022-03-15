@@ -52,6 +52,10 @@ export default function PostScreen() {
         })
         .then((data) => {
           setPost(data);
+          // LIKES ARRAY CHECK IF ALREADY LIKED!
+          data?.likes.includes(currentUser?.email) && setLiked(true);
+          // DISLIKE ARRAY CHECK IF ALREADY DISLIKED!
+          data?.dislikes.includes(currentUser?.email) && setDisliked(true);
           setMount(true);
         })
         .catch((err) => {
@@ -59,12 +63,6 @@ export default function PostScreen() {
         });
     }, 1000);
   };
-
-  // LIKES ARRAY CHECK IF ALREADY LIKED!
-  // data?.likes.filter((p) => p.includes(currentUser?.email)) && setLiked(true);
-  // DISLIKE ARRAY CHECK IF ALREADY DISLIKED!
-  // data?.dislikes.filter((p) => p.includes(currentUser?.email)) &&
-  // setDisliked(true);
 
   // onClick like btn
 
@@ -75,15 +73,16 @@ export default function PostScreen() {
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
           ...post,
-          ...post.likes.splice(post.likes.indexOf(`${currentUser?.email}`), 1),
-          // remove like if already present
+          ...post[
+            post.likes.splice(post.likes.indexOf(`${currentUser?.email}`), 1)
+          ],
         }),
+
+        // remove like if already present
       })
         .then((resp) => {
           if (resp.status === 200) {
             console.log("like tolto");
-            const newPost = { ...post };
-            setPost(newPost);
             setHowManyLikes(howManyLikes - 1);
             setLiked(false);
           }
@@ -97,15 +96,14 @@ export default function PostScreen() {
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
           ...post,
-          ...post.likes.push(`${currentUser?.email}`),
+          ...post[post.likes.push(`${currentUser?.email}`)],
+
           // if not present, adding like to array
         }),
       })
         .then((resp) => {
           if (resp.status === 200) {
             console.log("likkato ora");
-            const newPost = { ...post };
-            setPost(newPost);
             setHowManyLikes(howManyLikes + 1);
             setLiked(true);
           }
@@ -118,11 +116,13 @@ export default function PostScreen() {
           method: "PUT",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
-            ...post.dislikes.splice(
-              ...post,
-              post.dislikes.indexOf(`${currentUser?.email}`),
-              1
-            ),
+            ...post,
+            ...post[
+              post.dislikes.splice(
+                post.dislikes.indexOf(`${currentUser?.email}`),
+                1
+              )
+            ],
           }),
           // if wasn't present, we already added like, now we check if there was already a dislike.
           // in that case, we add like and remove also the previous dislike
@@ -130,8 +130,6 @@ export default function PostScreen() {
           .then((resp) => {
             if (resp.status === 200) {
               console.log("dislike tolto ora");
-              const newPost = { ...post };
-              setPost(newPost);
               setDisliked(false);
               setHowManyDislikes(howManyDislikes - 1);
             }
@@ -151,10 +149,12 @@ export default function PostScreen() {
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
           ...post,
-          ...post.dislikes.splice(
-            post.dislikes.indexOf(`${currentUser?.email}`),
-            1
-          ),
+          ...post[
+            post.dislikes.splice(
+              post.dislikes.indexOf(`${currentUser?.email}`),
+              1
+            )
+          ],
           // remove dislike if already present
         }),
       })
@@ -162,8 +162,6 @@ export default function PostScreen() {
           if (resp.status === 200) {
             console.log("dislike tolto");
             console.log(post.dislikes);
-            const newPost = { ...post };
-            setPost(newPost);
             setHowManyDislikes(howManyDislikes - 1);
             setDisliked(false);
           }
@@ -177,7 +175,7 @@ export default function PostScreen() {
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
           ...post,
-          ...post.dislikes.push(`${currentUser?.email}`),
+          ...post[post.dislikes.push(`${currentUser?.email}`)],
         }),
         // if not present, adding dislike to array
       })
@@ -185,8 +183,8 @@ export default function PostScreen() {
         .then((resp) => {
           if (resp.status === 200) {
             console.log("dislikato ora!");
-            const newPost = { ...post };
-            setPost(newPost);
+            // const newPost = { ...post };
+            // setPost(newPost);
             setHowManyDislikes(howManyDislikes + 1);
             setDisliked(true);
           }
@@ -199,10 +197,10 @@ export default function PostScreen() {
           method: "PUT",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
-            ...post.likes.splice(
-              post.likes.indexOf(`${currentUser?.email}`),
-              1
-            ),
+            ...post,
+            ...post[
+              post.likes.splice(post.likes.indexOf(`${currentUser?.email}`), 1)
+            ],
           }),
           // if wasn't present, we already added dislike, now we check if there was already a like.
           // in that case, we add dislike and remove also the previous like
@@ -210,8 +208,8 @@ export default function PostScreen() {
           .then((resp) => {
             if (resp.status === 200) {
               console.log("like tolto ora");
-              const newPost = { ...post };
-              setPost(newPost);
+              // const newPost = { ...post };
+              // setPost(newPost);
               setLiked(false);
               setHowManyLikes(howManyLikes - 1);
             }
@@ -237,7 +235,6 @@ export default function PostScreen() {
     <>
       {mount ? (
         <>
-          <Navbar />
           <div className="img-textLeft">
             <main className="relative container mx-auto bg-[#ffffffd2] px-4">
               <div className="relative mx-4 top-0 pt-[17%] overflow-hidden">

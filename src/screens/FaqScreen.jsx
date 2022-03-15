@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import FAQ from "../components/components_2nd_Layer/FAQ";
 import Spinner from "../components/Spinner/Spinner";
 import Gif from "../components/Spinner/Gif";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function FaqScreen() {
   const [mount, setMount] = useState(false);
@@ -48,17 +49,8 @@ export default function FaqScreen() {
       {mount ? (
         <>
           <div className="w-full h-full img-textLeft bg-gray-300 box-border">
-            <div className="flex align-center justify-evenly text-4xl font-extrabold py-5 px-10 bg-gray-200 shadow-2xl border-b-4 border-[#5FD38D]">
-              <span className="mr-auto" onClick={() => navigate("/homePage")}>
-                <div className="rounded">
-                  <img
-                    className="object-cover relative  bg-transparent shadow-sm w-[100px] h-[50px] cursor-pointer"
-                    src="logos/logo.png"
-                  />
-                </div>
-                <p className="text-lg ml-5"> Go back</p>
-              </span>
-              <span className="text-center mr-auto">
+            <div className="flex align-center justify-center text-4xl font-extrabold py-10 px-10 shadow-2xl border-b-4 border-[#5FD38D]">
+              <span className="text-center text-gray-300">
                 FAQ: FREQUENTLY ASKED QUESTIONS
               </span>
             </div>
@@ -66,7 +58,14 @@ export default function FaqScreen() {
             <div className="w-full m-w-[768px] mx-auto p-[15px]">
               {faq &&
                 faq.map((f, i) => (
-                  <FAQ index={i} f={f} q={f.q} a={f.a} toggleFaq={toggleFaq} />
+                  <FAQ
+                    key={i}
+                    index={i}
+                    f={f}
+                    q={f.q}
+                    a={f.a}
+                    toggleFaq={toggleFaq}
+                  />
                 ))}
             </div>
           </div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Gif from "../components/Spinner/Gif";
 import Footer from "../components/Footer/Footer";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function TeamScreen() {
   const navigate = useNavigate();
@@ -16,19 +17,10 @@ export default function TeamScreen() {
     <>
       {mount ? (
         <div className="w-full h-full img-textLeft">
-          <div className="bg-gray-200 shadow-2xl text-gray-900 border-b-4 border-gray-900">
-            <h1 className="text-4xl font-extrabold text-center py-5 px-10 ">
+          <div className="container mx-auto py-10">
+            <h1 className="text-4xl text-gray-200 font-extrabold text-center py-5 px-10">
               MEET OUR TEAM!
             </h1>
-            <span onClick={() => navigate("/homePage")} className="">
-              <img
-                className="object-cover 
-                mr-auto shadow-sm w-[100px] h-[50px] cursor-pointer"
-                src="logos/logo.png"
-              />
-            </span>
-          </div>
-          <div className="container">
             <div className="max-w-screen-xl my-5 px-4 mx-auto md:px-8">
               <div className="md:mb-16">
                 <p className="max-w-screen-md mx-auto text-center mt-10 text-gray-300 md:text-lg">

@@ -47,8 +47,6 @@ export default function CategoriesScreen() {
         <>
           <div className="w-screen h-screen img-login">
             <div className="h-[70%] ml-auto">
-              <Navbar />
-
               <Canvas>
                 <ambientLight intensity={0.2} />
                 <directionalLight intensity={0.2} />
