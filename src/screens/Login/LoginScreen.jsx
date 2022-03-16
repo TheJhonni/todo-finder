@@ -20,7 +20,7 @@ function LoginScreen() {
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/posts");
+      navigate("/homePage");
       // if it exists, then push to "/posts"
     }
   }, [currentUser, navigate]);

@@ -12,7 +12,14 @@ export default function Navbar() {
   const navigate = useNavigate();
   return (
     <>
-      {window.location.pathname !== "/" ? (
+      {window.location.pathname === "/" ||
+      window.location.pathname === "*" ||
+      window.location.pathname === "/admin" ||
+      window.location.pathname === "/admin/dashboard" ||
+      window.location.pathname === "/admin/posts" ||
+      window.location.pathname === "/admin/createNewPosts" ? (
+        <></>
+      ) : (
         <>
           <nav className="relative bg-trasparent border-b-2 border-blue-200 text-gray-300">
             <div className="container mx-auto flex justify-between align-center">
@@ -257,8 +264,6 @@ export default function Navbar() {
           </nav>
           {sure && <Logout />}
         </>
-      ) : (
-        <></>
       )}
     </>
   );
