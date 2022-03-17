@@ -34,10 +34,7 @@ export default function AdminScreen() {
   }, []);
   return (
     <>
-      <div className="img-textLeft w-full pt-10">
-        <h1 className="text-4xl text-gray-200 font-extrabold text-center pt-2 px-10">
-          ADMIN SECTION
-        </h1>
+      <div className="img-textLeft py-10">
         <SideBar path={Route.path} />
         {mount ? (
           <Routes>

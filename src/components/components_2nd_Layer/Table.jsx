@@ -20,7 +20,7 @@ export default function Table({ posts }) {
   }, [filter]);
 
   return (
-    <div className="flex flex-col h-full md:w-[500px] lg:ml-10 lg:w-[780px]">
+    <div className="flex flex-col md:w-[500px] lg:ml-10 lg:w-[780px]">
       <div className=" shadow-md sm:rounded-lg">
         <div className="inline-block align-middle dark:bg-gray-800">
           <div className="p-4">
@@ -100,53 +100,51 @@ export default function Table({ posts }) {
               <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
                 {filtered &&
                   filtered.map((_post) => (
-                    <>
-                      <tr
-                        key={_post.id}
-                        className="hover:bg-gray-100 dark:hover:bg-gray-700"
+                    <tr
+                      key={_post.id}
+                      className="hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <img
+                          alt="img-post-related"
+                          className="w-20 h-20 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                          src={_post.img1}
+                        />
+                      </td>
+                      <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {_post.title.slice(0, 15) + "..."}
+                      </td>
+                      <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        {_post.category}
+                      </td>
+                      <td
+                        className={
+                          "py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white " +
+                          (_post.author === "Unknown" && "text-red-500")
+                        }
                       >
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          <img
-                            alt="img-post-related"
-                            className="w-20 h-20 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                            src={_post.img1}
-                          />
-                        </td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                          {_post.title.slice(0, 15) + "..."}
-                        </td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                          {_post.category}
-                        </td>
-                        <td
-                          className={
-                            "py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white " +
-                            (_post.author === "Unknown" && "text-red-500")
-                          }
-                        >
-                          {_post.author
-                            ? _post.author.slice(0, 8) + "..."
-                            : "Unknown"}
-                        </td>
+                        {_post.author
+                          ? _post.author.slice(0, 8) + "..."
+                          : "Unknown"}
+                      </td>
 
-                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                          <p
-                            onClick={() => navigate(`/edit/${_post.id}`)}
-                            className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
-                          >
-                            Edit
-                          </p>
-                        </td>
-                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                          <p
-                            onClick={() => navigate(`/posts/${_post.id}`)}
-                            className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
-                          >
-                            See the full article
-                          </p>
-                        </td>
-                      </tr>
-                    </>
+                      <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <p
+                          onClick={() => navigate(`/edit/${_post.id}`)}
+                          className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
+                        >
+                          Edit
+                        </p>
+                      </td>
+                      <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <p
+                          onClick={() => navigate(`/posts/${_post.id}`)}
+                          className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
+                        >
+                          See the full article
+                        </p>
+                      </td>
+                    </tr>
                   ))}
               </tbody>
             </table>
