@@ -62,13 +62,6 @@ export default function GenericScreen() {
                         title={post.title}
                       />
                     </Link>
-
-                    {currentUser.email === "jdilmoro@gmail.com" && (
-                      <FiEdit
-                        onClick={() => navigate(`/edit/${post.id}`)}
-                        className="text-white text-xl cursor-pointer"
-                      />
-                    )}
                   </div>
                 ))}
             </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiEdit } from "react-icons/fi";
+import { MdDeleteForever } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function Table({ posts }) {
@@ -12,6 +12,26 @@ export default function Table({ posts }) {
     setFilter(e.target.value);
   };
 
+  const deletePost = (id) => {
+    if (window.confirm("Are you sure to delete this post?")) {
+      fetch(`http://localhost:5000/myPosts/${id}`, {
+        method: "DELETE",
+        headers: { "Content-type": "Application/json" },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(res);
+            alert("Post deleted succesfully");
+
+            navigate("/posts");
+          }
+        })
+
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    }
+  };
   useEffect(() => {
     const res = posts.filter((post) =>
       post.title.toLowerCase().includes(filter)
@@ -20,10 +40,10 @@ export default function Table({ posts }) {
   }, [filter]);
 
   return (
-    <div className="flex flex-col md:w-[500px] lg:ml-10 lg:w-[780px]">
+    <div className="flex flex-col">
       <div className=" shadow-md sm:rounded-lg">
-        <div className="inline-block align-middle dark:bg-gray-800">
-          <div className="p-4">
+        <div className="inline-block align-middle">
+          <div className="p-4  w-[70%]">
             <label for="table-search" className="sr-only">
               Search
             </label>
@@ -31,7 +51,7 @@ export default function Table({ posts }) {
             <div className="relative flex justify-between items-center mt-1">
               <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                 <svg
-                  className="w-5 h-5 text-gray-500 dark:text-gray-400"
+                  className="w-5 h-5 text-gray-500"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -62,7 +82,7 @@ export default function Table({ posts }) {
           </div>
 
           <div className="overflow-hidden">
-            <table className="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+            <table className="w-[70%] h-[70%] divide-y divide-gray-200 table-fixed rounded">
               <thead className="bg-gray-100 dark:bg-gray-700">
                 <tr>
                   <th
@@ -95,6 +115,9 @@ export default function Table({ posts }) {
                   <th scope="col" className="p-4 px-6 text-right">
                     <span className="">Read it full</span>
                   </th>
+                  <th scope="col" className="p-4 px-6 text-right">
+                    <span className="text-red-500">DELETE</span>
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
@@ -107,7 +130,7 @@ export default function Table({ posts }) {
                       <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                         <img
                           alt="img-post-related"
-                          className="w-20 h-20 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                          className="w-[60px] h-[60px] object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
                           src={_post.img1}
                         />
                       </td>
@@ -143,6 +166,12 @@ export default function Table({ posts }) {
                         >
                           See the full article
                         </p>
+                      </td>
+                      <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <MdDeleteForever
+                          onClick={() => deletePost(_post.id)}
+                          className="w-20 h-10 pr-3 text-red-500 hover:text-red-900 cursor-pointer"
+                        />
                       </td>
                     </tr>
                   ))}

@@ -45,8 +45,8 @@ export default function AdminCreateNewPost() {
   return (
     // Component Start
     <>
-      <div className="absolute top-[15%] bottom-0 left-[20%] right-0 flex flex-col justify-center py-10 mx-4 border-gray-300 text-gray-300">
-        <div className="container sm:max-w-[200px] sm:mx-auto md:max-w-[400px] lg:max-w-full lg:ml-0">
+      <div className="absolute w-[70%] h-[70%] top-[15%] bottom-0 left-[20%] right-0 flex flex-col justify-center pt-10 mx-4 border-gray-300 text-gray-300">
+        <div className="container sm:max-w-[200px] sm:mx-auto md:max-w-[400px] md:mr-auto lg:max-w-full">
           <div className="flex justify-between flex-shrink-0 px-8 py-4 border-b border-gray-300">
             <h1 className="text-xl font-semibold">CREATE NEW POST</h1>
             <p className="flex items-center h-8 px-2 text-sm bg-gray-900 rounded-sm">
