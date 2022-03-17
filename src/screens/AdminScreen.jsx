@@ -34,16 +34,19 @@ export default function AdminScreen() {
   }, []);
   return (
     <>
-      <div className="img-textLeft h-screen pt-10">
+      <div className="img-textLeft w-full pt-10">
         <h1 className="text-4xl text-gray-200 font-extrabold text-center pt-2 px-10">
           ADMIN SECTION
         </h1>
         <SideBar path={Route.path} />
-
         {mount ? (
           <Routes>
             <Route exact path="dashboard" element={<Dahsboard />} />
-            <Route exact path="posts" element={<AdminPost posts={posts} />} />
+            <Route
+              exact
+              path="editPosts"
+              element={<AdminPost posts={posts} />}
+            />
             <Route
               exact
               path="createNewPosts"

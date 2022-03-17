@@ -16,7 +16,7 @@ export default function Navbar() {
       window.location.pathname === "*" ||
       window.location.pathname === "/admin" ||
       window.location.pathname === "/admin/dashboard" ||
-      window.location.pathname === "/admin/posts" ||
+      window.location.pathname === "/admin/editPosts" ||
       window.location.pathname === "/admin/createNewPosts" ? (
         <></>
       ) : (
@@ -208,41 +208,8 @@ export default function Navbar() {
                   ></a>
                   <div className="p-6 mega-menu mb-16 ml-auto sm:mb-0 shadow-xl bg-blue-800">
                     <div className="container w-full flex flex-wrap justify-end ml-auto">
-                      <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
-                        <div className="flex items-center">
-                          <img
-                            className="cover w-[60px] h-[40px] mr-5"
-                            src="/logos/logo.png"
-                            alt=""
-                          />
-                          <h3 className="font-bold text-xl text-white text-bold mb-2">
-                            Dashboard
-                          </h3>
-                        </div>
-                        <p className="text-gray-100 text-sm">
-                          The Admin Dashboard content is divided using a Tab
-                          concept. On the header of each slide, the highlighted
-                          tab references the topic of the agenda being
-                          discussed. This feature is a well known software
-                          metaphor.
-                        </p>
-                        <div className="flex items-center py-3">
-                          <svg
-                            className="h-6 pr-3 fill-current text-blue-300"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
-                          </svg>
-                          <NavLink to="/admin">
-                            <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
-                              Check statistics
-                            </p>
-                          </NavLink>
-                        </div>
-                      </ul>
-                      <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3 pl-10">
-                        <div className="flex items-center">
+                      <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 ">
+                        <li className="flex items-center border-gray-500 border-b pt-6 lg:pt-3 pl-10">
                           <div className="w-full text-white mb-8">
                             <h2
                               onClick={() => setSure(!sure)}
@@ -252,7 +219,29 @@ export default function Navbar() {
                             </h2>
                             <p>Click to logout now</p>
                           </div>
-                        </div>
+                        </li>
+                        <li className="flex items-center pb-6 pt-6 lg:pt-3 pl-10">
+                          <div className="flex flex-col items-center">
+                            <h3 className="font-bold text-xl text-white text-bold pr-8 mb-2">
+                              Dashboard
+                            </h3>
+
+                            <div className="flex items-center py-3">
+                              <svg
+                                className="h-6 pr-3 fill-current text-blue-300"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                              >
+                                <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
+                              </svg>
+                              <NavLink to="/admin">
+                                <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
+                                  Check statistics
+                                </p>
+                              </NavLink>
+                            </div>
+                          </div>
+                        </li>
                       </ul>
                     </div>
                   </div>

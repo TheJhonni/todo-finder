@@ -21,7 +21,10 @@ export default function SideBar() {
   }, [location, path]);
 
   return (
-    <aside className="w-64 relative" aria-label="Sidebar">
+    <aside
+      className="max-w-[250px] min-h-screen mr-10 relative"
+      aria-label="Sidebar"
+    >
       <div className="overflow-y-auto py-4 px-4 bg-gray-50 rounded">
         <span
           onClick={() => window.history.back()}
@@ -64,7 +67,7 @@ export default function SideBar() {
             </Link>
           </li>
           <li>
-            <Link to="/admin/posts">
+            <Link to="/admin/editPosts">
               <p
                 href="#"
                 className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] "
