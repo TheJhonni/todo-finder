@@ -4,6 +4,7 @@ import Gif from "../components/Spinner/Gif";
 import SideBar from "../components/AdminPages/SideBar";
 import Dahsboard from "../components/AdminPages/Dahsboard";
 import AdminPost from "../components/AdminPages/AdminPost";
+import User from "../components/AdminPages/User";
 import AdminCreateNewPost from "../components/AdminPages/AdminCreateNewPost";
 
 export default function AdminScreen() {
@@ -49,6 +50,7 @@ export default function AdminScreen() {
               path="createNewPosts"
               element={<AdminCreateNewPost />}
             />
+            <Route exact path="users" element={<User />} />
           </Routes>
         ) : (
           <Gif />

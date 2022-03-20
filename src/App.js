@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { auth } from "./firebase";
 import { useDispatch, useSelector } from "react-redux";
 import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
-import EarthScreen from "./screens/EarthScreen";
+import FirstScreen from "./screens/FirstScreen";
 import Favorites from "./screens/Favorites";
 import PostScreen from "./screens/PostScreen";
 import RegisterScreen from "./screens/Login/RegisterScreen";
@@ -68,7 +68,7 @@ function App() {
       <div className="img-login">
         <Navbar />
         <Routes>
-          <Route exact path="/" element={<EarthScreen />} />
+          <Route exact path="/" element={<FirstScreen />} />
 
           <Route exact path="/login" element={<LoginScreen />} />
           <Route exact path="/register" element={<RegisterScreen />} />
