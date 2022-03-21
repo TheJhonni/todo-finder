@@ -62,11 +62,9 @@ export default function Homepagege() {
         <div className="w-screen h-full img-textLeft">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl py-16 sm:py-24 lg:py-32 lg:max-w-none">
-              <div className="flex justify-between items-center">
-                <h2 className="text-center text-6xl mb-7 font-extrabold text-gray-200">
-                  Read one of our latest articles
-                </h2>
-              </div>
+              <h2 className="text-center text-6xl mb-7 font-extrabold text-gray-200">
+                Read one of our latest articles
+              </h2>
 
               <div className="text-gray-600 flex body-font overflow-hidden">
                 {posts &&
@@ -92,46 +90,44 @@ export default function Homepagege() {
                       )
                   )}
               </div>
-              <div className="flex justify-between w-full mb-[200px]">
+              <div className="text-gray-600 flex body-font overflow-hidden">
                 <GenericScreen />
-                <div className="h-screen ml-[70%] top-12 flex flex-col mt-5">
-                  <h2 className="text-4xl my-7 font-extrabold text-center text-gray-200">
-                    Our categories:
-                  </h2>
-                  <div className="flex flex-col space-y-12 lg:space-y-0 lg:grid lg:grid-cols-1 lg:gap-x-2">
-                    {posts &&
-                      posts.slice(1, 4).map(
-                        (post) =>
-                          post.category !== "generic" && (
-                            <Link
-                              key={post.id}
-                              to={`/category=${post.category}`}
-                            >
-                              <div className="flex">
-                                <Cards
-                                  name={
-                                    post.category === undefined && null
-                                      ? "To be continued..."
-                                      : post.category
-                                  }
-                                  img={
-                                    (post.category === "generic" &&
-                                      "logos/logo.png") ||
-                                    (post.category === "sea" &&
-                                      "logos/ocean.png") ||
-                                    (post.category === "space" &&
-                                      "logos/universe.png") ||
-                                    (post.category === "eye" &&
-                                      "logos/ocio.png") ||
-                                    (post.category === undefined &&
-                                      "logos/atom.png")
-                                  }
-                                />
-                              </div>
-                            </Link>
-                          )
-                      )}
-                  </div>
+              </div>
+
+              <h2 className="text-4xl my-7 font-extrabold text-center text-gray-200">
+                Our categories:
+              </h2>
+              <div className="text-gray-600 flex body-font overflow-hidden">
+                <div className="flex flex-col space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-2">
+                  {posts &&
+                    posts.slice(1, 4).map(
+                      (post) =>
+                        post.category !== "generic" && (
+                          <Link key={post.id} to={`/category=${post.category}`}>
+                            <div className="flex">
+                              <Cards
+                                name={
+                                  post.category === undefined && null
+                                    ? "To be continued..."
+                                    : post.category
+                                }
+                                img={
+                                  (post.category === "generic" &&
+                                    "logos/logo.png") ||
+                                  (post.category === "sea" &&
+                                    "logos/ocean.png") ||
+                                  (post.category === "space" &&
+                                    "logos/universe.png") ||
+                                  (post.category === "eye" &&
+                                    "logos/ocio.png") ||
+                                  (post.category === undefined &&
+                                    "logos/atom.png")
+                                }
+                              />
+                            </div>
+                          </Link>
+                        )
+                    )}
                 </div>
               </div>
 

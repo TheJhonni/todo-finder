@@ -7,7 +7,7 @@ import { AiOutlineHeart } from "react-icons/ai";
 
 export default function Navbar() {
   const savedPosts = useSelector((state) => state.favorites.favoritePosts);
-  // const loc = window.location.pathname;
+  const loc = window.location.pathname;
   // const notShowLoc = [
   //   "/",
   //   "*",
@@ -22,15 +22,14 @@ export default function Navbar() {
   const navigate = useNavigate();
   return (
     <>
-      {window.location.pathname === "/" ||
-      window.location.pathname === "*" ||
-      window.location.pathname === "/admin" ||
-      window.location.pathname === "/admin/dashboard" ||
-      window.location.pathname === "/admin/feedbacks" ||
-      window.location.pathname === "/admin/editPosts" ||
-      window.location.pathname === "/admin/createNewPosts" ||
-      window.location.pathname === "/admin/users" ||
-      window.location.pathname === "/admin/geolocalization" ? (
+      {loc === "*" ||
+      loc === "/admin" ||
+      loc === "/admin/dashboard" ||
+      loc === "/admin/feedbacks" ||
+      loc === "/admin/editPosts" ||
+      loc === "/admin/createNewPosts" ||
+      loc === "/admin/users" ||
+      loc === "/admin/geolocalization" ? (
         <></>
       ) : (
         <>

@@ -2,13 +2,19 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import ShowTestimonials from "../components/Testimonials/ShowTestimonials";
 import StartTitles from "../components/Titles/StartTitles";
+import Network from "../components/components_2nd_Layer/Network";
 import Footer from "../components/Footer/Footer";
-import Spinner from "../components/Spinner/Spinner";
 import Gif from "../components/Spinner/Gif";
-import satPianeta from "../assets/satPianeta.gif";
+import sat from "../assets/sat.gif";
+import shuttle from "../assets/shuttle.gif";
+import AtomTitles from "../components/Titles/AtomTitles";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function FirstScreen() {
   const [mount, setMount] = useState(false);
+
+  const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
     setMount(false);
@@ -20,17 +26,17 @@ export default function FirstScreen() {
   return (
     <>
       {mount ? (
-        <div className="w-full h-full img-login relative">
-          <div className="p-12">
+        <div className="relative w-full h-full img-login">
+          <div className="p-12 max-h-[400px]">
             <img
-              src={satPianeta}
+              src={sat}
               style={{
                 position: "absolute",
-                right: "20px",
+                left: "5%",
                 top: "0",
                 marginLeft: "auto",
-                width: "30%",
-                height: "30%",
+                width: "600px",
+                height: "600px",
                 zIndex: "1",
               }}
               alt="logo"
@@ -38,7 +44,40 @@ export default function FirstScreen() {
             <StartTitles />
           </div>
 
-          <div className="container mt-[200px] py-12 mx-auto">
+          <div className="mt-[150px] bg-gray-300 py-10 mx-auto">
+            <AtomTitles />
+          </div>
+          <div className="relative mx-auto flex justify-between items-center bg-[#1E657B] rounded text-white mt-[100px] p-5 h-[300px] w-[80%]">
+            <img
+              src={shuttle}
+              style={{
+                position: "absolute",
+                left: "2%",
+                top: "0",
+                right: "80%",
+                marginLeft: "auto",
+                width: "300px",
+                height: "300px",
+                zIndex: "1",
+              }}
+              alt="logo"
+            />
+            <span className="mx-auto text-center self-center">
+              <h1 className="m-0 text-white text-5xl font-bold my-2">
+                Do you have precious data to show?
+              </h1>
+              <p className="text-[#ffffffce] text-xl font-bold my-1">
+                We credits all available resources from magazines and
+                researchers
+              </p>
+            </span>
+            <Link to={currentUser ? "/homePage" : "/redirectToLogin"}>
+              <span className="text-[#171753d3] self-end bg-white text-xl hover:bg-[#5FD38D] font-bold px-[30px] py-[15px] rounded-full">
+                explore
+              </span>
+            </Link>
+          </div>
+          <div className="container mt-[50px] py-12 mx-auto">
             <ShowTestimonials />
           </div>
           <div className="bg-[#040c1d34] opacity-2" />
