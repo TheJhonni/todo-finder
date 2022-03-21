@@ -2,32 +2,32 @@ import { ResponsivePie } from "@nivo/pie";
 
 const pieData = [
   {
-    id: "java",
-    label: "java",
+    id: "female",
+    label: "female",
     value: 195,
+    color: "hsl(65, 70%, 50%)",
+  },
+  {
+    id: "not registered",
+    label: "not registered",
+    value: 419,
     color: "hsl(90, 70%, 50%)",
   },
   {
-    id: "erlang",
-    label: "erlang",
-    value: 419,
-    color: "hsl(56, 70%, 50%)",
-  },
-  {
-    id: "ruby",
-    label: "ruby",
+    id: "unknown",
+    label: "unknown",
     value: 407,
     color: "hsl(103, 70%, 50%)",
   },
   {
-    id: "haskell",
-    label: "haskell",
+    id: "male",
+    label: "male",
     value: 474,
     color: "hsl(186, 70%, 50%)",
   },
   {
-    id: "go",
-    label: "go",
+    id: "admins",
+    label: "admins",
     value: 71,
     color: "hsl(104, 70%, 50%)",
   },
@@ -45,7 +45,7 @@ export default function Pie() {
       borderWidth={1}
       borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
       arcLinkLabelsSkipAngle={10}
-      arcLinkLabelsTextColor="#fff"
+      arcLinkLabelsTextColor="#000"
       arcLinkLabelsThickness={2}
       arcLinkLabelsColor={{ from: "color" }}
       arcLabelsSkipAngle={10}

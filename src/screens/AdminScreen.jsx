@@ -6,6 +6,8 @@ import Dahsboard from "../components/AdminPages/Dahsboard";
 import AdminPost from "../components/AdminPages/AdminPost";
 import User from "../components/AdminPages/User";
 import AdminCreateNewPost from "../components/AdminPages/AdminCreateNewPost";
+import Feedback from "../components/AdminPages/Feedback";
+import Geolocalization from "../components/AdminPages/Geolocalization";
 
 export default function AdminScreen() {
   const navigate = useNavigate();
@@ -35,11 +37,12 @@ export default function AdminScreen() {
   }, []);
   return (
     <>
-      <div className="img-textLeft py-10">
-        <SideBar path={Route.path} />
-        {mount ? (
+      {mount ? (
+        <div className="img-textLeft py-10">
+          <SideBar path={Route.path} />
           <Routes>
             <Route exact path="dashboard" element={<Dahsboard />} />
+            <Route exact path="feedbacks" element={<Feedback />} />
             <Route
               exact
               path="editPosts"
@@ -51,11 +54,12 @@ export default function AdminScreen() {
               element={<AdminCreateNewPost />}
             />
             <Route exact path="users" element={<User />} />
+            <Route exact path="geolocalization" element={<Geolocalization />} />
           </Routes>
-        ) : (
-          <Gif />
-        )}
-      </div>
+        </div>
+      ) : (
+        <Gif />
+      )}
     </>
   );
 }

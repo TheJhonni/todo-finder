@@ -82,7 +82,7 @@ export default function Table({ posts }) {
           </div>
 
           <div className="overflow-hidden">
-            <table className="w-[70%] h-[70%] divide-y divide-gray-200 table-fixed rounded">
+            <table className="w-[70%] h-[70%] divide-y divide-gray-300 table-fixed rounded">
               <thead className="bg-gray-100 dark:bg-gray-700">
                 <tr>
                   <th
@@ -120,7 +120,7 @@ export default function Table({ posts }) {
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+              <tbody className="bg-white divide-y divide-gray-300 dark:bg-gray-800 dark:divide-gray-700">
                 {filtered &&
                   filtered.map((_post) => (
                     <tr

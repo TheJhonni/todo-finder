@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { IoIosCreate } from "react-icons/io";
 import { AiOutlineEdit } from "react-icons/ai";
+import { MdFeedback } from "react-icons/md";
+import { BsFillGeoAltFill } from "react-icons/bs";
 import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 
 export default function SideBar() {
@@ -57,7 +59,7 @@ export default function SideBar() {
                 }
               >
                 <svg
-                  className="w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 "
+                  className="w-5 h-6 transition duration-75 group-hover:text-gray-900 "
                   fill="currentColor"
                   viewBox="0 0 20 20"
                   xmlns="http://www.w3.org/2000/svg"
@@ -69,6 +71,52 @@ export default function SideBar() {
               </p>
             </Link>
           </li>
+          <li>
+            <Link to="/admin/feedbacks">
+              <p
+                id="dashboard"
+                className={
+                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D] active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  (isFoc && "active:bg-[#46c277ce] ")
+                }
+              >
+                <MdFeedback />
+                <span className="ml-3">Feedbacks</span>
+              </p>
+            </Link>
+          </li>
+
+          <li className="text-sm pt-2">Users</li>
+          <li>
+            <Link to="/admin/users">
+              <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce]">
+                <svg
+                  className="flex-shrink-0 w-5 h-6 transition duration-75 group-hover:text-gray-900"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+                <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
+              </p>
+            </Link>
+          </li>
+          <Link to="/admin/geolocalization">
+            <li>
+              <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] ">
+                <BsFillGeoAltFill />
+                <span className="flex-1 ml-3 whitespace-nowrap">
+                  Geo Localization
+                </span>
+              </p>
+            </li>
+          </Link>
+
           <li className="text-sm pt-2">Posts</li>
           <li>
             <Link to="/admin/createNewPosts">
@@ -104,51 +152,9 @@ export default function SideBar() {
           </li>
 
           <li>
-            <Link to="/admin/users">
-              <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce]">
-                <svg
-                  className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
-              </p>
-            </Link>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] "
-            >
+            <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] ">
               <svg
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 "
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-              <span className="flex-1 ml-3 whitespace-nowrap">Products</span>
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] "
-            >
-              <svg
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900"
+                className="flex-shrink-0 w-5 h-6 transition duration-75 group-hover:text-gray-900"
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -165,15 +171,12 @@ export default function SideBar() {
               >
                 Sign In
               </span>
-            </a>
+            </p>
           </li>
           <li>
-            <a
-              href="#"
-              className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] "
-            >
+            <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] ">
               <svg
-                className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 group-hover:text-gray-900 "
+                className="flex-shrink-0 w-5 h-6 transition duration-75 group-hover:text-gray-900 "
                 fill="currentColor"
                 viewBox="0 0 20 20"
                 xmlns="http://www.w3.org/2000/svg"
@@ -190,7 +193,7 @@ export default function SideBar() {
               >
                 Sign Up
               </span>
-            </a>
+            </p>
           </li>
         </ul>
         {notClosed && (
