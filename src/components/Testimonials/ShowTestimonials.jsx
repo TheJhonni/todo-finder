@@ -37,8 +37,8 @@ function ShowTestimonials() {
           <Network />
         </div>
       </div>
-      <hr />
-      <div className="container px-5 py-24 mx-auto">
+      <hr className="mt-10 mb-5" />
+      <div className="container px-5 py-12 mx-auto">
         <div className="flex flex-wrap -m-4">
           {testimonials &&
             testimonials.map((testimonial) => (
@@ -56,7 +56,7 @@ function ShowTestimonials() {
                   <h2 className="text-gray-800 font-medium title-font tracking-wider text-sm">
                     {testimonial?.testimonialAuthor}
                   </h2>
-                  <p className="text-gray-400">Senior Product Designer</p>
+                  <p className="text-gray-400">{testimonial?.occupation}</p>
                 </div>
               </div>
             ))}

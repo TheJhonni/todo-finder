@@ -10,6 +10,7 @@ import Cards from "../components/components_2nd_Layer/Cards";
 import Blogs from "../components/components_2nd_Layer/Blogs";
 import GenericScreen from "./GenericScreen";
 import Gif from "../components/Spinner/Gif";
+import PopUp from "../components/components_2nd_Layer/PopUp";
 
 export default function Homepagege() {
   const navigate = useNavigate();
@@ -62,10 +63,10 @@ export default function Homepagege() {
         <div className="w-screen h-full img-textLeft">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-5xl py-16 sm:py-24 lg:py-32 lg:max-w-none">
-              <h2 className="text-center text-6xl mb-7 font-extrabold text-gray-200">
+              <PopUp />
+              <h2 className="text-center text-6xl my-10 font-extrabold text-gray-200">
                 Read one of our latest articles
               </h2>
-
               <div className="text-gray-600 flex body-font overflow-hidden">
                 {posts &&
                   postComments &&

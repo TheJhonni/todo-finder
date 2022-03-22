@@ -44,7 +44,7 @@ export default function FirstScreen() {
             <StartTitles />
           </div>
 
-          <div className="mt-[150px] bg-gray-300 py-10 mx-auto">
+          <div className="mt-[150px] bg-gray-300 pt-1 pb-8 mx-auto">
             <AtomTitles />
           </div>
           <div className="relative mx-auto flex justify-between items-center bg-[#1E657B] rounded text-white mt-[100px] p-5 h-[300px] w-[80%]">

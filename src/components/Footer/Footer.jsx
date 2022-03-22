@@ -185,134 +185,127 @@ function Footer() {
         </div>
 
         <div className="mb-6">
-          <p>
-            <span className="font-bold text-emerald-400 text-lg">
-              This App was created by TheJhonni in order to achive his final
-              mile during this wonderful journey at Strive's School. He'd like
-              to thank all the teachers, tutors and colleagues. He admires you
-              all and wish all of you good luck in your personal and
-              professional life. He wrote this instead of some random:
-            </span>
-            <br />
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia
-            perferendis sunt, fugit facere magni tenetur molestiae. Magnam
-            provident iure nulla perspiciatis laudantium! Officiis, aliquid
-            excepturi ipsa vel illum corporis possimus.
-          </p>
+          <span className="font-bold text-emerald-400 text-lg">
+            This App was created by TheJhonni in order to achive his final mile
+            during this wonderful journey at Strive's School. He'd like to thank
+            all the teachers, tutors and colleagues. He admires you all and wish
+            all of you good luck in your personal and professional life. He
+            wrote this instead of some random:
+          </span>
         </div>
 
         <div className="grid lg:grid-cols-4 md:grid-cols-2">
           <div className="mb-6">
-            <h5 className="uppercase font-bold mb-2.5">Links</h5>
+            <h5 className="uppercase font-bold mb-2.5"> Platform</h5>
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 1
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer ">
+                  latest Post
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 2
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Categories
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 3
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Articles
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 4
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  What's next
+                </p>
               </li>
             </ul>
           </div>
 
           <div className="mb-6">
-            <h5 className="uppercase font-bold mb-2.5">Links</h5>
+            <h5 className="uppercase font-bold mb-2.5">Resources</h5>
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 1
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Our team members
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 2
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Write us
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 3
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Become a member
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 4
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Support us
+                </p>
               </li>
             </ul>
           </div>
 
           <div className="mb-6">
-            <h5 className="uppercase font-bold mb-2.5">Links</h5>
+            <h5 className="uppercase font-bold mb-2.5">Extra Links</h5>
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 1
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Nasa pic of the day
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 2
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Faq section
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 3
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Chyber link
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 4
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Provide your token
+                </p>
               </li>
             </ul>
           </div>
 
           <div className="mb-6">
-            <h5 className="uppercase font-bold mb-2.5">Links</h5>
+            <h5 className="uppercase font-bold mb-2.5">Admin</h5>
 
             <ul className="list-none mb-0">
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 1
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Are you already a member?
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 2
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Need extra help?
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 3
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Want to post a new article?
+                </p>
               </li>
               <li>
-                <a href="#!" className="text-gray-300">
-                  Link 4
-                </a>
+                <p className="text-gray-300 hover:underline cursor-pointer">
+                  Forgot your password?
+                </p>
               </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div className="text-center p-4 text-blue-300 border-solid">
+      <div className="text-center p-4 text-blue-300 hover:underline cursor-pointer border-solid">
         © 2021 Copyright:
         <a
           className=" text-emerald-500 ml-2"
