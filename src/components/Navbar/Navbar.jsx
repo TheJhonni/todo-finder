@@ -10,6 +10,7 @@ export default function Navbar() {
   const loc = window.location.pathname;
 
   const [sure, setSure] = useState(false);
+  const [show, setShow] = useState(false);
   const navigate = useNavigate();
   return (
     <>
@@ -38,11 +39,12 @@ export default function Navbar() {
 
               <ul className="flex">
                 <li>
-                  <div className="flex items-center relative space-x-2 py-6 px-2">
+                  <div className="flex items-center relative space-x-2 pt-6 px-2">
                     <input
                       type="text"
                       // value="filter"
                       name="filter"
+                      onChange={() => setShow(!show)}
                       id="table-search"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-g/ray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search for posts"
@@ -59,6 +61,13 @@ export default function Navbar() {
                         clipRule="evenodd"
                       ></path>
                     </svg>
+                    {show && (
+                      <div className="absolute top-[50px] flex flex-col items-center max-h-[600px] text-white">
+                        <span className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-g/ray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          ciaoooooooooo
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </li>
                 <li

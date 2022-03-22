@@ -47,23 +47,19 @@ export default function FirstScreen() {
           <div className="mt-[150px] bg-gray-300 pt-1 pb-8 mx-auto">
             <AtomTitles />
           </div>
-          <div className="relative mx-auto flex justify-between items-center bg-[#1E657B] rounded text-white mt-[100px] p-5 h-[300px] w-[80%]">
+          <div className="mx-auto flex justify-between items-center bg-[#1E657B] rounded text-white mt-[100px] p-5 h-[300px] w-[80%]">
             <img
               src={shuttle}
               style={{
-                position: "absolute",
-                left: "2%",
-                top: "0",
-                right: "80%",
-                marginLeft: "auto",
                 width: "300px",
                 height: "300px",
                 zIndex: "1",
               }}
               alt="logo"
             />
-            <span className="mx-auto text-center self-center">
-              <h1 className="m-0 text-white text-5xl font-bold my-2">
+
+            <span className="flex flex-col items-center justify-center">
+              <h1 className="text-white text-5xl font-bold my-2">
                 Do you have precious data to show?
               </h1>
               <p className="text-[#ffffffce] text-xl font-bold my-1">
@@ -71,6 +67,7 @@ export default function FirstScreen() {
                 researchers
               </p>
             </span>
+
             <Link to={currentUser ? "/homePage" : "/redirectToLogin"}>
               <span className="text-[#171753d3] self-end bg-white text-xl hover:bg-[#5FD38D] font-bold px-[30px] py-[15px] rounded-full">
                 explore
