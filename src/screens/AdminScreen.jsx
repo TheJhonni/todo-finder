@@ -12,8 +12,6 @@ import Geolocalization from "../components/AdminPages/Geolocalization";
 export default function AdminScreen() {
   const navigate = useNavigate();
 
-  // const [notClosed, setNotClosed] = useState(true);
-
   const [mount, setMount] = useState(false);
   const [posts, setPosts] = useState(null);
 

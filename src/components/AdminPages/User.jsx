@@ -1,7 +1,6 @@
-import React from "react";
-import Age from "../components_2nd_Layer/users/Age";
+import React, { useEffect, useState } from "react";
+import ListUsers from "../components_2nd_Layer/users/ListUsers";
 import AgreeDiagram from "../components_2nd_Layer/users/AgreeDiagram";
-import Streams from "../components_2nd_Layer/users/Streams";
 import UserPie from "../components_2nd_Layer/users/UserPie";
 
 export default function User() {
@@ -15,13 +14,9 @@ export default function User() {
           <AgreeDiagram />
         </div>
       </div>
-      <div className="flex justify-between">
-        <div className="absolute h-[40%] w-[35%] rounded bg-transparent top-[50%] left-[20%] z-99">
-          <Age />
-        </div>
-        <div className="absolute h-[40%] w-[35%] rounded bg-gray-300 top-[50%] right-[10%] z-99">
-          <Streams />
-        </div>
+
+      <div className="absolute h-[40%] w-[70%] rounded bg-transparent top-[50%] left-[20%] z-99">
+        <ListUsers />
       </div>
     </div>
   );

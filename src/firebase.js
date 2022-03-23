@@ -11,12 +11,31 @@ const firebaseConfig = {
   appId: "1:786678426183:web:c70cb9495038106cd01f62",
 };
 
-// const db = firebaseApp.firestore();
 firebase.initializeApp(firebaseConfig);
+export const db = firebase.firestore();
 const auth = firebase.auth();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
 
 export { auth, googleAuthProvider, facebookAuthProvider };
 
-// export default db;
+// export const createUserDocument = async (user, additionalData) => {
+//   if (!user) return;
+//   const userRef = firestore.doc(`users/${user.uid}`);
+//   const snapshot = await userRef.get();
+
+//   if (!snapshot.exists) {
+//     const { email } = user;
+//     const { displayName } = additionalData;
+
+//     try {
+//       useRef.set({
+//         displayName,
+//         email,
+//         createdAt: new Date(),
+//       });
+//     } catch (error) {
+//       console.log("error in creating user", error);
+//     }
+//   }
+// };

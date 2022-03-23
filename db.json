@@ -105,7 +105,9 @@
       "authorLink": "https://it.wikipedia.org/wiki/Marcelo_Gleiser",
       "credentials": "INNOVATIONS IN",
       "likes": [],
-      "dislikes": ["jdilmoro@gmail.com"]
+      "dislikes": [
+        "jdilmoro@gmail.com"
+      ]
     },
     {
       "id": "3",

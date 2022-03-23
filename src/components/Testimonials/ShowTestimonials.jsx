@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Network from "../components_2nd_Layer/Network";
 
 function ShowTestimonials() {
   const [testimonials, setTestimonials] = useState(null);
@@ -27,17 +26,14 @@ function ShowTestimonials() {
         TESTIMONIALS:
       </h2>
       <div className="flex justify-center items-center container px-10">
-        <p className="max-w-[700px] ml-10 text-lg font-medium">
+        <p className="max-w-[700px] my-10 text-lg font-medium">
           Our connections are very valuable to us. We appreciate each person's
           time and effort. Thanks to this scientists and researchers we've
           achieved so many results such as new precious data that we transformed
           into new posts.
         </p>
-        <div className="ml-auto mt-10 mr-10 h-[300px] w-[300px]">
-          <Network />
-        </div>
       </div>
-      <hr className="mt-10 mb-5" />
+      <hr className="mt-5 mb-5" />
       <div className="container px-5 py-12 mx-auto">
         <div className="flex flex-wrap -m-4">
           {testimonials &&

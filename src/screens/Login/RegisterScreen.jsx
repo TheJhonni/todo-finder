@@ -33,6 +33,7 @@ function SignUpScreen() {
       return;
     }
     dispatch(registerInitiate(email, password, displayName));
+    // createUserDocument(user)
     setState({ displayName: "", email: "", password: "", passwordConfirm: "" });
     // reset input to default => empty strings
   };

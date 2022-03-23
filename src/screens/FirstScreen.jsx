@@ -2,7 +2,6 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense, useEffect, useState } from "react";
 import ShowTestimonials from "../components/Testimonials/ShowTestimonials";
 import StartTitles from "../components/Titles/StartTitles";
-import Network from "../components/components_2nd_Layer/Network";
 import Footer from "../components/Footer/Footer";
 import Gif from "../components/Spinner/Gif";
 import sat from "../assets/sat.gif";
