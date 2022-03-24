@@ -59,19 +59,14 @@ export default function Homepagege() {
         <div className="w-screen h-full img-textLeft">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <img
-              className="mx-auto mt-[-10]"
+              className="w-[300px] md:w-[500px] md:h-[500px] z-[999] mx-auto mt-[-10]"
               src={atoms}
-              style={{
-                width: "500px",
-                height: "500px",
-                zIndex: "999",
-              }}
               alt="logo"
             />
-            <h2 className="text-center text-6xl mt-10 font-extrabold text-gray-200">
+            <h2 className="text-center text-3xl sm:text-4xl md:text-6xl md:mt-10 font-extrabold text-gray-200">
               Read one of our latest articles
             </h2>
-            <div className="max-w-5xl mt-[-10] pb-10 sm:py-24 lg:py-32 lg:max-w-none">
+            <div className="max-w-5xl mx-auto pb-10 sm:py-12 lg:py-32 lg:max-w-none">
               <div className="flex-col items-center md:flex lg:space-x-[200px] lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-2">
                 {posts &&
                   postComments &&
@@ -96,7 +91,7 @@ export default function Homepagege() {
                       )
                   )}
               </div>
-              <div className="text-gray-600 space-y-10 mt-10 flex body-font overflow-hidden">
+              <div className="text-gray-600 mx-auto space-y-10 mt-10 flex body-font overflow-hidden">
                 <GenericScreen />
               </div>
 
@@ -104,7 +99,7 @@ export default function Homepagege() {
                 Our categories:
               </h2>
               <div className="text-gray-600 flex body-font overflow-hidden">
-                <div className="flex flex-col space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-2">
+                <div className="flex flex-col mx-auto space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-2">
                   {posts &&
                     posts.slice(1, 4).map(
                       (post) =>

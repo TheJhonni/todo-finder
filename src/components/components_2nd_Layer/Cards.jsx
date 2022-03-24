@@ -3,14 +3,14 @@ import React from "react";
 export default function Cards({ name, img }) {
   return (
     <div
-      className="relative mb-10 w-full bg-gray-300 rounded-lg overflow-hidden sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1 shadow-lg cursor-pointer hover:shadow-2xl hover:scale-[0.85] hover:text-center hover:text-3xl hover:w-full 
+      className="md:mb-10 w-full bg-gray-300 rounded-lg overflow-hidden sm:h-64 lg:aspect-w-1 lg:aspect-h-1 shadow-lg cursor-pointer hover:shadow-2xl hover:scale-[0.85] hover:text-center hover:text-3xl hover:w-full 
       transition-all duration-75 ease-in-out"
     >
-      <h1 className="text-xl text-blue-900 font-semibold md:text-2xl lg:text-3xl">
+      <h1 className="text-xl ml-5 text-blue-900 font-semibold md:text-2xl lg:text-3xl">
         {name}
       </h1>
       <img
-        className="w-full h-full object-center object-cover hover:opacity-25"
+        className="w-[300px] sm:w-[500px] md:w-[600px] lg:w-full h-[200px] md:h-full object-center object-cover hover:opacity-25"
         src={img}
         alt={name + " generic " + "image"}
       />

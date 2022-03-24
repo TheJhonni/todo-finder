@@ -64,8 +64,8 @@ export default function Navbar() {
               <div onClick={() => navigate("/homePage")} className="my-auto">
                 <div className="rounded">
                   <img
-                    className="object-cover relative 
-             bg-transparent shadow-sm w-[100px] h-[50px] cursor-pointer"
+                    className="hidden sm:block object-cover relative 
+             bg-transparent shadow-sm sm:w-[100px] sm:h-[50px] md:w-[100px] md:h-[50px] cursor-pointer"
                     src="/logos/logo.png"
                   />
                 </div>
@@ -73,7 +73,7 @@ export default function Navbar() {
 
               <ul className="flex">
                 <li>
-                  <div className="flex items-center relative space-x-2 pt-6 px-2">
+                  <div className="hidden md:flex items-center relative space-x-2 pt-6 px-2">
                     <input
                       type="text"
                       value={query}

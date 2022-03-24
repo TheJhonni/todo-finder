@@ -12,14 +12,14 @@ export default function Blogs({
   filteredC,
 }) {
   return (
-    <div className="p-8 md:w-[600px] mx-3 mt-10 flex flex-col items-start bg-indigo-50 rounded hover:bg-indigo-200">
+    <div className="w-[300px] sm:w-[500px] h-[400px] p-4 md:p-8 md:w-[600px] mx-auto md:mx-3 mt-10 flex flex-col items-start bg-indigo-50 rounded-lg hover:bg-indigo-200">
       <span className="inline-block py-1 px-2 rounded text-indigo-500 text-xs font-medium tracking-widest">
         {category}
       </span>
       <h2 className="sm:text-3xl text-2xl title-font font-medium text-gray-900 mt-4 mb-4">
         {title.slice(0, 15)} ...
       </h2>
-      <p className="leading-relaxed mb-8">{body} ...</p>
+      <p className="leading-relaxed mb-8">{body.slice(0, 100)} ...</p>
       <div className="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full">
         <span className="text-indigo-500 inline-flex items-center">
           Learn More

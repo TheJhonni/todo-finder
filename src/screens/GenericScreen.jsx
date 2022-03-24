@@ -32,14 +32,12 @@ export default function GenericScreen() {
   }, []);
 
   return (
-    <div className="container flex flex-col items-center">
-      <div className="w-[500px] my-10 lg:w-full">
-        <PopUp />
-      </div>
-      <div className="mt-10 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
+    <div className="container mx-auto flex flex-col justify-evenly items-center">
+      <PopUp />
+      <div className="md:space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
         {posts &&
           posts.map((_post) => (
-            <div key={_post.id} className="flex">
+            <div key={_post.id} className="flex mt-10">
               <Link to={`/posts/${_post.id}`}>
                 <Posts
                   key={_post.id}
