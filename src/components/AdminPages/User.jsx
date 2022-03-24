@@ -10,7 +10,7 @@ export default function User() {
         <div className="absolute h-[40%] w-[35%] rounded bg-gray-300 top-[10%] left-[20%] z-99">
           <UserPie />
         </div>
-        <div className="absolute h-[40%] w-[35%] rounded bg-transparent top-[10%] right-[10%] z-99">
+        <div className="absolute h-[40%] w-[35%] rounded bg-gray-300 top-[10%] right-[10%] z-99">
           <AgreeDiagram />
         </div>
       </div>

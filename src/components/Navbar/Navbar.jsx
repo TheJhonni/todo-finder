@@ -1,17 +1,48 @@
 import React, { useEffect, useState } from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
 import Logout from "./Logout";
 import { useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
+// import onClickOutside from "react-onclickoutside";
 
 export default function Navbar() {
   const savedPosts = useSelector((state) => state.favorites.favoritePosts);
   const loc = window.location.pathname;
 
   const [sure, setSure] = useState(false);
-  const [show, setShow] = useState(false);
   const navigate = useNavigate();
+
+  const [posts, setPosts] = useState(null);
+  const [showPosts, setShowPosts] = useState([]);
+  const [query, setQuery] = useState("");
+
+  const fetchPosts = (e) => {
+    e.preventDefault();
+    setQuery(e.target.value);
+    try {
+      fetch(`http://localhost:5000/myPosts`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setPosts(data);
+          setShowPosts(
+            data.filter((posts) => posts.title.toLowerCase().includes(query))
+          );
+        })
+
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Navbar.handleClickOutside = () => {
+  //   setQuery("");
+  // };
+
   return (
     <>
       {loc === "*" ||
@@ -26,7 +57,10 @@ export default function Navbar() {
       ) : (
         <>
           <nav className="relative bg-trasparent border-b-2 border-blue-200 text-gray-300">
-            <div className="container mx-auto flex justify-between align-center">
+            <div
+              // onClick={() => setShowSearch(false)}
+              className="container mx-auto flex justify-between align-center"
+            >
               <div onClick={() => navigate("/homePage")} className="my-auto">
                 <div className="rounded">
                   <img
@@ -42,9 +76,9 @@ export default function Navbar() {
                   <div className="flex items-center relative space-x-2 pt-6 px-2">
                     <input
                       type="text"
-                      // value="filter"
-                      name="filter"
-                      onChange={() => setShow(!show)}
+                      value={query}
+                      name="query"
+                      onChange={fetchPosts}
                       id="table-search"
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-g/ray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search for posts"
@@ -61,11 +95,33 @@ export default function Navbar() {
                         clipRule="evenodd"
                       ></path>
                     </svg>
-                    {show && (
-                      <div className="absolute top-[50px] flex flex-col items-center max-h-[600px] text-white">
-                        <span className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-g/ray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                          ciaoooooooooo
-                        </span>
+
+                    {query.length !== 0 && (
+                      <div className="absolute flex flex-col space-y-1 left-0 right-0 top-[50px] justify-between items-between bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2">
+                        {showPosts &&
+                          showPosts.map((_post) => (
+                            <Link to={`/posts/${_post.id}`}>
+                              <div
+                                key={_post.id}
+                                className="flex justify-between items-center w-full border-gray-200 border-b p-2 rounded-lg hover:bg-blue-300"
+                              >
+                                <span className="flex items-center space-x-2">
+                                  <img
+                                    src={_post.img1}
+                                    alt="team"
+                                    className="w-10 h-10 bg-gray-100 object-cover object-center rounded-full"
+                                  />
+
+                                  <p className="text-gray-900">
+                                    {_post.title.slice(0, 20) + "..."}
+                                  </p>
+                                </span>
+                                <h2 className="text-gray-500 title-font font-medium">
+                                  {_post.author.slice(0, 10) + "..."}
+                                </h2>
+                              </div>
+                            </Link>
+                          ))}
                       </div>
                     )}
                   </div>
@@ -270,7 +326,7 @@ export default function Navbar() {
                               >
                                 <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
                               </svg>
-                              <NavLink to="/admin">
+                              <NavLink to="/admin/dashboard">
                                 <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
                                   Check statistics
                                 </p>
@@ -293,3 +349,8 @@ export default function Navbar() {
     </>
   );
 }
+
+// const clickOutsideConfig = {
+//   handleClickOutside: () => Navbar.handleClickOutside,
+// };
+// export default onClickOutside(DropdownLink, clickOutsideConfig);

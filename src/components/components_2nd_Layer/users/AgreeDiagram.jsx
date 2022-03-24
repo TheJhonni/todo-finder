@@ -12,7 +12,7 @@ export default function AgreeDiagram() {
   return (
     <ResponsiveChord
       data={data}
-      keys={["John", "Raoul", "Jane", "Marcel", "Ibrahim"]}
+      keys={["Jane", "Davide", "John", "Raul", "Marcel"]}
       margin={{ top: 60, right: 60, bottom: 90, left: 60 }}
       valueFormat=".2f"
       padAngle={0.02}
@@ -46,7 +46,7 @@ export default function AgreeDiagram() {
           itemWidth: 80,
           itemHeight: 14,
           itemsSpacing: 0,
-          itemTextColor: "#999",
+          itemTextColor: "#000000",
           itemDirection: "left-to-right",
           symbolSize: 12,
           symbolShape: "circle",
@@ -54,7 +54,7 @@ export default function AgreeDiagram() {
             {
               on: "hover",
               style: {
-                itemTextColor: "#000",
+                itemTextColor: "#B39DDB",
               },
             },
           ],

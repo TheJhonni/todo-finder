@@ -1,16 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import ShowTestimonials from "../components/Testimonials/ShowTestimonials";
-import Posts from "../components/components_2nd_Layer/Posts";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
-import Spinner from "../components/Spinner/Spinner";
+import atoms from "../assets/atoms.gif";
 import { useSelector } from "react-redux";
 import Cards from "../components/components_2nd_Layer/Cards";
 import Blogs from "../components/components_2nd_Layer/Blogs";
 import GenericScreen from "./GenericScreen";
 import Gif from "../components/Spinner/Gif";
-import PopUp from "../components/components_2nd_Layer/PopUp";
 
 export default function Homepagege() {
   const navigate = useNavigate();
@@ -62,12 +58,21 @@ export default function Homepagege() {
       {currentUser && mount ? (
         <div className="w-screen h-full img-textLeft">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-5xl py-16 sm:py-24 lg:py-32 lg:max-w-none">
-              <PopUp />
-              <h2 className="text-center text-6xl my-10 font-extrabold text-gray-200">
-                Read one of our latest articles
-              </h2>
-              <div className="text-gray-600 flex body-font overflow-hidden">
+            <img
+              className="mx-auto mt-[-10]"
+              src={atoms}
+              style={{
+                width: "500px",
+                height: "500px",
+                zIndex: "999",
+              }}
+              alt="logo"
+            />
+            <h2 className="text-center text-6xl mt-10 font-extrabold text-gray-200">
+              Read one of our latest articles
+            </h2>
+            <div className="max-w-5xl mt-[-10] pb-10 sm:py-24 lg:py-32 lg:max-w-none">
+              <div className="flex-col items-center md:flex lg:space-x-[200px] lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-2">
                 {posts &&
                   postComments &&
                   posts.map(
@@ -91,7 +96,7 @@ export default function Homepagege() {
                       )
                   )}
               </div>
-              <div className="text-gray-600 flex body-font overflow-hidden">
+              <div className="text-gray-600 space-y-10 mt-10 flex body-font overflow-hidden">
                 <GenericScreen />
               </div>
 
@@ -131,13 +136,6 @@ export default function Homepagege() {
                     )}
                 </div>
               </div>
-
-              {/* {currentUser.email === "jdilmoro@gmail.com" && (
-                        <FiEdit
-                          onClick={() => navigate(`/edit/${post.id}`)}
-                          className="text-white text-xl cursor-pointer"
-                        />
-                      )} */}
             </div>
           </div>
 

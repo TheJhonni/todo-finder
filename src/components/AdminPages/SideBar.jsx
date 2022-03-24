@@ -8,25 +8,13 @@ import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
 export default function SideBar() {
   const navigate = useNavigate();
 
-  const path = useParams();
-  const [notClosed, setNotClosed] = useState(true);
-  const [isFoc, setIsFoc] = useState(false);
-
-  // let path = window.location.pathname;
-  // console.log(window.location.pathname);
-
   const location = useLocation();
-  console.log(location);
-  console.log(path);
 
-  useEffect(() => {
-    // if(path === "/")
-    setIsFoc(location.pathname === path);
-  }, [location, path]);
+  useEffect(() => {}, []);
 
   return (
     <aside
-      className="max-w-[250px] min-h-screen mr-10 relative"
+      className="max-w-[250px] min-h-screen my-auto mr-10 relative"
       aria-label="Sidebar"
     >
       <div className="overflow-y-auto py-4 px-4 bg-gray-50 rounded">
@@ -55,7 +43,9 @@ export default function SideBar() {
                 id="dashboard"
                 className={
                   "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D] active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
-                  (isFoc && "active:bg-[#46c277ce] ")
+                  (location.pathname === "/admin/dashboard"
+                    ? "bg-[#46c277ce] "
+                    : "")
                 }
               >
                 <svg
@@ -74,10 +64,12 @@ export default function SideBar() {
           <li>
             <Link to="/admin/feedbacks">
               <p
-                id="dashboard"
+                id="feedbacks"
                 className={
                   "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D] active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
-                  (isFoc && "active:bg-[#46c277ce] ")
+                  (location.pathname === "/admin/feedbacks"
+                    ? "bg-[#46c277ce] "
+                    : "")
                 }
               >
                 <MdFeedback />
@@ -89,7 +81,14 @@ export default function SideBar() {
           <li className="text-sm pt-2">Users</li>
           <li>
             <Link to="/admin/users">
-              <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce]">
+              <p
+                className={
+                  "flex items-center p-2 mb-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  (location.pathname === "/admin/users"
+                    ? "bg-[#46c277ce] "
+                    : "")
+                }
+              >
                 <svg
                   className="flex-shrink-0 w-5 h-6 transition duration-75 group-hover:text-gray-900"
                   fill="currentColor"
@@ -108,7 +107,14 @@ export default function SideBar() {
           </li>
           <Link to="/admin/geolocalization">
             <li>
-              <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] ">
+              <p
+                className={
+                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  (location.pathname === "/admin/geolocalization"
+                    ? "bg-[#46c277ce] "
+                    : "")
+                }
+              >
                 <BsFillGeoAltFill />
                 <span className="flex-1 ml-3 whitespace-nowrap">
                   Geo Localization
@@ -122,7 +128,12 @@ export default function SideBar() {
             <Link to="/admin/createNewPosts">
               <p
                 href="#"
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] "
+                className={
+                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  (location.pathname === "/admin/createNewPosts"
+                    ? "bg-[#46c277ce] "
+                    : "")
+                }
               >
                 <IoIosCreate />
                 <span className="flex-1 ml-3 whitespace-nowrap">
@@ -138,7 +149,12 @@ export default function SideBar() {
             <Link to="/admin/editPosts">
               <p
                 href="#"
-                className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] "
+                className={
+                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  (location.pathname === "/admin/editPosts"
+                    ? "bg-[#46c277ce] "
+                    : "")
+                }
               >
                 <AiOutlineEdit />
                 <span className="flex-1 ml-3 whitespace-nowrap">
@@ -196,51 +212,6 @@ export default function SideBar() {
             </p>
           </li>
         </ul>
-        {notClosed && (
-          <div
-            id="dropdown-cta"
-            className="p-4 mt-6 bg-blue-50 rounded-lg "
-            role="alert"
-          >
-            <div className="flex items-center mb-3">
-              <span className="bg-[#1E667C] text-white text-sm font-semibold mr-2 px-2.5 py-0.5 rounded">
-                Beta
-              </span>
-              <button
-                onClick={() => setNotClosed(false)}
-                type="button"
-                className="ml-auto -mx-1.5 -my-1.5 bg-blue-50 text-blue-900 rounded-full focus:ring-2 focus:ring-blue-400 p-1 hover:bg-[#5FD38D] inline-flex h-6 w-6"
-                data-collapse-toggle="dropdown-cta"
-                aria-label="Close"
-              >
-                <span className="sr-only">Close</span>
-                <svg
-                  className="w-4 h-4"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-            <p className="mb-3 text-sm text-[#1E667C] ">
-              Preview the new Flowbite dashboard navigation! You can turn the
-              new navigation off for a limited time in your profile.
-            </p>
-            <a
-              onClick={() => setNotClosed(false)}
-              className="text-sm text-blue-900 underline hover:text-blue-800 "
-              href="#"
-            >
-              Turn new navigation off
-            </a>
-          </div>
-        )}
       </div>
     </aside>
   );

@@ -11,7 +11,6 @@ export default function PopUp() {
           return res.json();
         })
         .then((data) => {
-          console.log(data.data);
           setAdv(data.data);
         })
         .catch((err) => {
@@ -34,9 +33,9 @@ export default function PopUp() {
           className="p-4 mt-2 bg-blue-50 rounded-lg "
           role="alert"
         >
-          <div className="flex items-center mb-3">
-            <span className="bg-[#1E667C] text-white text-sm font-semibold mr-2 px-2.5 py-0.5 rounded">
-              Adv
+          <div className="flex-col justify-between md:flex md:items-center mb-3 ">
+            <span className="hidden md:block md:self-start bg-[#1E667C] text-white text-sm font-semibold mr-2 px-2.5 py-0.5 rounded">
+              Extra
             </span>
             <button
               onClick={() => setNotClosed(false)}
@@ -67,14 +66,14 @@ export default function PopUp() {
               .map((singleAd, i) => (
                 <div
                   key={i}
-                  className="flex justify-between items-center space-x-2"
+                  className="flex flex-col items-center md:flex-row md:justify-between md:items-center md:space-x-2"
                 >
                   <img
                     src={singleAd.imageUrl}
                     className="w-[150px] h-[150px]"
                     alt={singleAd.title}
                   />
-                  <div className="flex flex-col justify-center max-w-[700px]">
+                  <div className="flex flex-col justify-center max-w-[400px] md:max-w-[700px]">
                     <p className="text-xl mb-3 text-[#1E667C] ">
                       {singleAd.title}
                     </p>
@@ -82,7 +81,7 @@ export default function PopUp() {
                   </div>
                   <a
                     href={singleAd.url}
-                    className="px-10 py-5 rounded bg-[#1E667C] text-white hover:text-black hover:bg-[#5FD38D]"
+                    className="max-w-[200px] md:w-full p-4 md:px-10 md:py-5 rounded bg-[#1E667C] text-white hover:text-black hover:bg-[#5FD38D]"
                     target="_blank"
                   >
                     click to know more
@@ -94,7 +93,7 @@ export default function PopUp() {
             className="text-sm text-blue-900 underline hover:text-blue-800 "
             href="#"
           >
-            Turn off advertisement
+            Turn it off
           </a>
         </div>
       )}
