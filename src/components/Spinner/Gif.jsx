@@ -2,8 +2,9 @@ import GifLoader from "react-gif-loader";
 
 export default function Gif({ src, style }) {
   return (
-    <div id="cont">
-      <section id="section">
+    <div className="img-textLeft h-screen">
+      <img src="/logos/logoGif.gif" alt="" />
+      {/* <section id="section" className="w-[250px]">
         <GifLoader
           loading={true}
           imageSrc={src || "/logos/logoGif.gif"}
@@ -13,9 +14,8 @@ export default function Gif({ src, style }) {
               height: "100%",
             }
           }
-          // overlayBackground="rgba(0,0,255,0)"
         />
-      </section>
+      </section> */}
     </div>
   );
 }

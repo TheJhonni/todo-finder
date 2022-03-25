@@ -21,12 +21,12 @@ function ShowTestimonials() {
   }, []);
 
   return (
-    <section className="text-gray-600 rounded bg-gray-100 mx-auto w-[80%] body-font">
-      <h2 className="text-7xl text-[#1E657B] text-center font-bold pt-5">
+    <section className="text-gray-600 rounded bg-gray-100 mx-auto md:w-[60%] lg:w-[80%] body-font">
+      <h2 className="text-2xl lg:text-4xl xl:text-7xl text-[#1E657B] text-center font-bold pt-5">
         TESTIMONIALS:
       </h2>
       <div className="flex justify-center items-center container px-10">
-        <p className="max-w-[700px] my-10 text-lg font-medium">
+        <p className="max-w-[700px] my-10 text-sm lg:text-lg font-medium">
           Our connections are very valuable to us. We appreciate each person's
           time and effort. Thanks to this scientists and researchers we've
           achieved so many results such as new precious data that we transformed
@@ -38,14 +38,17 @@ function ShowTestimonials() {
         <div className="flex flex-wrap -m-4">
           {testimonials &&
             testimonials.map((testimonial) => (
-              <div key={testimonial.id} className="lg:w-1/3 lg:mb-0 mb-6 p-4">
+              <div
+                key={testimonial.id}
+                className="md:w-[300px] mx-auto lg:w-1/3 lg:mb-0 mb-6 p-4"
+              >
                 <div className="h-full text-center">
                   <img
                     alt="testimonial"
                     className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
                     src={testimonial?.Link}
                   />
-                  <p className="leading-relaxed">
+                  <p className="leading-relaxed text-sm">
                     {testimonial?.testimonialBody}
                   </p>
                   <span className="inline-block h-1 w-10 rounded bg-emerald-400 mt-6 mb-4"></span>

@@ -64,8 +64,8 @@ export default function Navbar() {
               <div onClick={() => navigate("/homePage")} className="my-auto">
                 <div className="rounded">
                   <img
-                    className="hidden sm:block object-cover relative 
-             bg-transparent shadow-sm sm:w-[100px] sm:h-[50px] md:w-[100px] md:h-[50px] cursor-pointer"
+                    className="object-cover relative 
+             bg-transparent shadow-sm w-[80px] ml-[30px] md:ml-0 sm:w-[100px] sm:h-[50px] md:w-[100px] md:h-[50px] cursor-pointer"
                     src="/logos/logo.png"
                   />
                 </div>
@@ -130,7 +130,7 @@ export default function Navbar() {
                   onClick={() => navigate("/favorites")}
                   className="hover:bg-blue-800 hover:text-white"
                 >
-                  <div className="flex items-center relative space-x-2 py-6 px-2">
+                  <div className="hidden md:flex items-center relative space-x-2 py-6 px-2">
                     <span className="text-sm lg:text-base font-bold cursor-pointer">
                       {savedPosts.length}
                     </span>
