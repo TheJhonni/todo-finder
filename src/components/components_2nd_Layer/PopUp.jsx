@@ -82,10 +82,10 @@ export default function PopUp() {
                     </div>
                     <a
                       href={singleAd.url}
-                      className="max-w-[200px] md:w-full mt-5 p-4 md:px-10 md:py-5 rounded bg-[#1E667C] text-white hover:text-black hover:bg-[#5FD38D]"
+                      className=" bg-[#1E667C] text-center text-white md:text-sm lg:text-lg hover:bg-[#5FD38D] font-normal xl:font-bold px-[5px] py-[5px] lg:px-[20px] lg:py-[10px] xl:px-[30px] xl:py-[15px] rounded"
                       target="_blank"
                     >
-                      click to know more
+                      Go
                     </a>
                   </div>
                 ))}

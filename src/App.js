@@ -28,6 +28,7 @@ import TeamScreen from "./screens/TeamScreen";
 import Navbar from "./components/Navbar/Navbar";
 import AdminScreen from "./screens/AdminScreen";
 import Dahsboard from "./components/AdminPages/Dahsboard";
+import ContactScreen from "./screens/ContactScreen";
 
 function App() {
   const { currentUser } = useSelector((state) => state.user);
@@ -102,6 +103,7 @@ function App() {
           <Route path="/admin/*" element={<AdminScreen />} />
           <Route path="/Faq" element={<FaqScreen />} />
           <Route path="/ourTeam" element={<TeamScreen />} />
+          <Route path="/contact" element={<ContactScreen />} />
           <Route path="/favorites" element={<Favorites />} />
 
           <Route path="*" element={<FourOFour />} />

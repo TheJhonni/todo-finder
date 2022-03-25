@@ -45,16 +45,7 @@ export default function CategoriesScreen() {
     <>
       {mount && Scene ? (
         <>
-          <div className="w-screen h-screen img-login">
-            {/* <div className="h-[70%] ml-auto"> */}
-            {/* <Canvas>
-                <ambientLight intensity={0.2} />
-                <directionalLight intensity={0.2} />
-                <Suspense fallback={null}>
-                  {category === "sea" && <Scene />}
-                </Suspense>
-              </Canvas> */}
-            {/* </div> */}
+          <div className="w-full h-full img-login mb-20">
             <CategoriesTitles posts={posts} />
           </div>
           <Footer />

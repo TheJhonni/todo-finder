@@ -4,7 +4,9 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Posts from "../components_2nd_Layer/Posts";
 import { FiEdit } from "react-icons/fi";
 import { useSelector } from "react-redux";
-import satPianeta from "../../assets/Medusa.gif";
+import Medusa from "../../assets/Medusa.gif";
+import biancoGif from "../../assets/biancoGif.gif";
+import shuttle from "../../assets/shuttle.gif";
 
 export default function CategoriesTitles({ posts }) {
   const navigate = useNavigate();
@@ -15,15 +17,23 @@ export default function CategoriesTitles({ posts }) {
 
   return (
     <>
-      <div className="relative flex flex-col items-center py-12">
-        <h1 className="m-0 text-[#ffffffce] text-7xl font-bold mt-2">5%</h1>
-        <p className="m-0 text-[#ffffffce] text-4xl font-bolder my-1">
+      <div className="relative flex flex-col items-center justify-center mx-auto py-4">
+        <img
+          className="w-[300px] md:w-[500px] md:h-[500px] z-[999] mx-auto mt-[-10]"
+          src={
+            (category === "sea" && Medusa) ||
+            (category === "eye" && biancoGif) ||
+            (category === "space" && shuttle)
+          }
+          alt="logo"
+        />
+        <h2 className="text-center text-xl sm:text-2xl md:text-5xl md:mt-10 font-extrabold text-gray-200">
           It's silly How mutch we don't know about our{" "}
           {(category === "sea" && "Oceans") ||
             (category === "eye" && "Limited View") ||
             (category === "space" && "Universe")}
-        </p>
-        <div className="mt-5 ml-10 text-xl text-white">
+        </h2>
+        <div className="mt-5 text-center text-sm sm:text-xl md:text-2xl md:mt-10 font-bold text-gray-400">
           <p>
             {(category === "sea" &&
               "Nautical exploration is as old as humans.") ||
@@ -33,32 +43,23 @@ export default function CategoriesTitles({ posts }) {
                 "We know more about our Universe than our oceans, crazy isn't it?!")}
           </p>
         </div>
-        <img
-          src={satPianeta}
-          style={{
-            position: "absolute",
-            right: "20px",
-            top: "0",
-            marginLeft: "auto",
-            width: "30%",
-            height: "600px",
-            zIndex: "1",
-          }}
-          alt="logo"
-        />
       </div>
-      <div className="container mx-auto space-y-12 py-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
-        {posts &&
-          posts.map((post) => (
-            <Link to={`/posts/${post.id}`}>
-              <Posts
-                key={post.id}
-                id={post.id}
-                src={post.img1}
-                title={post.title}
-              />
-            </Link>
-          ))}
+      <div className="container mx-auto flex flex-col justify-center items-center">
+        <div className="md:space-y-10 lg:grid lg:grid-cols-4 py-10 lg:gap-x-6">
+          {posts &&
+            posts.map((post) => (
+              <div key={post.id} className="flex justify-center items-center">
+                <Link to={`/posts/${post.id}`}>
+                  <Posts
+                    key={post.id}
+                    id={post.id}
+                    src={post.img1}
+                    title={post.title}
+                  />
+                </Link>
+              </div>
+            ))}
+        </div>
       </div>
     </>
   );

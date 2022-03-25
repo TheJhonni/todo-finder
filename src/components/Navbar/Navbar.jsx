@@ -159,43 +159,6 @@ export default function Navbar() {
                   </a>
                   <div className="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-800">
                     <div className="container w-full flex flex-wrap justify-between mx-2">
-                      <div className="w-full text-white mb-8">
-                        <h2 className="font-bold text-2xl">
-                          Read one of our articles
-                        </h2>
-                        <p>just click on one of them</p>
-                      </div>
-                      <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
-                        <div className="flex items-center">
-                          <svg
-                            className="h-8 mb-3 mr-3 fill-current text-white"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M3 6c0-1.1.9-2 2-2h8l4-4h2v16h-2l-4-4H5a2 2 0 0 1-2-2H1V6h2zm8 9v5H8l-1.67-5H5v-2h8v2h-2z" />
-                          </svg>
-                          <h3 className="font-bold text-xl text-white text-bold mb-2">
-                            POSTS
-                          </h3>
-                        </div>
-                        <p className="text-gray-100 text-sm">
-                          We know just 5% of everything.
-                        </p>
-                        <div className="flex items-center py-3">
-                          <svg
-                            className="h-6 pr-3 fill-current text-blue-300"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 20 20"
-                          >
-                            <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
-                          </svg>
-                          <NavLink to="/category=generic">
-                            <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
-                              Find out more...
-                            </p>
-                          </NavLink>
-                        </div>
-                      </ul>
                       <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-r-0 lg:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
                         <div className="flex items-center">
                           <img
@@ -258,7 +221,7 @@ export default function Navbar() {
                           </NavLink>
                         </div>
                       </ul>
-                      <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 pb-6 pt-6 lg:pt-3">
+                      <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 border-b sm:border-b-0 sm:border-r md:border-b-0 pb-6 pt-6 lg:pt-3">
                         <div className="flex items-center">
                           <img
                             className="cover w-[60px] h-[40px] mr-5"
@@ -286,6 +249,33 @@ export default function Navbar() {
                           <NavLink to="/ourTeam">
                             <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
                               Find out more...
+                            </p>
+                          </NavLink>
+                        </div>
+                      </ul>
+                      <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 border-gray-600 pb-6 pt-6 lg:pt-3">
+                        <div className="flex items-center">
+                          <img
+                            className="cover w-[60px] h-[40px] mr-5"
+                            src="/logos/logo.png"
+                            alt=""
+                          />
+                          <h3 className="font-bold text-xl text-white text-bold mb-2">
+                            Contact Us
+                          </h3>
+                        </div>
+
+                        <div className="flex items-center py-3">
+                          <svg
+                            className="h-6 pr-3 fill-current text-blue-300"
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 20 20"
+                          >
+                            <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
+                          </svg>
+                          <NavLink to="/contact">
+                            <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
+                              Contact
                             </p>
                           </NavLink>
                         </div>

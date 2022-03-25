@@ -1,6 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
+import { send } from "emailjs-com";
 
 function Footer() {
+  const [to_email, set_to_email] = useState("");
+
+  const handleToEmail = (e) => {
+    set_to_email(e.target.value);
+  };
+
+  const addNewsletter = (e) => {
+    e.preventDefault();
+    send(
+      "service_o918xll",
+      "template_xqpicvp",
+      { to_email },
+      "svB0sW96VHyxhLy5B"
+    )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      )
+      .catch((err) => {
+        console.log(err);
+      });
+    set_to_email("");
+  };
+
   return (
     <div className="text-center border-solid border-gray-300 bg-[////#region ] text-gray-300 bottom-0">
       <div className="container mx-auto px-6 pt-6">
@@ -139,7 +168,7 @@ function Footer() {
         </div>
 
         <div>
-          <form action="">
+          <form onSubmit={addNewsletter}>
             <div className="grid md:grid-cols-3 gird-cols-1 gap-4 justify-center items-center">
               <div className="md:ml-auto md:mb-6">
                 <p className="">
@@ -169,6 +198,9 @@ function Footer() {
               "
                   id="exampleFormControlInput1"
                   placeholder="Email address"
+                  name="to_email"
+                  value={to_email}
+                  onChange={handleToEmail}
                 />
               </div>
 
