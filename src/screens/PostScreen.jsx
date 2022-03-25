@@ -14,6 +14,8 @@ import {
   removeFromFavsAction,
   addToFavsAction,
 } from "../redux/Favourites/favActions";
+import { FacebookShareButton, WhatsappShareButton } from "react-share";
+import { FacebookIcon, WhatsappIcon } from "react-share";
 
 export default function PostScreen() {
   // REDUX PART FOR USER
@@ -248,54 +250,73 @@ export default function PostScreen() {
                 className={
                   "absolute lg:right-[5%] " +
                   (fullArticle ? "top-[7.3%]" : "top-[20%] lg:top-[30%]")
-                  // +
-                  // (showComments && fullArticle
-                  //   ? "top-[8%]"
-                  //   : "top-[20%] lg:top-[30%]")
                 }
               >
-                <div className="flex justify-evenly items-center space-x-1 lg:space-x-5">
-                  <div className="flex space-x-3 items-baseline">
-                    <MdThumbUp
-                      onClick={changeLikeBtn}
-                      className={
-                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-blue-500 " +
-                        (liked && "text-blue-500")
-                      }
-                    />
-                    <span className="hidden text-xs md:block md:text-lg md:font-semibold">
-                      {howManyLikes}
-                    </span>
-                    <MdThumbDown
-                      onClick={changeDislikeBtn}
-                      className={
-                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-red-500 " +
-                        (disliked && "text-red-500")
-                      }
-                    />
-                    <span className="hidden text-xs md:block md:text-lg md:font-semibold">
-                      {howManyDislikes}
-                    </span>
+                <div className="flex flex-col justify-center items-center">
+                  <div className="flex justify-evenly items-center space-x-1 lg:space-x-5">
+                    <div className="flex space-x-3 items-baseline">
+                      <MdThumbUp
+                        onClick={changeLikeBtn}
+                        className={
+                          "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-blue-500 " +
+                          (liked && "text-blue-500")
+                        }
+                      />
+                      <span className="hidden text-xs md:block md:text-lg md:font-semibold">
+                        {howManyLikes}
+                      </span>
+                      <MdThumbDown
+                        onClick={changeDislikeBtn}
+                        className={
+                          "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in hover:text-red-500 " +
+                          (disliked && "text-red-500")
+                        }
+                      />
+                      <span className="hidden text-xs md:block md:text-lg md:font-semibold">
+                        {howManyDislikes}
+                      </span>
+                    </div>
+                    {isAlreadyFav ? (
+                      <BsFillHeartFill
+                        onClick={() => {
+                          dispatch(toggleSaved(post.id));
+                        }}
+                        className={
+                          "w-[15px] text-red-500 lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in "
+                        }
+                      />
+                    ) : (
+                      <AiOutlineHeart
+                        onClick={() => {
+                          dispatch(toggleSaved(post));
+                        }}
+                        className={
+                          "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in "
+                        }
+                      />
+                    )}
                   </div>
-                  {isAlreadyFav ? (
-                    <BsFillHeartFill
-                      onClick={() => {
-                        dispatch(toggleSaved(post.id));
-                      }}
-                      className={
-                        "w-[15px] text-red-500 lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in "
-                      }
-                    />
-                  ) : (
-                    <AiOutlineHeart
-                      onClick={() => {
-                        dispatch(toggleSaved(post));
-                      }}
-                      className={
-                        "w-[15px] lg:w-[30px] h-10 cursor-pointer hover:scale-125 transition-all duration-75 ease-in "
-                      }
-                    />
-                  )}
+                  <div className="mt-5 flex justify-evenly items-center space-x-1 lg:space-x-5">
+                    <FacebookShareButton
+                      url="https://www.abc.net.au/news/science/2016-01-25/five-things-we-know-about-the-universe/6994612"
+                      quote="Hey subscribe here!"
+                      hashtag="#react"
+                    >
+                      <FacebookIcon
+                        logoFillColor="white"
+                        round={true}
+                      ></FacebookIcon>
+                    </FacebookShareButton>
+                    <WhatsappShareButton
+                      url="https://www.abc.net.au/news/science/2016-01-25/five-things-we-know-about-the-universe/6994612"
+                      title="Hey subscribe here!"
+                    >
+                      <WhatsappIcon
+                        logoFillColor="white"
+                        round={true}
+                      ></WhatsappIcon>
+                    </WhatsappShareButton>
+                  </div>
                 </div>
               </div>
 
