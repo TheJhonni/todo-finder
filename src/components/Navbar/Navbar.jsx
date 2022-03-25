@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Logout from "./Logout";
 import { useSelector } from "react-redux";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 // import onClickOutside from "react-onclickoutside";
 
 export default function Navbar() {
   const savedPosts = useSelector((state) => state.favorites.favoritePosts);
   const loc = window.location.pathname;
+
+  const location = useLocation();
 
   const [sure, setSure] = useState(false);
   const navigate = useNavigate();
@@ -39,10 +41,6 @@ export default function Navbar() {
     }
   };
 
-  // Navbar.handleClickOutside = () => {
-  //   setQuery("");
-  // };
-
   return (
     <>
       {loc === "*" ||
@@ -72,8 +70,21 @@ export default function Navbar() {
               </div>
 
               <ul className="flex">
+                <li className="">
+                  <span className="relative block py-6 px-2 lg:p-6 text-xl font-superbold">
+                    {(loc === "/homePage" && "HOME") ||
+                      (loc === "/favorites" && "FAVORITES") ||
+                      (loc === "/homePage" && "HOME") ||
+                      (loc === "/contact" && "CONTACT") ||
+                      (loc === "/ourTeam" && "MEET THE TEAM") ||
+                      (loc === "/picOfTheDay" && "NASA PIC'S OF THE DAY") ||
+                      (loc === "/Faq" && "FAQ")}
+                  </span>
+                </li>
+              </ul>
+              <ul className="flex">
                 <li>
-                  <div className="hidden md:flex items-center relative space-x-2 pt-6 px-2">
+                  <div className="hidden md:flex items-center justify-center relative space-x-2 pt-6 px-2">
                     <input
                       type="text"
                       value={query}
@@ -128,7 +139,10 @@ export default function Navbar() {
                 </li>
                 <li
                   onClick={() => navigate("/favorites")}
-                  className="hover:bg-blue-800 hover:text-white"
+                  className={
+                    "hover:bg-blue-800 hover:text-white " +
+                    (location.pathname === "/favorites" ? "bg-blue-800 " : "")
+                  }
                 >
                   <div className="hidden md:flex items-center relative space-x-2 py-6 px-2">
                     <span className="text-sm lg:text-base font-bold cursor-pointer">
@@ -143,7 +157,10 @@ export default function Navbar() {
                 </li>
                 <li
                   onClick={() => navigate("/homePage")}
-                  className="hover:bg-blue-800 hover:text-white"
+                  className={
+                    "hover:bg-blue-800 hover:text-white " +
+                    (location.pathname === "/homePage" ? "bg-blue-800 " : "")
+                  }
                 >
                   <span className="relative block py-6 px-2 lg:p-6 text-sm lg:text-base font-bold cursor-pointer">
                     Home

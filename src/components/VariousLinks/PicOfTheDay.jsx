@@ -38,13 +38,29 @@ export default function PicOfTheDay() {
     <>
       {mount ? (
         <>
-          <Navbar />
-          <a href="https://apod.nasa.gov/apod/astropix.html">
-            <h1 className="bg-[#15155f] text-center mb-4 px-10 py-20 text-gray-300 text-5xl">
-              Nasa's picture of the Day!
-            </h1>
-          </a>
-          <div className="container flex w-screen pt-5 mt-10 mx-auto">
+          <div className="relative flex items-center justify-evenly mx-auto py-2">
+            <div>
+              <h2 className="mb-10 text-center text-xl sm:text-2xl md:text-5xl md:mt-10 font-extrabold text-gray-200">
+                Nasa's picture of the Day!
+              </h2>
+              <a
+                href="https://apod.nasa.gov/apod/astropix.html"
+                className="text-[#171753d3] bg-white md:text-lg lg:text-xl
+                hover:bg-[#5FD38D] font-normal xl:font-bold px-[5px] py-[5px]
+                lg:px-[20px] lg:py-[10px] xl:px-[30px] xl:py-[15px]
+                rounded-full"
+              >
+                See more
+              </a>
+            </div>
+            <img
+              className="w-[300px] md:w-[500px] md:h-[500px] z-[999] mt-[-10]"
+              src="https://media0.giphy.com/media/h7jMZHYHMdlJGmT0Ty/giphy.gif?cid=6c09b95268afcb503b8274e9803a9f5e841a16e647475fc2&rid=giphy.gif&ct=s"
+              alt="logo"
+            />
+          </div>
+
+          <div className="container flex w-screen pt-5 mt-5 mx-auto">
             {photos?.media_type === "image" ? (
               <img
                 href="https://apod.nasa.gov/apod/astropix.html"

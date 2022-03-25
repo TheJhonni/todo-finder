@@ -298,7 +298,7 @@ export default function PostScreen() {
                   </div>
                   <div className="mt-5 flex justify-evenly items-center space-x-1 lg:space-x-5">
                     <FacebookShareButton
-                      url="https://www.abc.net.au/news/science/2016-01-25/five-things-we-know-about-the-universe/6994612"
+                      url={`/posts/${post.id}`}
                       quote="Hey subscribe here!"
                       hashtag="#react"
                     >
@@ -308,7 +308,7 @@ export default function PostScreen() {
                       ></FacebookIcon>
                     </FacebookShareButton>
                     <WhatsappShareButton
-                      url="https://www.abc.net.au/news/science/2016-01-25/five-things-we-know-about-the-universe/6994612"
+                      url={`/posts/${post.id}`}
                       title="Hey subscribe here!"
                     >
                       <WhatsappIcon
