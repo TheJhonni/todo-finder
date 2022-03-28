@@ -3,6 +3,7 @@ import Logout from "./Logout";
 import { useSelector } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
+import firebase from "firebase/compat/app";
 // import onClickOutside from "react-onclickoutside";
 
 export default function Navbar() {
@@ -17,6 +18,9 @@ export default function Navbar() {
   const [posts, setPosts] = useState(null);
   const [showPosts, setShowPosts] = useState([]);
   const [query, setQuery] = useState("");
+
+  const [userInfo, setUserInfo] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const fetchPosts = (e) => {
     e.preventDefault();
@@ -41,9 +45,39 @@ export default function Navbar() {
     }
   };
 
+  const { currentUser } = useSelector((state) => state.user);
+
+  const fetchUsers = () => {
+    firebase
+      .firestore()
+      .collection("users")
+      .onSnapshot((snapshot) => {
+        const userArray = snapshot.docs.map((doc) => {
+          return { id: doc.id, ...doc.data() };
+        });
+        if (userArray) {
+          const filteredUser = userArray.filter(
+            (u) => u.email === currentUser.email
+          );
+          if (filteredUser[0].role === "Admin") {
+            setIsAdmin(true);
+          }
+          setUserInfo(filteredUser);
+        } else {
+          return;
+        }
+      });
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
   return (
     <>
       {loc === "*" ||
+      loc === "/login" ||
+      loc === "/register" ||
       loc === "/admin" ||
       loc === "/admin/dashboard" ||
       loc === "/admin/feedbacks" ||
@@ -71,7 +105,7 @@ export default function Navbar() {
 
               <ul className="flex">
                 <li className="">
-                  <span className="relative block py-6 px-2 lg:p-6 text-xl font-superbold">
+                  <span className="hidden sm:relative sm:block py-6 px-2 lg:p-6 tex md:text-xl font-superbold">
                     {(loc === "/homePage" && "HOME") ||
                       (loc === "/favorites" && "FAVORITES") ||
                       (loc === "/homePage" && "HOME") ||
@@ -300,15 +334,20 @@ export default function Navbar() {
                     </div>
                   </div>
                 </li>
+
                 <li className="hoverable hover:bg-blue-800 hover:text-white">
                   <a
                     href="#"
                     className="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold hover:bg-blue-800 hover:text-white"
-                  ></a>
+                  >
+                    {userInfo && userInfo[0].role === "Admin"
+                      ? userInfo[0].role
+                      : ""}
+                  </a>
                   <div className="p-6 mega-menu mb-16 ml-auto sm:mb-0 shadow-xl bg-blue-800">
                     <div className="container w-full flex flex-wrap justify-end ml-auto">
                       <ul className="px-4 w-full sm:w-1/2 lg:w-1/4 ">
-                        <li className="flex items-center border-gray-500 border-b pt-6 lg:pt-3 pl-10">
+                        <li className="flex items-center pt-6 lg:pt-3 pl-10">
                           <div className="w-full text-white mb-8">
                             <h2
                               onClick={() => setSure(!sure)}
@@ -319,28 +358,30 @@ export default function Navbar() {
                             <p>Click to logout now</p>
                           </div>
                         </li>
-                        <li className="flex items-center pb-6 pt-6 lg:pt-3 pl-10">
-                          <div className="flex flex-col items-center">
-                            <h3 className="font-bold text-xl text-white text-bold pr-8 mb-2">
-                              Dashboard
-                            </h3>
+                        {userInfo && isAdmin && (
+                          <li className="flex items-center border-gray-500 border-t pb-6 pt-6 lg:pt-3 pl-10">
+                            <div className="flex flex-col items-center">
+                              <h3 className="font-bold text-xl text-white text-bold pr-8 mb-2">
+                                Dashboard
+                              </h3>
 
-                            <div className="flex items-center py-3">
-                              <svg
-                                className="h-6 pr-3 fill-current text-blue-300"
-                                xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 20 20"
-                              >
-                                <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
-                              </svg>
-                              <NavLink to="/admin/dashboard">
-                                <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
-                                  Check statistics
-                                </p>
-                              </NavLink>
+                              <div className="flex items-center py-3">
+                                <svg
+                                  className="h-6 pr-3 fill-current text-blue-300"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  viewBox="0 0 20 20"
+                                >
+                                  <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
+                                </svg>
+                                <NavLink to="/admin/dashboard">
+                                  <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
+                                    Check statistics
+                                  </p>
+                                </NavLink>
+                              </div>
                             </div>
-                          </div>
-                        </li>
+                          </li>
+                        )}
                       </ul>
                     </div>
                   </div>
@@ -350,7 +391,7 @@ export default function Navbar() {
               </ul>
             </div>
           </nav>
-          {sure && <Logout />}
+          {sure && <Logout setSure={setSure} />}
         </>
       )}
     </>

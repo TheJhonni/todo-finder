@@ -3,14 +3,19 @@ import { MdOutlineArrowBack } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { db } from "../../firebase";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { registerInitiate } from "../../redux/Authentications/authActions";
 
 function SignUpScreen() {
   const [state, setState] = useState({
     displayName: "",
     email: "",
+    gender: "",
+    age: 16,
     password: "",
     passwordConfirm: "",
+    role: "Client/Guest",
   });
 
   const { currentUser } = useSelector((state) => state.user);
@@ -25,7 +30,8 @@ function SignUpScreen() {
 
   const dispatch = useDispatch();
 
-  const { email, password, displayName, passwordConfirm } = state;
+  const { email, password, gender, age, displayName, role, passwordConfirm } =
+    state;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,8 +39,29 @@ function SignUpScreen() {
       return;
     }
     dispatch(registerInitiate(email, password, displayName));
-    // createUserDocument(user)
-    setState({ displayName: "", email: "", password: "", passwordConfirm: "" });
+
+    try {
+      addDoc(collection(db, "users"), {
+        email,
+        displayName,
+        gender,
+        age,
+        password,
+        role,
+        created: Timestamp.now(),
+      });
+    } catch (err) {
+      alert(err);
+    }
+
+    setState({
+      displayName: "",
+      email: "",
+      gender: "",
+      age: "16",
+      password: "",
+      passwordConfirm: "",
+    });
     // reset input to default => empty strings
   };
 
@@ -74,6 +101,49 @@ function SignUpScreen() {
             type="text"
             name="displayName"
           />
+          <div className="flex justify-start items-center space-x-4 my-3">
+            <input
+              className="appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+              value="Male"
+              onChange={handleChange}
+              type="radio"
+              name="gender"
+            />
+            <label className="inline-block text-gray-300">Male</label>
+            <input
+              className="appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+              value="Female"
+              onChange={handleChange}
+              type="radio"
+              name="gender"
+            />
+            <label className="inline-block text-gray-300">Female</label>
+            <input
+              className="appearance-none rounded-full h-4 w-4 border border-gray-300 bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
+              value="Undefined"
+              onChange={handleChange}
+              type="radio"
+              name="gender"
+            />
+            <label className="inline-block text-gray-300">
+              I prefer not to specify
+            </label>
+          </div>
+
+          <div className="flex justify-start items-center space-x-3">
+            <input
+              className="px-5 w-[100px]"
+              value={age}
+              onChange={handleChange}
+              type="number"
+              name="age"
+              min="16"
+              max="80"
+              required
+            />
+            <label className="text-gray-300">Age</label>
+          </div>
+
           <input
             className="input-signUp w-[400px] lg:w-[600px] "
             // // ref={passwordRef}

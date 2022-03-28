@@ -1,11 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logoutInitiate } from "../../redux/Authentications/authActions";
 
-export default function Logout() {
+export default function Logout({ setSure }) {
   const { currentUser } = useSelector((state) => state.user);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -13,13 +12,14 @@ export default function Logout() {
     if (currentUser) {
       console.log("logout...");
       dispatch(logoutInitiate(navigate));
+      setSure(false);
     } // if it's logged out, then push to "/login"
   };
 
   useEffect(() => {
     if (!currentUser) {
       alert("Log out succesfully!");
-
+      setSure(false);
       navigate("/login"); // if it's logged out, then push to "/login"
     }
   }, [currentUser, navigate]);
@@ -84,6 +84,7 @@ export default function Logout() {
             </button>
             <button
               type="button"
+              onClick={() => setSure(false)}
               className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
             >
               Cancel

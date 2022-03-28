@@ -1,71 +1,20 @@
-// install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/marimekko
 import { ResponsiveMarimekko } from "@nivo/marimekko";
-const data = [
-  {
-    statement: "it's good",
-    participation: 32,
-    stronglyAgree: 22,
-    agree: 20,
-    disagree: 3,
-    stronglyDisagree: 8,
-  },
-  {
-    statement: "it's sweet",
-    participation: 9,
-    stronglyAgree: 7,
-    agree: 6,
-    disagree: 32,
-    stronglyDisagree: 24,
-  },
-  {
-    statement: "it's spicy",
-    participation: 13,
-    stronglyAgree: 30,
-    agree: 9,
-    disagree: 30,
-    stronglyDisagree: 32,
-  },
-  {
-    statement: "worth eating",
-    participation: 7,
-    stronglyAgree: 27,
-    agree: 18,
-    disagree: 14,
-    stronglyDisagree: 5,
-  },
-  {
-    statement: "worth buying",
-    participation: 29,
-    stronglyAgree: 1,
-    agree: 21,
-    disagree: 10,
-    stronglyDisagree: 13,
-  },
-];
+import { useState } from "react";
 
-export default function AgreeChart() {
+export default function AgreeChart({ likes, dislikes, AgreeData, myColor }) {
   return (
     <ResponsiveMarimekko
-      data={data}
+      data={AgreeData}
       id="statement"
       value="participation"
       dimensions={[
         {
-          id: "disagree strongly",
-          value: "stronglyDisagree",
+          id: "Likes",
+          value: "Likes",
         },
         {
-          id: "disagree",
-          value: "disagree",
-        },
-        {
-          id: "agree",
-          value: "agree",
-        },
-        {
-          id: "agree strongly",
-          value: "stronglyAgree",
+          id: "Dislikes",
+          value: "Dislikes",
         },
       ]}
       innerPadding={9}
@@ -97,7 +46,7 @@ export default function AgreeChart() {
         legendPosition: "middle",
       }}
       margin={{ top: 40, right: 80, bottom: 100, left: 80 }}
-      colors={{ scheme: "spectral" }}
+      colors={{ scheme: myColor }}
       borderWidth={1}
       borderColor={{
         from: "color",
@@ -117,13 +66,13 @@ export default function AgreeChart() {
       fill={[
         {
           match: {
-            id: "agree strongly",
+            id: "Dislikes",
           },
           id: "lines",
         },
         {
           match: {
-            id: "disagree strongly",
+            id: "Dislikes",
           },
           id: "lines",
         },

@@ -3,9 +3,7 @@ import { useEffect, useState } from "react";
 import ChangeRole from "./ChangeRole";
 import { FcFullTrash } from "react-icons/fc";
 
-export default function ListUsers() {
-  const [userInfo, setUserInfo] = useState([]);
-
+export default function ListUsers({ userInfo }) {
   const deleteUser = (id) => {
     setTimeout(() => {
       console.log(id);
@@ -20,18 +18,6 @@ export default function ListUsers() {
     }, 200);
   };
 
-  useEffect(() => {
-    firebase
-      .firestore()
-      .collection("users")
-      .onSnapshot((snapshot) => {
-        const userArray = snapshot.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        });
-        setUserInfo(userArray);
-      });
-  }, []);
-
   return (
     <div className="flex flex-col pb-10 my-2">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -45,6 +31,12 @@ export default function ListUsers() {
                     className="text-sm font-medium text-white px-6 py-4"
                   >
                     #
+                  </th>
+                  <th
+                    scope="col"
+                    className="text-sm font-medium text-white px-6 py-4"
+                  >
+                    Gender
                   </th>
                   <th
                     scope="col"
@@ -84,6 +76,9 @@ export default function ListUsers() {
                     <tr key={i} className="bg-white border-b">
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                         {i + 1}
+                      </td>
+                      <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                        {frero.gender.slice(0, 1)}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {frero.displayName}

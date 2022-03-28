@@ -9,7 +9,7 @@ export default function Dahsboard() {
         <MyResponsiveAreaBump />
       </div>
       <div className="absolute h-[40%] w-[70%] rounded bg-gray-300 top-[50%] left-[20%] z-99">
-        <VisitsDiagram />
+        {/* <VisitsDiagram /> */}
       </div>
     </div>
   );

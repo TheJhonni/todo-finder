@@ -12,7 +12,9 @@
       "authorLink": "https://www.scientificamerican.com/author/caleb-a-scharf/",
       "credentials": "Caleb A. Scharf is director of astrobiology at Columbia University. He is author and co-author of more than 100 scientific research articles in astronomy and astrophysics. His work has been featured in publications such as New Scientist, Scientific American, Science News, Cosmos Magazine, Physics Today and National Geographic. For many years he wrote the Life, Unbounded blog for Scientific American.",
       "author": "CALEB A. SCHARF",
-      "likes": [],
+      "likes": [
+        "jdilmoro@gmail.com"
+      ],
       "dislikes": []
     },
     {
@@ -105,7 +107,9 @@
       "authorLink": "https://it.wikipedia.org/wiki/Marcelo_Gleiser",
       "credentials": "INNOVATIONS IN",
       "likes": [],
-      "dislikes": ["jdilmoro@gmail.com"]
+      "dislikes": [
+        "jdilmoro@gmail.com"
+      ]
     },
     {
       "id": "3",

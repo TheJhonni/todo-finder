@@ -296,25 +296,19 @@ export default function PostScreen() {
                       />
                     )}
                   </div>
-                  <div className="mt-5 flex justify-evenly items-center space-x-1 lg:space-x-5">
+                  <div className="mt-5 hidden md:flex justify-evenly items-center space-x-1 lg:space-x-5">
                     <FacebookShareButton
                       url={`/posts/${post.id}`}
                       quote="Hey subscribe here!"
                       hashtag="#react"
                     >
-                      <FacebookIcon
-                        logoFillColor="white"
-                        round={true}
-                      ></FacebookIcon>
+                      <FacebookIcon round={true}></FacebookIcon>
                     </FacebookShareButton>
                     <WhatsappShareButton
                       url={`/posts/${post.id}`}
                       title="Hey subscribe here!"
                     >
-                      <WhatsappIcon
-                        logoFillColor="white"
-                        round={true}
-                      ></WhatsappIcon>
+                      <WhatsappIcon round={true}></WhatsappIcon>
                     </WhatsappShareButton>
                   </div>
                 </div>

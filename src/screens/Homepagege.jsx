@@ -46,12 +46,12 @@ export default function Homepagege() {
       });
   };
 
+  const { currentUser } = useSelector((state) => state.user);
+
   useEffect(() => {
     loadPosts();
     loadComments();
   }, []);
-
-  const { currentUser } = useSelector((state) => state.user);
 
   return (
     <>

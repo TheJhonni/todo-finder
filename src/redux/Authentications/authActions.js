@@ -78,7 +78,7 @@ const fbFail = (error) => ({
 });
 
 // CALLING EACH CONST FOR REGISTERING USER
-export const registerInitiate = (email, password, displayName) => {
+export const registerInitiate = (email, password, displayName, role) => {
   return function (dispatch) {
     dispatch(registerStart());
     auth
@@ -86,6 +86,7 @@ export const registerInitiate = (email, password, displayName) => {
       .then(({ user }) => {
         user.updateProfile({
           displayName,
+          role,
         });
         dispatch(
           registerSuccess(user),
@@ -99,7 +100,7 @@ export const registerInitiate = (email, password, displayName) => {
 };
 
 // CALLING EACH CONST FOR LOGGING USER
-export const loginInitiate = (email, password, displayName) => {
+export const loginInitiate = (email, password, displayName, role) => {
   return function (dispatch) {
     dispatch(loginStart());
     auth
@@ -107,6 +108,7 @@ export const loginInitiate = (email, password, displayName) => {
       .then(({ user }) => {
         user.updateProfile({
           displayName,
+          role,
         });
         console.log("USER: ", user);
         dispatch(loginSuccess(user._delegate));

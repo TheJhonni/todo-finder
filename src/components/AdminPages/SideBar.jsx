@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { IoIosCreate } from "react-icons/io";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdFeedback } from "react-icons/md";
-import { BsFillGeoAltFill } from "react-icons/bs";
-import { Link, useNavigate, useLocation, useParams } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 export default function SideBar() {
   const navigate = useNavigate();
@@ -105,23 +104,6 @@ export default function SideBar() {
               </p>
             </Link>
           </li>
-          <Link to="/admin/geolocalization">
-            <li>
-              <p
-                className={
-                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
-                  (location.pathname === "/admin/geolocalization"
-                    ? "bg-[#46c277ce] "
-                    : "")
-                }
-              >
-                <BsFillGeoAltFill />
-                <span className="flex-1 ml-3 whitespace-nowrap">
-                  Geo Localization
-                </span>
-              </p>
-            </li>
-          </Link>
 
           <li className="text-sm pt-2">Posts</li>
           <li>
