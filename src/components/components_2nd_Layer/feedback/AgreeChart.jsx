@@ -1,7 +1,31 @@
 import { ResponsiveMarimekko } from "@nivo/marimekko";
-import { useState } from "react";
 
-export default function AgreeChart({ likes, dislikes, AgreeData, myColor }) {
+export default function AgreeChart({ posts, myColor }) {
+  const howmanyLikes = posts.filter((l) => l.likes < 0).map((p) => p.likes);
+  const howmanyDislikes = posts
+    .filter((l) => l.dislikes < 0)
+    .map((p) => p.dislikes);
+  const category = posts.map((_p) => _p.category);
+  console.log(howmanyLikes, howmanyDislikes, category);
+
+  const AgreeData = [
+    {
+      statement: "Interesting",
+      participation: 11,
+      stronglyAgree: 27,
+      agree: 20,
+      disagree: 10,
+      stronglyDisagree: 28,
+    },
+    {
+      statement: "Not interesting",
+      participation: 15,
+      stronglyAgree: 26,
+      agree: 22,
+      disagree: 24,
+      stronglyDisagree: 0,
+    },
+  ];
   return (
     <ResponsiveMarimekko
       data={AgreeData}
@@ -9,12 +33,20 @@ export default function AgreeChart({ likes, dislikes, AgreeData, myColor }) {
       value="participation"
       dimensions={[
         {
-          id: "Likes",
-          value: "Likes",
+          id: "disagree strongly",
+          value: "stronglyDisagree",
         },
         {
-          id: "Dislikes",
-          value: "Dislikes",
+          id: "disagree",
+          value: "disagree",
+        },
+        {
+          id: "agree",
+          value: "agree",
+        },
+        {
+          id: "agree strongly",
+          value: "stronglyAgree",
         },
       ]}
       innerPadding={9}
@@ -46,7 +78,7 @@ export default function AgreeChart({ likes, dislikes, AgreeData, myColor }) {
         legendPosition: "middle",
       }}
       margin={{ top: 40, right: 80, bottom: 100, left: 80 }}
-      colors={{ scheme: myColor }}
+      colors={{ scheme: "spectral" }}
       borderWidth={1}
       borderColor={{
         from: "color",
@@ -66,13 +98,13 @@ export default function AgreeChart({ likes, dislikes, AgreeData, myColor }) {
       fill={[
         {
           match: {
-            id: "Dislikes",
+            id: "agree strongly",
           },
           id: "lines",
         },
         {
           match: {
-            id: "Dislikes",
+            id: "disagree strongly",
           },
           id: "lines",
         },

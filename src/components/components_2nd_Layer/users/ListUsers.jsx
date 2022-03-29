@@ -6,7 +6,7 @@ import { FcFullTrash } from "react-icons/fc";
 export default function ListUsers({ userInfo }) {
   const deleteUser = (id) => {
     setTimeout(() => {
-      console.log(id);
+      // console.log(id);
       firebase
         .firestore()
         .collection("users")
@@ -78,7 +78,9 @@ export default function ListUsers({ userInfo }) {
                         {i + 1}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                        {frero.gender.slice(0, 1)}
+                        {frero.gender === "Undefined"
+                          ? "/"
+                          : frero.gender.slice(0, 1)}
                       </td>
                       <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                         {frero.displayName}

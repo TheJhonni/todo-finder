@@ -3,13 +3,30 @@ import { IoIosCreate } from "react-icons/io";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdFeedback } from "react-icons/md";
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutInitiate } from "../../redux/Authentications/authActions";
 
 export default function SideBar() {
+  const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleAuth = () => {
+    if (currentUser) {
+      console.log("logout...");
+      dispatch(logoutInitiate(navigate));
+    } // if it's logged out, then push to "/login"
+  };
+
+  useEffect(() => {
+    if (!currentUser) {
+      alert("Log out succesfully!");
+
+      navigate("/login"); // if it's logged out, then push to "/login"
+    }
+  }, [currentUser, navigate]);
 
   const location = useLocation();
-
-  useEffect(() => {}, []);
 
   return (
     <aside
@@ -164,32 +181,10 @@ export default function SideBar() {
                 ></path>
               </svg>
               <span
-                onClick={() => navigate("/login")}
+                onClick={handleAuth}
                 className="flex-1 ml-3 whitespace-nowrap"
               >
-                Sign In
-              </span>
-            </p>
-          </li>
-          <li>
-            <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] ">
-              <svg
-                className="flex-shrink-0 w-5 h-6 transition duration-75 group-hover:text-gray-900 "
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z"
-                  clipRule="evenodd"
-                ></path>
-              </svg>
-              <span
-                onClick={() => navigate("/register")}
-                className="flex-1 ml-3 whitespace-nowrap"
-              >
-                Sign Up
+                Logout
               </span>
             </p>
           </li>

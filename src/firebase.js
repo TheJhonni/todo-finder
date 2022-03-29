@@ -12,12 +12,12 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
-export const db = firebase.firestore();
+const db = firebase.firestore();
 const auth = firebase.auth();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 const facebookAuthProvider = new firebase.auth.FacebookAuthProvider();
 
-export { auth, googleAuthProvider, facebookAuthProvider };
+export { auth, db, googleAuthProvider, facebookAuthProvider };
 
 // export const createUserDocument = async (user, additionalData) => {
 //   if (!user) return;

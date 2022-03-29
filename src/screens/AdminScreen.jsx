@@ -35,26 +35,34 @@ export default function AdminScreen() {
   return (
     <>
       {mount ? (
-        <div className="img-textLeft h-full">
+        <div className="relative img-textLeft h-full">
           <div className="py-[5%]">
             <SideBar path={Route.path} />
-
-            <Routes>
-              <Route exact path="dashboard" element={<Dahsboard />} />
-              <Route exact path="feedbacks" element={<Feedback />} />
-              <Route
-                exact
-                path="editPosts"
-                element={<AdminPost posts={posts} />}
-              />
-              <Route
-                exact
-                path="createNewPosts"
-                element={<AdminCreateNewPost />}
-              />
-              <Route exact path="users" element={<User />} />
-            </Routes>
           </div>
+
+          <Routes>
+            <Route
+              exact
+              path="dashboard"
+              element={<Dahsboard posts={posts} />}
+            />
+            <Route
+              exact
+              path="feedbacks"
+              element={<Feedback posts={posts} />}
+            />
+            <Route
+              exact
+              path="editPosts"
+              element={<AdminPost posts={posts} />}
+            />
+            <Route
+              exact
+              path="createNewPosts"
+              element={<AdminCreateNewPost />}
+            />
+            <Route exact path="users" element={<User />} />
+          </Routes>
         </div>
       ) : (
         <Gif />

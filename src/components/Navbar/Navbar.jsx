@@ -4,7 +4,8 @@ import { useSelector } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import firebase from "firebase/compat/app";
-// import onClickOutside from "react-onclickoutside";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../firebase";
 
 export default function Navbar() {
   const savedPosts = useSelector((state) => state.favorites.favoritePosts);
@@ -18,8 +19,6 @@ export default function Navbar() {
   const [posts, setPosts] = useState(null);
   const [showPosts, setShowPosts] = useState([]);
   const [query, setQuery] = useState("");
-
-  const [userInfo, setUserInfo] = useState(null);
   const [isAdmin, setIsAdmin] = useState(false);
 
   const fetchPosts = (e) => {
@@ -47,31 +46,30 @@ export default function Navbar() {
 
   const { currentUser } = useSelector((state) => state.user);
 
-  const fetchUsers = () => {
-    firebase
-      .firestore()
-      .collection("users")
-      .onSnapshot((snapshot) => {
-        const userArray = snapshot.docs.map((doc) => {
-          return { id: doc.id, ...doc.data() };
-        });
-        if (userArray) {
-          const filteredUser = userArray.filter(
-            (u) => u.email === currentUser.email
-          );
-          if (filteredUser[0].role === "Admin") {
-            setIsAdmin(true);
-          }
-          setUserInfo(filteredUser);
-        } else {
-          return;
-        }
-      });
+  const fetchUsers = async () => {
+    try {
+      let usersRef = firebase.firestore().collection("users");
+      let collection = await usersRef.get();
+      // const ref = doc.id;
+      const emailRef = await currentUser.email;
+      const allArr = collection.docs.map((doc) => doc.data());
+      const actualUserRef = allArr.filter((d) => d.email === emailRef);
+      // console.log(actualUserRef[0]);
+      if (actualUserRef[0].role === "Admin") {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    fetchUsers();
-  }, []);
+    if (currentUser) {
+      fetchUsers();
+    }
+  }, [currentUser]);
 
   return (
     <>
@@ -340,9 +338,7 @@ export default function Navbar() {
                     href="#"
                     className="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold hover:bg-blue-800 hover:text-white"
                   >
-                    {userInfo && userInfo[0].role === "Admin"
-                      ? userInfo[0].role
-                      : ""}
+                    {isAdmin ? "Admin" : ""}
                   </a>
                   <div className="p-6 mega-menu mb-16 ml-auto sm:mb-0 shadow-xl bg-blue-800">
                     <div className="container w-full flex flex-wrap justify-end ml-auto">
@@ -358,7 +354,7 @@ export default function Navbar() {
                             <p>Click to logout now</p>
                           </div>
                         </li>
-                        {userInfo && isAdmin && (
+                        {isAdmin && (
                           <li className="flex items-center border-gray-500 border-t pb-6 pt-6 lg:pt-3 pl-10">
                             <div className="flex flex-col items-center">
                               <h3 className="font-bold text-xl text-white text-bold pr-8 mb-2">

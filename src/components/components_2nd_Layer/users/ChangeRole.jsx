@@ -8,7 +8,7 @@ export default function ChangeRole({ frero, role }) {
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setNewRole(e.target.value);
   };
 
@@ -65,7 +65,7 @@ export default function ChangeRole({ frero, role }) {
                       onClick={handleChange}
                       defaultChecked={role === "Admin"}
                     />
-                    <label for="admin">Admin</label>
+                    <label htmlFor="admin">Admin</label>
                   </div>
                   <div className="flex justify-center items-center">
                     <input
@@ -77,7 +77,7 @@ export default function ChangeRole({ frero, role }) {
                       onClick={handleChange}
                       defaultChecked={role === "Client/Guest"}
                     />
-                    <label for="Client/Guest">Client/Guest</label>
+                    <label htmlFor="Client/Guest">Client/Guest</label>
                   </div>
                 </div>
                 {/*footer*/}
