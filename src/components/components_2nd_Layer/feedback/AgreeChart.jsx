@@ -1,29 +1,26 @@
 import { ResponsiveMarimekko } from "@nivo/marimekko";
 
 export default function AgreeChart({ posts, myColor }) {
-  const howmanyLikes = posts.filter((l) => l.likes < 0).map((p) => p.likes);
+  // console.log(posts);
+  const howmanyLikes = posts.filter((l) => l.likes.length > 0).map((p) => p);
+
   const howmanyDislikes = posts
-    .filter((l) => l.dislikes < 0)
-    .map((p) => p.dislikes);
+    .filter((l) => l.dislikes.length > 0)
+    .map((p) => p);
+
   const category = posts.map((_p) => _p.category);
-  console.log(howmanyLikes, howmanyDislikes, category);
+  // console.log(howmanyLikes.length, howmanyDislikes.length, category);
 
   const AgreeData = [
     {
       statement: "Interesting",
-      participation: 11,
-      stronglyAgree: 27,
-      agree: 20,
-      disagree: 10,
-      stronglyDisagree: 28,
+      participation: howmanyLikes.length,
+      Likes: howmanyLikes.length,
     },
     {
       statement: "Not interesting",
-      participation: 15,
-      stronglyAgree: 26,
-      agree: 22,
-      disagree: 24,
-      stronglyDisagree: 0,
+      participation: howmanyDislikes.length,
+      Dislikes: howmanyDislikes.length,
     },
   ];
   return (
@@ -33,20 +30,12 @@ export default function AgreeChart({ posts, myColor }) {
       value="participation"
       dimensions={[
         {
-          id: "disagree strongly",
-          value: "stronglyDisagree",
+          id: "Likes",
+          value: "Likes",
         },
         {
-          id: "disagree",
-          value: "disagree",
-        },
-        {
-          id: "agree",
-          value: "agree",
-        },
-        {
-          id: "agree strongly",
-          value: "stronglyAgree",
+          id: "Dislikes",
+          value: "Dislikes",
         },
       ]}
       innerPadding={9}
@@ -98,13 +87,7 @@ export default function AgreeChart({ posts, myColor }) {
       fill={[
         {
           match: {
-            id: "agree strongly",
-          },
-          id: "lines",
-        },
-        {
-          match: {
-            id: "disagree strongly",
+            id: "Dislikes",
           },
           id: "lines",
         },

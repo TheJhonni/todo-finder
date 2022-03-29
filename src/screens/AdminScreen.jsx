@@ -13,21 +13,44 @@ export default function AdminScreen() {
 
   const [mount, setMount] = useState(false);
   const [posts, setPosts] = useState(null);
+  const [comments, setComments] = useState(null);
 
-  const loadPosts = () => {
-    fetch(`http://localhost:5000/myPosts`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setPosts(data);
-      })
-      .catch((err) => {
-        console.log(err, " error");
-      });
+  const loadPosts = async () => {
+    try {
+      await fetch(`http://localhost:5000/myPosts`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setPosts(data);
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
+  const loadComments = async () => {
+    try {
+      await fetch(`http://localhost:5000/comments`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setComments(data);
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     loadPosts();
+    loadComments();
     setTimeout(() => {
       setMount(true);
     }, 500);
@@ -44,12 +67,12 @@ export default function AdminScreen() {
             <Route
               exact
               path="dashboard"
-              element={<Dahsboard posts={posts} />}
+              element={<Dahsboard posts={posts} comments={comments} />}
             />
             <Route
               exact
               path="feedbacks"
-              element={<Feedback posts={posts} />}
+              element={<Feedback posts={posts} comments={comments} />}
             />
             <Route
               exact

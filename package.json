@@ -16,6 +16,7 @@
     "@nivo/marimekko": "^0.79.1",
     "@nivo/network": "^0.79.1",
     "@nivo/pie": "^0.79.1",
+    "@nivo/radial-bar": "^0.79.1",
     "@nivo/scales": "^0.79.0",
     "@nivo/stream": "^0.79.1",
     "@nivo/sunburst": "^0.79.1",

@@ -1,227 +1,117 @@
-// install (please make sure versions match peerDependencies)
-// yarn add @nivo/core @nivo/bump
-import { ResponsiveAreaBump } from "@nivo/bump";
-
-// make sure parent container have a defined height when using
-// responsive component, otherwise height will be 0 and
-// no chart will be rendered.
-// website examples showcase many properties,
-// you'll often use just a few of them.
 import React from "react";
+import { ResponsiveRadialBar } from "@nivo/radial-bar";
 
-const data = [
-  {
-    id: "Posts",
-    data: [
-      {
-        x: 12.2021,
-        y: 23,
-      },
-      {
-        x: 1.2022,
-        y: 12,
-      },
-      {
-        x: 2.2022,
-        y: 28,
-      },
-      {
-        x: 3.2022,
-        y: 27,
-      },
-      {
-        x: 2004,
-        y: 10,
-      },
-      {
-        x: 2005,
-        y: 16,
-      },
-    ],
-  },
-  {
-    id: "Likes",
-    data: [
-      {
-        x: 12.2021,
-        y: 28,
-      },
-      {
-        x: 1.2022,
-        y: 30,
-      },
-      {
-        x: 2.2022,
-        y: 17,
-      },
-      {
-        x: 3.2022,
-        y: 10,
-      },
-      {
-        x: 2004,
-        y: 12,
-      },
-      {
-        x: 2005,
-        y: 30,
-      },
-    ],
-  },
-  {
-    id: "Dislikes",
-    data: [
-      {
-        x: 12.2021,
-        y: 29,
-      },
-      {
-        x: 1.2022,
-        y: 25,
-      },
-      {
-        x: 2.2022,
-        y: 13,
-      },
-      {
-        x: 3.2022,
-        y: 18,
-      },
-      {
-        x: 2004,
-        y: 26,
-      },
-      {
-        x: 2005,
-        y: 20,
-      },
-    ],
-  },
-  {
-    id: "Comments",
-    data: [
-      {
-        x: 12.2021,
-        y: 14,
-      },
-      {
-        x: 1.2022,
-        y: 18,
-      },
-      {
-        x: 2.2022,
-        y: 11,
-      },
-      {
-        x: 3.2022,
-        y: 10,
-      },
-      {
-        x: 2004,
-        y: 23,
-      },
-      {
-        x: 2005,
-        y: 25,
-      },
-    ],
-  },
-  {
-    id: "Visits",
-    data: [
-      {
-        x: 12.2021,
-        y: 27,
-      },
-      {
-        x: 1.2022,
-        y: 12,
-      },
-      {
-        x: 2.2022,
-        y: 15,
-      },
-      {
-        x: 3.2022,
-        y: 28,
-      },
-      {
-        x: 2004,
-        y: 26,
-      },
-      {
-        x: 2005,
-        y: 26,
-      },
-    ],
-  },
-];
+export default function MyResponsiveAreaBump({ posts, comments }) {
+  const postNames = posts.map(({ title }) => title);
 
-export default function MyResponsiveAreaBump() {
+  const commentsRef1 = comments.filter((c) => c.postId === posts[0].id);
+  const commentsRef2 = comments.filter((c) => c.postId === posts[1].id);
+  const commentsRef3 = comments.filter((c) => c.postId === posts[2].id);
+  const commentsRef4 = comments.filter((c) => c.postId === posts[3].id);
+
+  const GenericData = [
+    {
+      id: postNames[0],
+      data: [
+        {
+          x: "Likes",
+          y: posts[0].likes.length,
+        },
+        {
+          x: "Dislikes",
+          y: posts[0].dislikes.length,
+        },
+        {
+          x: "Comments",
+          y: commentsRef1.length,
+        },
+      ],
+    },
+    {
+      id: postNames[1],
+      data: [
+        {
+          x: "Likes",
+          y: posts[1].likes.length,
+        },
+        {
+          x: "Dislikes",
+          y: posts[1].dislikes.length,
+        },
+        {
+          x: "Comments",
+          y: commentsRef2.length,
+        },
+      ],
+    },
+    {
+      id: postNames[2],
+      data: [
+        {
+          x: "Likes",
+          y: posts[2].likes.length,
+        },
+        {
+          x: "Dislikes",
+          y: posts[2].dislikes.length,
+        },
+        {
+          x: "Comments",
+          y: commentsRef3.length,
+        },
+      ],
+    },
+    {
+      id: postNames[3],
+      data: [
+        {
+          x: "Likes",
+          y: posts[3].likes.length,
+        },
+        {
+          x: "Dislikes",
+          y: posts[3].dislikes.length,
+        },
+        {
+          x: "Comments",
+          y: commentsRef4.length,
+        },
+      ],
+    },
+  ];
   return (
-    <ResponsiveAreaBump
-      data={data}
-      margin={{ top: 40, right: 100, bottom: 40, left: 100 }}
-      spacing={10}
-      xPadding={0.7}
-      colors={{ scheme: "nivo" }}
-      blendMode="multiply"
-      defs={[
+    <ResponsiveRadialBar
+      data={GenericData}
+      valueFormat=">-.2f"
+      padding={0.4}
+      cornerRadius={2}
+      margin={{ top: 40, right: 120, bottom: 40, left: 40 }}
+      radialAxisStart={{ tickSize: 5, tickPadding: 5, tickRotation: 0 }}
+      circularAxisOuter={{ tickSize: 5, tickPadding: 12, tickRotation: 0 }}
+      legends={[
         {
-          id: "dots",
-          type: "patternDots",
-          background: "inherit",
-          color: "#38bcb2",
-          size: 4,
-          padding: 1,
-          stagger: true,
-        },
-        {
-          id: "lines",
-          type: "patternLines",
-          background: "inherit",
-          color: "#eed312",
-          rotation: -45,
-          lineWidth: 6,
-          spacing: 10,
-        },
-      ]}
-      fill={[
-        {
-          match: {
-            id: "CoffeeScript",
-          },
-          id: "dots",
-        },
-        {
-          match: {
-            id: "TypeScript",
-          },
-          id: "lines",
+          anchor: "right",
+          direction: "column",
+          justify: false,
+          translateX: 80,
+          translateY: 0,
+          itemsSpacing: 6,
+          itemDirection: "left-to-right",
+          itemWidth: 100,
+          itemHeight: 18,
+          itemTextColor: "#999",
+          symbolSize: 18,
+          symbolShape: "square",
+          effects: [
+            {
+              on: "hover",
+              style: {
+                itemTextColor: "#000",
+              },
+            },
+          ],
         },
       ]}
-      startLabel="id"
-      startLabelTextColor={{
-        from: "color",
-        modifiers: [["darker", 1]],
-      }}
-      endLabel="id"
-      axisTop={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: "",
-        legendPosition: "middle",
-        legendOffset: -36,
-      }}
-      axisBottom={{
-        tickSize: 5,
-        tickPadding: 5,
-        tickRotation: 0,
-        legend: "",
-        legendPosition: "middle",
-        legendOffset: 32,
-      }}
     />
   );
 }
