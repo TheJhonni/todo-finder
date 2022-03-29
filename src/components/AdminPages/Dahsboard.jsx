@@ -4,11 +4,11 @@ import MyResponsiveAreaBump from "../components_2nd_Layer/dashboard/MyResponsive
 
 export default function Dahsboard({ posts, comments }) {
   return (
-    <div className="flex flex-col space-y-5">
-      <div className="absolute h-[40%] w-[70%] rounded bg-gray-300 top-[10%] left-[20%] z-99">
+    <div className="flex flex-col xl:space-y-5">
+      <div className="px-5 py-5 absolute lg:left-[35%] lg:top-[8%] lg:h-[40%] lg:w-[60%] xl:left-[30%] 2xl:w-[70%] 2xl:top-[10%] 2xl:left-[20%] rounded bg-gray-300 z-99">
         <Feedback2 posts={posts} />
       </div>
-      <div className="absolute h-[40%] w-[70%] rounded bg-gray-300 top-[50%] left-[20%] z-99">
+      <div className="px-5 py-5 absolute lg:h-[40%] lg:w-[60%] lg:top-[50%] lg:left-[35%] xl:left-[30%] 2xl:w-[70%] 2xl:left-[20%] rounded bg-gray-300 z-99">
         <MyResponsiveAreaBump posts={posts} comments={comments} />
       </div>
     </div>

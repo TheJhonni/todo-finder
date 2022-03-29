@@ -30,7 +30,7 @@ export default function SideBar() {
 
   return (
     <aside
-      className="max-w-[250px] min-h-screen ml-10 relative"
+      className="max-w-[200px] mt-10 lg:mt-0 lg:max-w-[250px] min-h-screen ml-10 relative"
       aria-label="Sidebar"
     >
       <div className="overflow-y-auto py-4 px-4 bg-gray-50 rounded">
