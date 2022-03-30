@@ -51,7 +51,7 @@ export default function InputSendComment() {
         value={commentBody}
         onChange={(e) => setCommentBody(e.target.value)}
         placeholder="place your comment here"
-        className="px-4 py-2 w-[40%]"
+        className="px-4 py-2 w-[90%] rounded"
       />
       <p
         onClick={sendComment}

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import SpinnerNoBg from "../Spinner/SpinnerNoBg";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import SingleComment from "./2_SingleComment";
-import { FcFullTrash } from "react-icons/fc";
+import InputSendComment from "./4.1_InputSendComment";
 
 export default function CommentForm() {
   const [c, setC] = useState(null);
+  const [input2, setInput2] = useState(null);
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
@@ -33,10 +33,10 @@ export default function CommentForm() {
   }, []);
 
   return (
-    <div className="flex justify-center w-screen h-screen px-4 text-gray-800 ">
+    <div className="flex justify-center w-screen h-screen px-2 text-gray-800 ">
       <div className="flex flex-col h-full flex-grow border-l border-r border-gray-300">
         <div className="flex-grow h-0 overflow-auto">
-          {c &&
+          {c && c.filter((_c) => _c.postId === id).length > 0 ? (
             c
               .filter((_c) => _c.postId === id)
               .reverse()
@@ -52,7 +52,22 @@ export default function CommentForm() {
                     referenceId={comment?.id}
                   />
                 </div>
-              ))}
+              ))
+          ) : (
+            <span className="mb-5 text-xl">No comment yet</span>
+          )}
+          <div className="flex-col mt-5 max-w-[400px]">
+            {currentUser && (
+              <button
+                onClick={() => setInput2(!input2)}
+                className="ml-2 text-sm font-semibold hover:underline"
+              >
+                Comment here!
+              </button>
+            )}
+
+            {input2 && <InputSendComment />}
+          </div>
         </div>
       </div>
     </div>

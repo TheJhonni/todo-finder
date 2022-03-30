@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/Navbar/Navbar";
 import { GrEdit } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
 import Footer from "../components/Footer/Footer";
@@ -298,18 +297,29 @@ export default function PostScreen() {
                   </div>
                   <div className="mt-5 hidden md:flex justify-evenly items-center space-x-1 lg:space-x-5">
                     <FacebookShareButton
-                      url={`/posts/${post.id}`}
+                      url="https://www.atascientific.com.au/17-science-blogs-everyone-should-follow/"
                       quote="Hey subscribe here!"
                       hashtag="#react"
                     >
                       <FacebookIcon round={true}></FacebookIcon>
                     </FacebookShareButton>
                     <WhatsappShareButton
-                      url={`/posts/${post.id}`}
+                      url="https://www.atascientific.com.au/17-science-blogs-everyone-should-follow/"
                       title="Hey subscribe here!"
                     >
                       <WhatsappIcon round={true}></WhatsappIcon>
                     </WhatsappShareButton>
+                  </div>
+                  <div className="flex justify-center items-center mt-5">
+                    {currentUser.email === "jdilmoro@gmail.com" && (
+                      <div
+                        onClick={() => navigate(`/edit/${post?.id}`)}
+                        className="flex space-x-3 items-center cursor-pointer hover:bg-gray-400 rounded-full px-5"
+                      >
+                        <GrEdit />
+                        <p>Edit Post</p>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -323,25 +333,6 @@ export default function PostScreen() {
                   />
                 </div>
               </div>
-
-              <div className="flex justify-evenly items-center">
-                <p
-                  onClick={() => setShowComments(!showComments)}
-                  className="mt-4 cursor-pointer hover:bg-gray-400 rounded-full px-4"
-                >
-                  {showComments ? "Hide Comments" : "Show Comments"}
-                </p>
-                {currentUser.email === "jdilmoro@gmail.com" && (
-                  <div
-                    onClick={() => navigate(`/edit/${post?.id}`)}
-                    className="flex space-x-3 items-center cursor-pointer hover:bg-gray-400 rounded-full px-5"
-                  >
-                    <GrEdit />
-                    <p>Edit Post</p>
-                  </div>
-                )}
-              </div>
-              {showComments && <CommentForm id={post.id} />}
 
               <article className="max-w-prose mx-auto py-8">
                 <h1 className="text-2xl font-bold mx-auto">{post?.title}</h1>
@@ -367,7 +358,7 @@ export default function PostScreen() {
                 )}
 
                 <p className="mt-6">
-                  {post?.body.slice(1, 500)}
+                  {post?.body.slice(0, 500)}
                   <span
                     className={
                       fullArticle ? "opacity-0 ml-[-10px]" : "opacity-1"
@@ -394,16 +385,34 @@ export default function PostScreen() {
                   )}
                 </p>
 
-                {currentUser && (
-                  <button
-                    onClick={() => setInput(!input)}
-                    className="ml-2 text-sm font-semibold hover:underline"
-                  >
-                    Comment here!
-                  </button>
-                )}
+                <div className="flex justify-between items-center mt-2">
+                  {!showComments && (
+                    <div className="flex-col justify-self-start">
+                      {currentUser && (
+                        <button
+                          onClick={() => setInput(!input)}
+                          className="ml-2 text-sm font-semibold hover:underline"
+                        >
+                          Comment here!
+                        </button>
+                      )}
 
-                {input && <InputSendComment id={post.id} />}
+                      {input && <InputSendComment id={post.id} />}
+                    </div>
+                  )}
+                  <div className="px-5 flex-col justify-self-end">
+                    <p
+                      onClick={() => setShowComments(!showComments)}
+                      className={
+                        "cursor-pointer max-w-[200px] hover:bg-gray-400 rounded-full px-4 " +
+                        (input ? "mb-11" : "")
+                      }
+                    >
+                      {showComments ? "Hide Comments" : "Show Comments"}
+                    </p>
+                    {showComments && <CommentForm id={post.id} />}
+                  </div>
+                </div>
               </article>
             </main>
 
