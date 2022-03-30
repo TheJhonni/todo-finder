@@ -15,10 +15,10 @@ export default function Homepagege() {
   const [postComments, setPostComments] = useState([]);
   const [howManyLikes, setHowManyLikes] = useState(84);
 
-  const loadPosts = () => {
-    setTimeout(() => {
+  const loadPosts = async () => {
+    try {
       setMount(false);
-      fetch(`http://localhost:5000/myPosts`)
+      await fetch(`http://localhost:5000/myPosts`)
         .then((res) => {
           return res.json();
         })
@@ -30,27 +30,35 @@ export default function Homepagege() {
         .catch((err) => {
           console.log(err, " error");
         });
-    }, 1000);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const loadComments = () => {
-    fetch("http://localhost:5000/comments")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setPostComments(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const loadComments = async () => {
+    try {
+      await fetch("http://localhost:5000/comments")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setPostComments(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const { currentUser } = useSelector((state) => state.user);
 
   useEffect(() => {
-    loadPosts();
-    loadComments();
+    setTimeout(() => {
+      loadPosts();
+      loadComments();
+    }, 800);
   }, []);
 
   return (

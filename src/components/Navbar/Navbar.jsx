@@ -21,11 +21,11 @@ export default function Navbar() {
   const [query, setQuery] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const fetchPosts = (e) => {
+  const fetchPosts = async (e) => {
     e.preventDefault();
     setQuery(e.target.value);
     try {
-      fetch(`http://localhost:5000/myPosts`)
+      await fetch(`http://localhost:5000/myPosts`)
         .then((res) => {
           return res.json();
         })

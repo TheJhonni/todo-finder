@@ -3,17 +3,21 @@ import React, { useEffect, useState } from "react";
 function ShowTestimonials() {
   const [testimonials, setTestimonials] = useState(null);
 
-  const fetchTestimonials = () => {
-    fetch("http://localhost:5000/testimonials")
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setTestimonials(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const fetchTestimonials = async () => {
+    try {
+      await fetch("http://localhost:5000/testimonials")
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setTestimonials(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

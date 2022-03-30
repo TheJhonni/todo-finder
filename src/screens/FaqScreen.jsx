@@ -1,35 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import FAQ from "../components/components_2nd_Layer/FAQ";
-import Spinner from "../components/Spinner/Spinner";
 import Gif from "../components/Spinner/Gif";
-import Navbar from "../components/Navbar/Navbar";
 
 export default function FaqScreen() {
   const [mount, setMount] = useState(false);
   const [faq, setFaq] = useState(null);
 
-  const navigate = useNavigate();
-
-  const loadFaq = () => {
-    fetch(`http://localhost:5000/faq`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        // console.log(data);
-        setFaq(data);
-      })
-      .catch((err) => {
-        console.log(err, " error");
-      });
+  const loadFaq = async () => {
+    try {
+      await fetch(`http://localhost:5000/faq`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setFaq(data);
+          setMount(true);
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    loadFaq();
     setTimeout(() => {
-      setMount(true);
-    }, 1000);
+      loadFaq();
+    }, 800);
   }, []);
 
   const toggleFaq = (index) => {

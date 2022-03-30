@@ -1,30 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import PopUp from "../components/components_2nd_Layer/PopUp";
 import Posts from "../components/components_2nd_Layer/Posts";
 
 export default function GenericScreen() {
-  // const [mount, setMount] = useState(false);
-  // const [posts, setPosts] = useState(null);
-
-  const navigate = useNavigate();
   const [posts, setPosts] = useState(null);
 
-  const loadPosts = () => {
-    setTimeout(() => {
-      fetch(`http://localhost:5000/myPosts`)
+  const loadPosts = async () => {
+    try {
+      await fetch(`http://localhost:5000/myPosts`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          // console.log(data);
-          // store Data in State Data Variable
           setPosts(data);
         })
         .catch((err) => {
           console.log(err, " error");
         });
-    }, 350);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

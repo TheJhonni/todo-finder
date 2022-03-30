@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Iframe from "react-iframe";
 import Footer from "../Footer/Footer";
-import Navbar from "../Navbar/Navbar";
 import Gif from "../Spinner/Gif";
-import Spinner from "../Spinner/Spinner";
 
 // const apiKey = process.env.REACT_APP_NASA_KEY;
 
@@ -11,10 +9,10 @@ export default function PicOfTheDay() {
   const [photos, setPhotos] = useState(null);
   const [mount, setMount] = useState(false);
 
-  const fetchPhoto = () => {
-    setTimeout(() => {
-      setMount(false);
-      fetch(
+  const fetchPhoto = async () => {
+    setMount(false);
+    try {
+      await fetch(
         `https://api.nasa.gov/planetary/apod?api_key=8KyenMI2ffyFPqZwrT91X8LSDGlHOUxyhi7zSKjM`
       )
         .then((res) => {
@@ -27,11 +25,15 @@ export default function PicOfTheDay() {
         .catch((err) => {
           console.log(err, " error");
         });
-    }, 350);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
-    fetchPhoto();
+    setTimeout(() => {
+      fetchPhoto();
+    }, 800);
   }, []);
 
   return (
@@ -41,7 +43,8 @@ export default function PicOfTheDay() {
           <div className="relative flex items-center justify-evenly mx-auto py-2">
             <div>
               <h2 className="mb-10 text-center text-xl sm:text-2xl md:text-5xl md:mt-10 font-extrabold text-gray-200">
-                Nasa's picture of the Day!
+                Nasa's {photos?.media_type === "pic" ? "picture" : "video"} of
+                the Day!
               </h2>
               <a
                 href="https://apod.nasa.gov/apod/astropix.html"
@@ -54,7 +57,7 @@ export default function PicOfTheDay() {
               </a>
             </div>
             <img
-              className="w-[300px] md:w-[500px] md:h-[500px] z-[999] mt-[-10]"
+              className="w-[300px] md:w-[500px] md:h-[500px] z-[99] mt-[-10]"
               src="https://media0.giphy.com/media/h7jMZHYHMdlJGmT0Ty/giphy.gif?cid=6c09b95268afcb503b8274e9803a9f5e841a16e647475fc2&rid=giphy.gif&ct=s"
               alt="logo"
             />

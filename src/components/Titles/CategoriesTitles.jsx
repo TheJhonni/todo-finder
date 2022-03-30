@@ -9,11 +9,7 @@ import biancoGif from "../../assets/biancoGif.gif";
 import shuttle from "../../assets/shuttle.gif";
 
 export default function CategoriesTitles({ posts }) {
-  const navigate = useNavigate();
   const { category } = useParams();
-  const { currentUser } = useSelector((state) => state.user);
-
-  useEffect(() => {}, [currentUser]);
 
   return (
     <>

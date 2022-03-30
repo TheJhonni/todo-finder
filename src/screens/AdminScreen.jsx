@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Gif from "../components/Spinner/Gif";
 import SideBar from "../components/AdminPages/SideBar";
 import Dahsboard from "../components/AdminPages/Dahsboard";
@@ -9,8 +9,6 @@ import AdminCreateNewPost from "../components/AdminPages/AdminCreateNewPost";
 import Feedback from "../components/AdminPages/Feedback";
 
 export default function AdminScreen() {
-  const navigate = useNavigate();
-
   const [mount, setMount] = useState(false);
   const [posts, setPosts] = useState(null);
   const [comments, setComments] = useState(null);
@@ -53,8 +51,9 @@ export default function AdminScreen() {
     loadComments();
     setTimeout(() => {
       setMount(true);
-    }, 500);
+    }, 800);
   }, []);
+
   return (
     <>
       {mount ? (

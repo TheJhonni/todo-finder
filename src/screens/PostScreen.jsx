@@ -44,10 +44,10 @@ export default function PostScreen() {
   const [fullArticle, setFullArticle] = useState(null);
 
   // post fetch
-  const fetchIdData = (id) => {
+  const fetchIdData = async (id) => {
     // const API = `${process.env.REACT_APP_JSON_API}`;
-    setTimeout(() => {
-      fetch(`http://localhost:5000/myPosts/${id}`)
+    try {
+      await fetch(`http://localhost:5000/myPosts/${id}`)
         .then((res) => {
           return res.json();
         })
@@ -62,58 +62,105 @@ export default function PostScreen() {
         .catch((err) => {
           console.log(err, " error");
         });
-    }, 1000);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   // onClick like btn
 
-  const changeLikeBtn = () => {
+  const changeLikeBtn = async () => {
     if (post.likes.includes(`${currentUser?.email}`)) {
-      fetch(`http://localhost:5000/myPosts/${id}`, {
-        method: "PUT",
-        headers: { "Content-type": "Application/json" },
-        body: JSON.stringify({
-          ...post,
-          ...post[
-            post.likes.splice(post.likes.indexOf(`${currentUser?.email}`), 1)
-          ],
-        }),
+      try {
+        await fetch(`http://localhost:5000/myPosts/${id}`, {
+          method: "PUT",
+          headers: { "Content-type": "Application/json" },
+          body: JSON.stringify({
+            ...post,
+            ...post[
+              post.likes.splice(post.likes.indexOf(`${currentUser?.email}`), 1)
+            ],
+          }),
 
-        // remove like if already present
-      })
-        .then((resp) => {
-          if (resp.status === 200) {
-            console.log("like tolto");
-            setHowManyLikes(howManyLikes - 1);
-            setLiked(false);
-          }
+          // remove like if already present
         })
-        .catch((err) => {
-          console.log(err, " error");
-        });
+          .then((resp) => {
+            if (resp.status === 200) {
+              console.log("like tolto");
+              setHowManyLikes(howManyLikes - 1);
+              setLiked(false);
+            }
+          })
+          .catch((err) => {
+            console.log(err, " error");
+          });
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-      fetch(`http://localhost:5000/myPosts/${id}`, {
-        method: "PUT",
-        headers: { "Content-type": "Application/json" },
-        body: JSON.stringify({
-          ...post,
-          ...post[post.likes.push(`${currentUser?.email}`)],
+      try {
+        await fetch(`http://localhost:5000/myPosts/${id}`, {
+          method: "PUT",
+          headers: { "Content-type": "Application/json" },
+          body: JSON.stringify({
+            ...post,
+            ...post[post.likes.push(`${currentUser?.email}`)],
 
-          // if not present, adding like to array
-        }),
-      })
-        .then((resp) => {
-          if (resp.status === 200) {
-            console.log("likkato ora");
-            setHowManyLikes(howManyLikes + 1);
-            setLiked(true);
-          }
+            // if not present, adding like to array
+          }),
         })
-        .catch((err) => {
-          console.log(err, " error");
-        });
+          .then((resp) => {
+            if (resp.status === 200) {
+              console.log("likkato ora");
+              setHowManyLikes(howManyLikes + 1);
+              setLiked(true);
+            }
+          })
+          .catch((err) => {
+            console.log(err, " error");
+          });
+      } catch (error) {
+        console.log(error);
+      }
       if (post.dislikes.includes(`${currentUser?.email}`)) {
-        fetch(`http://localhost:5000/myPosts/${id}`, {
+        try {
+          await fetch(`http://localhost:5000/myPosts/${id}`, {
+            method: "PUT",
+            headers: { "Content-type": "Application/json" },
+            body: JSON.stringify({
+              ...post,
+              ...post[
+                post.dislikes.splice(
+                  post.dislikes.indexOf(`${currentUser?.email}`),
+                  1
+                )
+              ],
+            }),
+            // if wasn't present, we already added like, now we check if there was already a dislike.
+            // in that case, we add like and remove also the previous dislike
+          })
+            .then((resp) => {
+              if (resp.status === 200) {
+                console.log("dislike tolto ora");
+                setDisliked(false);
+                setHowManyDislikes(howManyDislikes - 1);
+              }
+            })
+            .catch((err) => {
+              console.log(err, " error");
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }
+  };
+
+  // onClick dislike btn
+  const changeDislikeBtn = async () => {
+    if (post.dislikes.includes(`${currentUser?.email}`)) {
+      try {
+        await fetch(`http://localhost:5000/myPosts/${id}`, {
           method: "PUT",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
@@ -124,100 +171,82 @@ export default function PostScreen() {
                 1
               )
             ],
+            // remove dislike if already present
           }),
-          // if wasn't present, we already added like, now we check if there was already a dislike.
-          // in that case, we add like and remove also the previous dislike
         })
           .then((resp) => {
             if (resp.status === 200) {
-              console.log("dislike tolto ora");
-              setDisliked(false);
+              console.log("dislike tolto");
+              console.log(post.dislikes);
               setHowManyDislikes(howManyDislikes - 1);
+              setDisliked(false);
             }
           })
           .catch((err) => {
             console.log(err, " error");
           });
+      } catch (error) {
+        console.log(error);
       }
-    }
-  };
-
-  // onClick dislike btn
-  const changeDislikeBtn = () => {
-    if (post.dislikes.includes(`${currentUser?.email}`)) {
-      fetch(`http://localhost:5000/myPosts/${id}`, {
-        method: "PUT",
-        headers: { "Content-type": "Application/json" },
-        body: JSON.stringify({
-          ...post,
-          ...post[
-            post.dislikes.splice(
-              post.dislikes.indexOf(`${currentUser?.email}`),
-              1
-            )
-          ],
-          // remove dislike if already present
-        }),
-      })
-        .then((resp) => {
-          if (resp.status === 200) {
-            console.log("dislike tolto");
-            console.log(post.dislikes);
-            setHowManyDislikes(howManyDislikes - 1);
-            setDisliked(false);
-          }
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
     } else {
-      fetch(`http://localhost:5000/myPosts/${id}`, {
-        method: "PUT",
-        headers: { "Content-type": "Application/json" },
-        body: JSON.stringify({
-          ...post,
-          ...post[post.dislikes.push(`${currentUser?.email}`)],
-        }),
-        // if not present, adding dislike to array
-      })
-        // setDisliked(false);
-        .then((resp) => {
-          if (resp.status === 200) {
-            console.log("dislikato ora!");
-            // const newPost = { ...post };
-            // setPost(newPost);
-            setHowManyDislikes(howManyDislikes + 1);
-            setDisliked(true);
-          }
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-      if (post.likes.includes(`${currentUser?.email}`)) {
-        fetch(`http://localhost:5000/myPosts/${id}`, {
+      try {
+        await fetch(`http://localhost:5000/myPosts/${id}`, {
           method: "PUT",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
             ...post,
-            ...post[
-              post.likes.splice(post.likes.indexOf(`${currentUser?.email}`), 1)
-            ],
+            ...post[post.dislikes.push(`${currentUser?.email}`)],
           }),
-          // if wasn't present, we already added dislike, now we check if there was already a like.
-          // in that case, we add dislike and remove also the previous like
+          // if not present, adding dislike to array
         })
+          // setDisliked(false);
           .then((resp) => {
             if (resp.status === 200) {
-              console.log("like tolto ora");
+              console.log("dislikato ora!");
               // const newPost = { ...post };
               // setPost(newPost);
-              setLiked(false);
-              setHowManyLikes(howManyLikes - 1);
+              setHowManyDislikes(howManyDislikes + 1);
+              setDisliked(true);
             }
           })
           .catch((err) => {
             console.log(err, " error");
           });
+      } catch (error) {
+        console.log(error);
+      }
+      if (post.likes.includes(`${currentUser?.email}`)) {
+        try {
+          await fetch(`http://localhost:5000/myPosts/${id}`, {
+            method: "PUT",
+            headers: { "Content-type": "Application/json" },
+            body: JSON.stringify({
+              ...post,
+              ...post[
+                post.likes.splice(
+                  post.likes.indexOf(`${currentUser?.email}`),
+                  1
+                )
+              ],
+            }),
+            // if wasn't present, we already added dislike, now we check if there was already a like.
+            // in that case, we add dislike and remove also the previous like
+          })
+            .then((resp) => {
+              if (resp.status === 200) {
+                console.log("like tolto ora");
+                // const newPost = { ...post };
+                // setPost(newPost);
+                setLiked(false);
+                setHowManyLikes(howManyLikes - 1);
+              }
+            })
+            .catch((err) => {
+              console.log(err, " error");
+            });
+        } catch (error) {
+          console.log(error);
+        }
       }
     }
   };
@@ -229,7 +258,9 @@ export default function PostScreen() {
 
   const toggleSaved = isAlreadyFav ? removeFromFavsAction : addToFavsAction;
   useEffect(() => {
-    fetchIdData(id);
+    setTimeout(() => {
+      fetchIdData(id);
+    }, 800);
   }, [id]);
 
   return (

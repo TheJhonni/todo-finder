@@ -18,7 +18,7 @@ export default function FirstScreen() {
     setMount(false);
     setTimeout(() => {
       setMount(true);
-    }, 550);
+    }, 800);
   }, []);
 
   return (

@@ -4,9 +4,9 @@ export default function PopUp() {
   const [notClosed, setNotClosed] = useState(true);
   const [adv, setAdv] = useState([]);
 
-  const fetchData = () => {
+  const fetchData = async () => {
     try {
-      fetch("https://inshortsapi.vercel.app/news?category=science")
+      await fetch("https://inshortsapi.vercel.app/news?category=science")
         .then((res) => {
           return res.json();
         })

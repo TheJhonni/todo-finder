@@ -1,7 +1,6 @@
 import { ResponsiveLine } from "@nivo/line";
 
 export default function Feedback2({ posts }) {
-  // console.log(posts);
   const title = posts.map((p) => p.title);
   const data = [
     {
