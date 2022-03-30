@@ -1,9 +1,6 @@
 import { ResponsiveBar } from "@nivo/bar";
-import { useEffect, useState } from "react";
-import { compareAsc, format } from "date-fns";
 
 export default function VisitsDiagram({ userInfo }) {
-  // console.log(userInfo);
   const createdDate = userInfo.map((u) =>
     new Date(u.created.seconds * 1000).toString()
   );

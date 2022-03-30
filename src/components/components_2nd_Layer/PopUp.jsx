@@ -4,9 +4,12 @@ export default function PopUp() {
   const [notClosed, setNotClosed] = useState(true);
   const [adv, setAdv] = useState([]);
 
+  // declaring all APIs in .ENV
+  const ADV_API = `${process.env.REACT_APP_API_ADV}`;
+
   const fetchData = async () => {
     try {
-      await fetch("https://inshortsapi.vercel.app/news?category=science")
+      await fetch(`${ADV_API}`)
         .then((res) => {
           return res.json();
         })

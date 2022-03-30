@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import firebase from "firebase/compat/app";
 import { RiAdminFill } from "react-icons/ri";
-import { doc, updateDoc } from "firebase/firestore";
 
 export default function ChangeRole({ frero, role }) {
   const [newRole, setNewRole] = useState("");
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
-    // console.log(e.target.value);
     setNewRole(e.target.value);
   };
 
-  const updateRole = () => {
-    setTimeout(() => {
-      firebase
-        .firestore()
-        .collection("users")
-        .doc(frero.id)
-        .update({ role: newRole })
-        .then(() => {
-          alert("role changed!");
-        });
-    }, 200);
+  const updateRole = async () => {
+    await firebase
+      .firestore()
+      .collection("users")
+      .doc(frero.id)
+      .update({ role: newRole })
+      .then(() => {
+        alert("role changed!");
+      });
+
     setShowModal(false);
   };
 

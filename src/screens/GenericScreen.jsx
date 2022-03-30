@@ -6,9 +6,12 @@ import Posts from "../components/components_2nd_Layer/Posts";
 export default function GenericScreen() {
   const [posts, setPosts] = useState(null);
 
+  // declaring all APIs in .ENV
+  const POST_API = `${process.env.REACT_APP_API_POSTS}`;
+
   const loadPosts = async () => {
     try {
-      await fetch(`http://localhost:5000/myPosts`)
+      await fetch(`${POST_API}`)
         .then((res) => {
           return res.json();
         })

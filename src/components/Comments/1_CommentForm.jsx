@@ -10,22 +10,23 @@ export default function CommentForm() {
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
-  const fetchComments = () => {
-    setTimeout(() => {
-      fetch(`http://localhost:5000/comments`)
+  // declaring all APIs in .ENV
+  const COMMENTS_API = `${process.env.REACT_APP_API_COMMENTS}`;
+  const fetchComments = async () => {
+    try {
+      await fetch(`${COMMENTS_API}`)
         .then((res) => {
           return res.json();
         })
         .then((data) => {
-          // console.log(data);
-          // store Data in State Data Variable
           setC(data);
-          // setCommentId(comments.commentId);
         })
         .catch((err) => {
           console.log(err, " error");
         });
-    }, 300);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {

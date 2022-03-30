@@ -6,9 +6,11 @@ export default function FaqScreen() {
   const [mount, setMount] = useState(false);
   const [faq, setFaq] = useState(null);
 
+  // declaring all APIs in .ENV
+  const FAQ_API = `${process.env.REACT_APP_API_FAQ}`;
   const loadFaq = async () => {
     try {
-      await fetch(`http://localhost:5000/faq`)
+      await fetch(`${FAQ_API}`)
         .then((res) => {
           return res.json();
         })

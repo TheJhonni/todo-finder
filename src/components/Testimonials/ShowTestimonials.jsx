@@ -3,9 +3,11 @@ import React, { useEffect, useState } from "react";
 function ShowTestimonials() {
   const [testimonials, setTestimonials] = useState(null);
 
+  // declaring all APIs in .ENV
+  const TESTIMONIALS_API = `${process.env.REACT_APP_API_TESTIMONIALS}`;
   const fetchTestimonials = async () => {
     try {
-      await fetch("http://localhost:5000/testimonials")
+      await fetch(`${TESTIMONIALS_API}`)
         .then((res) => {
           return res.json();
         })
@@ -52,10 +54,10 @@ function ShowTestimonials() {
                     className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
                     src={testimonial?.Link}
                   />
-                  <p className="leading-relaxed text-sm">
+                  <p className="leading-relaxed text-sm mb-1">
                     {testimonial?.testimonialBody}
                   </p>
-                  <span className="inline-block h-1 w-10 rounded bg-emerald-400 mt-6 mb-4"></span>
+                  <span className="inline-block h-1 w-10 rounded bg-emerald-400 my-3"></span>
                   <h2 className="text-gray-800 font-medium title-font tracking-wider text-sm">
                     {testimonial?.testimonialAuthor}
                   </h2>

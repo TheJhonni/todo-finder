@@ -7,6 +7,9 @@ export default function InputSendComment() {
   const { currentUser } = useSelector((state) => state.user);
   const { id } = useParams();
 
+  // declaring all APIs in .ENV
+  const COMMENTS_API = `${process.env.REACT_APP_API_COMMENTS}`;
+
   const sendComment = async (e) => {
     e.preventDefault();
     function randomDate(start, end) {
@@ -15,7 +18,7 @@ export default function InputSendComment() {
       );
     }
     try {
-      const resp = await fetch(`http://localhost:5000/comments`, {
+      const resp = await fetch(`${COMMENTS_API}`, {
         method: "POST",
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({

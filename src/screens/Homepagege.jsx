@@ -15,10 +15,13 @@ export default function Homepagege() {
   const [postComments, setPostComments] = useState([]);
   const [howManyLikes, setHowManyLikes] = useState(84);
 
+  // declaring all APIs in .ENV
+  const POST_API = `${process.env.REACT_APP_API_POSTS}`;
+  const COMMENTS_API = `${process.env.REACT_APP_API_COMMENTS}`;
   const loadPosts = async () => {
     try {
       setMount(false);
-      await fetch(`http://localhost:5000/myPosts`)
+      await fetch(`${POST_API}`)
         .then((res) => {
           return res.json();
         })
@@ -37,7 +40,7 @@ export default function Homepagege() {
 
   const loadComments = async () => {
     try {
-      await fetch("http://localhost:5000/comments")
+      await fetch(`${COMMENTS_API}`)
         .then((res) => {
           return res.json();
         })

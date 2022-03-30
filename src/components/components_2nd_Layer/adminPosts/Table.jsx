@@ -12,9 +12,12 @@ export default function Table({ posts }) {
     setFilter(e.target.value);
   };
 
-  const deletePost = (id) => {
+  // declaring all APIs in .ENV
+  const POST_API = `${process.env.REACT_APP_API_POSTS}`;
+
+  const deletePost = async (id) => {
     if (window.confirm("Are you sure to delete this post?")) {
-      fetch(`http://localhost:5000/myPosts/${id}`, {
+      await fetch(`${POST_API}/${id}`, {
         method: "DELETE",
         headers: { "Content-type": "Application/json" },
       })

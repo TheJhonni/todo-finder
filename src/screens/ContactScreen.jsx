@@ -24,6 +24,9 @@ export default function ContactScreen() {
     set_message("");
   };
 
+  // declaring all APIs in .ENV
+  const SECRET_SEND_KEY = `${process.env.REACT_APP_SECRET_SEND_KEY}`;
+
   const sendEmail = async (e) => {
     e.preventDefault();
     setMount(false);
@@ -32,7 +35,7 @@ export default function ContactScreen() {
         "service_o918xll",
         "template_tuovgfs",
         { sender_name, sender_email, message },
-        "svB0sW96VHyxhLy5B"
+        `${SECRET_SEND_KEY}`
       )
         .then(
           (result) => {

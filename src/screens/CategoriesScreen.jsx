@@ -12,10 +12,13 @@ export default function CategoriesScreen() {
   const { category } = useParams();
   const { currentUser } = useSelector((state) => state.user);
 
+  // declaring all APIs in .ENV
+  const POST_API = `${process.env.REACT_APP_API_POSTS}`;
+
   const loadPosts = async () => {
     setMount(false);
     try {
-      await fetch(`http://localhost:5000/myPosts?category=${category}`)
+      await fetch(`${POST_API}?category=${category}`)
         .then((res) => {
           return res.json();
         })

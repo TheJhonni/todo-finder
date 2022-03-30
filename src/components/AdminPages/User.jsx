@@ -6,6 +6,7 @@ import VisitsDiagram from "../components_2nd_Layer/users/VisitsDiagram";
 
 export default function User() {
   const [userInfo, setUserInfo] = useState([]);
+
   useEffect(() => {
     firebase
       .firestore()
@@ -15,8 +16,6 @@ export default function User() {
           return { id: doc.id, ...doc.data() };
         });
         setUserInfo(userArray);
-        // const newTime = new firebase.firestore.Timestamp(123, 123456);
-        // console.log(newTime);
       });
   }, []);
 

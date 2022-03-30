@@ -1,21 +1,17 @@
 import firebase from "firebase/compat/app";
-import { useEffect, useState } from "react";
 import ChangeRole from "./ChangeRole";
 import { FcFullTrash } from "react-icons/fc";
 
 export default function ListUsers({ userInfo }) {
-  const deleteUser = (id) => {
-    setTimeout(() => {
-      // console.log(id);
-      firebase
-        .firestore()
-        .collection("users")
-        .doc(id)
-        .delete()
-        .then(() => {
-          alert("Deleted!");
-        });
-    }, 200);
+  const deleteUser = async (id) => {
+    await firebase
+      .firestore()
+      .collection("users")
+      .doc(id)
+      .delete()
+      .then(() => {
+        alert("Deleted!");
+      });
   };
 
   return (

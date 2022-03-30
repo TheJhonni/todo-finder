@@ -9,12 +9,14 @@ export default function PicOfTheDay() {
   const [photos, setPhotos] = useState(null);
   const [mount, setMount] = useState(false);
 
+  // declaring all APIs in .ENV
+
+  const SECRET_NASA_KEY = `${process.env.REACT_APP_SECRET_NASA_KEY}`;
+  const NASA_API = `${process.env.REACT_APP_API_NASA}`;
   const fetchPhoto = async () => {
     setMount(false);
     try {
-      await fetch(
-        `https://api.nasa.gov/planetary/apod?api_key=8KyenMI2ffyFPqZwrT91X8LSDGlHOUxyhi7zSKjM`
-      )
+      await fetch(`${NASA_API}${SECRET_NASA_KEY}`)
         .then((res) => {
           return res.json();
         })

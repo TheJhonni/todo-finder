@@ -44,10 +44,11 @@ export default function PostScreen() {
   const [fullArticle, setFullArticle] = useState(null);
 
   // post fetch
+  // declaring all APIs in .ENV
+  const POST_API = `${process.env.REACT_APP_API_POSTS}`;
   const fetchIdData = async (id) => {
-    // const API = `${process.env.REACT_APP_JSON_API}`;
     try {
-      await fetch(`http://localhost:5000/myPosts/${id}`)
+      await fetch(`${POST_API}/${id}`)
         .then((res) => {
           return res.json();
         })
@@ -72,7 +73,7 @@ export default function PostScreen() {
   const changeLikeBtn = async () => {
     if (post.likes.includes(`${currentUser?.email}`)) {
       try {
-        await fetch(`http://localhost:5000/myPosts/${id}`, {
+        await fetch(`${POST_API}/${id}`, {
           method: "PUT",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
@@ -99,7 +100,7 @@ export default function PostScreen() {
       }
     } else {
       try {
-        await fetch(`http://localhost:5000/myPosts/${id}`, {
+        await fetch(`${POST_API}/${id}`, {
           method: "PUT",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
@@ -124,7 +125,7 @@ export default function PostScreen() {
       }
       if (post.dislikes.includes(`${currentUser?.email}`)) {
         try {
-          await fetch(`http://localhost:5000/myPosts/${id}`, {
+          await fetch(`${POST_API}/${id}`, {
             method: "PUT",
             headers: { "Content-type": "Application/json" },
             body: JSON.stringify({
@@ -160,7 +161,7 @@ export default function PostScreen() {
   const changeDislikeBtn = async () => {
     if (post.dislikes.includes(`${currentUser?.email}`)) {
       try {
-        await fetch(`http://localhost:5000/myPosts/${id}`, {
+        await fetch(`${POST_API}/${id}`, {
           method: "PUT",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
@@ -190,7 +191,7 @@ export default function PostScreen() {
       }
     } else {
       try {
-        await fetch(`http://localhost:5000/myPosts/${id}`, {
+        await fetch(`${POST_API}/${id}`, {
           method: "PUT",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({
@@ -217,7 +218,7 @@ export default function PostScreen() {
       }
       if (post.likes.includes(`${currentUser?.email}`)) {
         try {
-          await fetch(`http://localhost:5000/myPosts/${id}`, {
+          await fetch(`${POST_API}/${id}`, {
             method: "PUT",
             headers: { "Content-type": "Application/json" },
             body: JSON.stringify({

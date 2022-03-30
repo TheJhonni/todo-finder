@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Gif from "../components/Spinner/Gif";
 import Footer from "../components/Footer/Footer";
-import Navbar from "../components/Navbar/Navbar";
 
 export default function TeamScreen() {
-  const navigate = useNavigate();
   const [mount, setMount] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
       setMount(true);
-    }, 1000);
+    }, 800);
   }, []);
   return (
     <>

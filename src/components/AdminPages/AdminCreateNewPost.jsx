@@ -5,7 +5,6 @@ import { useNavigate, useParams } from "react-router-dom";
 export default function AdminCreateNewPost() {
   const navigate = useNavigate();
 
-  //   const [mount, setMount] = useState(false);
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
   const [subtitle, setSubtitle] = useState("");
@@ -13,11 +12,14 @@ export default function AdminCreateNewPost() {
   const [img1, setImg1] = useState("");
   const [p, setP] = useState("");
 
+  // declaring all APIs in .ENV
+  const POST_API = `${process.env.REACT_APP_API_POSTS}`;
+
   const PostNewData = async (e) => {
     e.preventDefault();
     try {
       if (window.confirm("Are you sure you want to post this article?")) {
-        const resp = await fetch(`http://localhost:5000/myPosts`, {
+        const resp = await fetch(`${POST_API}`, {
           method: "POST",
           headers: { "Content-type": "Application/json" },
           body: JSON.stringify({

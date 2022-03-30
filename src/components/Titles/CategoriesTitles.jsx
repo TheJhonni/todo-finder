@@ -1,9 +1,5 @@
-import GenericScreen from "../../screens/GenericScreen";
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Posts from "../components_2nd_Layer/Posts";
-import { FiEdit } from "react-icons/fi";
-import { useSelector } from "react-redux";
 import Medusa from "../../assets/Medusa.gif";
 import biancoGif from "../../assets/biancoGif.gif";
 import shuttle from "../../assets/shuttle.gif";
