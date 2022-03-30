@@ -61,8 +61,8 @@ export default function AdminScreen() {
   return (
     <>
       {mount ? (
-        <div className="relative img-textLeft h-full">
-          <div className="py-[5%]">
+        <div className="relative img-textLeft sm:h-full">
+          <div className="py-5 px-5 md:px-0 md:py-[5%]">
             <SideBar path={Route.path} />
           </div>
 

@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function Table({ posts }) {
   const [filter, setFilter] = useState("");
-  const [filtered, setFiltered] = useState([]);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -35,12 +34,7 @@ export default function Table({ posts }) {
         });
     }
   };
-  useEffect(() => {
-    const res = posts.filter((post) =>
-      post.title.toLowerCase().includes(filter)
-    );
-    setFiltered(res);
-  }, [filter]);
+  useEffect(() => {}, []);
 
   return (
     <div className="flex flex-col">
@@ -124,60 +118,62 @@ export default function Table({ posts }) {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-300 dark:bg-gray-800 dark:divide-gray-700">
-                {filtered &&
-                  filtered.map((_post) => (
-                    <tr
-                      key={_post.id}
-                      className="hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <img
-                          alt="img-post-related"
-                          className="w-[60px] h-[60px] object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                          src={_post.img1}
-                        />
-                      </td>
-                      <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {_post.title.slice(0, 15) + "..."}
-                      </td>
-                      <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                        {_post.category}
-                      </td>
-                      <td
-                        className={
-                          "py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white " +
-                          (_post.author === "Unknown" && "text-red-500")
-                        }
+                {posts &&
+                  posts
+                    .filter((post) => post.title.toLowerCase().includes(filter))
+                    .map((_post) => (
+                      <tr
+                        key={_post.id}
+                        className="hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
-                        {_post.author
-                          ? _post.author.slice(0, 8) + "..."
-                          : "Unknown"}
-                      </td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          <img
+                            alt="img-post-related"
+                            className="w-[60px] h-[60px] object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                            src={_post.img1}
+                          />
+                        </td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                          {_post.title.slice(0, 15) + "..."}
+                        </td>
+                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                          {_post.category}
+                        </td>
+                        <td
+                          className={
+                            "py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white " +
+                            (_post.author === "Unknown" && "text-red-500")
+                          }
+                        >
+                          {_post.author
+                            ? _post.author.slice(0, 8) + "..."
+                            : "Unknown"}
+                        </td>
 
-                      <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                        <p
-                          onClick={() => navigate(`/edit/${_post.id}`)}
-                          className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
-                        >
-                          Edit
-                        </p>
-                      </td>
-                      <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                        <p
-                          onClick={() => navigate(`/posts/${_post.id}`)}
-                          className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
-                        >
-                          See the full article
-                        </p>
-                      </td>
-                      <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
-                        <MdDeleteForever
-                          onClick={() => deletePost(_post.id)}
-                          className="w-20 h-10 pr-3 text-red-500 hover:text-red-900 cursor-pointer"
-                        />
-                      </td>
-                    </tr>
-                  ))}
+                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                          <p
+                            onClick={() => navigate(`/edit/${_post.id}`)}
+                            className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
+                          >
+                            Edit
+                          </p>
+                        </td>
+                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                          <p
+                            onClick={() => navigate(`/posts/${_post.id}`)}
+                            className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
+                          >
+                            See the full article
+                          </p>
+                        </td>
+                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                          <MdDeleteForever
+                            onClick={() => deletePost(_post.id)}
+                            className="w-20 h-10 pr-3 text-red-500 hover:text-red-900 cursor-pointer"
+                          />
+                        </td>
+                      </tr>
+                    ))}
               </tbody>
             </table>
           </div>

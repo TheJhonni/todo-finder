@@ -13,10 +13,13 @@ export default function Saved() {
 
   const [mount, setMount] = useState(false);
 
+  // declaring all APIs in .ENV
+  const POST_API = `${process.env.REACT_APP_API_POSTS}`;
+
   const loadPosts = () => {
     setTimeout(() => {
       setMount(false);
-      fetch(`http://localhost:5000/myPosts`)
+      fetch(`${POST_API}`)
         .then((res) => {
           return res.json();
         })
@@ -39,8 +42,6 @@ export default function Saved() {
   const savedId = useSelector((state) =>
     state.favorites.favoritePosts.map((favPost) => favPost.id)
   );
-
-  console.log(savedId);
 
   useEffect(() => {
     loadPosts();

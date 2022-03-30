@@ -13,7 +13,6 @@ export default function Homepagege() {
   const [mount, setMount] = useState(false);
   const [posts, setPosts] = useState(null);
   const [postComments, setPostComments] = useState([]);
-  const [howManyLikes, setHowManyLikes] = useState(84);
 
   // declaring all APIs in .ENV
   const POST_API = `${process.env.REACT_APP_API_POSTS}`;
@@ -93,7 +92,6 @@ export default function Homepagege() {
                             author={post?.author}
                             body={post?.body.slice(0, 200)}
                             post={post}
-                            howManyLikes={howManyLikes}
                             filteredC={postComments.filter(
                               (e) => e.postId === post.id
                             )}

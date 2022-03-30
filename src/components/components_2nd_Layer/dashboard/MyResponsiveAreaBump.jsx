@@ -11,7 +11,7 @@ export default function MyResponsiveAreaBump({ posts, comments }) {
 
   const GenericData = [
     {
-      id: postNames[0],
+      id: postNames[0].slice(0, 25) + "...",
       data: [
         {
           x: "Likes",
@@ -28,7 +28,7 @@ export default function MyResponsiveAreaBump({ posts, comments }) {
       ],
     },
     {
-      id: postNames[1],
+      id: postNames[1].slice(0, 25) + "...",
       data: [
         {
           x: "Likes",
@@ -45,7 +45,7 @@ export default function MyResponsiveAreaBump({ posts, comments }) {
       ],
     },
     {
-      id: postNames[2],
+      id: postNames[2].slice(0, 25) + "...",
       data: [
         {
           x: "Likes",
@@ -62,7 +62,7 @@ export default function MyResponsiveAreaBump({ posts, comments }) {
       ],
     },
     {
-      id: postNames[3],
+      id: postNames[3].slice(0, 25) + "...",
       data: [
         {
           x: "Likes",

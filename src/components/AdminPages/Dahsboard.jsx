@@ -4,11 +4,11 @@ import MyResponsiveAreaBump from "../components_2nd_Layer/dashboard/MyResponsive
 
 export default function Dahsboard({ posts, comments }) {
   return (
-    <div className="flex flex-col xl:space-y-5">
-      <div className="px-5 py-5 absolute lg:left-[35%] lg:top-[8%] lg:h-[40%] lg:w-[60%] xl:left-[30%] 2xl:w-[70%] 2xl:top-[10%] 2xl:left-[20%] rounded bg-gray-300 z-99">
+    <div className="flex flex-col sm:flex-row sm:justify-between md:flex-col xl:space-y-5">
+      <div className="lg:px-2 lg:py-2 xl:px-0 xl:py-0 absolute left-[10%] w-[80%] h-[20%] top-[40%] sm:h-[150px] sm:top-[180px] md:h-[30%] md:w-[60%] md:left-[35%] md:top-[10%] lg:top-[12%] lg:h-[35%] xl:left-[30%] 2xl:w-[70%] 2xl:top-[10%] 2xl:left-[20%] rounded bg-gray-300 z-99">
         <Feedback2 posts={posts} />
       </div>
-      <div className="px-5 py-5 absolute lg:h-[40%] lg:w-[60%] lg:top-[50%] lg:left-[35%] xl:left-[30%] 2xl:w-[70%] 2xl:left-[20%] rounded bg-gray-300 z-99">
+      <div className="mt-2 md:mt-0 px-5 md:px-0 lg:py-1 xl:py-0 absolute left-[10%] w-[80%] h-[20%] top-[60%] sm:h-[150px] sm:top-[350px] md:h-[30%] md:w-[60%] md:left-[35%] md:top-[45%] lg:top-[50%] lg:h-[35%] xl:left-[30%] 2xl:w-[70%] 2xl:left-[20%] rounded bg-gray-300 z-99">
         <MyResponsiveAreaBump posts={posts} comments={comments} />
       </div>
     </div>

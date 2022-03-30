@@ -66,10 +66,8 @@ export default function Navbar() {
   };
 
   useEffect(() => {
-    if (currentUser) {
-      fetchUsers();
-    }
-  }, [currentUser]);
+    fetchUsers();
+  }, []);
 
   return (
     <>

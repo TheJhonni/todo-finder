@@ -29,30 +29,32 @@ export default function SideBar() {
   const location = useLocation();
 
   return (
-    <aside
-      className="max-w-[200px] mt-10 lg:mt-0 lg:max-w-[250px] min-h-screen ml-10 relative"
+    <div
+      className="min-h-screen mx-auto md:mt-10 lg:mt-0 md:ml-10 md:mr-0 relative"
       aria-label="Sidebar"
     >
-      <div className="overflow-y-auto py-4 px-4 bg-gray-50 rounded">
-        <span
-          onClick={() => window.history.back()}
-          className="text-bold text-xl text-[#0B1728] cursor-pointer mr-auto py-1 px-3 rounded-lg hover:bg-gray-300"
-        >
-          Go Back
-        </span>
-        <div
-          onClick={() => navigate("/homePage")}
-          className="rounded mt-5 mb-10"
-        >
-          <img
-            className="object-cover relative 
-             bg-transparent shadow-sm w-[100px] h-[50px] mx-auto cursor-pointer"
-            src="/logos/logo.png"
-          />
+      <div className="overflow-y-auto max-w-full md:max-w-[200px] lg:max-w-[250px] max-h-[240px] md:max-h-full py-2 px-4 bg-gray-50 rounded">
+        <div className="hidden md:flex lg:flex-col justify-between items-center">
+          <span
+            onClick={() => window.history.back()}
+            className="text-bold text-xl text-[#0B1728] cursor-pointer mr-auto py-1 px-3 rounded-lg hover:bg-gray-300"
+          >
+            Go Back
+          </span>
+          <div
+            onClick={() => navigate("/homePage")}
+            className="rounded mt-2 mb-2 md:mb-10 bg-transparent"
+          >
+            <img
+              className="object-cover relative 
+                   bg-transparent shadow-sm w-[100px] h-[50px] mr-auto md:mx-auto cursor-pointer"
+              src="/logos/logo.png"
+            />
+          </div>
         </div>
 
-        <ul className="space-y-2">
-          <li className="text-sm pt-2">Diagrams</li>
+        <ul className="md:space-y-2">
+          <li className="text-sm md:pt-2">Diagrams</li>
           <li>
             <Link to="/admin/dashboard">
               <p
@@ -138,9 +140,6 @@ export default function SideBar() {
                 <span className="flex-1 ml-3 whitespace-nowrap">
                   Create new Post
                 </span>
-                <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-white bg-[#1E667C] rounded-full">
-                  3
-                </span>
               </p>
             </Link>
           </li>
@@ -158,9 +157,6 @@ export default function SideBar() {
                 <AiOutlineEdit />
                 <span className="flex-1 ml-3 whitespace-nowrap">
                   Edit posts
-                </span>
-                <span className="inline-flex justify-center items-center px-2 ml-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full">
-                  Pro
                 </span>
               </p>
             </Link>
@@ -190,6 +186,6 @@ export default function SideBar() {
           </li>
         </ul>
       </div>
-    </aside>
+    </div>
   );
 }

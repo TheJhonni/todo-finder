@@ -32,11 +32,11 @@ export default function PostScreen() {
 
   // like section
   const [liked, setLiked] = useState(false);
-  const [howManyLikes, setHowManyLikes] = useState(84);
+  const [howManyLikes, setHowManyLikes] = useState(null);
 
   // dislike section
   const [disliked, setDisliked] = useState(false);
-  const [howManyDislikes, setHowManyDislikes] = useState(5);
+  const [howManyDislikes, setHowManyDislikes] = useState(null);
 
   // toggle various inputs show-not show
   const [showComments, setShowComments] = useState(null);
@@ -56,8 +56,10 @@ export default function PostScreen() {
           setPost(data);
           // LIKES ARRAY CHECK IF ALREADY LIKED!
           data?.likes.includes(currentUser?.email) && setLiked(true);
+          setHowManyLikes(data?.likes.length);
           // DISLIKE ARRAY CHECK IF ALREADY DISLIKED!
           data?.dislikes.includes(currentUser?.email) && setDisliked(true);
+          setHowManyDislikes(data?.dislikes.length);
           setMount(true);
         })
         .catch((err) => {
@@ -236,8 +238,6 @@ export default function PostScreen() {
             .then((resp) => {
               if (resp.status === 200) {
                 console.log("like tolto ora");
-                // const newPost = { ...post };
-                // setPost(newPost);
                 setLiked(false);
                 setHowManyLikes(howManyLikes - 1);
               }
