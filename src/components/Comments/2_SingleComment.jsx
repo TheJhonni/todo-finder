@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import RepliesComments from "./3.2_RepliesComments";
 import { FcFullTrash } from "react-icons/fc";
-import { RGBA_ASTC_4x4_Format } from "three";
 import InputSendReply from "./4.2_InputSendReply";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../Toasts/Toast";
 
 export default function SingleComment({
   commentAuthor,
@@ -10,41 +12,29 @@ export default function SingleComment({
   commentBody,
   date,
   referenceId,
+  fetchComments,
+  replies,
+  fetchReplies,
 }) {
-  // const [newShowComments, setNewShowComments] = showComments;
-  const [replies, setReplies] = useState([]);
   const [showReplies, setShowReplies] = useState(null);
   const [inputReply, setInputReply] = useState(null);
 
-  const fetchReplies = () => {
-    setTimeout(() => {
-      fetch(`http://localhost:5000/replies`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          setReplies(data);
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }, 350);
-  };
+  const notify = () => toast("Deleted");
+
+  // declaring all APIs in .ENV
+  const COMMENTS_API = `${process.env.REACT_APP_API_COMMENTS}`;
 
   const deleteComment = () => {
     if (window.confirm("Are you sure to delete this Comment?")) {
-      fetch(`http://localhost:5000/comments/${referenceId}`, {
+      fetch(`${COMMENTS_API}/${referenceId}`, {
         method: "DELETE",
         headers: { "Content-type": "Application/json" },
       })
         .then((res) => {
           if (res.status === 200) {
             console.log(res);
-            // setShowComments(
-            //   // ...showComments,
-            //   showComments.filter((filterId) => filterId === commentId)
-            // );
-            alert("Comment deleted succesfully");
+            notify();
+            fetchComments();
           }
         })
         .catch((err) => {
@@ -52,10 +42,6 @@ export default function SingleComment({
         });
     }
   };
-
-  useEffect(() => {
-    fetchReplies();
-  }, []);
 
   return (
     <>
@@ -103,17 +89,20 @@ export default function SingleComment({
             {inputReply && (
               <InputSendReply
                 referenceId={referenceId}
-                commentAuthor={commentAuthor}
+                fetchReplies={fetchReplies}
               />
             )}
-            {showReplies && (
-              <RepliesComments
-                referenceId={referenceId}
-                replies={replies}
-                commentAuthor={commentAuthor}
-              />
-            )}
-            {replies.length < 0 && <span className="mt-3">No comment yet</span>}
+            {showReplies &&
+              (replies.length < 0 ? (
+                <span className="mt-3">No replies yet</span>
+              ) : (
+                <RepliesComments
+                  referenceId={referenceId}
+                  replies={replies}
+                  commentAuthor={commentAuthor}
+                  fetchReplies={fetchReplies}
+                />
+              ))}
           </div>
         </div>
       )}

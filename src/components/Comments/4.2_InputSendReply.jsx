@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-export default function InputSendReply({ referenceId }) {
+export default function InputSendReply({ referenceId, fetchReplies }) {
   const [replyBody, setReplyBody] = useState("");
   const { currentUser } = useSelector((state) => state.user);
 
@@ -14,9 +16,10 @@ export default function InputSendReply({ referenceId }) {
   const time =
     today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
 
+  const notify = () => toast("Replied");
+
   const sendReply = async (e) => {
     e.preventDefault();
-
     try {
       const resp = await fetch(`http://localhost:5000/replies`, {
         method: "POST",
@@ -32,11 +35,10 @@ export default function InputSendReply({ referenceId }) {
         }),
       });
       if (resp.ok) {
-        // setMount(true);
-        alert("replied");
+        notify();
         console.log(resp);
         setReplyBody("");
-        // navigate(`/posts/${id}`);
+        fetchReplies();
       }
     } catch (err) {
       console.log(err, " error");

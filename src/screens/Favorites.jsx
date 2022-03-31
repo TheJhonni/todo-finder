@@ -5,6 +5,9 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import Posts from "../components/components_2nd_Layer/Posts";
 import Gif from "../components/Spinner/Gif";
 import { removeFromFavsAction } from "../redux/Favourites/favActions";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../components/Toasts/Toast";
 
 export default function Saved() {
   // const savedId = useParams()
@@ -15,6 +18,8 @@ export default function Saved() {
 
   // declaring all APIs in .ENV
   const POST_API = `${process.env.REACT_APP_API_POSTS}`;
+
+  const notify = () => toast("Deleted from favorites");
 
   const loadPosts = () => {
     setTimeout(() => {
@@ -53,6 +58,7 @@ export default function Saved() {
         <div className="w-full h-screen img-textLeft">
           <div className="container mx-auto">
             <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
+              <Toast />
               <div className="flex justify-center items-center space-x-10">
                 <span onClick={() => navigate("/homePage")} className="">
                   <img
@@ -82,7 +88,7 @@ export default function Saved() {
                       <div className="px-2">
                         <button
                           onClick={() => {
-                            dispatch(removeFromFavsAction(_p.id));
+                            dispatch(removeFromFavsAction(_p.id), notify());
                           }}
                         >
                           <FaTrash className="cursor-pointer text-red-700" />

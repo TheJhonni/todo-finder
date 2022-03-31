@@ -1,37 +1,22 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import SingleComment from "./2_SingleComment";
 import InputSendComment from "./4.1_InputSendComment";
 
-export default function CommentForm() {
-  const [c, setC] = useState(null);
-  const [input2, setInput2] = useState(null);
-  const { id } = useParams();
+export default function CommentForm({
+  c,
+  input2,
+  setInput2,
+  commentBody,
+  setCommentBody,
+  sendComment,
+  fetchComments,
+  replies,
+  fetchReplies,
+}) {
   const { currentUser } = useSelector((state) => state.user);
-
-  // declaring all APIs in .ENV
-  const COMMENTS_API = `${process.env.REACT_APP_API_COMMENTS}`;
-  const fetchComments = async () => {
-    try {
-      await fetch(`${COMMENTS_API}`)
-        .then((res) => {
-          return res.json();
-        })
-        .then((data) => {
-          setC(data);
-        })
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchComments();
-  }, []);
+  let { id } = useParams();
 
   return (
     <div className="flex justify-center w-screen h-screen px-2 text-gray-800 ">
@@ -51,6 +36,9 @@ export default function CommentForm() {
                     date={comment?.date}
                     postId={comment?.postId}
                     referenceId={comment?.id}
+                    fetchComments={fetchComments}
+                    replies={replies}
+                    fetchReplies={fetchReplies}
                   />
                 </div>
               ))
@@ -67,7 +55,13 @@ export default function CommentForm() {
               </button>
             )}
 
-            {input2 && <InputSendComment />}
+            {input2 && (
+              <InputSendComment
+                commentBody={commentBody}
+                setCommentBody={setCommentBody}
+                sendComment={sendComment}
+              />
+            )}
           </div>
         </div>
       </div>

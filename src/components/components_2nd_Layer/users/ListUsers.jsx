@@ -1,8 +1,13 @@
 import firebase from "firebase/compat/app";
 import ChangeRole from "./ChangeRole";
 import { FcFullTrash } from "react-icons/fc";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../../Toasts/Toast";
 
 export default function ListUsers({ userInfo }) {
+  const notify = () => toast("User Deleted!");
+
   const deleteUser = async (id) => {
     await firebase
       .firestore()
@@ -10,12 +15,13 @@ export default function ListUsers({ userInfo }) {
       .doc(id)
       .delete()
       .then(() => {
-        alert("Deleted!");
+        notify();
       });
   };
 
   return (
     <div className="flex flex-col pb-10 my-2">
+      <Toast />
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="py-4 inline-block min-w-full sm:px-6 lg:px-8">
           <div className="overflow-hidden">

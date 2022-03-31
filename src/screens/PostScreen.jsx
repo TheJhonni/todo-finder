@@ -15,15 +15,17 @@ import {
 } from "../redux/Favourites/favActions";
 import { FacebookShareButton, WhatsappShareButton } from "react-share";
 import { FacebookIcon, WhatsappIcon } from "react-share";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../components/Toasts/Toast";
 
 export default function PostScreen() {
   // REDUX PART FOR USER
   const { currentUser } = useSelector((state) => state.user);
+  let { id } = useParams();
 
   // not mounted? => spinner
   const [mount, setMount] = useState(false);
-
-  let { id } = useParams();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,6 +45,9 @@ export default function PostScreen() {
   const [input, setInput] = useState(null);
   const [fullArticle, setFullArticle] = useState(null);
 
+  const [commentBody, setCommentBody] = useState("");
+
+  const [replies, setReplies] = useState([]);
   // post fetch
   // declaring all APIs in .ENV
   const POST_API = `${process.env.REACT_APP_API_POSTS}`;
@@ -252,6 +257,78 @@ export default function PostScreen() {
     }
   };
 
+  const notify = () => toast("Commented");
+
+  const [c, setC] = useState(null);
+  const [input2, setInput2] = useState(null);
+
+  // declaring all APIs in .ENV
+  const COMMENTS_API = `${process.env.REACT_APP_API_COMMENTS}`;
+  const fetchComments = async (id) => {
+    try {
+      await fetch(`${COMMENTS_API}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setC(data);
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const REPLIES_API = `${process.env.REACT_APP_API_REPLIES}`;
+  const fetchReplies = () => {
+    setTimeout(() => {
+      fetch(`${REPLIES_API}`)
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          setReplies(data);
+        })
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    }, 350);
+  };
+
+  const sendComment = async (e) => {
+    e.preventDefault();
+    function randomDate(start, end) {
+      return new Date(
+        start.getTime() + Math.random() * (end.getTime() - start.getTime())
+      );
+    }
+    try {
+      const resp = await fetch(`${COMMENTS_API}`, {
+        method: "POST",
+        headers: { "Content-type": "Application/json" },
+        body: JSON.stringify({
+          id: Math.floor(Math.random() * 1400),
+          postId: id,
+          commentId: Math.floor(Math.random() * 7000),
+          commentAuthor: currentUser?.email || currentUser?.name,
+          commentBody,
+          date: randomDate(new Date(2020, 0, 1), new Date()).toLocaleString(),
+        }),
+      });
+      if (resp.ok) {
+        notify();
+        console.log(resp);
+        setCommentBody("");
+        fetchComments();
+        fetchReplies();
+      }
+    } catch (err) {
+      console.log(err, " error");
+    }
+  };
+
   // REDUX PART FROR FAVORITES
   const favPost = useSelector((state) => state.favorites.favoritePosts);
 
@@ -261,6 +338,7 @@ export default function PostScreen() {
   useEffect(() => {
     setTimeout(() => {
       fetchIdData(id);
+      fetchComments(id);
     }, 800);
   }, [id]);
 
@@ -271,6 +349,7 @@ export default function PostScreen() {
           <div className="img-textLeft">
             <main className="relative container mx-auto bg-[#ffffffd2] px-4">
               <div className="relative mx-4 top-0 pt-[17%] overflow-hidden">
+                <Toast />
                 <img
                   className="absolute inset-0 object-cover object-top w-full h-full filter blur"
                   src={post?.img1}
@@ -429,7 +508,13 @@ export default function PostScreen() {
                         </button>
                       )}
 
-                      {input && <InputSendComment id={post.id} />}
+                      {input && (
+                        <InputSendComment
+                          commentBody={commentBody}
+                          setCommentBody={setCommentBody}
+                          sendComment={sendComment}
+                        />
+                      )}
                     </div>
                   )}
                   <div className="px-5 flex-col justify-self-end">
@@ -442,7 +527,19 @@ export default function PostScreen() {
                     >
                       {showComments ? "Hide Comments" : "Show Comments"}
                     </p>
-                    {showComments && <CommentForm id={post.id} />}
+                    {showComments && (
+                      <CommentForm
+                        c={c}
+                        input2={input2}
+                        setInput2={setInput2}
+                        commentBody={commentBody}
+                        setCommentBody={setCommentBody}
+                        sendComment={sendComment}
+                        fetchComments={fetchComments}
+                        replies={replies}
+                        fetchReplies={fetchReplies}
+                      />
+                    )}
                   </div>
                 </div>
               </article>

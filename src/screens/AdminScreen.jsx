@@ -5,8 +5,9 @@ import SideBar from "../components/AdminPages/SideBar";
 import Dahsboard from "../components/AdminPages/Dahsboard";
 import AdminPost from "../components/AdminPages/AdminPost";
 import User from "../components/AdminPages/User";
-import AdminCreateNewPost from "../components/AdminPages/AdminCreateNewPost";
 import Feedback from "../components/AdminPages/Feedback";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AdminScreen() {
   const [mount, setMount] = useState(false);
@@ -50,6 +51,30 @@ export default function AdminScreen() {
     }
   };
 
+  const notify = () => toast("Post deleted");
+
+  const deletePost = async (id) => {
+    if (window.confirm("Are you sure to delete this post?")) {
+      await fetch(`${POST_API}/${id}`, {
+        method: "DELETE",
+        headers: { "Content-type": "Application/json" },
+      })
+        .then((res) => {
+          if (res.status === 200) {
+            notify();
+            console.log(res);
+            setTimeout(() => {
+              loadPosts();
+            }, 500);
+          }
+        })
+
+        .catch((err) => {
+          console.log(err, " error");
+        });
+    }
+  };
+
   useEffect(() => {
     loadPosts();
     loadComments();
@@ -80,12 +105,7 @@ export default function AdminScreen() {
             <Route
               exact
               path="editPosts"
-              element={<AdminPost posts={posts} />}
-            />
-            <Route
-              exact
-              path="createNewPosts"
-              element={<AdminCreateNewPost />}
+              element={<AdminPost posts={posts} deletePost={deletePost} />}
             />
             <Route exact path="users" element={<User />} />
           </Routes>

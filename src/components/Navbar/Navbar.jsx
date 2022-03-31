@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineHeart } from "react-icons/ai";
 import firebase from "firebase/compat/app";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "../../firebase";
 
 export default function Navbar() {
   const savedPosts = useSelector((state) => state.favorites.favoritePosts);
@@ -72,6 +70,7 @@ export default function Navbar() {
   return (
     <>
       {loc === "*" ||
+      loc === "/" ||
       loc === "/login" ||
       loc === "/register" ||
       loc === "/admin" ||
@@ -114,7 +113,21 @@ export default function Navbar() {
               </ul>
               <ul className="flex">
                 <li>
-                  <div className="hidden md:flex items-center justify-center relative space-x-2 pt-6 px-2">
+                  <div className="hidden md:relative md:flex items-center justify-center space-x-2 pt-6 px-2">
+                    <div className="flex absolute inset-y-2 right-5 top-9 my-auto items-center pl-3 pointer-events-none">
+                      <svg
+                        className="w-5 h-5 text-gray-800"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                    </div>
                     <input
                       type="text"
                       value={query}
@@ -124,18 +137,6 @@ export default function Navbar() {
                       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-g/ray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       placeholder="Search for posts"
                     />
-                    <svg
-                      className="w-5 h-5 text-gray-800"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                        clipRule="evenodd"
-                      ></path>
-                    </svg>
 
                     {query.length !== 0 && (
                       <div className="absolute flex flex-col space-y-1 left-0 right-0 top-[50px] justify-between items-between bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2">

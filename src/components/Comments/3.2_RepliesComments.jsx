@@ -5,10 +5,11 @@ export default function RepliesComments({
   referenceId,
   replies,
   commentAuthor,
+  fetchReplies,
 }) {
   return (
     <>
-      {replies ? (
+      {replies.length > 0 ? (
         replies
           .filter((_r) => _r._ID === referenceId)
           .reverse()
@@ -17,14 +18,14 @@ export default function RepliesComments({
               key={reply?.id}
               id={reply.id}
               reply={reply}
-              commentId={reply?._ID}
               commentAuthor={commentAuthor}
               replyDate={reply?.replyDate}
               replyBody={reply?.replyBody}
+              fetchReplies={fetchReplies}
             />
           ))
       ) : (
-        <span className="mt-3 text-black text-xl">No comment yet</span>
+        <span className="mt-3 text-black text-xl">No reply yet</span>
       )}
     </>
   );

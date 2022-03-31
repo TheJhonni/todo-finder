@@ -7,6 +7,7 @@ import Cards from "../components/components_2nd_Layer/Cards";
 import Blogs from "../components/components_2nd_Layer/Blogs";
 import GenericScreen from "./GenericScreen";
 import Gif from "../components/Spinner/Gif";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function Homepagege() {
   const navigate = useNavigate();

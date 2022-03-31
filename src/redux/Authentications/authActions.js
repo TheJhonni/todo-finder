@@ -88,10 +88,7 @@ export const registerInitiate = (email, password, displayName, role) => {
           displayName,
           role,
         });
-        dispatch(
-          registerSuccess(user),
-          alert("Congrats! You've just registered")
-        );
+        dispatch(registerSuccess(user));
       })
       .catch((error) =>
         dispatch(registerFail(error.message), alert("Hops" + error.message))
@@ -112,7 +109,6 @@ export const loginInitiate = (email, password, displayName, role) => {
         });
         console.log("USER: ", user);
         dispatch(loginSuccess(user._delegate));
-        alert("Yes, you've just logged in!");
       })
 
       .catch((error) => {
@@ -154,7 +150,6 @@ export const googleInitiate = () => {
       .signInWithPopup(googleAuthProvider) //sign in function
       .then(({ user }) => {
         dispatch(googleSuccess(user));
-        alert("Congrats, You have just logged in!");
       })
       .catch((error) => {
         dispatch(googleFail(error.message));
@@ -171,7 +166,6 @@ export const fbInitiate = () => {
       .signInWithPopup(facebookAuthProvider.addScope("user_birthday, email")) //sign in function
       .then(({ user }) => {
         dispatch(fbSuccess(user));
-        alert("Congrats, You have just logged in!");
       })
       .catch((error) => {
         dispatch(fbFail(error.message));

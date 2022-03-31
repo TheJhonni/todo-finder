@@ -3,12 +3,14 @@ import Posts from "../components_2nd_Layer/Posts";
 import Medusa from "../../assets/Medusa.gif";
 import biancoGif from "../../assets/biancoGif.gif";
 import shuttle from "../../assets/shuttle.gif";
+import Navbar from "../Navbar/Navbar";
 
 export default function CategoriesTitles({ posts }) {
   const { category } = useParams();
 
   return (
     <>
+      <Navbar />
       <div className="relative flex flex-col items-center justify-center mx-auto py-4">
         <img
           className="w-[300px] md:w-[500px] md:h-[500px] z-[999] mx-auto mt-[-10]"

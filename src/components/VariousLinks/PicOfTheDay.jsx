@@ -21,6 +21,7 @@ export default function PicOfTheDay() {
           return res.json();
         })
         .then((data) => {
+          console.log(data);
           setPhotos(data);
           setMount(true);
         })
@@ -45,11 +46,12 @@ export default function PicOfTheDay() {
           <div className="relative flex items-center justify-evenly mx-auto py-2">
             <div>
               <h2 className="mb-10 text-center text-xl sm:text-2xl md:text-5xl md:mt-10 font-extrabold text-gray-200">
-                Nasa's {photos?.media_type === "pic" ? "picture" : "video"} of
+                Nasa's {photos?.media_type === "image" ? "picture" : "video"} of
                 the Day!
               </h2>
               <a
                 href="https://apod.nasa.gov/apod/astropix.html"
+                target="_blank"
                 className="text-[#171753d3] bg-white md:text-lg lg:text-xl
                 hover:bg-[#5FD38D] font-normal xl:font-bold px-[5px] py-[5px]
                 lg:px-[20px] lg:py-[10px] xl:px-[30px] xl:py-[15px]

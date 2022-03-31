@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { FcFullTrash } from "react-icons/fc";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../Toasts/Toast";
 
 export default function SingleReply({
-  id,
   reply,
   commentAuthor,
   replyDate,
   replyBody,
+  fetchReplies,
 }) {
   const [input, setInput] = useState(null);
 
+  const notify = () => toast("Deleted");
+  // declaring all APIs in .ENV
+  const REPLIES_API = `${process.env.REACT_APP_API_REPLIES}`;
+
   const deleteReply = (id) => {
     if (window.confirm("Are you sure to delete this Comment?")) {
-      fetch(`http://localhost:5000/replies/${id}`, {
+      fetch(`${REPLIES_API}/${id}`, {
         method: "DELETE",
         headers: { "Content-type": "Application/json" },
       })
         .then((res) => {
           if (res.status === 200) {
             console.log(res);
-            alert("Comment deleted succesfully");
+            notify();
+            fetchReplies();
           }
         })
         .catch((err) => {

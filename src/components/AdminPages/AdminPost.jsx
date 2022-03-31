@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import Table from "../components_2nd_Layer/adminPosts/Table";
 
-export default function AdminPost({ posts }) {
+export default function AdminPost({ posts, deletePost }) {
   return (
-    <>
-      <div className="top-0 px-auto mb-auto min-w-screen md:absolute h-full 2xl:py-10 md:top-0 md:left-[35%] lg:left-[35%] xl:left-[28%] 2xl:left-[20%]">
-        <Table posts={posts} />
+    <div className="h-screen ml-12 w-fit md:w-[70%]">
+      <div className="absolute rounded bg-transparent md:top-[5%] md:left-[30%] z-99">
+        <Table posts={posts} deletePost={deletePost} />
       </div>
-    </>
+    </div>
   );
 }

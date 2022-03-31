@@ -126,7 +126,7 @@ export default function SideBar() {
 
           <li className="hidden md:block text-sm pt-2">Posts</li>
           <li className="p-0">
-            <Link to="/admin/createNewPosts">
+            <Link to="/newPost">
               <p
                 href="#"
                 className={

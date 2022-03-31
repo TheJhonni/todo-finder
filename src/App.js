@@ -74,7 +74,7 @@ function App() {
           <Route exact path="/login" element={<LoginScreen />} />
           <Route exact path="/register" element={<RegisterScreen />} />
 
-          <Route exact path="/redirectToLogin" element={<UseRoute />} />
+          <Route exact path="*" element={<UseRoute />} />
 
           <Route
             exact
@@ -96,17 +96,14 @@ function App() {
             path="/edit/:id"
             element={<EditPost currentUser={currentUser} />}
           />
-          <Route
-            path="/newPost"
-            element={<NewPost currentUser={currentUser} />}
-          />
+          <Route path="/newPost" element={<NewPost />} />
           <Route path="/admin/*" element={<AdminScreen />} />
           <Route path="/Faq" element={<FaqScreen />} />
           <Route path="/ourTeam" element={<TeamScreen />} />
           <Route path="/contact" element={<ContactScreen />} />
           <Route path="/favorites" element={<Favorites />} />
 
-          <Route path="*" element={<FourOFour />} />
+          {/* <Route path="*" element={<FourOFour />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

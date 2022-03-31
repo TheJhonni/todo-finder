@@ -1,12 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { send } from "emailjs-com";
 import Gif from "../components/Spinner/Gif";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../components/Toasts/Toast";
+
 export default function ContactScreen() {
   const [sender_name, set_sender_name] = useState("");
   const [sender_email, set_sender_email] = useState("");
   const [message, set_message] = useState("");
 
   const [mount, setMount] = useState(false);
+
+  const notify = () => toast("Email sent");
 
   const handleName = (e) => {
     set_sender_name(e.target.value);
@@ -29,7 +35,6 @@ export default function ContactScreen() {
 
   const sendEmail = async (e) => {
     e.preventDefault();
-    setMount(false);
     try {
       await send(
         "service_o918xll",
@@ -40,7 +45,6 @@ export default function ContactScreen() {
         .then(
           (result) => {
             console.log(result.text);
-            setMount(true);
           },
           (error) => {
             console.log(error.text);
@@ -52,7 +56,10 @@ export default function ContactScreen() {
     } catch (error) {
       console.log(error);
     }
-    resetFields();
+    notify();
+    setTimeout(() => {
+      resetFields();
+    }, 800);
   };
 
   useEffect(() => {
@@ -66,16 +73,13 @@ export default function ContactScreen() {
     <>
       {mount ? (
         <div>
-          <section className="text-gray-300 body-font relative">
+          <section className="h-screen text-gray-300 body-font relative">
             <form onSubmit={sendEmail} className="container px-5 py-24 mx-auto">
               <div className="flex flex-col text-center w-full mb-12">
+                <Toast />
                 <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-200">
                   Contact Us
                 </h1>
-                <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
-                  Whatever cardigan tote bag tumblr hexagon brooklyn
-                  asymmetrical gentrify.
-                </p>
               </div>
               <div className="lg:w-1/2 md:w-2/3 mx-auto">
                 <div className="flex flex-wrap -m-2">

@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Toast from "../../Toasts/Toast";
 
-export default function Table({ posts }) {
+export default function Table({ posts, deletePost }) {
   const [filter, setFilter] = useState("");
   const navigate = useNavigate();
 
@@ -11,36 +14,14 @@ export default function Table({ posts }) {
     setFilter(e.target.value);
   };
 
-  // declaring all APIs in .ENV
-  const POST_API = `${process.env.REACT_APP_API_POSTS}`;
-
-  const deletePost = async (id) => {
-    if (window.confirm("Are you sure to delete this post?")) {
-      await fetch(`${POST_API}/${id}`, {
-        method: "DELETE",
-        headers: { "Content-type": "Application/json" },
-      })
-        .then((res) => {
-          if (res.status === 200) {
-            console.log(res);
-            alert("Post deleted succesfully");
-
-            navigate("/posts");
-          }
-        })
-
-        .catch((err) => {
-          console.log(err, " error");
-        });
-    }
-  };
   useEffect(() => {}, []);
 
   return (
-    <div className="flex flex-col ml-4 md:w-full">
+    <div className="flex flex-col items-center">
       <div className="shadow-md md:rounded-lg">
+        <Toast />
         <div className="inline-block md:align-middle">
-          <div className="p-4 xl:w-[70%]">
+          <div className="p-2 md:p-4">
             <label htmlFor="table-search" className="sr-only">
               Search
             </label>
@@ -78,7 +59,7 @@ export default function Table({ posts }) {
             </div>
           </div>
 
-          <div className="lg:h-[40%] xl:h-[50%] 2xl:h-[70%] overflow-hidden">
+          <div className="overflow-hidden">
             <table className="divide-y divide-gray-300 table-fixed rounded">
               <thead className="bg-gray-100 dark:bg-gray-700">
                 <tr>
@@ -90,7 +71,7 @@ export default function Table({ posts }) {
                   </th>
                   <th
                     scope="col"
-                    className="xl:py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                    className="xl:py-3 px-2 md:px-6 text-xs font-medium tracking-wider xl:text-left text-gray-700 uppercase dark:text-gray-400"
                   >
                     Title Post
                   </th>
@@ -106,13 +87,16 @@ export default function Table({ posts }) {
                   >
                     Author
                   </th>
-                  <th scope="col" className="p-6 lg:px-5 xl:px-6 text-right">
+                  <th
+                    scope="col"
+                    className="px-2 md:p-6 lg:px-5 xl:px-6 xl:text-right"
+                  >
                     <span className="">Edit</span>
                   </th>
-                  <th scope="col" className="pr-10 xl:py-6 xl:px-6 text-right">
+                  <th scope="col" className="xl:py-6 xl:px-6 xl:text-right">
                     <span className="">Read it full</span>
                   </th>
-                  <th scope="col" className="pr-10 xl:py-6 xl:px-6 text-right">
+                  <th scope="col" className="xl:py-6 xl:px-6 xl:text-right">
                     <span className="text-red-500">DELETE</span>
                   </th>
                 </tr>
@@ -126,22 +110,22 @@ export default function Table({ posts }) {
                         key={_post.id}
                         className="mr-auto hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
-                        <td className="hidden xl:inline-block xl:py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td className="hidden xl:inline-block xl:py-4 px-2 md:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           <img
                             alt="img-post-related"
                             className="inline-block w-[60px] h-[60px] object-cover object-center rounded-full border-2 border-gray-200 bg-gray-100"
                             src={_post.img1}
                           />
                         </td>
-                        <td className="py-2 xl:py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td className="py-2 xl:py-4 px-2 md:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           {_post.title.slice(0, 15) + "..."}
                         </td>
-                        <td className="hidden xl:inline-block py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        <td className="hidden xl:inline-block py-4 px-2 md:px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                           {_post.category}
                         </td>
                         <td
                           className={
-                            "hidden xl:inline-block py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white " +
+                            "hidden xl:inline-block py-4 px-2 md:px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white " +
                             (_post.author === "Unknown" && "text-red-500")
                           }
                         >
@@ -150,7 +134,7 @@ export default function Table({ posts }) {
                             : "Unknown"}
                         </td>
 
-                        <td className="py-2 xl:py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <td className="py-2 xl:py-4 px-2 md:px-6 text-sm font-medium text-right whitespace-nowrap">
                           <p
                             onClick={() => navigate(`/edit/${_post.id}`)}
                             className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
@@ -158,7 +142,7 @@ export default function Table({ posts }) {
                             Edit
                           </p>
                         </td>
-                        <td className="py-2 xl:py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <td className="py-2 xl:py-4 px-2 md:px-6 text-sm font-medium text-right whitespace-nowrap">
                           <p
                             onClick={() => navigate(`/posts/${_post.id}`)}
                             className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
@@ -166,7 +150,7 @@ export default function Table({ posts }) {
                             See the full article
                           </p>
                         </td>
-                        <td className="py-2 xl:py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <td className="py-2 xl:py-4 px-2 md:px-6 text-sm font-medium text-right whitespace-nowrap">
                           <MdDeleteForever
                             onClick={() => deletePost(_post.id)}
                             className="w-20 h-10 pr-3 text-red-500 hover:text-red-900 cursor-pointer"

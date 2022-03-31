@@ -25,7 +25,7 @@ export default function FirstScreen() {
     <>
       {mount ? (
         <div className="relative w-full h-full img-login">
-          <div className="md:w-[50%] lg:w-[60%] xl:w-[70%] md:mt-5 xl:mt-20 mx-auto flex flex-col justify-center items-center z-50">
+          <div className="md:w-[50%] lg:w-[60%] xl:w-[70%] md:pt-5 xl:pt-20 mx-auto flex flex-col justify-center items-center z-50">
             <StartTitles />
           </div>
 
