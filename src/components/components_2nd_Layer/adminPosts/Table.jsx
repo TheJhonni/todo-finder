@@ -37,15 +37,15 @@ export default function Table({ posts }) {
   useEffect(() => {}, []);
 
   return (
-    <div className="flex flex-col">
-      <div className=" shadow-md sm:rounded-lg">
-        <div className="inline-block align-middle">
-          <div className="p-4  w-[70%]">
+    <div className="flex flex-col ml-4 md:w-full">
+      <div className="shadow-md md:rounded-lg">
+        <div className="inline-block md:align-middle">
+          <div className="p-4 xl:w-[70%]">
             <label htmlFor="table-search" className="sr-only">
               Search
             </label>
 
-            <div className="relative flex justify-between items-center mt-1">
+            <div className="relative flex sm:justify-between lg:justify-center xl:justify-between items-center mt-1">
               <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                 <svg
                   className="w-5 h-5 text-gray-500"
@@ -66,53 +66,53 @@ export default function Table({ posts }) {
                 name="filter"
                 onChange={handleChange}
                 id="table-search"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-80 pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-g/ray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block sm:w-40 lg:w-60 xl:w-80 p-1 pl-8 md:pl-10 md:p-2  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-g/ray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Search for posts"
               />
               <span
                 onClick={() => navigate("/newPost")}
-                className="ml-auto texl-md rounded px-5 py-5 border-2 cursor-pointer bg-gray-300 hover:bg-[#5FD38D]"
+                className="sm:ml-auto lg:mr-auto xl:ml-auto text-sm rounded lg:ml-2 p-1 md:p-2 lg:p-2 2xl:p-4 border-2 cursor-pointer bg-gray-300 hover:bg-[#5FD38D]"
               >
                 Add new Post
               </span>
             </div>
           </div>
 
-          <div className="overflow-hidden">
-            <table className="w-[70%] h-[70%] divide-y divide-gray-300 table-fixed rounded">
+          <div className="lg:h-[40%] xl:h-[50%] 2xl:h-[70%] overflow-hidden">
+            <table className="divide-y divide-gray-300 table-fixed rounded">
               <thead className="bg-gray-100 dark:bg-gray-700">
                 <tr>
                   <th
                     scope="col"
-                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                    className="hidden xl:block xl:py-4 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
                   >
                     Img
                   </th>
                   <th
                     scope="col"
-                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                    className="xl:py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
                   >
                     Title Post
                   </th>
                   <th
                     scope="col"
-                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                    className="hidden xl:inline-block xl:py-6 xl:px-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
                   >
                     Category
                   </th>
                   <th
                     scope="col"
-                    className="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
+                    className="hidden xl:inline-block xl:py-6 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400"
                   >
                     Author
                   </th>
-                  <th scope="col" className="p-4 px-6 text-right">
+                  <th scope="col" className="p-6 lg:px-5 xl:px-6 text-right">
                     <span className="">Edit</span>
                   </th>
-                  <th scope="col" className="p-4 px-6 text-right">
+                  <th scope="col" className="pr-10 xl:py-6 xl:px-6 text-right">
                     <span className="">Read it full</span>
                   </th>
-                  <th scope="col" className="p-4 px-6 text-right">
+                  <th scope="col" className="pr-10 xl:py-6 xl:px-6 text-right">
                     <span className="text-red-500">DELETE</span>
                   </th>
                 </tr>
@@ -124,24 +124,24 @@ export default function Table({ posts }) {
                     .map((_post) => (
                       <tr
                         key={_post.id}
-                        className="hover:bg-gray-100 dark:hover:bg-gray-700"
+                        className="mr-auto hover:bg-gray-100 dark:hover:bg-gray-700"
                       >
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td className="hidden xl:inline-block xl:py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           <img
                             alt="img-post-related"
-                            className="w-[60px] h-[60px] object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
+                            className="inline-block w-[60px] h-[60px] object-cover object-center rounded-full border-2 border-gray-200 bg-gray-100"
                             src={_post.img1}
                           />
                         </td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <td className="py-2 xl:py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white">
                           {_post.title.slice(0, 15) + "..."}
                         </td>
-                        <td className="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        <td className="hidden xl:inline-block py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white">
                           {_post.category}
                         </td>
                         <td
                           className={
-                            "py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white " +
+                            "hidden xl:inline-block py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white " +
                             (_post.author === "Unknown" && "text-red-500")
                           }
                         >
@@ -150,7 +150,7 @@ export default function Table({ posts }) {
                             : "Unknown"}
                         </td>
 
-                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <td className="py-2 xl:py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                           <p
                             onClick={() => navigate(`/edit/${_post.id}`)}
                             className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
@@ -158,7 +158,7 @@ export default function Table({ posts }) {
                             Edit
                           </p>
                         </td>
-                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <td className="py-2 xl:py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                           <p
                             onClick={() => navigate(`/posts/${_post.id}`)}
                             className="text-blue-600 dark:text-blue-500 hover:underline cursor-pointer"
@@ -166,7 +166,7 @@ export default function Table({ posts }) {
                             See the full article
                           </p>
                         </td>
-                        <td className="py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
+                        <td className="py-2 xl:py-4 px-6 text-sm font-medium text-right whitespace-nowrap">
                           <MdDeleteForever
                             onClick={() => deletePost(_post.id)}
                             className="w-20 h-10 pr-3 text-red-500 hover:text-red-900 cursor-pointer"

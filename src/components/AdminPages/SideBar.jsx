@@ -30,10 +30,10 @@ export default function SideBar() {
 
   return (
     <div
-      className="min-h-screen mx-auto md:mt-10 lg:mt-0 md:ml-10 md:mr-0 relative"
+      className="md:min-h-screen mx-auto md:mt-10 lg:mt-0 md:ml-10 md:mr-0 relative"
       aria-label="Sidebar"
     >
-      <div className="overflow-y-auto max-w-full md:max-w-[200px] lg:max-w-[250px] max-h-[240px] md:max-h-full py-2 px-4 bg-gray-50 rounded">
+      <div className="overflow-y-auto max-w-full md:max-w-[200px] lg:max-w-[250px] max-h-[240px] md:max-h-full md:py-2 md:px-4 bg-gray-50 rounded">
         <div className="hidden md:flex lg:flex-col justify-between items-center">
           <span
             onClick={() => window.history.back()}
@@ -53,14 +53,14 @@ export default function SideBar() {
           </div>
         </div>
 
-        <ul className="md:space-y-2">
-          <li className="text-sm md:pt-2">Diagrams</li>
-          <li>
+        <ul className="flex flex-row md:flex-col md:space-y-2">
+          <li className="hidden md:block text-sm md:pt-2">Diagrams</li>
+          <li className="p-0">
             <Link to="/admin/dashboard">
               <p
                 id="dashboard"
                 className={
-                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D] active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  "flex items-center px-2 py-2 text-base font-normal text-gray-900 rounded hover:bg-[#5FD38D] active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
                   (location.pathname === "/admin/dashboard"
                     ? "bg-[#46c277ce] "
                     : "")
@@ -75,33 +75,33 @@ export default function SideBar() {
                   <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
                   <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
                 </svg>
-                <span className="ml-3">Dashboard</span>
+                <span className="ml-2">Dashboard</span>
               </p>
             </Link>
           </li>
-          <li>
+          <li className="p-0">
             <Link to="/admin/feedbacks">
               <p
                 id="feedbacks"
                 className={
-                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D] active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  "flex items-center px-2 py-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D] active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
                   (location.pathname === "/admin/feedbacks"
                     ? "bg-[#46c277ce] "
                     : "")
                 }
               >
                 <MdFeedback />
-                <span className="ml-3">Feedbacks</span>
+                <span className="ml-2">Feedbacks</span>
               </p>
             </Link>
           </li>
 
-          <li className="text-sm pt-2">Users</li>
-          <li>
+          <li className="hidden md:block text-sm pt-2">Users</li>
+          <li className="p-0">
             <Link to="/admin/users">
               <p
                 className={
-                  "flex items-center p-2 mb-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  "flex items-center px-2 py-2 mb-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
                   (location.pathname === "/admin/users"
                     ? "bg-[#46c277ce] "
                     : "")
@@ -119,51 +119,51 @@ export default function SideBar() {
                     clipRule="evenodd"
                   ></path>
                 </svg>
-                <span className="flex-1 ml-3 whitespace-nowrap">Users</span>
+                <span className="flex-1 ml-2 whitespace-nowrap">Users</span>
               </p>
             </Link>
           </li>
 
-          <li className="text-sm pt-2">Posts</li>
-          <li>
+          <li className="hidden md:block text-sm pt-2">Posts</li>
+          <li className="p-0">
             <Link to="/admin/createNewPosts">
               <p
                 href="#"
                 className={
-                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  "flex items-center px-2 py-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
                   (location.pathname === "/admin/createNewPosts"
                     ? "bg-[#46c277ce] "
                     : "")
                 }
               >
                 <IoIosCreate />
-                <span className="flex-1 ml-3 whitespace-nowrap">
+                <span className="flex-1 ml-2 whitespace-nowrap">
                   Create new Post
                 </span>
               </p>
             </Link>
           </li>
-          <li>
+          <li className="p-0">
             <Link to="/admin/editPosts">
               <p
                 href="#"
                 className={
-                  "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
+                  "flex items-center px-2 py-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] " +
                   (location.pathname === "/admin/editPosts"
                     ? "bg-[#46c277ce] "
                     : "")
                 }
               >
                 <AiOutlineEdit />
-                <span className="flex-1 ml-3 whitespace-nowrap">
+                <span className="flex-1 ml-2 whitespace-nowrap">
                   Edit posts
                 </span>
               </p>
             </Link>
           </li>
 
-          <li>
-            <p className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] ">
+          <li className="p-0">
+            <p className="flex items-center px-2 py-2 text-base font-normal text-gray-900 rounded-lg hover:bg-[#5FD38D]  active:bg-[#46c277ce] focus:bg-[#89f5b4ce] ">
               <svg
                 className="flex-shrink-0 w-5 h-6 transition duration-75 group-hover:text-gray-900"
                 fill="currentColor"
@@ -178,7 +178,7 @@ export default function SideBar() {
               </svg>
               <span
                 onClick={handleAuth}
-                className="flex-1 ml-3 whitespace-nowrap"
+                className="flex-1 ml-2 whitespace-nowrap"
               >
                 Logout
               </span>
