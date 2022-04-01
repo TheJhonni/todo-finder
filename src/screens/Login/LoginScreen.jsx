@@ -156,7 +156,7 @@ function LoginScreen() {
                       className="signIn-button rounded hover:bg-[#5ED28D] hover:text-white hover:scale-[1.03] transition-all duration-150 ease-in"
                       type="submit"
                     >
-                      Sing up for free!
+                      Sign up for free!
                     </button>
                   </h2>
                 </Link>

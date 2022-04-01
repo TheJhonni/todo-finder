@@ -27,7 +27,7 @@ export default function InputSendReply({ referenceId, fetchReplies }) {
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
           _ID: referenceId,
-          id: Math.floor(Math.random() * 2900).toLocaleString(),
+          id: Math.floor(Math.random() * 1000).toLocaleString(),
           replyAuthor: currentUser?.email || currentUser?.name,
           replyBody,
           replyDate: date + " at:" + time,

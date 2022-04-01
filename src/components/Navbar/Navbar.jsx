@@ -42,29 +42,33 @@ export default function Navbar() {
     }
   };
 
+  // const fetchUsers = async () => {
+  //   try {
+  //     const emailRef = currentUser.email;
+
+  //     let usersRef = firebase.firestore().collection("users");
+  //     let collection = await usersRef.get();
+  //     const allArr = collection.docs.map((doc) => doc.data());
+  //     const actualUserRef = allArr.filter((d) => d.email === emailRef);
+  //     console.log(actualUserRef);
+  //     if (actualUserRef?.role === "Admin") {
+  //       setIsAdmin(true);
+  //     } else {
+  //       setIsAdmin(false);
+  //     }
+  //     return actualUserRef;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
   const { currentUser } = useSelector((state) => state.user);
-
-  const fetchUsers = async () => {
-    try {
-      const emailRef = await currentUser.email;
-      let usersRef = firebase.firestore().collection("users");
-      let collection = await usersRef.get();
-      const allArr = collection.docs.map((doc) => doc.data());
-      const actualUserRef = allArr.filter((d) => d.email === emailRef);
-      console.log(actualUserRef[0]);
-      if (actualUserRef[0].role === "Admin") {
-        setIsAdmin(true);
-      } else {
-        setIsAdmin(false);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(() => {
-    console.log(currentUser);
-    fetchUsers();
+    // fetchUsers();
+    if (currentUser.email === "jdilmoro@gmail.com") {
+      console.log(currentUser.email);
+      setIsAdmin(true);
+    }
   }, []);
 
   return (
@@ -92,7 +96,7 @@ export default function Navbar() {
                 <div className="rounded">
                   <img
                     className="object-cover relative 
-             bg-transparent shadow-sm w-[80px] ml-[30px] md:ml-0 sm:w-[100px] sm:h-[50px] md:w-[100px] md:h-[50px] cursor-pointer"
+                 bg-transparent shadow-sm w-[80px] ml-[30px] md:ml-0 sm:w-[100px] sm:h-[50px] md:w-[100px] md:h-[50px] cursor-pointer"
                     src="/logos/logo.png"
                   />
                 </div>
@@ -139,30 +143,32 @@ export default function Navbar() {
                     />
 
                     {query.length !== 0 && (
-                      <div className="absolute flex flex-col space-y-1 left-0 right-0 top-[50px] justify-between items-between bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2">
+                      <div className="absolute flex flex-col space-y-1 top-[60px] max-w-[320px] justify-between items-between bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2 z-99">
                         {showPosts &&
                           showPosts.map((_post) => (
-                            <Link to={`/posts/${_post.id}`}>
-                              <div
-                                key={_post.id}
-                                className="flex justify-between items-center w-full border-gray-200 border-b p-2 rounded-lg hover:bg-blue-300"
+                            <div key={_post.id}>
+                              <Link
+                                to={`/posts/${_post.id}`}
+                                // onClick={() => setShowPosts(!showPosts)}
                               >
-                                <span className="flex items-center space-x-2">
-                                  <img
-                                    src={_post.img1}
-                                    alt="team"
-                                    className="w-10 h-10 bg-gray-100 object-cover object-center rounded-full"
-                                  />
+                                <div className="flex justify-between items-center w-full border-gray-200 border-b p-2 rounded-lg hover:bg-blue-300">
+                                  <span className="flex items-center space-x-2">
+                                    <img
+                                      src={_post.img1}
+                                      alt="team"
+                                      className="w-10 h-10 bg-gray-100 object-cover object-center rounded-full"
+                                    />
 
-                                  <p className="text-gray-900">
-                                    {_post.title.slice(0, 20) + "..."}
-                                  </p>
-                                </span>
-                                <h2 className="text-gray-500 title-font font-medium">
-                                  {_post.author.slice(0, 10) + "..."}
-                                </h2>
-                              </div>
-                            </Link>
+                                    <p className="text-gray-900">
+                                      {_post.title.slice(0, 20) + "..."}
+                                    </p>
+                                  </span>
+                                  <h2 className="text-gray-500 title-font font-medium">
+                                    {_post.author.slice(0, 10) + "..."}
+                                  </h2>
+                                </div>
+                              </Link>
+                            </div>
                           ))}
                       </div>
                     )}

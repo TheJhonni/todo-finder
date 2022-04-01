@@ -50,7 +50,9 @@ export default function CategoriesScreen() {
           <Footer />
         </>
       ) : (
-        <Gif />
+        <div className="h-screen">
+          <Gif />
+        </div>
       )}
     </>
   );

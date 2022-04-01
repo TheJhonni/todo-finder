@@ -71,8 +71,9 @@ export default function FaqScreen() {
           </div>
         </>
       ) : (
-        // <Spinner />
-        <Gif />
+        <div className="h-screen">
+          <Gif />
+        </div>
       )}
     </>
   );

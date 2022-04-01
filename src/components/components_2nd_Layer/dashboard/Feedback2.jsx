@@ -21,7 +21,7 @@ export default function Feedback2({ posts }) {
         },
         {
           x: "April",
-          y: 112,
+          y: 82,
         },
       ],
     },
@@ -43,7 +43,7 @@ export default function Feedback2({ posts }) {
         },
         {
           x: "April",
-          y: 174,
+          y: 74,
         },
       ],
     },
@@ -87,7 +87,7 @@ export default function Feedback2({ posts }) {
         },
         {
           x: "April",
-          y: 213,
+          y: 23,
         },
       ],
     },
@@ -105,7 +105,7 @@ export default function Feedback2({ posts }) {
         },
         {
           x: "March",
-          y: 242,
+          y: 42,
         },
         {
           x: "April",

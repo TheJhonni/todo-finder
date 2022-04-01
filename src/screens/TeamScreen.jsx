@@ -139,7 +139,9 @@ export default function TeamScreen() {
           </div>
         </div>
       ) : (
-        <Gif />
+        <div className="h-screen">
+          <Gif />
+        </div>
       )}
     </>
   );

@@ -7,7 +7,6 @@ import Cards from "../components/components_2nd_Layer/Cards";
 import Blogs from "../components/components_2nd_Layer/Blogs";
 import GenericScreen from "./GenericScreen";
 import Gif from "../components/Spinner/Gif";
-import Navbar from "../components/Navbar/Navbar";
 
 export default function Homepagege() {
   const navigate = useNavigate();
@@ -65,9 +64,9 @@ export default function Homepagege() {
   }, []);
 
   return (
-    <>
+    <div className="w-full h-full img-textLeft">
       {currentUser && mount ? (
-        <div className="w-screen h-full img-textLeft">
+        <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <img
               className="w-[300px] md:w-[500px] md:h-[500px] z-[999] mx-auto mt-[-10]"
@@ -145,10 +144,12 @@ export default function Homepagege() {
           </div>
 
           <Footer />
-        </div>
+        </>
       ) : (
-        <Gif />
+        <div className="h-screen">
+          <Gif />
+        </div>
       )}
-    </>
+    </div>
   );
 }

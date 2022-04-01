@@ -99,7 +99,9 @@ export default function PicOfTheDay() {
           <Footer />
         </>
       ) : (
-        <Gif />
+        <div className="h-screen">
+          <Gif />
+        </div>
       )}
     </>
   );

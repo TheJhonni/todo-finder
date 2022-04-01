@@ -4,10 +4,12 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function SingleReply({
+  id,
   reply,
   commentAuthor,
   replyDate,
   replyBody,
+  fetchComments,
   fetchReplies,
 }) {
   const [input, setInput] = useState(null);
@@ -16,7 +18,7 @@ export default function SingleReply({
   // declaring all APIs in .ENV
   const REPLIES_API = `${process.env.REACT_APP_API_REPLIES}`;
 
-  const deleteReply = (id) => {
+  const deleteReply = () => {
     if (window.confirm("Are you sure to delete this Comment?")) {
       fetch(`${REPLIES_API}/${id}`, {
         method: "DELETE",
@@ -26,6 +28,7 @@ export default function SingleReply({
           if (res.status === 200) {
             console.log(res);
             notify();
+            fetchComments();
             fetchReplies();
           }
         })
@@ -63,7 +66,7 @@ export default function SingleReply({
                 </button>
               </div>
               <span
-                onClick={() => deleteReply(reply.id)}
+                onClick={() => deleteReply(id)}
                 className="cursor-pointer ml-10 hover:scale-125 transition duration-75 ease-in"
               >
                 <FcFullTrash className="w-5 h-5" />

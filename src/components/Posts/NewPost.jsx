@@ -152,7 +152,9 @@ export default function NewPost() {
           </form>
         </div>
       ) : (
-        <Gif />
+        <div className="h-screen">
+          <Gif />
+        </div>
       )}
     </>
   );

@@ -5,6 +5,7 @@ export default function RepliesComments({
   referenceId,
   replies,
   commentAuthor,
+  fetchComments,
   fetchReplies,
 }) {
   return (
@@ -21,6 +22,7 @@ export default function RepliesComments({
               commentAuthor={commentAuthor}
               replyDate={reply?.replyDate}
               replyBody={reply?.replyBody}
+              fetchComments={fetchComments}
               fetchReplies={fetchReplies}
             />
           ))

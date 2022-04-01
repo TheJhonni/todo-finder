@@ -220,7 +220,9 @@ export default function ContactScreen() {
           </section>
         </div>
       ) : (
-        <Gif />
+        <div className="h-screen">
+          <Gif />
+        </div>
       )}
     </>
   );

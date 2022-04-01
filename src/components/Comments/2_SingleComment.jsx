@@ -92,6 +92,7 @@ export default function SingleComment({
                     referenceId={referenceId}
                     replies={replies}
                     commentAuthor={commentAuthor}
+                    fetchComments={fetchComments}
                     fetchReplies={fetchReplies}
                   />
                 ))}

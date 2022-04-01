@@ -17,9 +17,7 @@ import Favorites from "./screens/Favorites";
 import PostScreen from "./screens/PostScreen";
 import RegisterScreen from "./screens/Login/RegisterScreen";
 import { setUser } from "./redux/Authentications/authActions";
-import FourOFour from "./components/404/FourOFour";
 import UseRoute from "./components/Loading/UseRoute";
-import Spinner from "./components/Spinner/Spinner";
 import NewPost from "./components/Posts/NewPost";
 import EditPost from "./components/Posts/EditPost";
 import Homepagege from "./screens/Homepagege";
@@ -27,7 +25,6 @@ import FaqScreen from "./screens/FaqScreen";
 import TeamScreen from "./screens/TeamScreen";
 import Navbar from "./components/Navbar/Navbar";
 import AdminScreen from "./screens/AdminScreen";
-import Dahsboard from "./components/AdminPages/Dahsboard";
 import ContactScreen from "./screens/ContactScreen";
 
 function App() {
@@ -62,12 +59,10 @@ function App() {
     loadPosts();
   }, [dispatch]);
 
-  const { category } = posts ?? {};
-
   return (
     <BrowserRouter>
+      <Navbar />
       <div className="img-login">
-        <Navbar />
         <Routes>
           <Route exact path="/" element={<FirstScreen />} />
 
@@ -76,34 +71,22 @@ function App() {
 
           <Route exact path="*" element={<UseRoute />} />
 
-          <Route
-            exact
-            path="/homePage"
-            element={<Homepagege currentUser={currentUser} />}
-          />
+          <Route exact path="/homePage" element={<Homepagege />} />
           <Route
             exact
             // path="/homePage?category=:category"
             path="/category=:category"
-            element={<CategoriesScreen currentUser={currentUser} />}
+            element={<CategoriesScreen />}
           />
-          <Route
-            path="/posts/:id"
-            element={<PostScreen currentUser={currentUser} />}
-          />
+          <Route path="/posts/:id" element={<PostScreen />} />
           <Route exact path="/picOfTheDay" element={<PicOfTheDay />} />
-          <Route
-            path="/edit/:id"
-            element={<EditPost currentUser={currentUser} />}
-          />
+          <Route path="/edit/:id" element={<EditPost />} />
           <Route path="/newPost" element={<NewPost />} />
           <Route path="/admin/*" element={<AdminScreen />} />
           <Route path="/Faq" element={<FaqScreen />} />
           <Route path="/ourTeam" element={<TeamScreen />} />
           <Route path="/contact" element={<ContactScreen />} />
           <Route path="/favorites" element={<Favorites />} />
-
-          {/* <Route path="*" element={<FourOFour />} /> */}
         </Routes>
       </div>
     </BrowserRouter>

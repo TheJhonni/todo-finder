@@ -101,7 +101,9 @@ export default function Saved() {
           </div>
         </div>
       ) : (
-        <Gif />
+        <div className="h-screen">
+          <Gif />
+        </div>
       )}
     </>
   );
