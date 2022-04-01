@@ -48,14 +48,14 @@ export default function InputSendReply({ referenceId, fetchReplies }) {
   useEffect(() => {}, [currentUser]);
 
   return (
-    <div className="flex justify-center mx-auto items-center mt-2">
+    <div className="flex justify-center mx-auto items-center mr-auto mt-2">
       <textarea
         type="text"
         rows="1"
         value={replyBody}
         onChange={(e) => setReplyBody(e.target.value)}
         placeholder="reply"
-        className="px-4 py-2 w-[40%]"
+        className="px-4 py-2 w-fit"
       />
       <p
         onClick={sendReply}

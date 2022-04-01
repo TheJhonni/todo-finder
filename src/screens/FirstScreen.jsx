@@ -32,7 +32,7 @@ export default function FirstScreen() {
           <div className="md:w-[50%] lg:w-full bg-gray-300 px-2 lg:px-5 pt-1 pb-8 mx-auto flex flex-col justify-center items-center z-50">
             <AtomTitles />
           </div>
-          <div className="mx-auto flex justify-between items-center bg-[#1E657B] rounded text-white mt-[100px] p-5 md:h-[300px] md:w-[80%]">
+          <div className="mx-auto flex justify-between items-center bg-[#1E657B] rounded text-white mt-[7%] p-5 md:h-[300px] md:w-[80%]">
             <img
               src={shuttle}
               className="w-[70px] mr-5 md:mr-0 md:w-[150px] lg:w-[200px] xl:w-[300px] md:h-[150px] lg:h-[200px] xl:h-[300px] z-99"

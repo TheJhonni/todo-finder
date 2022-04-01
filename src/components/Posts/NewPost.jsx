@@ -34,7 +34,7 @@ export default function NewPost() {
             title,
             subtitle,
             body,
-            id: Math.floor(Math.random() * (999 - 200) + 200).toLocaleString(),
+            id: Math.floor(Math.random() * 2500).toLocaleString(),
             img1,
             p,
           }),

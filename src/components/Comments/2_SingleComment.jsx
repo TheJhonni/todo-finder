@@ -55,7 +55,7 @@ export default function SingleComment({
             }
             className="flex-shrink-0 w-12 h-12 bg-gray-400 rounded-full"
           />
-          <div className="flex flex-col flex-grow ml-4">
+          <div className="flex flex-col flex-grow items-start justify-start ml-4">
             <div className="flex items-center">
               <span className="font-semibold">{commentAuthor}</span>
               {/* <span className="ml-1">@ {commentAuthor}</span> */}
@@ -64,9 +64,6 @@ export default function SingleComment({
             </div>
             <p className="mt-1 ">{commentBody}</p>
             <div className="flex mt-2">
-              <button className="text-sm font-semibold hover:underline">
-                Like
-              </button>
               <button
                 onClick={() => setShowReplies(!showReplies)}
                 className="ml-2 text-sm font-semibold hover:underline"
@@ -86,23 +83,25 @@ export default function SingleComment({
                 <FcFullTrash className="w-5 h-5" />
               </span>
             </div>
-            {inputReply && (
-              <InputSendReply
-                referenceId={referenceId}
-                fetchReplies={fetchReplies}
-              />
-            )}
-            {showReplies &&
-              (replies.length < 0 ? (
-                <span className="mt-3">No replies yet</span>
-              ) : (
-                <RepliesComments
+            <div className="mr-auto">
+              {showReplies &&
+                (replies.length < 0 ? (
+                  <span className="mt-3">No replies yet</span>
+                ) : (
+                  <RepliesComments
+                    referenceId={referenceId}
+                    replies={replies}
+                    commentAuthor={commentAuthor}
+                    fetchReplies={fetchReplies}
+                  />
+                ))}
+              {inputReply && (
+                <InputSendReply
                   referenceId={referenceId}
-                  replies={replies}
-                  commentAuthor={commentAuthor}
                   fetchReplies={fetchReplies}
                 />
-              ))}
+              )}
+            </div>
           </div>
         </div>
       )}

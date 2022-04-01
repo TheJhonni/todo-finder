@@ -46,13 +46,12 @@ export default function Navbar() {
 
   const fetchUsers = async () => {
     try {
+      const emailRef = await currentUser.email;
       let usersRef = firebase.firestore().collection("users");
       let collection = await usersRef.get();
-      // const ref = doc.id;
-      const emailRef = await currentUser.email;
       const allArr = collection.docs.map((doc) => doc.data());
       const actualUserRef = allArr.filter((d) => d.email === emailRef);
-      // console.log(actualUserRef[0]);
+      console.log(actualUserRef[0]);
       if (actualUserRef[0].role === "Admin") {
         setIsAdmin(true);
       } else {
@@ -64,6 +63,7 @@ export default function Navbar() {
   };
 
   useEffect(() => {
+    console.log(currentUser);
     fetchUsers();
   }, []);
 
@@ -71,6 +71,7 @@ export default function Navbar() {
     <>
       {loc === "*" ||
       loc === "/" ||
+      loc === "/redirectToLogin" ||
       loc === "/login" ||
       loc === "/register" ||
       loc === "/admin" ||

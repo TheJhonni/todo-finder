@@ -17,23 +17,23 @@ export default function AtomTitles() {
       <div className="mx-auto flex items-center justify-center xl:justify-evenly space-x-2">
         <img
           src="/logos/atom.png"
-          className="w-[60px] h-[60px] xl:w-[300px] md:h-[100px] xl:h-[300px]"
+          className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] lg:w-[200px] lg:h-[200px] xl:w-[300px] xl:h-[300px]"
           alt="logo"
         />
         <img
           src="/logos/ocean.png"
-          className="w-[60px] h-[60px] xl:w-[300px] md:h-[100px] xl:h-[300px]"
+          className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] lg:w-[200px] lg:h-[200px] xl:w-[300px] xl:h-[300px]"
           alt="logo"
         />
 
         <img
           src="/logos/ocio.png"
-          className="w-[60px] h-[60px] xl:w-[300px] md:h-[100px] xl:h-[300px]"
+          className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] lg:w-[200px] lg:h-[200px] xl:w-[300px] xl:h-[300px]"
           alt="logo"
         />
         <img
           src="/logos/universe.png"
-          className="w-[60px] h-[60px] xl:w-[300px] md:h-[100px] xl:h-[300px]"
+          className="w-[60px] h-[60px] md:w-[100px] md:h-[100px] lg:w-[200px] lg:h-[200px] xl:w-[300px] xl:h-[300px]"
           alt="logo"
         />
       </div>

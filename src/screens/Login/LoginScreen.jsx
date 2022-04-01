@@ -72,93 +72,95 @@ function LoginScreen() {
   return (
     <>
       {mount ? (
-        <div className="relative bg-[#161D34]">
-          <div className="img-login">
+        <div className="relative h-screen">
+          <div className="h-full py-20 img-textLeft">
             <Toast />
             <img
-              className="fixed left-5 top-10 w-[200px] object-contain pl-[20px]"
+              className="fixed left-5 top-10 object-contain pl-[20px] xl:mt-10 w-[150px] h-[150px] lg:w-[200px] lg:h-[200px] xl:w-[400px] xl:h-[400px] 2xl:w-[500px] 2xl:h-[500px] z-99"
               src={atoms}
               alt=""
             />
             <img
-              className="fixed right-5 top-10 w-[200px] object-contain pr-[20px]"
+              className="fixed right-5 top-10 object-contain pr-[20px] xl:mt-10 w-[150px] h-[150px] lg:w-[200px] lg:h-[200px] xl:w-[400px] xl:h-[400px] 2xl:w-[500px] 2xl:h-[500px] z-99"
               src={atoms}
               alt=""
             />
-            {/* <button className="fixed right-[20px] top-[20px] py-[10px] px-[20px] rounded-full bg-white text-[#05051df1] font-bold font-weight-400">
-            Sign In
-          </button> */}
-            <div className="w-full z-1 h-screen bg-gradient-to-b from-transparent to-black" />
-          </div>
 
-          <div className="bg-[#beb6b6d7] w-[30%] rounded-2xl absolute top-[20%] mx-auto text-center z-1 color-white p-[10px] left-0 right-0">
-            <div id="login-form" className="m-[20px]">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <h3 className="text-5xl text-white font-semibold mt-9 mb-5">
-                  Sign in
-                </h3>
-                <div className="flex items-center justify-center space-x-[5rem]">
+            <div className="bg-[#beb6b6d7] h-[50%] md:h-[80%] lg:h-fit w-[50%] lg:w-[40%] rounded-2xl absolute top-[30%] md:top-5 lg:top-10 xl:top-20 2xl:top-[20%] mx-auto text-center z-1 color-white p-[10px] left-0 right-0">
+              <div id="login-form" className="m-[20px]">
+                <form
+                  onSubmit={handleSubmit}
+                  className="space-y-2 lg:space-y-5"
+                >
+                  <h3 className="text-2xl xl:text-5xl text-white font-semibold lg:mt-9 mb-5">
+                    Sign in
+                  </h3>
+                  <div className="flex items-center justify-center space-x-[5rem]">
+                    <button
+                      onClick={handleGoogleSignin}
+                      className="signIn-google"
+                    >
+                      <span>
+                        <FcGoogle className="bg-white hover:bg-gray-600 w-[50px] h-[50px]" />
+                      </span>
+                    </button>
+                    {/* <input
+                    className="input-signUp p-[10px] outline-none h-[40px] text-purple-900 w-[30%] border-none max-w-5xl"
+                    type="emal"
+                    placeholder="Email Adress"
+                  /> */}
+                    <button
+                      onClick={handleFBSignin}
+                      className="signIn-facebook"
+                    >
+                      <span>
+                        <AiFillFacebook className="bg-white text-[#2626c0] hover:bg-gray-600 hover:text-white  w-[50px] h-[50px]" />
+                      </span>
+                    </button>
+                  </div>
+                </form>
+                <p className="lg:my-4 font-bold text-gray-800">OR</p>
+                <div className="flex flex-col items-center justify-center lg:mt-5">
+                  <input
+                    className="input-signUp outline-none text-purple-900 border-none max-w-[90%] lg:max-w-5xl"
+                    type="email"
+                    placeholder="Email Adress"
+                    onChange={handleChange}
+                    value={email}
+                    required
+                    name="email"
+                  />
+                  <input
+                    className="input-signUp outline-none text-purple-900 border-none max-w-[90%] lg:max-w-5xl"
+                    type="password"
+                    placeholder="Password"
+                    onChange={handleChange}
+                    value={password}
+                    required
+                    name="password"
+                  />
                   <button
-                    onClick={handleGoogleSignin}
-                    className="signIn-google"
+                    className="rounded-3xl bg-gray-600 p-2 lg:p-5 text-white hover:text-gray-700 hover:bg-white"
+                    type="submit"
+                    onClick={handleSubmit}
                   >
-                    <span>
-                      <FcGoogle className="bg-white hover:bg-gray-600 w-[50px] h-[50px]" />
-                    </span>
-                  </button>
-                  {/* <input
-                  className="input-signUp p-[10px] outline-none h-[40px] text-purple-900 w-[30%] border-none max-w-5xl"
-                  type="emal"
-                  placeholder="Email Adress"
-                /> */}
-                  <button onClick={handleFBSignin} className="signIn-facebook">
-                    <span>
-                      <AiFillFacebook className="bg-white text-[#2626c0] hover:bg-gray-600 hover:text-white  w-[50px] h-[50px]" />
-                    </span>
+                    Sign in
                   </button>
                 </div>
-              </form>
-              <p className="my-4 font-bold text-gray-800">OR</p>
-              <div className="flex flex-col items-center justify-center mt-5">
-                <input
-                  className="input-signUp outline-none text-purple-900 border-none max-w-5xl"
-                  type="email"
-                  placeholder="Email Adress"
-                  onChange={handleChange}
-                  value={email}
-                  required
-                  name="email"
-                />
-                <input
-                  className="input-signUp outline-none text-purple-900 border-none max-w-5xl"
-                  type="password"
-                  placeholder="Password"
-                  onChange={handleChange}
-                  value={password}
-                  required
-                  name="password"
-                />
-                <button
-                  className="rounded-3xl bg-gray-600 p-5 text-white hover:text-gray-700 hover:bg-white"
-                  type="submit"
-                  onClick={handleSubmit}
-                >
-                  Sign in
-                </button>
+                <h1 className="hidden lg:block text-xl xl:text-4xl font-bold text-[#1D657B] lg:my-[20px]">
+                  Don't have an account yet?
+                </h1>
+                <Link to="/register">
+                  <h2 className="mt-3 lg:text-2xl font-normal lg:mt-5">
+                    <button
+                      className="signIn-button rounded hover:bg-[#5ED28D] hover:text-white hover:scale-[1.03] transition-all duration-150 ease-in"
+                      type="submit"
+                    >
+                      Sing up for free!
+                    </button>
+                  </h2>
+                </Link>
               </div>
-              <h1 className="text-4xl font-bold text-[#1D657B] my-[20px]">
-                Don't have an account yet?
-              </h1>
-              <Link to="/register">
-                <h2 className="text-2xl font-normal mt-5">
-                  <button
-                    className="signIn-button rounded hover:bg-[#5ED28D] hover:text-white hover:scale-[1.03] transition-all duration-150 ease-in"
-                    type="submit"
-                  >
-                    Sing up for free!
-                  </button>
-                </h2>
-              </Link>
             </div>
           </div>
         </div>
