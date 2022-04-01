@@ -60,12 +60,7 @@ export default function GenericScreen() {
           posts.map((_post) => (
             <div key={_post.id} className="flex justify-center items-center">
               <Link to={`/posts/${_post.id}`}>
-                <Posts
-                  key={_post.id}
-                  id={_post.id}
-                  src={_post.img1}
-                  title={_post.title}
-                />
+                <Posts id={_post.id} src={_post.img1} title={_post.title} />
               </Link>
             </div>
           ))}

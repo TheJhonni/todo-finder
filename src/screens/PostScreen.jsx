@@ -309,9 +309,11 @@ export default function PostScreen() {
         method: "POST",
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
-          id: Math.floor(Math.random() * 1400),
+          id: Math.floor(Math.random() * (2900 - 2000 + 2000)).toLocaleString(),
           postId: id,
-          commentId: Math.floor(Math.random() * 7000),
+          commentId: Math.floor(
+            Math.random() * (2000 - 1000) + 1000
+          ).toLocaleString(),
           commentAuthor: currentUser?.email || currentUser?.name,
           commentBody,
           date: randomDate(new Date(2020, 0, 1), new Date()).toLocaleString(),
@@ -420,17 +422,6 @@ export default function PostScreen() {
                     >
                       <WhatsappIcon round={true}></WhatsappIcon>
                     </WhatsappShareButton>
-                  </div>
-                  <div className="flex justify-center items-center mt-5">
-                    {currentUser.email === "jdilmoro@gmail.com" && (
-                      <div
-                        onClick={() => navigate(`/edit/${post?.id}`)}
-                        className="flex space-x-3 items-center cursor-pointer hover:bg-gray-400 rounded-full px-5"
-                      >
-                        <GrEdit />
-                        <p>Edit Post</p>
-                      </div>
-                    )}
                   </div>
                 </div>
               </div>

@@ -79,15 +79,14 @@ export default function Navbar() {
       loc === "/admin/feedbacks" ||
       loc === "/admin/editPosts" ||
       loc === "/admin/createNewPosts" ||
-      loc === "/admin/users" ||
-      loc === "/admin/geolocalization" ? (
+      loc === "/admin/users" ? (
         <></>
       ) : (
         <>
           <nav className="relative bg-trasparent border-b-2 border-blue-200 text-gray-300">
             <div
               // onClick={() => setShowSearch(false)}
-              className="container mx-auto flex justify-between align-center"
+              className="container mx-auto flex justify-between align-baseline"
             >
               <div onClick={() => navigate("/homePage")} className="my-auto">
                 <div className="rounded">
@@ -100,7 +99,7 @@ export default function Navbar() {
               </div>
 
               <ul className="flex">
-                <li className="">
+                <li>
                   <span className="hidden sm:relative sm:block py-6 px-2 lg:p-6 tex md:text-xl font-superbold">
                     {(loc === "/homePage" && "HOME") ||
                       (loc === "/favorites" && "FAVORITES") ||

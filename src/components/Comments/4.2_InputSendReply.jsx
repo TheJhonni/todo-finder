@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Toast from "../Toasts/Toast";
 
 export default function InputSendReply({ referenceId, fetchReplies }) {
   const [replyBody, setReplyBody] = useState("");
@@ -26,9 +27,7 @@ export default function InputSendReply({ referenceId, fetchReplies }) {
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
           _ID: referenceId,
-          id: Math.floor(
-            Math.random() * (90000 - 70000) + 70000
-          ).toLocaleString(),
+          id: Math.floor(Math.random() * 2900).toLocaleString(),
           replyAuthor: currentUser?.email || currentUser?.name,
           replyBody,
           replyDate: date + " at:" + time,
@@ -49,6 +48,7 @@ export default function InputSendReply({ referenceId, fetchReplies }) {
 
   return (
     <div className="flex justify-center mx-auto items-center mr-auto mt-2">
+      <Toast bg={"#1E667C"} />
       <textarea
         type="text"
         rows="1"

@@ -74,7 +74,7 @@ function LoginScreen() {
       {mount ? (
         <div className="relative h-screen">
           <div className="h-full py-20 img-textLeft">
-            <Toast />
+            <Toast bg={"#1E667C"} />
             <img
               className="fixed left-5 top-10 object-contain pl-[20px] xl:mt-10 w-[150px] h-[150px] lg:w-[200px] lg:h-[200px] xl:w-[400px] xl:h-[400px] 2xl:w-[500px] 2xl:h-[500px] z-99"
               src={atoms}
