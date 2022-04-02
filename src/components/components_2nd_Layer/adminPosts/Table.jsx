@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { MdDeleteForever } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Toast from "../../Toasts/Toast";
 
 export default function Table({ posts, deletePost }) {
   const [filter, setFilter] = useState("");
@@ -19,7 +16,6 @@ export default function Table({ posts, deletePost }) {
   return (
     <div className="flex flex-col items-center">
       <div className="shadow-md md:rounded-lg">
-        <Toast />
         <div className="inline-block md:align-middle">
           <div className="p-2 md:p-4">
             <label htmlFor="table-search" className="sr-only">

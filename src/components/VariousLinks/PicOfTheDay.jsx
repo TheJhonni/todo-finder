@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Iframe from "react-iframe";
 import Footer from "../Footer/Footer";
+import Navbar from "../Navbar/Navbar";
 import Gif from "../Spinner/Gif";
 
 // const apiKey = process.env.REACT_APP_NASA_KEY;
@@ -43,6 +44,7 @@ export default function PicOfTheDay() {
     <>
       {mount ? (
         <>
+          <Navbar />
           <div className="relative flex items-center justify-evenly mx-auto py-2">
             <div>
               <h2 className="mb-10 text-center text-xl sm:text-2xl md:text-5xl md:mt-10 font-extrabold text-gray-200">

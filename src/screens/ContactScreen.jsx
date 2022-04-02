@@ -4,6 +4,7 @@ import Gif from "../components/Spinner/Gif";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Toast from "../components/Toasts/Toast";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function ContactScreen() {
   const [sender_name, set_sender_name] = useState("");
@@ -73,6 +74,7 @@ export default function ContactScreen() {
     <>
       {mount ? (
         <div>
+          <Navbar />
           <section className="h-screen text-gray-300 body-font relative">
             <form onSubmit={sendEmail} className="container px-5 py-24 mx-auto">
               <div className="flex flex-col text-center w-full mb-12">

@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Gif from "../components/Spinner/Gif";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function CategoriesScreen() {
   const [mount, setMount] = useState(false);
@@ -44,13 +45,14 @@ export default function CategoriesScreen() {
     <>
       {mount ? (
         <>
-          <div className="w-full h-full img-login mb-20">
+          <div className="w-full h-full img-textLeft mb-20">
+            <Navbar />
             <CategoriesTitles posts={posts} />
           </div>
           <Footer />
         </>
       ) : (
-        <div className="h-screen">
+        <div className="h-full">
           <Gif />
         </div>
       )}

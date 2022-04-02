@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FAQ from "../components/components_2nd_Layer/FAQ";
+import Navbar from "../components/Navbar/Navbar";
 import Gif from "../components/Spinner/Gif";
 
 export default function FaqScreen() {
@@ -49,6 +50,7 @@ export default function FaqScreen() {
       {mount ? (
         <>
           <div className="w-full h-full img-textLeft bg-gray-300 box-border">
+            <Navbar />
             <div className="flex align-center justify-center text-4xl font-extrabold py-10 px-10 shadow-2xl border-b-4 border-[#5FD38D]">
               <span className="text-center text-gray-300">
                 FAQ: FREQUENTLY ASKED QUESTIONS

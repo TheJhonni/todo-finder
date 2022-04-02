@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Gif from "../components/Spinner/Gif";
 import Footer from "../components/Footer/Footer";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function TeamScreen() {
   const [mount, setMount] = useState(false);
@@ -14,6 +15,7 @@ export default function TeamScreen() {
     <>
       {mount ? (
         <div className="w-full h-full img-textLeft">
+          <Navbar />
           <div className="container mx-auto py-10">
             <h1 className="text-4xl text-gray-200 font-extrabold text-center py-5 px-10">
               MEET OUR TEAM!

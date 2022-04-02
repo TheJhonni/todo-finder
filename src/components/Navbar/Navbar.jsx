@@ -7,6 +7,8 @@ import firebase from "firebase/compat/app";
 
 export default function Navbar() {
   const savedPosts = useSelector((state) => state.favorites.favoritePosts);
+  const { currentUser } = useSelector((state) => state.user);
+
   const loc = window.location.pathname;
 
   const location = useLocation();
@@ -18,6 +20,27 @@ export default function Navbar() {
   const [showPosts, setShowPosts] = useState([]);
   const [query, setQuery] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
+  const fetchUsers = async () => {
+    try {
+      const emailRef = currentUser.email;
+
+      let usersRef = firebase.firestore().collection("users");
+      let collection = await usersRef.get();
+      const allArr = collection.docs.map((doc) => doc.data());
+      const actualUserRef = allArr.filter((d) => d.email === emailRef);
+      // console.log(actualUserRef[0].role);
+      if (actualUserRef[0]?.role === "Admin") {
+        setIsAdmin(true);
+        // console.log("ADMIN");
+      } else {
+        setIsAdmin(false);
+        // console.log("NORMAL USER");
+      }
+      return;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchPosts = async (e) => {
     e.preventDefault();
@@ -42,33 +65,8 @@ export default function Navbar() {
     }
   };
 
-  // const fetchUsers = async () => {
-  //   try {
-  //     const emailRef = currentUser.email;
-
-  //     let usersRef = firebase.firestore().collection("users");
-  //     let collection = await usersRef.get();
-  //     const allArr = collection.docs.map((doc) => doc.data());
-  //     const actualUserRef = allArr.filter((d) => d.email === emailRef);
-  //     console.log(actualUserRef);
-  //     if (actualUserRef?.role === "Admin") {
-  //       setIsAdmin(true);
-  //     } else {
-  //       setIsAdmin(false);
-  //     }
-  //     return actualUserRef;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  const { currentUser } = useSelector((state) => state.user);
   useEffect(() => {
-    // fetchUsers();
-    if (currentUser.email === "jdilmoro@gmail.com") {
-      console.log(currentUser.email);
-      setIsAdmin(true);
-    }
+    fetchUsers();
   }, []);
 
   return (
@@ -359,30 +357,31 @@ export default function Navbar() {
                             <p>Click to logout now</p>
                           </div>
                         </li>
-                        {isAdmin && (
-                          <li className="flex items-center border-gray-500 border-t pb-6 pt-6 lg:pt-3 pl-10">
-                            <div className="flex flex-col items-center">
-                              <h3 className="font-bold text-xl text-white text-bold pr-8 mb-2">
-                                Dashboard
-                              </h3>
 
-                              <div className="flex items-center py-3">
-                                <svg
-                                  className="h-6 pr-3 fill-current text-blue-300"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  viewBox="0 0 20 20"
-                                >
-                                  <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
-                                </svg>
-                                <NavLink to="/admin/dashboard">
-                                  <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
-                                    Check statistics
-                                  </p>
-                                </NavLink>
-                              </div>
+                        <li className="flex items-center border-gray-500 border-t pb-6 pt-6 lg:pt-3 pl-10">
+                          <div className="flex flex-col items-center">
+                            <h3 className="font-bold text-xl text-white text-bold pr-8 mb-2">
+                              Dashboard
+                            </h3>
+
+                            <div className="flex items-center py-3">
+                              <svg
+                                className="h-6 pr-3 fill-current text-blue-300"
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                              >
+                                <path d="M20 10a10 10 0 1 1-20 0 10 10 0 0 1 20 0zm-2 0a8 8 0 1 0-16 0 8 8 0 0 0 16 0zm-8 2H5V8h5V5l5 5-5 5v-3z" />
+                              </svg>
+                              <NavLink
+                                to={isAdmin ? "/admin/dashboard" : "/fourOFour"}
+                              >
+                                <p className="text-white bold border-b-2 border-blue-300 hover:text-blue-300">
+                                  Check statistics
+                                </p>
+                              </NavLink>
                             </div>
-                          </li>
-                        )}
+                          </div>
+                        </li>
                       </ul>
                     </div>
                   </div>

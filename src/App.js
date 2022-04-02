@@ -1,16 +1,10 @@
 import "./App.css";
 import CategoriesScreen from "./screens/CategoriesScreen";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  useParams,
-  matchRoutes,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginScreen from "./screens/Login/LoginScreen";
 import { useEffect, useState } from "react";
 import { auth } from "./firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import PicOfTheDay from "./components/VariousLinks/PicOfTheDay";
 import FirstScreen from "./screens/FirstScreen";
 import Favorites from "./screens/Favorites";
@@ -20,6 +14,7 @@ import { setUser } from "./redux/Authentications/authActions";
 import UseRoute from "./components/Loading/UseRoute";
 import NewPost from "./components/Posts/NewPost";
 import EditPost from "./components/Posts/EditPost";
+import FourOFour from "./components/404/FourOFour";
 import Homepagege from "./screens/Homepagege";
 import FaqScreen from "./screens/FaqScreen";
 import TeamScreen from "./screens/TeamScreen";
@@ -28,9 +23,7 @@ import AdminScreen from "./screens/AdminScreen";
 import ContactScreen from "./screens/ContactScreen";
 
 function App() {
-  const { currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-
   const [posts, setPosts] = useState(null);
 
   const loadPosts = () => {
@@ -61,7 +54,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
       <div className="img-login">
         <Routes>
           <Route exact path="/" element={<FirstScreen />} />
@@ -87,6 +79,7 @@ function App() {
           <Route path="/ourTeam" element={<TeamScreen />} />
           <Route path="/contact" element={<ContactScreen />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/fourOFour" element={<FourOFour />} />
         </Routes>
       </div>
     </BrowserRouter>

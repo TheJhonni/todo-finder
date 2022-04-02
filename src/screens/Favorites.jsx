@@ -8,6 +8,7 @@ import { removeFromFavsAction } from "../redux/Favourites/favActions";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Toast from "../components/Toasts/Toast";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function Saved() {
   // const savedId = useParams()
@@ -56,6 +57,7 @@ export default function Saved() {
     <>
       {mount ? (
         <div className="w-full h-screen img-textLeft">
+          <Navbar />
           <div className="container mx-auto">
             <div className="max-w-2xl mx-auto py-16 sm:py-24 lg:py-32 lg:max-w-none">
               <Toast />

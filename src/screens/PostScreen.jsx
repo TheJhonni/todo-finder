@@ -18,6 +18,7 @@ import { FacebookIcon, WhatsappIcon } from "react-share";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Toast from "../components/Toasts/Toast";
+import Navbar from "../components/Navbar/Navbar";
 
 export default function PostScreen() {
   // REDUX PART FOR USER
@@ -346,6 +347,7 @@ export default function PostScreen() {
     <div className="img-textLeft h-full">
       {mount ? (
         <>
+          <Navbar />
           <main className="relative container mx-auto bg-[#ffffffd2] px-4">
             <div className="relative mx-4 top-0 pt-[17%] overflow-hidden">
               <Toast />
@@ -534,7 +536,7 @@ export default function PostScreen() {
           <Footer />
         </>
       ) : (
-        <div className="h-screen">
+        <div className="h-full">
           <Gif />
         </div>
       )}
