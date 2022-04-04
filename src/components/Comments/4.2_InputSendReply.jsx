@@ -19,15 +19,17 @@ export default function InputSendReply({ referenceId, fetchReplies }) {
 
   const notify = () => toast("Replied");
 
+  // declaring all APIs in .ENV
+  const API = `${process.env.REACT_APP_API_REPLIES}`;
+
   const sendReply = async (e) => {
     e.preventDefault();
     try {
-      const resp = await fetch(`http://localhost:5000/replies`, {
+      const resp = await fetch(`${API}`, {
         method: "POST",
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
           _ID: referenceId,
-          id: Math.floor(Math.random() * 1000).toLocaleString(),
           replyAuthor: currentUser?.email || currentUser?.name,
           replyBody,
           replyDate: date + " at:" + time,

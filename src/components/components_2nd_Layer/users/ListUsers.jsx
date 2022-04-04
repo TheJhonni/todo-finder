@@ -9,14 +9,16 @@ export default function ListUsers({ userInfo }) {
   const notify = () => toast("User Deleted!");
 
   const deleteUser = async (id) => {
-    await firebase
-      .firestore()
-      .collection("users")
-      .doc(id)
-      .delete()
-      .then(() => {
-        notify();
-      });
+    if (window.confirm("Are you sure to delete this User credentials?")) {
+      await firebase
+        .firestore()
+        .collection("users")
+        .doc(id)
+        .delete()
+        .then(() => {
+          notify();
+        });
+    }
   };
 
   return (

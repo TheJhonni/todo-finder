@@ -6,6 +6,7 @@ import InputSendComment from "./4.1_InputSendComment";
 
 export default function CommentForm({
   c,
+  setC,
   input2,
   setInput2,
   commentBody,
@@ -19,7 +20,7 @@ export default function CommentForm({
   let { id } = useParams();
 
   return (
-    <div className="flex justify-center w-screen h-screen px-2 text-gray-800 ">
+    <div className="flex justify-start w-screen h-screen text-gray-800 ">
       <div className="flex flex-col h-full flex-grow border-l border-r border-gray-300">
         <div className="flex-grow h-0 overflow-auto">
           {c && c.filter((_c) => _c.postId === id).length > 0 ? (
@@ -29,13 +30,13 @@ export default function CommentForm({
               .map((comment) => (
                 <div key={comment.id} className="flex">
                   <SingleComment
-                    key={comment.id}
+                    c={c}
+                    setC={setC}
                     commentAuthor={comment.commentAuthor || "Unknown-Anonymous"}
                     Link={comment?.Link}
                     commentBody={comment?.commentBody}
                     date={comment?.date}
-                    postId={comment?.postId}
-                    referenceId={comment?.id}
+                    postId={comment?.id}
                     fetchComments={fetchComments}
                     replies={replies}
                     fetchReplies={fetchReplies}
@@ -45,7 +46,7 @@ export default function CommentForm({
           ) : (
             <span className="mb-5 text-xl">No comment yet</span>
           )}
-          <div className="flex-col mt-5 max-w-[400px]">
+          <div className="flex-col mt-2 max-w-[400px]">
             {currentUser && (
               <button
                 onClick={() => setInput2(!input2)}

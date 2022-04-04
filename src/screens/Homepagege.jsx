@@ -78,7 +78,7 @@ export default function Homepagege() {
             <h2 className="text-center text-3xl sm:text-4xl md:text-6xl md:mt-10 font-extrabold text-gray-200">
               Read one of our latest articles
             </h2>
-            <div className="max-w-5xl mx-auto pb-10 sm:py-12 lg:py-32 lg:max-w-none">
+            <div className="max-w-5xl mx-auto pb-10 sm:py-12 lg:py-25 lg:max-w-none">
               <div className="flex-col items-center md:flex lg:space-x-[200px] lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-2">
                 {posts &&
                   postComments &&

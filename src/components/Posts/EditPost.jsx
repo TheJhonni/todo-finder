@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Spinner from "../Spinner/Spinner";
 import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import Gif from "../Spinner/Gif";
 
 export default function EditPost() {
@@ -12,11 +10,12 @@ export default function EditPost() {
 
   const { author, title, body, p, img1 } = post ?? {};
 
+  const API = `${process.env.REACT_APP_API_POSTS}`;
+
   const fetchData = (id) => {
-    // const API = `${process.env.REACT_APP_JSON_API}`;
     setTimeout(() => {
       setMount(true);
-      fetch(`http://localhost:5000/myPosts/${id}`)
+      fetch(`${API}/${id}`)
         .then((res) => {
           return res.json();
         })
@@ -40,7 +39,7 @@ export default function EditPost() {
 
   function editedPost(id) {
     if (window.confirm("Are you sure to edit this post?")) {
-      fetch(`http://localhost:5000/myPosts/${id}`, {
+      fetch(`${API}/${id}`, {
         method: "PUT",
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
@@ -63,7 +62,7 @@ export default function EditPost() {
   const deletePost = (id) => {
     if (window.confirm("Are you sure to delete this post?")) {
       setMount(true);
-      fetch(`http://localhost:5000/myPosts/${id}`, {
+      fetch(`${API}/${id}`, {
         method: "DELETE",
         headers: { "Content-type": "Application/json" },
       })

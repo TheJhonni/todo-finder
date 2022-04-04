@@ -178,7 +178,7 @@ export default function SideBar() {
               </svg>
               <span
                 onClick={handleAuth}
-                className="flex-1 ml-2 whitespace-nowrap"
+                className="cursor-pointer flex-1 ml-2 whitespace-nowrap"
               >
                 Logout
               </span>

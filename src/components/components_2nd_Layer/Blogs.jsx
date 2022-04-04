@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { MdThumbUp } from "react-icons/md";
+import { MdThumbUp, MdThumbDown } from "react-icons/md";
 export default function Blogs({
   src,
   id,
@@ -11,8 +11,9 @@ export default function Blogs({
   filteredC,
 }) {
   const [howManyLikes, setHowManyLikes] = useState(0);
+  const [howManyDislikes, setHowManyDislikes] = useState(0);
   return (
-    <div className="w-[300px] sm:w-[500px] h-[400px] p-4 md:p-8 md:w-[600px] mx-auto md:mx-3 mt-10 flex flex-col items-start bg-indigo-50 rounded-lg hover:bg-indigo-200">
+    <div className="w-[300px] sm:w-[500px] h-[400px] p-4 md:p-8 md:w-[600px] mx-auto md:mx-3 mt-5 flex flex-col items-start bg-indigo-50 rounded-lg hover:bg-indigo-200">
       <span className="inline-block py-1 px-2 rounded text-indigo-500 text-xs font-medium tracking-widest">
         {category}
       </span>
@@ -36,7 +37,7 @@ export default function Blogs({
             <path d="M12 5l7 7-7 7"></path>
           </svg>
         </span>
-        <span className="text-gray-400 mr-3 inline-flex items-center ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+        {/* <span className="text-gray-400 mr-3 inline-flex items-center ml-auto leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
           <svg
             className="w-4 h-4 mr-1"
             stroke="currentColor"
@@ -49,9 +50,9 @@ export default function Blogs({
             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
             <circle cx="12" cy="12" r="3"></circle>
           </svg>
-          {Math.floor(Math.random() * (999 - 200) + 200).toLocaleString()}
-        </span>
-        <span className="text-gray-400 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+          {Math.floor(Math.random() * (1 - 30) + 30).toLocaleString()}
+        </span> */}
+        <span className="ml-auto text-gray-400 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
           <svg
             className="w-4 h-4 mr-1"
             stroke="currentColor"
@@ -65,9 +66,13 @@ export default function Blogs({
           </svg>
           {filteredC.length}
         </span>
-        <span className="text-gray-400 inline-flex items-center leading-none text-sm pl-3">
+        <span className="text-gray-400 inline-flex items-center leading-none text-sm px-3 py-1 border-r-2 border-gray-200">
           <MdThumbUp className="mr-1" />
           {howManyLikes + post.likes.length}
+        </span>
+        <span className="text-gray-400 inline-flex items-center leading-none text-sm pl-3">
+          <MdThumbDown className="mr-1" />
+          {howManyDislikes + post.dislikes.length}
         </span>
       </div>
       <span className="inline-flex items-center">

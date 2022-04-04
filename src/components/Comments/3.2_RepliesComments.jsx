@@ -17,8 +17,9 @@ export default function RepliesComments({
           .map((reply) => (
             <SingleReply
               key={reply?.id}
-              id={reply.id}
+              repId={reply.id}
               reply={reply}
+              replies={replies}
               commentAuthor={commentAuthor}
               replyDate={reply?.replyDate}
               replyBody={reply?.replyBody}

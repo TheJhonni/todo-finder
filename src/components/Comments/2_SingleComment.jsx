@@ -11,30 +11,32 @@ export default function SingleComment({
   Link,
   commentBody,
   date,
-  referenceId,
+  postId,
   fetchComments,
   replies,
   fetchReplies,
 }) {
   const [showReplies, setShowReplies] = useState(null);
   const [inputReply, setInputReply] = useState(null);
-
   const notify = () => toast("Deleted");
 
   // declaring all APIs in .ENV
   const COMMENTS_API = `${process.env.REACT_APP_API_COMMENTS}`;
+  // console.log(`${COMMENTS_API}/${id}`);
 
-  const deleteComment = () => {
+  const deleteComment = async (postId) => {
     if (window.confirm("Are you sure to delete this Comment?")) {
-      fetch(`${COMMENTS_API}/${referenceId}`, {
+      await fetch(`${COMMENTS_API}/${postId}`, {
         method: "DELETE",
-        headers: { "Content-type": "Application/json" },
+        headers: { "Content-Type": "application/json" },
       })
         .then((res) => {
           if (res.status === 200) {
-            console.log(res);
             notify();
-            fetchComments();
+            console.log(res);
+            setTimeout(() => {
+              fetchComments();
+            }, 500);
           }
         })
         .catch((err) => {
@@ -46,7 +48,7 @@ export default function SingleComment({
   return (
     <>
       {replies && (
-        <div className="flex p-8 border-b border-gray-300">
+        <div className="flex my-2 border-b border-gray-300">
           <img
             src={
               Link
@@ -60,7 +62,7 @@ export default function SingleComment({
               <span className="font-semibold">{commentAuthor}</span>
               {/* <span className="ml-1">@ {commentAuthor}</span> */}
 
-              <span className="text-sm ml-[300px]">at: {date}</span>
+              <span className="text-sm ml-[270px]">at: {date}</span>
             </div>
             <p className="mt-1 ">{commentBody}</p>
             <div className="flex mt-2">
@@ -77,7 +79,7 @@ export default function SingleComment({
                 Reply
               </button>
               <span
-                onClick={() => deleteComment(referenceId)}
+                onClick={() => deleteComment(postId)}
                 className="cursor-pointer ml-10 hover:scale-125 transition duration-75 ease-in"
               >
                 <FcFullTrash className="w-5 h-5" />
@@ -89,7 +91,7 @@ export default function SingleComment({
                   <span className="mt-3">No replies yet</span>
                 ) : (
                   <RepliesComments
-                    referenceId={referenceId}
+                    referenceId={postId}
                     replies={replies}
                     commentAuthor={commentAuthor}
                     fetchComments={fetchComments}
@@ -98,7 +100,7 @@ export default function SingleComment({
                 ))}
               {inputReply && (
                 <InputSendReply
-                  referenceId={referenceId}
+                  referenceId={postId}
                   fetchReplies={fetchReplies}
                 />
               )}

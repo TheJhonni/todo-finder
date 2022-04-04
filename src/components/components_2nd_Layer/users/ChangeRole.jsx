@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import firebase from "firebase/compat/app";
 import { RiAdminFill } from "react-icons/ri";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ChangeRole({ frero, role }) {
   const [newRole, setNewRole] = useState("");
@@ -9,6 +11,7 @@ export default function ChangeRole({ frero, role }) {
   const handleChange = (e) => {
     setNewRole(e.target.value);
   };
+  const notify = () => toast("Role changed");
 
   const updateRole = async () => {
     await firebase
@@ -17,7 +20,7 @@ export default function ChangeRole({ frero, role }) {
       .doc(frero.id)
       .update({ role: newRole })
       .then(() => {
-        alert("role changed!");
+        notify();
       });
 
     setShowModal(false);

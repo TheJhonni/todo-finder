@@ -300,22 +300,24 @@ export default function PostScreen() {
 
   const sendComment = async (e) => {
     e.preventDefault();
-    function randomDate(start, end) {
-      return new Date(
-        start.getTime() + Math.random() * (end.getTime() - start.getTime())
-      );
-    }
+    const current = new Date();
+    const date = `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
+
+    const today = new Date();
+    const time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     try {
       const resp = await fetch(`${COMMENTS_API}`, {
         method: "POST",
         headers: { "Content-type": "Application/json" },
         body: JSON.stringify({
-          id: Math.floor(Math.random() * 1000).toLocaleString(),
           postId: id,
-          commentId: Math.floor(Math.random() * 2000).toLocaleString(),
+
           commentAuthor: currentUser?.email || currentUser?.name,
           commentBody,
-          date: randomDate(new Date(2020, 0, 1), new Date()).toLocaleString(),
+          date: date + " at:" + time,
         }),
       });
       if (resp.ok) {
@@ -505,12 +507,12 @@ export default function PostScreen() {
                     )}
                   </div>
                 )}
-                <div className="px-5 flex-col justify-self-end">
+                <div className="mx-auto flex-col justify-self-start">
                   <p
                     onClick={() => setShowComments(!showComments)}
                     className={
-                      "cursor-pointer max-w-[200px] hover:bg-gray-400 rounded-full px-4 " +
-                      (input ? "mb-11" : "")
+                      "cursor-pointer w-[140px] px-2 py-1 hover:bg-gray-400 rounded-full " +
+                      (input ? "mb-8" : "")
                     }
                   >
                     {showComments ? "Hide Comments" : "Show Comments"}
@@ -518,6 +520,7 @@ export default function PostScreen() {
                   {showComments && (
                     <CommentForm
                       c={c}
+                      setC={setC}
                       input2={input2}
                       setInput2={setInput2}
                       commentBody={commentBody}
