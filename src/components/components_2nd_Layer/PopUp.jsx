@@ -6,7 +6,7 @@ export default function PopUp({ adv }) {
   return (
     <>
       {notClosed && adv && (
-        <div className="w-[300px] sm:w-[500px] md:h-[300px] md:w-fit md:mt-10 md:mb-[4rem] mx-auto">
+        <div className="w-[300px] sm:w-[500px] md:h-[300px] md:w-fit 2xl:w-[1200px] md:mt-10 md:mb-[4rem] mx-auto">
           <div
             id="dropdown-cta"
             className="p-4 mt-2 bg-blue-50 rounded-lg "

@@ -13,7 +13,7 @@ export default function Blogs({
   const [howManyLikes, setHowManyLikes] = useState(0);
   const [howManyDislikes, setHowManyDislikes] = useState(0);
   return (
-    <div className="w-[300px] sm:w-[500px] h-[400px] p-4 md:p-8 md:w-[600px] mx-auto md:mx-3 mt-5 flex flex-col items-start bg-indigo-50 rounded-lg hover:bg-indigo-200">
+    <div className="w-[300px] sm:w-[500px] h-[400px] p-4 md:p-8 md:w-[600px] lg:w-[400px] xl:w-[550px] 2xl:w-[600px] mx-auto mt-5 flex flex-col items-start bg-indigo-50 rounded-lg hover:bg-indigo-200">
       <span className="inline-block py-1 px-2 rounded text-indigo-500 text-xs font-medium tracking-widest">
         {category}
       </span>
